@@ -11,7 +11,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "biome lint",
-    "typecheck": "astro check && svelte-check --tsconfig ./tsconfig.json --threshold error",
+    "typecheck": "astro check && svelte-check --incremental --tsconfig ./tsconfig.json --threshold error",
     "deploy": "astro build && wrangler deploy"
   },
   "dependencies": {
