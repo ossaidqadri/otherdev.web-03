@@ -112,7 +112,7 @@ const site = defineCollection({
 // Service groups for /services, one entry per group.
 const services = defineCollection({
   loader: file("src/content/services.json"),
-  schema: z.object({ title: z.string(), intro: z.string(), items: z.array(z.string()) }),
+  schema: z.object({ order: z.number().int(), title: z.string(), intro: z.string(), items: z.array(z.string()) }),
 });
 
 // Legal pages, one markdown file each.

@@ -1,24 +1,28 @@
 [
   {
     "id": "strategy",
+    "order": 1,
     "title": "Strategy",
     "intro": "We lead on strategy, research, and positioning to uncover opportunities, define clear directions, and align around a vision.",
     "items": ["Naming", "Brand Architecture", "Brand Voice", "Ideation Sprints", "Brand Consultation"]
   },
   {
     "id": "design",
+    "order": 2,
     "title": "Design",
     "intro": "We craft brand identities, design systems, and content that transforms dull strategy into sharp market-defining work.",
     "items": ["Brand Identity", "Design Systems", "Digital Design", "Website", "UI/UX", "Art Direction", "Illustration", "3D Design", "Motion", "Print Design", "Icon Design"]
   },
   {
     "id": "development",
+    "order": 3,
     "title": "Development",
     "intro": "We develop robust, scalable products, websites, and experiences that bring ideas to life and are ready for real-world impact.",
     "items": ["Front-end", "Back-end", "React", "Webflow", "NextJS", "Framer", "Svelte", "CMS", "E-Commerce", "Integrations", "Testing and Auditing", "Custom Interactions"]
   },
   {
     "id": "experience",
+    "order": 4,
     "title": "Experience",
     "intro": "We optimise, grow, and innovate to evolve with new opportunities and deliver long-term value.",
     "items": ["Brand Activations", "Marketing", "Campaign", "Events", "OOH Advertising", "Packaging", "Merch", "Brand Stewardship"]

@@ -3,7 +3,7 @@ import CtaScene from "@/components/CtaScene.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
-const groups = await getCollection("services");
+const groups = (await getCollection("services")).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <Layout title="Services | otherdev" description="Brand, product and technology expertise, all under one roof.">
