@@ -1,44 +1,88 @@
 ---
 import { getCollection, render } from "astro:content";
+import CtaScene from "@/components/CtaScene.astro";
 import Layout from "@/layouts/Layout.astro";
 
 export async function getStaticPaths() {
-  return (await getCollection("projects")).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+  const all = (await getCollection("projects")).sort((a, b) => b.data.year - a.data.year);
+  return all.map((entry, i) => ({
+    params: { slug: entry.id },
+    // Next three projects, wrapping, so every page links onward.
+    props: { entry, related: [1, 2, 3].map((n) => all[(i + n) % all.length]!) },
+  }));
 }
 
-const { entry } = Astro.props;
+const { entry, related } = Astro.props;
 const { title, year, link, downloadUrl, excerpt, cover, gallery } = entry.data;
 const { Content } = await render(entry);
 const href = link && (link.startsWith("http") ? link : `https://${link}`);
+
+// Gallery rhythm from the reference: one wide, two side by side, repeating.
+const wide = (i: number) => i % 3 === 0;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: title,
+  description: excerpt,
+  image: cover.src,
+  dateCreated: String(year),
+  ...(href ? { url: href } : {}),
+};
 ---
 
-<Layout
-  title={`${title} | otherdev`}
-  description={excerpt ?? title}
-  type="article"
-  jsonLd={{
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    name: title,
-    description: excerpt ?? title,
-    url: href,
-    author: { "@type": "Organization", name: "otherdev" },
-  }}
->
-  <main class="site-container section pt-40" data-navbar-theme="dark">
-    <a href="/work" class="type-body-regular-m text-ink-3">← Work</a>
-    <h1 class="type-display-s mt-6 max-w-4xl">{title}</h1>
-    <p class="type-body-regular-m text-ink-3 mt-4">
-      {year}
-      {href && <> · <a href={href} rel="noopener noreferrer" target="_blank" class="underline">{link}</a></>}
-      {downloadUrl && <> · <a href={downloadUrl} class="underline">Download</a></>}
-    </p>
-    <img src={cover.src} alt={cover.alt} width={cover.width} height={cover.height} class="mt-12 w-full rounded-xl" />
-    <div class="prose-site type-article-body mt-12"><Content /></div>
-    <ul class="mt-16 grid gap-2 md:grid-cols-2">
-      {gallery.map((g) => (
-        <li><img src={g.src} alt={g.alt} width={g.width} height={g.height} loading="lazy" class="w-full rounded-lg" /></li>
-      ))}
-    </ul>
+<Layout title={`${title} | otherdev`} description={excerpt ?? title} type="article" jsonLd={jsonLd}>
+  <main>
+    <section class="case-hero" data-navbar-theme="dark">
+      <div class="site-container pt-48 pb-16">
+        <h1 class="type-hero max-w-5xl">{title}</h1>
+        <div class="mt-10 flex flex-wrap gap-2">
+          <span class="bg-card type-body-regular-xs rounded-md px-2.5 py-1.5">{year}</span>
+          {href && <a href={href} rel="noopener noreferrer" target="_blank" class="bg-card type-body-regular-xs rounded-md px-2.5 py-1.5">{link}</a>}
+          {downloadUrl && <a href={downloadUrl} class="bg-card type-body-regular-xs rounded-md px-2.5 py-1.5">Download</a>}
+        </div>
+        <div class="prose-site type-body-paragraph-l text-ink-2 mt-10"><Content /></div>
+      </div>
+    </section>
+
+    <section class="site-container" data-navbar-theme="dark">
+      <img src={cover.src} alt={cover.alt} width={cover.width} height={cover.height} class="w-full rounded-xl" />
+      <ul class="mt-2 grid gap-2 md:grid-cols-2">
+        {gallery.map((g, i) => (
+          <li class={wide(i) ? "md:col-span-2" : ""}>
+            <img src={g.src} alt={g.alt} width={g.width} height={g.height} loading="lazy" class="w-full rounded-xl" />
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="site-container section" data-navbar-theme="dark">
+      <div class="flex items-end justify-between gap-6">
+        <h2 class="type-heading-l">Related Work</h2>
+        <a href="/work" class="type-heading-l text-ink-3">See all →</a>
+      </div>
+      <ul class="border-border mt-12 grid gap-2 border-t pt-12 md:grid-cols-3">
+        {related.map((p) => (
+          <li>
+            <a href={`/work/${p.id}`} class="block">
+              <img src={p.data.cover.src} alt={p.data.cover.alt} width={p.data.cover.width} height={p.data.cover.height} loading="lazy" class="aspect-[4/3] w-full rounded-lg object-cover object-top" />
+              <h3 class="type-body-regular-l mt-4">{p.data.title}</h3>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <CtaScene
+      heading="Ready to make the leap?"
+      body="Let’s turn curiosity into collaboration. Share your vision, and we’ll help shape it into something unforgettable."
+      button={{ label: "Contact us", href: "/contact" }}
+    />
   </main>
 </Layout>
+
+<style>
+  .case-hero {
+    background: linear-gradient(to bottom, var(--global-winter-200) 0%, #fff 100%);
+  }
+</style>
