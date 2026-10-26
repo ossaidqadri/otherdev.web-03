@@ -9,6 +9,7 @@ Astro 7 + Svelte 5, fully static (no server, no adapter), deployed to Cloudflare
 - Run `bunx @sveltejs/mcp@latest svelte-autofixer <file> --svelte-version 5` on every `.svelte` file. Runes only.
 - For any Astro API, config, routing or adapter question, query the `astro-docs` MCP (`.mcp.json`) and ctx7 `/withastro/docs` before writing code. Versions here are newer than training data.
 - Bun's global store stays on, so `vite.server.fs.allow` takes the store path from `svelte`'s real path (`astro.config.mjs`). Anything the app imports directly must be in `package.json`.
+- Imports use the `@/` alias for `src/` (`tsconfig` paths, resolved by Vite), never `../`. `import.meta.glob` keys then start `/src/`.
 - Fonts: use `fontProviders.local()`. In Astro 7.4 `npm()` hands `file://` URLs to `fetch()` and stops the dev server.
 
 ## Content and media

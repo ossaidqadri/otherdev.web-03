@@ -5,8 +5,8 @@ import { getEntry } from "astro:content";
 
 const { process } = (await getEntry("site", "home"))!.data;
 // Card art lives in src/assets/process; the site collection names each file.
-const art = import.meta.glob<ImageMetadata>("../assets/process/*", { eager: true, import: "default" });
-const imageFor = (file: string) => art[`../assets/process/${file}`];
+const art = import.meta.glob<ImageMetadata>("@/assets/process/*", { eager: true, import: "default" });
+const imageFor = (file: string) => art[`/src/assets/process/${file}`];
 ---
 
 <section id="process" class="section overflow-hidden" data-navbar-theme="dark" data-section>

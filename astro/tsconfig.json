@@ -5,6 +5,7 @@
   "compilerOptions": {
     // shadcn-svelte's `init` requires this alias to exist before it will run.
     "paths": {
+      "@/*": ["./src/*"],
       "$lib": ["./src/lib"],
       "$lib/*": ["./src/lib/*"]
     },
