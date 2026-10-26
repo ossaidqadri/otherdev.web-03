@@ -8,7 +8,7 @@ const clock = (tz: string) =>
 ---
 
 <footer>
-  <section class="footer-top dark bg-background text-foreground" data-navbar-theme="light" data-section>
+  <section class="footer-top text-white" data-navbar-theme="light" data-section>
     <div class="site-container section">
       <a href={f.cta.href} class="type-heading-l">{f.cta.label} →</a>
       <ul class="mt-[calc(4rem*var(--scale))] flex gap-16">
@@ -48,6 +48,12 @@ const clock = (tz: string) =>
 </footer>
 
 <style>
+  .footer-top {
+    background: var(--global-autumn-900);
+  }
+  .footer-top [class*="text-ink-3"] {
+    color: rgb(255 255 255 / 0.5);
+  }
   .footer-scene {
     background: linear-gradient(to bottom, #2b1a14 0%, #6d2f22 40%, #ee7a4a 85%, #f0a060 100%);
   }

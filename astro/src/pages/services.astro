@@ -1,0 +1,42 @@
+---
+import CtaScene from "@/components/CtaScene.astro";
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const groups = await getCollection("services");
+---
+
+<Layout title="Services | otherdev" description="Brand, product and technology expertise, all under one roof.">
+  <main>
+    <section class="services-hero" data-navbar-theme="dark">
+      <div class="site-container pt-48 pb-[var(--section-padding-lg)]">
+        <h1 class="type-hero max-w-4xl">We have the skill to shape what’s next.</h1>
+        <p class="type-hero text-ink-3 mt-2 max-w-4xl">Brand, product, and technology expertise—all under one roof.</p>
+      </div>
+    </section>
+    <div class="site-container pb-[var(--section-padding-lg)]">
+      {groups.map((g) => (
+        <section class="mt-[var(--section-padding-md)]">
+          <h2 class="type-heading-l">{g.data.title}</h2>
+          <p class="type-body-paragraph-l text-ink-3 mt-3 max-w-xl">{g.data.intro}</p>
+          <ul class="mt-8">
+            {g.data.items.map((i) => (
+              <li class="border-border type-body-regular-m border-t py-4 last:border-b">{i}</li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+    <CtaScene
+      heading="Explore a gallery of our galaxies."
+      body="Chart our constellation of past projects — designs, brands, and experiences that shaped industries, shifted perceptions, and set new standards."
+      button={{ label: "Our Approach", href: "/approach" }}
+    />
+  </main>
+</Layout>
+
+<style>
+  .services-hero {
+    background: linear-gradient(to bottom, var(--global-winter-300) 0%, var(--global-winter-100) 55%, #fff 100%);
+  }
+</style>

@@ -1,0 +1,37 @@
+---
+interface Props {
+  heading: string;
+  body: string;
+  button: { label: string; href: string };
+}
+
+const { heading, body, button } = Astro.props;
+---
+
+<!-- Pre-footer scene: the sky runs from cream to the footer's dark brown. -->
+<section class="cta relative h-[160vh]" data-navbar-theme="light" data-scene="cta">
+  <div class="sticky top-0 flex h-svh items-center">
+    <div class="site-container w-full">
+      <h2 class="type-display-m max-w-4xl text-white">{heading}</h2>
+      <p class="type-heading-l mt-6 max-w-3xl text-white/60">{body}</p>
+      <a href={button.href} class="pill type-body-button-m mt-12 inline-block">{button.label}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    background: linear-gradient(to bottom, var(--global-summer-100) 0%, #6d87b0 35%, #1a2342 68%, var(--global-autumn-900) 100%);
+  }
+  .pill {
+    padding: 1rem 1.5rem;
+    border-radius: 9999px;
+    background: rgb(255 255 255 / 0.16);
+    color: #fff;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cta {
+      height: auto;
+    }
+  }
+</style>

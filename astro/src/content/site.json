@@ -3,7 +3,7 @@
     "name": "otherdev",
     "nav": [
       { "label": "Work", "href": "/work" },
-      { "label": "Services", "href": "#process" },
+      { "label": "Services", "href": "/services" },
       { "label": "Blog", "href": "/blog" },
       { "label": "About", "href": "/about" }
     ],

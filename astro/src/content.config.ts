@@ -77,4 +77,10 @@ const site = defineCollection({
   }),
 });
 
-export const collections = { projects, blog, clients, site };
+// Service groups for /services, one entry per group.
+const services = defineCollection({
+  loader: file("src/content/services.json"),
+  schema: z.object({ title: z.string(), intro: z.string(), items: z.array(z.string()) }),
+});
+
+export const collections = { projects, blog, clients, site, services };

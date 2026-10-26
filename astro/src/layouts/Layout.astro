@@ -1,6 +1,7 @@
 ---
 import { Font } from "astro:assets";
 import { ClientRouter } from "astro:transitions";
+import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import Seo from "@/components/Seo.astro";
 import "@/styles/global.css";
@@ -44,6 +45,7 @@ const organization = {
   <body>
     <Header />
     <slot />
+    <Footer />
     <script>import "@/scripts/motion";</script>
   </body>
 </html>
