@@ -62,8 +62,12 @@ Rebuild the otherdev site as a standalone static Astro site. Content and media c
 - [ ] Performance budget: measure Lighthouse/CWV on built output; hero media and fonts are the likely cost, not the framework. Preload fonts, size and lazy-load media, avoid layout shift.
 
 ### 4. Motion layer
-- [ ] `src/scripts/motion.ts`: one Lenis + GSAP init, ClientRouter lifecycle, `gsap.matchMedia()` for breakpoints and reduced motion, reveal and pinned-scene primitives.
-- [ ] Test the ClientRouter teardown assumption in a browser: navigate away and back, scroll speed and pins must be unchanged.
+Surveyed 2026-10-27 (GitHub + ctx7): `Emircyn/emircyn` (Astro + ClientRouter + GSAP + Lenis on Cloudflare Workers; `src/scripts/scroll.ts`, `scrub.ts`, `Layout.astro`), `nikhilswain/vidscroll` (scrubbing needs dense keyframes; re-encodes in browser or via CLI), GSAP's `imageSequence` helper (canvas frames). Three scene techniques compared: (A) GSAP tweens `video.currentTime` from scroll (simple; stutters on wheel gaps and long-GOP video); (B) scroll sets a target and one rAF loop lerps `currentTime` toward it, with a deadband, seek coalescing and a poster kept until a real frame paints (smooth, what Emircyn does); (C) canvas image sequence (exact frames, ~190 requests or a sprite, heavier). **Chosen: B, with dense-keyframe video** (ffmpeg `-g 3`, high bitrate; verify GOP with ffprobe, which is installed). CSS scroll-driven animations only for non-video reveals, after checking browser support.
+- [ ] Lifecycle pattern to copy: `initPage()` builds everything and `destroyPage()` tears it down via one `AbortController` plus a cleanups list; the layout calls init on `astro:page-load`, destroy on `astro:before-swap`, and `lenis.stop()` before the page change is captured so a live smooth scroll can't drag the new page back to the old position. Lazy-`import()` the engine so pages without scenes don't ship GSAP.
+- [ ] Rules from that project: `syncTouch: false` (don't smooth touch), `ScrollTrigger.config({ ignoreMobileResize: true })`, rebuild only when width changes, build after `document.fonts.ready`, under reduced motion don't init at all and render a complete static page.
+- [ ] Scrub rule: map the clip across the stage's whole visible life (the slide-in before the pin and the slide-out after), not only the pinned travel, or it freezes on the first and last frame.
+- [ ] `src/scripts/motion.ts` + `scrub.ts` implementing the above, `gsap.matchMedia()` for breakpoints and reduced motion.
+- [ ] Test in a browser: navigate away and back, scroll speed and pins must be unchanged.
 
 ### 5. Contact and lead capture (undecided)
 - v2 used nodemailer and Google Sheets from server routes; a static site has none. Options: a small Worker route with Turnstile and Cloudflare email, a third-party form endpoint, or a mailto fallback. Decide before building the contact page.
@@ -82,10 +86,18 @@ Rebuild the otherdev site as a standalone static Astro site. Content and media c
 - [ ] `bun run typecheck`, `bun run build`, `bunx @sveltejs/mcp svelte-autofixer` on every `.svelte` file.
 - [ ] Source vs local comparison at matched viewport, scroll position and state; reduced motion; keyboard; mobile widths; no horizontal overflow; no console errors; every media URL resolves.
 
+## Decided since the plan was written
+
+- Styling: Tailwind 4 + shadcn-svelte (luma preset, installed in `33bd29e`; its Inter/neutral tokens are placeholders for the chat UI).
+- Phase 1 content export is done (`6aa44a3`): 18 projects + 1 blog post in `src/content/`, schema in `src/content.config.ts`. 16 Narkins/Wish gallery images exist nowhere and are dropped. Media stays on `media.otherdev.com`.
+- New R2 keys go under a `site/` prefix. **Uploads not started**: 33 files in v2 `public/` are not on R2 (9 about-page images incl. two 6-7 MB PNGs to convert to webp first; favicons/manifest/logos/og belong in repo `public/`; 5 v2 font files only if kept; 4 chat-only avatars wait for the chat phase). Before uploading, confirm `wrangler whoami` is the account that owns `otherdev-media`.
+- `bun run typecheck` prints "Couldn't find package @astrojs/svelte" for shadcn component libs under the bun global store; harmless so far (0 errors), investigate if it reaches the build.
+- Current step: design study (phase 2), before any page is written.
+
 ## Open decisions
 
-1. Styling: Tailwind 4 or plain CSS.
-2. Media split between repo and R2 (recommended above).
+1. ~~Styling~~ settled above.
+2. ~~Media split~~ settled above (R2 `site/`).
 3. Contact backend.
 4. Production domain and Worker routes.
 5. Chat model provider and RAG fate.
