@@ -69,6 +69,8 @@ const site = defineCollection({
     about: z.object({
       heading: z.string(),
       body: z.string(),
+      photos: z.array(image),
+      teamPhoto: image,
       principlesHeading: z.string(),
       principles: z.array(z.object({ title: z.string(), body: z.string() })),
       teamHeading: z.string(),
