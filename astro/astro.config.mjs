@@ -3,6 +3,7 @@ import { realpathSync } from "node:fs";
 import { dirname, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import svelte from "@astrojs/svelte";
+import sitemap from "@astrojs/sitemap";
 import { defineConfig, fontProviders } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
@@ -43,7 +44,11 @@ export default defineConfig({
       options: { variants: [{ weight: 400, style: "normal", src: ["./src/assets/fonts/serrif-condensed-regular.woff2"] }] },
     },
   ],
-  integrations: [svelte()],
+  integrations: [
+    svelte(),
+    // 404 is already left out by default; the filter keeps it that way if the page name changes.
+    sitemap({ filter: (page) => !/\/404\/?$/.test(page) }),
+  ],
   vite: {
     // Setting allow replaces Vite's default, so the project root goes back in.
     server: { fs: { allow: [process.cwd(), packageStore] } },

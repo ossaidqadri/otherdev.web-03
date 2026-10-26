@@ -12,7 +12,19 @@ const { Content } = await render(entry);
 const href = link && (link.startsWith("http") ? link : `https://${link}`);
 ---
 
-<Layout title={`${title} | otherdev`} description={excerpt ?? title}>
+<Layout
+  title={`${title} | otherdev`}
+  description={excerpt ?? title}
+  type="article"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: title,
+    description: excerpt ?? title,
+    url: href,
+    author: { "@type": "Organization", name: "otherdev" },
+  }}
+>
   <main class="site-container section pt-40" data-navbar-theme="dark">
     <a href="/work" class="type-body-regular-m text-ink-3">← Work</a>
     <h1 class="type-display-s mt-6 max-w-4xl">{title}</h1>
