@@ -7,7 +7,7 @@ interface Props {
   jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, image = "/og-default.png", type = "website", jsonLd } = Astro.props;
+const { title, description, image = "/og-default.jpg", type = "website", jsonLd } = Astro.props;
 const url = new URL(Astro.url.pathname, Astro.site);
 const imageUrl = new URL(image, Astro.site);
 ---
