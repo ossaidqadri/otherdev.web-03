@@ -1,5 +1,6 @@
 ---
 import { getCollection, getEntry } from "astro:content";
+import TeamCard from "@/components/TeamCard.astro";
 
 const { news, about, newsletter } = (await getEntry("site", "home"))!.data;
 const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
@@ -46,13 +47,7 @@ const cards = [
       ))}
 
       {about.team.map((m) => (
-        <li class="relative aspect-[4/5] overflow-hidden rounded-lg">
-          <img src={m.photo.src} alt={m.photo.alt} width={m.photo.width} height={m.photo.height} loading="lazy" class="h-full w-full object-cover" />
-          <div class="team-shade absolute inset-x-0 bottom-0 p-6 text-white">
-            <p class="type-body-regular-l">{m.name}</p>
-            <p class="type-body-regular-l text-white/60">{m.role}</p>
-          </div>
-        </li>
+        <li><TeamCard {...m} overlay /></li>
       ))}
 
       <li class="newsletter flex aspect-[4/5] flex-col justify-between rounded-lg p-8">
@@ -77,9 +72,6 @@ const cards = [
   /* Posts have no cover art yet: season gradient stands in. */
   .news-art {
     background: linear-gradient(160deg, var(--global-winter-300-dark), var(--global-autumn-50-dark));
-  }
-  .team-shade {
-    background: linear-gradient(to top, rgb(0 0 0 / 0.55), transparent);
   }
   .newsletter {
     color: var(--global-neutral-900);

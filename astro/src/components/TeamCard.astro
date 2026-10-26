@@ -1,0 +1,82 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  photo: { src: string; alt: string; width?: number; height?: number };
+  /** Profile link; the card is only a link (and shows the hover label) when this is set. */
+  linkedin?: string;
+  /** Home news grid overlays the name on the photo; /about puts it underneath. */
+  overlay?: boolean;
+}
+
+const { name, role, photo, linkedin, overlay = false } = Astro.props;
+const Tag = linkedin ? "a" : "div";
+---
+
+<Tag
+  {...(linkedin ? { href: linkedin, target: "_blank", rel: "noopener noreferrer", "data-hover-label": "" } : {})}
+  class:list={["team-card group relative block", overlay && "aspect-[4/5] overflow-hidden rounded-lg"]}
+>
+  <img
+    src={photo.src}
+    alt={photo.alt}
+    width={photo.width}
+    height={photo.height}
+    loading="lazy"
+    class:list={["w-full rounded-lg object-cover", overlay ? "h-full" : "mb-4 aspect-[4/5]"]}
+  />
+  {overlay ? (
+    <div class="team-shade absolute inset-x-0 bottom-0 p-6 text-white">
+      <p class="type-body-regular-l">{name}</p>
+      <p class="type-body-regular-l text-white/60">{role}</p>
+    </div>
+  ) : (
+    <>
+      <p class="type-body-regular-l">{name}</p>
+      <p class="type-body-regular-l text-ink-3">{role}</p>
+    </>
+  )}
+  {linkedin && <span class="hover-pill type-body-button-s" aria-hidden="true">Read on LinkedIn</span>}
+</Tag>
+
+<style>
+  .team-shade {
+    background: linear-gradient(to top, rgb(0 0 0 / 0.55), transparent);
+  }
+  /* Follows the pointer over the card, like the reference's "Say Hi" label. */
+  .hover-pill {
+    position: absolute;
+    left: var(--x, 50%);
+    top: var(--y, 50%);
+    z-index: 2;
+    padding: 0.375rem 0.75rem;
+    border-radius: 9999px;
+    color: #fff;
+    background: rgb(255 255 255 / 0.3);
+    backdrop-filter: blur(12px);
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-out;
+  }
+  .team-card:hover .hover-pill {
+    opacity: 1;
+  }
+  @media (hover: none) {
+    .hover-pill {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // One delegated listener for every card; sets the pill position in card coordinates.
+  document.addEventListener("pointermove", (e) => {
+    const card = (e.target as Element | null)?.closest<HTMLElement>("[data-hover-label]");
+    if (!card) return;
+    const r = card.getBoundingClientRect();
+    card.style.setProperty("--x", `${e.clientX - r.left}px`);
+    card.style.setProperty("--y", `${e.clientY - r.top}px`);
+  });
+</script>

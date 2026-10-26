@@ -82,7 +82,7 @@ const site = defineCollection({
       principlesHeading: z.string(),
       principles: z.array(z.object({ title: z.string(), body: z.string() })),
       teamHeading: z.string(),
-      team: z.array(z.object({ name: z.string(), role: z.string(), photo: image })),
+      team: z.array(z.object({ name: z.string(), role: z.string(), photo: image, linkedin: z.url().optional() })),
     }),
     approach: z.object({
       heading: z.string(),

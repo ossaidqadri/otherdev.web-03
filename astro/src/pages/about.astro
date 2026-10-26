@@ -1,5 +1,6 @@
 ---
 import CtaScene from "@/components/CtaScene.astro";
+import TeamCard from "@/components/TeamCard.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getEntry } from "astro:content";
 
@@ -31,11 +32,7 @@ const { about } = (await getEntry("site", "home"))!.data;
       <h2 class="type-heading-l max-w-3xl">{about.teamHeading}</h2>
       <ul class="mt-12 grid gap-x-2 gap-y-12 md:grid-cols-3">
         {about.team.map((m) => (
-          <li>
-            <img src={m.photo.src} alt={m.photo.alt} width={m.photo.width} height={m.photo.height} loading="lazy" class="mb-4 aspect-[4/5] w-full rounded-lg object-cover" />
-            <p class="type-body-regular-l">{m.name}</p>
-            <p class="type-body-regular-l text-ink-3">{m.role}</p>
-          </li>
+          <li><TeamCard {...m} /></li>
         ))}
       </ul>
     </section>
