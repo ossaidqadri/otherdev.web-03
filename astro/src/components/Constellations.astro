@@ -4,34 +4,30 @@ import { getEntry } from "astro:content";
 const { constellations: c } = (await getEntry("site", "home"))!.data;
 ---
 
-<section class="constellations relative h-[200vh]" data-navbar-theme="light" data-scene="constellations">
+<section class="constellations relative h-[200vh]" data-navbar-theme="dark" data-scene="constellations" data-flip="dark:light:0.3">
   <div class="sticky top-0 flex h-svh flex-col justify-between pt-[20vh] pb-28 md:pb-[var(--section-padding-sm)]">
-    <div class="site-container relative z-10 w-full">
-      <h2 class="type-display-s text-white">{c.heading}</h2>
-      <p class="type-display-s mt-2 max-w-[62rem] text-white/50">{c.body}</p>
+    <div class="site-container w-full">
+      <h2 class="heading type-display-s">{c.heading}</h2>
+      <p class="body type-display-s mt-2 max-w-[62rem]">{c.body}</p>
     </div>
-    <video
-      class="scrub-video absolute top-0 left-1/2 h-full -translate-x-1/2 object-cover"
-      src="https://media.otherdev.com/site/video/approach-scrub.mp4"
-      muted
-      playsinline
-      preload="metadata"
-      aria-hidden="true"
-      data-scrub
-    ></video>
-    <div class="site-container relative z-10 w-full">
+    <div class="site-container w-full">
       <a href={c.button.href} class="pill type-body-button-m">{c.button.label}</a>
     </div>
   </div>
 </section>
 
 <style>
+  /* Cream through orange to brown; the text turns from ink to white as the sky darkens. */
   .constellations {
-    background: linear-gradient(to bottom, var(--global-summer-100) 0%, #ee9a5c 32%, #8f3a28 72%, #3b1d14 100%);
+    --p: 0;
+    --to-light: clamp(0, calc((var(--p) - 0.15) * 5), 1);
+    background: linear-gradient(to bottom, #fff 0%, var(--global-summer-100) 12%, #ee9a5c 45%, #8f3a28 78%, #3b1d14 100%);
   }
-  .scrub-video {
-    pointer-events: none;
-    opacity: 0;
+  .heading {
+    color: color-mix(in oklab, #fff calc(var(--to-light) * 100%), var(--global-neutral-900));
+  }
+  .body {
+    color: color-mix(in oklab, rgb(255 255 255 / 0.5) calc(var(--to-light) * 100%), rgb(30 19 16 / 0.45));
   }
   /* The body copy at display size runs ~620px tall on a 360px phone, pushing the button off the pinned screen. */
   @media (max-width: 47.99rem) {
@@ -43,7 +39,12 @@ const { constellations: c } = (await getEntry("site", "home"))!.data;
     display: inline-block;
     padding: 1rem 1.5rem;
     border-radius: 9999px;
-    background: rgb(255 255 255 / 0.16);
-    color: #fff;
+    color: color-mix(in oklab, #fff calc(var(--to-light) * 100%), var(--global-neutral-900));
+    background: color-mix(in oklab, rgb(255 255 255 / 0.16) calc(var(--to-light) * 100%), rgb(0 0 0 / 0.06));
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .constellations {
+      --p: 1;
+    }
   }
 </style>

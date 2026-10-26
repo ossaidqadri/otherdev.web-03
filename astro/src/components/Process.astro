@@ -23,7 +23,7 @@ const imageFor = (file: string) => art[`/src/assets/process/${file}`];
       return (
         <li class="bg-card flex h-[40rem] w-[min(26.5rem,80vw)] shrink-0 snap-start flex-col justify-between overflow-hidden rounded-lg">
           <div class="p-8">
-            <h3 class="type-heading-xs">{s.title}</h3>
+            <h3 class="type-heading-m">{s.title}</h3>
             <p class="type-body-paragraph-l text-ink-3 mt-1 max-w-[19rem]">{s.body}</p>
           </div>
           {img && <Image src={img} alt="" widths={[400, 800]} sizes="26.5rem" class="mx-auto w-full" />}

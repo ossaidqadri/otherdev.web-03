@@ -19,7 +19,7 @@ const lead = (s = "") => s.replace(/\.\.\.$/, "").split(/(?<=\.)\s/)[0] ?? "";
 
     <section class="site-container section" data-navbar-theme="dark">
       <ol>
-        {approach.steps.map((s, i) => (
+        {approach.steps.map((s) => (
           <li class="border-border grid gap-4 border-t py-12 last:border-b md:grid-cols-[1fr_2fr]">
             <h2 class="type-display-s">{s.title}</h2>
             <p class="type-heading-l text-ink-3 max-w-2xl">{s.body}</p>

@@ -64,6 +64,7 @@ function initPage() {
   const root = document.documentElement;
   const sections = [...document.querySelectorAll<HTMLElement>("[data-navbar-theme]")];
   const spy = [...document.querySelectorAll<HTMLAnchorElement>("[data-pill] a")];
+  const scenes = [...document.querySelectorAll<HTMLElement>("[data-scene]")];
   const hero = document.querySelector<HTMLElement>("[data-scene=hero]");
   const words = [...document.querySelectorAll<HTMLElement>("[data-word]")];
 
@@ -86,17 +87,19 @@ function initPage() {
       else a.removeAttribute("aria-current");
     }
 
-    if (hero) {
-      const r = hero.getBoundingClientRect();
+    for (const scene of scenes) {
+      const r = scene.getBoundingClientRect();
       const p = clamp(-r.top / (r.height - innerHeight));
-      hero.style.setProperty("--p", p.toFixed(4));
-      // The hero sky turns pale halfway through, so its own text colour flips with it.
-      if (r.top <= 40 && r.bottom > 40) root.dataset.navTheme = p > 0.45 ? "dark" : "light";
-      const n = Math.round(clamp((p - 0.3) / 0.5) * words.length);
-      for (const [i, w] of words.entries()) w.toggleAttribute("data-on", i < n);
+      scene.style.setProperty("--p", p.toFixed(4));
+      // Scenes whose sky changes tone flip the header colour part-way: data-flip="<from>:<to>:<at>".
+      const [from, to, at] = scene.dataset.flip?.split(":") ?? [];
+      if (from && to && r.top <= 40 && r.bottom > 40) root.dataset.navTheme = p > Number(at) ? to : from;
+      if (scene === hero) {
+        const n = Math.round(clamp((p - 0.3) / 0.5) * words.length);
+        for (const [i, w] of words.entries()) w.toggleAttribute("data-on", i < n);
+      }
     }
   };
-
   lenis?.on("scroll", onScroll);
   addEventListener("resize", onScroll, { signal });
   onScroll();
