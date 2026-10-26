@@ -49,8 +49,8 @@
       ],
       "teamHeading": "We’re a multi-disciplinary team of curious designers, developers, and strategists.",
       "team": [
-        { "name": "Kabeer Jaffri", "role": "Co-founder" },
-        { "name": "Ossaid Qadri", "role": "Co-founder" }
+        { "name": "Kabeer Jaffri", "role": "Co-founder", "photo": { "src": "https://media.otherdev.com/site/team/kabeer.webp", "alt": "Kabeer Jaffri", "width": 900, "height": 1126 } },
+        { "name": "Ossaid Qadri", "role": "Co-founder", "photo": { "src": "https://media.otherdev.com/site/team/ossaid.webp", "alt": "Ossaid Qadri", "width": 900, "height": 1126 } }
       ]
     },
     "approach": {

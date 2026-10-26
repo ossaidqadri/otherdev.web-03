@@ -5,44 +5,44 @@
   "link": "kiswanoire.com",
   "excerpt": "Kiswa Noir is a custom Shopify theme built to deliver a minimalist, high trust storefront experience without the performance overhead of standard templates. We engineered...",
   "cover": {
-    "src": "https://media.otherdev.com/kiswa-noire-home-hero.webp",
+    "src": "https://media.otherdev.com/site/projects/kiswa-noire-home-hero.webp",
     "alt": "kiswa noire home hero",
     "width": 2880,
     "height": 2018
   },
   "gallery": [
     {
-      "src": "https://media.otherdev.com/kiswa-noire-collections-mobile.webp",
+      "src": "https://media.otherdev.com/site/projects/kiswa-noire-collections-mobile.webp",
       "alt": "kiswa noire collections mobile",
       "width": 1170,
       "height": 2532
     },
     {
-      "src": "https://media.otherdev.com/kiswa-noire-collections.webp",
+      "src": "https://media.otherdev.com/site/projects/kiswa-noire-collections.webp",
       "alt": "kiswa noire collections",
       "width": 2880,
       "height": 2018
     },
     {
-      "src": "https://media.otherdev.com/kiswa-noire-home-hero.webp",
+      "src": "https://media.otherdev.com/site/projects/kiswa-noire-home-hero.webp",
       "alt": "kiswa noire home hero",
       "width": 2880,
       "height": 2018
     },
     {
-      "src": "https://media.otherdev.com/kiswa-noire-product-mobile-2.webp",
+      "src": "https://media.otherdev.com/site/projects/kiswa-noire-product-mobile-2.webp",
       "alt": "kiswa noire product mobile",
       "width": 1290,
       "height": 2796
     },
     {
-      "src": "https://media.otherdev.com/kiswa-noire-product-mobile.webp",
+      "src": "https://media.otherdev.com/site/projects/kiswa-noire-product-mobile.webp",
       "alt": "kiswa noire product mobile",
       "width": 1290,
       "height": 2796
     },
     {
-      "src": "https://media.otherdev.com/kiswa-noire-product.webp",
+      "src": "https://media.otherdev.com/site/projects/kiswa-noire-product.webp",
       "alt": "kiswa noire product",
       "width": 2880,
       "height": 2018

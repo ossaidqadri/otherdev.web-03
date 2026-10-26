@@ -1,9 +1,26 @@
 ---
 import { getCollection, getEntry } from "astro:content";
 
-const { news } = (await getEntry("site", "home"))!.data;
-const posts = (await getCollection("blog")).sort((a, b) => +b.data.publishedAt - +a.data.publishedAt).slice(0, 3);
+const { news, about, newsletter } = (await getEntry("site", "home"))!.data;
 const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
+
+// Three cards: the latest blog post, then the newest projects (the blog has no cover art yet).
+const posts = (await getCollection("blog")).sort((a, b) => +b.data.publishedAt - +a.data.publishedAt);
+const projects = (await getCollection("projects")).sort((a, b) => b.data.year - a.data.year);
+const cards = [
+  ...posts.slice(0, 1).map((p) => ({
+    href: `/blog/${p.id}`,
+    title: p.data.title,
+    label: date.format(p.data.publishedAt),
+    image: undefined as string | undefined,
+  })),
+  ...projects.slice(0, 3).map((p) => ({
+    href: `/work/${p.id}`,
+    title: p.data.title,
+    label: String(p.data.year),
+    image: p.data.cover.src as string | undefined,
+  })),
+].slice(0, 3);
 ---
 
 <section id="news" class="section" data-navbar-theme="dark" data-section>
@@ -12,19 +29,46 @@ const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
       <h2 class="type-heading-l max-w-4xl">{news.heading}</h2>
       <a href={news.all.href} class="type-heading-l text-ink-3 shrink-0">{news.all.label} →</a>
     </div>
-    <ul class="border-border mt-[calc(4rem*var(--scale))] grid gap-2 border-t pt-16 md:grid-cols-3">
-      {posts.map((p) => (
+
+    <ul class="border-border mt-[calc(4rem*var(--scale))] grid gap-x-2 gap-y-12 border-t pt-16 md:grid-cols-3">
+      {cards.map((c) => (
         <li>
-          <a href={`/blog/${p.id}`} class="group block">
-            <div class="news-art flex aspect-[4/5] items-end rounded-lg p-8">
-              <time class="type-body-regular-s text-white/80" datetime={p.data.publishedAt.toISOString()}>
-                {date.format(p.data.publishedAt)}
-              </time>
-            </div>
-            <h3 class="type-body-regular-l mt-4 max-w-sm">{p.data.title}</h3>
+          <a href={c.href} class="group block">
+            {c.image ? (
+              <img src={c.image} alt="" loading="lazy" class="aspect-[4/5] w-full rounded-lg object-cover object-top" />
+            ) : (
+              <div class="news-art aspect-[4/5] w-full rounded-lg"></div>
+            )}
+            <p class="type-body-regular-s text-ink-3 mt-4">{c.label}</p>
+            <h3 class="type-body-regular-l mt-1 max-w-sm">{c.title}</h3>
           </a>
         </li>
       ))}
+
+      {about.team.map((m) => (
+        <li class="relative aspect-[4/5] overflow-hidden rounded-lg">
+          <img src={m.photo.src} alt={m.photo.alt} width={m.photo.width} height={m.photo.height} loading="lazy" class="h-full w-full object-cover" />
+          <div class="team-shade absolute inset-x-0 bottom-0 p-6 text-white">
+            <p class="type-body-regular-l">{m.name}</p>
+            <p class="type-body-regular-l text-white/60">{m.role}</p>
+          </div>
+        </li>
+      ))}
+
+      <li class="newsletter flex aspect-[4/5] flex-col justify-between rounded-lg p-8">
+        <div>
+          <h3 class="type-heading-m">{newsletter.heading}</h3>
+          <p class="type-body-paragraph-l mt-2 opacity-60">{newsletter.body}</p>
+        </div>
+        <!-- Disabled until a signup backend is chosen. -->
+        <form>
+          <fieldset disabled class="flex flex-col gap-2">
+            <input type="email" placeholder="Email Address" aria-label="Email" class="type-body-regular-m w-full rounded-md bg-white/70 px-4 py-3 disabled:opacity-60" />
+            <button type="submit" class="type-body-button-m w-fit rounded-full bg-white/80 px-5 py-3 disabled:opacity-60">Sign me up</button>
+          </fieldset>
+          <p class="type-body-regular-xs mt-3 opacity-60">{newsletter.note}</p>
+        </form>
+      </li>
     </ul>
   </div>
 </section>
@@ -33,5 +77,12 @@ const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
   /* Posts have no cover art yet: season gradient stands in. */
   .news-art {
     background: linear-gradient(160deg, var(--global-winter-300-dark), var(--global-autumn-50-dark));
+  }
+  .team-shade {
+    background: linear-gradient(to top, rgb(0 0 0 / 0.55), transparent);
+  }
+  .newsletter {
+    color: var(--global-neutral-900);
+    background: linear-gradient(135deg, var(--global-neutral-100) 0%, var(--global-summer-300) 45%, var(--global-summer-500) 100%);
   }
 </style>
