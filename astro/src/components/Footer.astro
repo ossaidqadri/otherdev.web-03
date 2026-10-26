@@ -21,6 +21,10 @@ const clock = (tz: string) =>
           <li>
             <h3 class="type-heading-m">{o.city}</h3>
             <p class="type-heading-m text-white/50" data-clock={o.timezone}>{clock(o.timezone)}</p>
+            <p class="type-body-button-xs mt-8 text-white/50">
+              <a href={`mailto:${o.email}`} class="block">{o.email}</a>
+              <a href={`tel:${o.phone.replace(/\s/g, "")}`} class="block">{o.phone}</a>
+            </p>
           </li>
         ))}
       </ul>
@@ -48,6 +52,9 @@ const clock = (tz: string) =>
         </ul>
       </nav>
       <p class="type-body-button-s absolute bottom-28 left-[calc(var(--container-padding)+10px)] z-10 md:bottom-10">{f.legal} {new Date().getFullYear()}</p>
+      <ul class="type-body-button-s absolute right-[calc(var(--container-padding)+10px)] bottom-28 z-10 flex gap-6 md:bottom-10">
+        {f.legalLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
     </div>
   </section>
 </footer>
