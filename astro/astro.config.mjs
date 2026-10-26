@@ -5,6 +5,8 @@ import { fileURLToPath } from "node:url";
 import svelte from "@astrojs/svelte";
 import { defineConfig } from "astro/config";
 
+import tailwindcss from "@tailwindcss/vite";
+
 // Bun's global store keeps packages outside the project and Vite's dev server
 // refuses to serve files from there. Derived from Svelte's real path, not written
 // down, so it follows whatever cache dir each machine uses.
@@ -25,8 +27,11 @@ export default defineConfig({
   vite: {
     // Setting allow replaces Vite's default, so the project root goes back in.
     server: { fs: { allow: [process.cwd(), packageStore] } },
+
     // Islands load dynamically, so the HTML-entry scan misses their dependencies and
     // Vite would pre-bundle them mid-session (504 "Outdated Optimize Dep").
     optimizeDeps: { entries: ["src/**/*.{astro,svelte}"] },
+
+    plugins: [tailwindcss()],
   },
 });
