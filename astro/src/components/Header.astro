@@ -24,6 +24,11 @@ const site = (await getEntry("site", "home"))!.data;
   :global(html[data-nav-theme="dark"]) .header {
     --nav-fg: var(--global-neutral-900);
   }
+  /* Over the footer scene its own social nav takes the header's place. */
+  :global(html[data-nav-theme="footer"]) .header {
+    opacity: 0;
+    pointer-events: none;
+  }
   .header-blur {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);

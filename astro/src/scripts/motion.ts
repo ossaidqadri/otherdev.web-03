@@ -37,7 +37,8 @@ function scrubVideo(video: HTMLVideoElement, scene: HTMLElement, signal: AbortSi
     update();
   };
   video.addEventListener("seeked", () => video.style.setProperty("opacity", "1"), { once: true, signal });
-  video.addEventListener("loadedmetadata", start, { once: true, signal });
+  if (video.readyState >= HTMLMediaElement.HAVE_METADATA) start();
+  else video.addEventListener("loadedmetadata", start, { once: true, signal });
   const io = new IntersectionObserver(
     ([e]) => {
       if (!e?.isIntersecting) return;
