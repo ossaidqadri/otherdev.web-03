@@ -61,7 +61,7 @@ const site = defineCollection({
     pill: z.array(z.object({ label: z.string(), target: z.string() })),
     hero: z.object({ headline: z.string(), button: link, statement: z.string() }),
     clients: z.object({ heading: z.string() }),
-    work: z.object({ heading: z.string(), all: link, count: z.number().int().positive() }),
+    work: z.object({ heading: z.string(), all: link, featured: z.array(z.string()).min(1) }),
     process: z.object({
       heading: z.string(),
       steps: z.array(

@@ -9,7 +9,10 @@ interface Props {
 const { all = false } = Astro.props;
 const { work } = (await getEntry("site", "home"))!.data;
 const sorted = (await getCollection("projects")).sort((a, b) => b.data.year - a.data.year);
-const projects = all ? sorted : sorted.slice(0, work.count);
+// Home shows the hand-picked projects in the order site.json lists them.
+const projects = all
+  ? sorted
+  : work.featured.flatMap((id) => sorted.filter((p) => p.id === id));
 ---
 
 <section id="work" class="section" data-navbar-theme="dark" data-section>

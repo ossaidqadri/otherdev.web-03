@@ -20,7 +20,7 @@
       "statement": "We design and build websites, products and brands for fashion and design studios, from first sketch to launch."
     },
     "clients": { "heading": "Our trusted partners, from bold startups to global icons." },
-    "work": { "heading": "Our work, from petal to planet.", "all": { "label": "See all", "href": "/work" }, "count": 4 },
+    "work": { "heading": "Our work, from petal to planet.", "all": { "label": "See all", "href": "/work" }, "featured": ["branding-website-development-for-boulevard-pakistan", "wish", "website-development-for-groovy-pakistan"] },
     "process": {
       "heading": "Our process, crafted through decades of experience.",
       "steps": [
