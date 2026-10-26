@@ -1,0 +1,14 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+
+const { about } = (await getEntry("site", "home"))!.data;
+---
+
+<Layout title="About | otherdev" description={about.body}>
+  <main class="site-container section pt-40" data-navbar-theme="dark">
+    <h1 class="type-display-s max-w-5xl">{about.heading}</h1>
+    <p class="type-heading-l mt-12 max-w-4xl">{about.body}</p>
+    <p class="type-body-paragraph-xl text-ink-3 mt-12 max-w-2xl">{about.team}</p>
+  </main>
+</Layout>

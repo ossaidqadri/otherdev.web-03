@@ -66,6 +66,8 @@ const site = defineCollection({
     }),
     news: z.object({ heading: z.string(), all: link }),
     constellations: z.object({ heading: z.string(), body: z.string(), button: link }),
+    about: z.object({ heading: z.string(), body: z.string(), team: z.string() }),
+    contact: z.object({ heading: z.string(), body: z.string(), links: z.array(link) }),
     footer: z.object({
       cta: link,
       offices: z.array(z.object({ city: z.string(), timezone: z.string() })),

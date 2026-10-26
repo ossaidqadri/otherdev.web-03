@@ -1,0 +1,18 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+
+const { contact } = (await getEntry("site", "home"))!.data;
+---
+
+<Layout title="Contact | otherdev" description={contact.body}>
+  <main class="site-container section pt-40" data-navbar-theme="dark">
+    <h1 class="type-display-s max-w-5xl">{contact.heading}</h1>
+    <p class="type-heading-l text-ink-3 mt-8 max-w-3xl">{contact.body}</p>
+    <ul class="mt-12 flex flex-wrap gap-2">
+      {contact.links.map((l) => (
+        <li><a href={l.href} rel="noopener noreferrer" target="_blank" class="bg-card type-body-button-m inline-block rounded-full px-6 py-4">{l.label}</a></li>
+      ))}
+    </ul>
+  </main>
+</Layout>

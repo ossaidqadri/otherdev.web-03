@@ -36,6 +36,20 @@
       "body": "Find out how we chart the path from idea to icon, through strategy, creation, building and scaling, turning the unseeable into the undeniable.",
       "button": { "label": "Our approach", "href": "/about" }
     },
+    "about": {
+      "heading": "Other Dev produces digital platforms for pioneering creatives.",
+      "body": "Based in Karachi, we are a full-service digital studio that designs and engineers web platforms, Shopify experiences, AI-powered products and custom digital solutions from the ground up, with a focus on bringing ideas to life through thoughtful design.",
+      "team": "Our team is Kabeer Jaffri and Ossaid Qadri, who met while studying at Habib Public School."
+    },
+    "contact": {
+      "heading": "Tell us what you are building.",
+      "body": "The quickest way to reach us is WhatsApp. We reply within a working day.",
+      "links": [
+        { "label": "WhatsApp", "href": "https://wa.me/923156893331?text=Hi!%20I%20found%20you%20through%20otherdev.com%20and%20would%20love%20to%20discuss%20a%20project." },
+        { "label": "LinkedIn", "href": "https://linkedin.com/company/theotherdev/" },
+        { "label": "Instagram", "href": "https://instagram.com/other.dev" }
+      ]
+    },
     "footer": {
       "cta": { "label": "Work with us", "href": "/contact" },
       "offices": [{ "city": "Karachi", "timezone": "Asia/Karachi" }],
