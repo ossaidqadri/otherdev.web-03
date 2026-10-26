@@ -1,0 +1,37 @@
+---
+import { getCollection, getEntry } from "astro:content";
+
+const { news } = (await getEntry("site", "home"))!.data;
+const posts = (await getCollection("blog")).sort((a, b) => +b.data.publishedAt - +a.data.publishedAt).slice(0, 3);
+const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
+---
+
+<section id="news" class="section" data-navbar-theme="dark" data-section>
+  <div class="site-container">
+    <div class="flex items-end justify-between gap-6">
+      <h2 class="type-heading-l max-w-4xl">{news.heading}</h2>
+      <a href={news.all.href} class="type-heading-l text-ink-3 shrink-0">{news.all.label} →</a>
+    </div>
+    <ul class="border-border mt-[calc(4rem*var(--scale))] grid gap-2 border-t pt-16 md:grid-cols-3">
+      {posts.map((p) => (
+        <li>
+          <a href={`/blog/${p.id}`} class="group block">
+            <div class="news-art flex aspect-[4/5] items-end rounded-lg p-8">
+              <time class="type-body-regular-s text-white/80" datetime={p.data.publishedAt.toISOString()}>
+                {date.format(p.data.publishedAt)}
+              </time>
+            </div>
+            <h3 class="type-body-regular-l mt-4 max-w-sm">{p.data.title}</h3>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  /* Posts have no cover art yet: season gradient stands in. */
+  .news-art {
+    background: linear-gradient(160deg, var(--global-winter-300-dark), var(--global-autumn-50-dark));
+  }
+</style>

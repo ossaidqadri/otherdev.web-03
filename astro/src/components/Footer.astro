@@ -1,0 +1,72 @@
+---
+import { getEntry } from "astro:content";
+
+const { footer: f, name } = (await getEntry("site", "home"))!.data;
+const poster = "https://media.otherdev.com/site/video/footer-flower-poster.webp";
+const clock = (tz: string) =>
+  new Intl.DateTimeFormat("en", { hour: "numeric", minute: "2-digit", timeZone: tz }).format(new Date());
+---
+
+<footer>
+  <section class="footer-top dark bg-background text-foreground" data-navbar-theme="light" data-section>
+    <div class="site-container section">
+      <a href={f.cta.href} class="type-heading-l">{f.cta.label} →</a>
+      <ul class="mt-[calc(4rem*var(--scale))] flex gap-16">
+        {f.offices.map((o) => (
+          <li>
+            <p class="type-heading-xs">{o.city}</p>
+            <p class="type-heading-xs text-ink-3" data-clock={o.timezone}>{clock(o.timezone)}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="footer-scene relative h-[200vh]" data-navbar-theme="light" data-scene="footer">
+    <div class="sticky top-0 h-screen overflow-hidden">
+      <video
+        class="absolute top-1/2 left-1/2 h-full -translate-x-1/2 -translate-y-1/2 object-contain"
+        poster={poster}
+        muted
+        playsinline
+        preload="none"
+        aria-hidden="true"
+        data-scrub
+      >
+        <source src="https://media.otherdev.com/site/video/footer-flower-mobile.webm" type="video/webm" media="(max-width: 767px)" />
+        <source src="https://media.otherdev.com/site/video/footer-flower.webm" type="video/webm" />
+      </video>
+      <nav aria-label="Social" class="type-body-button-s absolute inset-x-0 top-0 z-10 flex items-center justify-between px-[var(--container-padding)] py-6 text-white">
+        <span class="type-heading-m">{name}</span>
+        <ul class="flex gap-7">
+          {f.social.map((s) => <li><a href={s.href} rel="noopener noreferrer" target="_blank">{s.label}</a></li>)}
+        </ul>
+      </nav>
+      <p class="type-body-button-s absolute bottom-6 left-[var(--container-padding)] z-10 text-white">{f.legal} {new Date().getFullYear()}</p>
+    </div>
+  </section>
+</footer>
+
+<style>
+  .footer-scene {
+    background: linear-gradient(to bottom, #2b1a14 0%, #6d2f22 40%, #ee7a4a 85%, #f0a060 100%);
+  }
+</style>
+
+<script>
+  // Live office times; re-runs on every ClientRouter navigation.
+  const tick = () => {
+    for (const el of document.querySelectorAll<HTMLElement>("[data-clock]")) {
+      el.textContent = new Intl.DateTimeFormat("en", {
+        hour: "numeric",
+        minute: "2-digit",
+        timeZone: el.dataset.clock ?? "UTC",
+      }).format(new Date());
+    }
+  };
+  document.addEventListener("astro:page-load", () => {
+    tick();
+    const id = setInterval(tick, 30_000);
+    document.addEventListener("astro:before-swap", () => clearInterval(id), { once: true });
+  });
+</script>
