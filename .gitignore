@@ -3,3 +3,5 @@ tasks/
 
 
 .svelte-check/
+astro/.agents/skills/clone-website/
+astro/.claude/skills/clone-website/
