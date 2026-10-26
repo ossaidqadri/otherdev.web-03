@@ -9,9 +9,9 @@ const site = (await getEntry("site", "home"))!.data;
 
 <header class="header fixed inset-x-0 top-0 z-50 flex items-center justify-between px-[var(--container-padding)] py-8">
   <a href="/" class="type-heading-m" aria-label={`${site.name} home`}>{site.name}</a>
-  <nav aria-label="Main" class="type-body-button-m flex items-center gap-7">
-    {site.nav.map((l) => <a href={l.href} class="hidden md:inline">{l.label}</a>)}
-    <a href={site.cta.href}>{site.cta.label}</a>
+  <nav aria-label="Main" class="type-body-button-m -mr-2.5 flex items-center gap-2">
+    {site.nav.map((l) => <a href={l.href} class="nav-link hidden md:inline-flex"><span class="relative z-10">{l.label}</span><span class="nav-hover" aria-hidden="true"></span></a>)}
+    <a href={site.cta.href} class="nav-link inline-flex"><span class="relative z-10">{site.cta.label}</span><span class="nav-hover" aria-hidden="true"></span></a>
     <button type="button" popovertarget="menu" aria-label="Open menu" class="menu-toggle md:hidden">
       <svg width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M0 1h22M0 11h22" /></svg>
     </button>
@@ -38,10 +38,34 @@ const site = (await getEntry("site", "home"))!.data;
   /* The motion layer flips data-nav-theme on <html> from the section under the header. */
   .header {
     color: var(--nav-fg, #fff);
-    transition: color 0.2s var(--ease-out, ease-out);
+    transition: color 0.2s var(--ease-out, ease-out), transform 0.4s cubic-bezier(0, 0, 0.2, 1);
+  }
+  /* Slides up on scroll down, back on any scroll up (measured on the reference: ~0.4s ease-out, hidden at 60px). */
+  :global(html[data-nav-hidden]) .header {
+    transform: translateY(-100%);
   }
   :global(html[data-nav-theme="dark"]) .header {
     --nav-fg: var(--global-neutral-900);
+  }
+  /* Hover: a 7.5% wash of the text colour fades in behind the label (0.3s), as in the reference. */
+  .nav-link {
+    position: relative;
+    padding: 0.375rem 0.625rem;
+    border-radius: var(--radius-sm);
+  }
+  .nav-hover {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: color-mix(in srgb, currentColor 7.5%, transparent);
+    backdrop-filter: blur(32px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .nav-link:hover .nav-hover,
+  .nav-link:focus-visible .nav-hover {
+    opacity: 1;
   }
   /* Over the footer scene its own social nav takes the header's place. */
   :global(html[data-nav-theme="footer"]) .header {

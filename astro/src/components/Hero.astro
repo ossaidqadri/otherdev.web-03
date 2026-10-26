@@ -6,11 +6,11 @@ const words = hero.statement.split(" ");
 ---
 
 <section class="hero relative h-[240vh]" data-navbar-theme="light" data-scene="hero" data-flip="light:dark:0.45">
-  <div class="stage sticky top-0 flex h-svh flex-col justify-between pt-[28vh] pb-28 md:pb-[var(--section-padding-sm)]">
+  <div class="stage sticky top-0 flex h-svh flex-col justify-between pt-[28.4vh] pb-28 md:pb-[var(--section-padding-lg)]">
     <!-- Two layers share one spot: the motion layer sets --p (0 to 1, scroll through the
          scene) and the headline gives way to the word-by-word statement. -->
     <div class="site-container grid w-full">
-      <h1 class="layer layer-headline type-hero max-w-[56rem] text-white">{hero.headline}</h1>
+      <h1 class="layer layer-headline type-hero max-w-5xl text-white">{hero.headline}</h1>
       <p class="layer layer-statement type-hero max-w-[64rem]" data-reveal-words>
         {words.map((w, i) => (
           <>
@@ -31,12 +31,13 @@ const words = hero.statement.split(" ");
     --p: 0;
     background: linear-gradient(
       to bottom,
-      #200a04 0%,
-      #1a2342 18%,
-      #355080 36%,
-      #6d87b0 52%,
-      #dfe6f0 78%,
-      var(--global-summer-100) 100%
+      rgb(40 14 1) 0%,
+      rgb(24 38 68) 12%,
+      rgb(90 118 159) 32%,
+      rgb(135 161 196) 52%,
+      rgb(193 211 230) 68%,
+      rgb(254 249 225) 84%,
+      rgb(247 243 240) 100%
     );
   }
   .layer {

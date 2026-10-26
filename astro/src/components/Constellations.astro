@@ -4,11 +4,11 @@ import { getEntry } from "astro:content";
 const { constellations: c } = (await getEntry("site", "home"))!.data;
 ---
 
-<section class="constellations relative h-[200vh]" data-navbar-theme="dark" data-scene="constellations" data-flip="dark:light:0.3">
-  <div class="sticky top-0 flex h-svh flex-col justify-between pt-[20vh] pb-28 md:pb-[var(--section-padding-sm)]">
+<section class="constellations relative h-[200vh]" data-navbar-theme="dark" data-scene="constellations" data-flip="dark:light:0.5" data-on-at="0.5">
+  <div class="sticky top-0 flex h-svh flex-col justify-between pt-[var(--section-padding-lg)] pb-28 md:pb-[var(--section-padding-lg)]">
     <div class="site-container w-full">
-      <h2 class="heading type-display-s">{c.heading}</h2>
-      <p class="body type-display-s mt-2 max-w-[62rem]">{c.body}</p>
+      <h2 class="heading type-mega-button">{c.heading}</h2>
+      <p class="body type-mega-button mt-2.5 max-w-[64rem]">{c.body}</p>
     </div>
     <div class="site-container w-full">
       <a href={c.button.href} class="pill type-body-button-m">{c.button.label}</a>
@@ -17,34 +17,48 @@ const { constellations: c } = (await getEntry("site", "home"))!.data;
 </section>
 
 <style>
-  /* Cream through orange to brown; the text turns from ink to white as the sky darkens. */
+  /* Cream through orange to brown. Past halfway (data-on, set by the motion layer) all text turns
+     white over 0.5s, as measured on the reference. */
   .constellations {
-    --p: 0;
-    --to-light: clamp(0, calc((var(--p) - 0.15) * 5), 1);
-    background: linear-gradient(to bottom, #fff 0%, var(--global-summer-100) 12%, #ee9a5c 45%, #8f3a28 78%, #3b1d14 100%);
+    background: linear-gradient(to bottom, #fff 0%, var(--global-summer-500) 45%, var(--global-summer-700) 75%, var(--global-autumn-900) 100%);
   }
-  .heading {
-    color: color-mix(in oklab, #fff calc(var(--to-light) * 100%), var(--global-neutral-900));
+  .heading,
+  .body,
+  .pill {
+    color: var(--global-neutral-900);
+    transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .body {
-    color: color-mix(in oklab, rgb(255 255 255 / 0.5) calc(var(--to-light) * 100%), rgb(30 19 16 / 0.45));
-  }
-  /* The body copy at display size runs ~620px tall on a 360px phone, pushing the button off the pinned screen. */
-  @media (max-width: 47.99rem) {
-    .constellations .type-display-s {
-      font-size: 1.75rem;
-    }
+    opacity: 0.4;
   }
   .pill {
     display: inline-block;
     padding: 1rem 1.5rem;
     border-radius: 9999px;
-    color: color-mix(in oklab, #fff calc(var(--to-light) * 100%), var(--global-neutral-900));
-    background: color-mix(in oklab, rgb(255 255 255 / 0.16) calc(var(--to-light) * 100%), rgb(0 0 0 / 0.06));
+    background: rgb(0 0 0 / 0.06);
+  }
+  .constellations[data-on] .heading,
+  .constellations[data-on] .body,
+  .constellations[data-on] .pill {
+    color: #fff;
+  }
+  .constellations[data-on] .pill {
+    background: rgb(255 255 255 / 0.16);
+  }
+  /* At phone width the copy plus button must fit the pinned screen. */
+  @media (max-width: 47.99rem) {
+    .constellations .type-mega-button {
+      font-size: 1.75rem;
+    }
   }
   @media (prefers-reduced-motion: reduce) {
     .constellations {
-      --p: 1;
+      background: linear-gradient(to bottom, var(--global-summer-700), var(--global-autumn-900));
+    }
+    .heading,
+    .body,
+    .pill {
+      color: #fff;
     }
   }
 </style>

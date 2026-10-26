@@ -3,29 +3,34 @@ import { getEntry } from "astro:content";
 
 const { footer: f, name } = (await getEntry("site", "home"))!.data;
 const poster = "https://media.otherdev.com/site/video/footer-flower-poster.webp";
+// "10:42pm", the reference's clock format.
 const clock = (tz: string) =>
-  new Intl.DateTimeFormat("en", { hour: "numeric", minute: "2-digit", timeZone: tz }).format(new Date());
+  new Intl.DateTimeFormat("en", { hour: "numeric", minute: "2-digit", timeZone: tz })
+    .format(new Date())
+    .replace(/\s/g, "")
+    .toLowerCase();
 ---
 
-<footer>
-  <section class="footer-top text-white" data-navbar-theme="light" data-section>
-    <div class="site-container section">
+<!-- One sky runs the whole footer: dark brown through burnt orange to amber. -->
+<footer class="footer text-white">
+  <section class="min-h-[513px]" data-navbar-theme="footer" data-section>
+    <div class="site-container section" style="padding-block: var(--section-padding-md)">
       <a href={f.cta.href} class="type-heading-l">{f.cta.label} →</a>
-      <ul class="mt-[calc(4rem*var(--scale))] flex gap-16">
+      <ul class="mt-16 grid grid-cols-2 md:grid-cols-4">
         {f.offices.map((o) => (
           <li>
-            <p class="type-heading-xs">{o.city}</p>
-            <p class="type-heading-xs text-ink-3" data-clock={o.timezone}>{clock(o.timezone)}</p>
+            <h3 class="type-heading-m">{o.city}</h3>
+            <p class="type-heading-m text-white/50" data-clock={o.timezone}>{clock(o.timezone)}</p>
           </li>
         ))}
       </ul>
     </div>
   </section>
 
-  <section class="footer-scene relative h-[200vh]" data-navbar-theme="footer" data-scene="footer">
+  <section class="relative h-[250vh]" data-navbar-theme="footer" data-scene="footer">
     <div class="sticky top-0 h-svh overflow-hidden">
       <video
-        class="absolute top-1/2 left-1/2 h-full -translate-x-1/2 -translate-y-1/2 object-contain"
+        class="absolute bottom-0 left-1/2 aspect-square h-[90vh] max-w-none -translate-x-1/2 object-contain md:h-screen"
         poster={poster}
         muted
         playsinline
@@ -36,26 +41,20 @@ const clock = (tz: string) =>
         <source src="https://media.otherdev.com/site/video/footer-flower-mobile.webm" type="video/webm" media="(max-width: 767px)" />
         <source src="https://media.otherdev.com/site/video/footer-flower.webm" type="video/webm" />
       </video>
-      <nav aria-label="Social" class="type-body-button-s absolute inset-x-0 top-0 z-10 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-[var(--container-padding)] py-6 text-white">
+      <nav aria-label="Social" class="type-body-button-s absolute inset-x-0 top-0 z-10 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-[var(--container-padding)] py-7">
         <span class="type-heading-m">{name}</span>
         <ul class="flex gap-3 md:gap-7">
           {f.social.map((s) => <li><a href={s.href} rel="noopener noreferrer" target="_blank">{s.label}</a></li>)}
         </ul>
       </nav>
-      <p class="type-body-button-s absolute bottom-28 left-[var(--container-padding)] z-10 text-white md:bottom-6">{f.legal} {new Date().getFullYear()}</p>
+      <p class="type-body-button-s absolute bottom-28 left-[calc(var(--container-padding)+10px)] z-10 md:bottom-10">{f.legal} {new Date().getFullYear()}</p>
     </div>
   </section>
 </footer>
 
 <style>
-  .footer-top {
-    background: var(--global-autumn-900);
-  }
-  .footer-top [class*="text-ink-3"] {
-    color: rgb(255 255 255 / 0.5);
-  }
-  .footer-scene {
-    background: linear-gradient(to bottom, #2b1a14 0%, #6d2f22 40%, #ee7a4a 85%, #f0a060 100%);
+  .footer {
+    background: linear-gradient(to bottom, var(--global-autumn-900) 25%, var(--global-summer-700) 65%, var(--global-summer-600) 85%, var(--global-summer-500) 100%);
   }
 </style>
 
@@ -67,7 +66,10 @@ const clock = (tz: string) =>
         hour: "numeric",
         minute: "2-digit",
         timeZone: el.dataset.clock ?? "UTC",
-      }).format(new Date());
+      })
+        .format(new Date())
+        .replace(/\s/g, "")
+        .toLowerCase();
     }
   };
   document.addEventListener("astro:page-load", () => {

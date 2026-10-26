@@ -122,3 +122,15 @@
 .prose-site code {
 	font-family: ui-monospace, monospace;
 }
+
+/* Hover wash behind a link label: 7.5% of the text colour, blurred, fading in over 0.3s (as in the reference). */
+.wash {
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	background: color-mix(in srgb, currentColor 7.5%, transparent);
+	backdrop-filter: blur(32px);
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

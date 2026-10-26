@@ -5,33 +5,41 @@ const { pill } = (await getEntry("site", "home"))!.data;
 ---
 
 <nav aria-label="Sections" class="pill-nav type-body-button-s fixed bottom-6 left-1/2 z-50 -translate-x-1/2" data-pill>
-  <ul class="flex h-14 items-center rounded-full px-[8.5px]">
+  <ul class="flex items-center rounded-full p-2 backdrop-blur-md">
     {pill.map((p) => (
-      <li><a href={`#${p.target}`} class="block rounded-full px-[15.5px] py-3.5">{p.label}</a></li>
+      <li><a href={`#${p.target}`} class="flex h-10 items-center rounded-full px-4">{p.label}</a></li>
     ))}
   </ul>
 </nav>
 
 <style>
-  /* Dark pill over light sections, light pill over dark ones; the motion layer sets data-pill-theme. */
+  .pill-nav {
+    transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1), translate 0.3s cubic-bezier(0, 0, 0.2, 1);
+  }
+  :global(html[data-pill-hidden]) .pill-nav {
+    opacity: 0;
+    translate: -50% 8px;
+    pointer-events: none;
+  }
+  /* Black pill over light sections, light pill over dark ones; the motion layer sets data-pill-theme.
+     Inactive items sit at 40% and come up on hover (0.3s), as in the reference. */
   .pill-nav ul {
-    background: var(--global-neutral-900);
-    transition: background 0.2s var(--ease-out, ease-out);
+    --fg: #fff;
+    background: rgb(0 0 0 / 0.92);
+    box-shadow: 0 1px 24px rgb(40 50 80 / 0.12);
+    transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .pill-nav a {
-    color: rgb(255 255 255 / 0.45);
-    transition: color 0.2s var(--ease-out, ease-out);
+    color: var(--fg);
+    opacity: 0.4;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
+  .pill-nav a:hover,
   .pill-nav a[aria-current] {
-    color: #fff;
+    opacity: 1;
   }
   :global(html[data-pill-theme="light"]) .pill-nav ul {
-    background: var(--global-neutral-100);
-  }
-  :global(html[data-pill-theme="light"]) .pill-nav a {
-    color: rgb(0 0 0 / 0.4);
-  }
-  :global(html[data-pill-theme="light"]) .pill-nav a[aria-current] {
-    color: #000;
+    --fg: #000;
+    background: rgb(244 243 242 / 0.92);
   }
 </style>

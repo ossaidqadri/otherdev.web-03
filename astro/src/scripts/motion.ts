@@ -74,7 +74,12 @@ function initPage() {
       return r.top <= y && r.bottom > y;
     })?.dataset.navbarTheme;
 
+  let lastY = scrollY;
   const onScroll = () => {
+    const y = scrollY;
+    if (y <= 40 || y < lastY - 1) delete root.dataset.navHidden;
+    else if (y > lastY + 1) root.dataset.navHidden = "";
+    lastY = y;
     // Header follows the section under it; the pill follows the one under the bottom edge.
     root.dataset.navTheme = themeAt(40) ?? "light";
     root.dataset.pillTheme = themeAt(innerHeight - 40) ?? "dark";
@@ -92,10 +97,13 @@ function initPage() {
       if (r.height <= innerHeight) continue;
       const p = clamp(-r.top / (r.height - innerHeight));
       scene.style.setProperty("--p", p.toFixed(4));
+      if (scene.dataset.onAt) scene.toggleAttribute("data-on", p > Number(scene.dataset.onAt));
       // Scenes whose sky changes tone flip the header colour part-way: data-flip="<from>:<to>:<at>".
       const [from, to, at] = scene.dataset.flip?.split(":") ?? [];
       if (from && to && r.top <= 40 && r.bottom > 40) root.dataset.navTheme = p > Number(at) ? to : from;
       if (scene === hero) {
+        // The reference mounts the pill only once ~25% of the hero is scrolled (measured: between 300 and 330px).
+        root.toggleAttribute("data-pill-hidden", p < 0.25);
         const n = Math.round(clamp((p - 0.3) / 0.5) * words.length);
         for (const [i, w] of words.entries()) w.toggleAttribute("data-on", i < n);
       }
