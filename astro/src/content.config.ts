@@ -43,6 +43,8 @@ const clients = defineCollection({
   schema: z.object({
     name: z.string(),
     logo: z.string().startsWith("/"),
+    // Shown at the bottom of the card on hover. Not filled in until otherdev supplies real categories.
+    category: z.string().optional(),
     placeholder: z.boolean().default(false),
   }),
 });
@@ -62,7 +64,15 @@ const site = defineCollection({
     work: z.object({ heading: z.string(), all: link, count: z.number().int().positive() }),
     process: z.object({
       heading: z.string(),
-      steps: z.array(z.object({ title: z.string(), body: z.string(), image: z.string() })),
+      steps: z.array(
+        z.object({
+          title: z.string(),
+          body: z.string(),
+          image: z.string(),
+          // Season token the card turns on hover (--semantic-<tone>-weak-dark).
+          tone: z.enum(["spring", "summer", "autumn", "winter"]),
+        }),
+      ),
     }),
     news: z.object({ heading: z.string(), all: link }),
     constellations: z.object({ heading: z.string(), body: z.string(), button: link }),
@@ -93,7 +103,8 @@ const site = defineCollection({
     contact: z.object({ heading: z.string(), body: z.string(), links: z.array(link) }),
     footer: z.object({
       cta: link,
-      offices: z.array(z.object({ city: z.string(), timezone: z.string() })),
+      offices: z.array(z.object({ city: z.string(), timezone: z.string(), email: z.string(), phone: z.string() })),
+      legalLinks: z.array(link),
       social: z.array(link),
       legal: z.string(),
     }),
@@ -106,4 +117,10 @@ const services = defineCollection({
   schema: z.object({ title: z.string(), intro: z.string(), items: z.array(z.string()) }),
 });
 
-export const collections = { projects, blog, clients, site, services };
+// Legal pages, one markdown file each.
+const legal = defineCollection({
+  loader: glob({ base: "./src/content/legal", pattern: "*.md" }),
+  schema: z.object({ title: z.string(), updated: z.coerce.date() }),
+});
+
+export const collections = { projects, blog, clients, site, services, legal };

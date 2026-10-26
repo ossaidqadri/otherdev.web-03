@@ -24,10 +24,10 @@
     "process": {
       "heading": "Our process, crafted through decades of experience.",
       "steps": [
-        { "title": "Think", "image": "think.png", "body": "We read the soil to find where ideas take root, uncovering opportunities, directions, and missions." },
-        { "title": "Create", "image": "create.webp", "body": "We coax the invisible into the inevitable, crafting identities and systems to support your growth." },
-        { "title": "Build", "image": "build.webp", "body": "We engineer scalable digital products and experiences ready for real-world impact." },
-        { "title": "Scale", "image": "scale.webp", "body": "We tend what we plant, measuring, refining and growing it long after launch." }
+        { "title": "Think", "tone": "spring", "image": "think.png", "body": "We read the soil to find where ideas take root, uncovering opportunities, directions, and missions." },
+        { "title": "Create", "tone": "summer", "image": "create.webp", "body": "We coax the invisible into the inevitable, crafting identities and systems to support your growth." },
+        { "title": "Build", "tone": "autumn", "image": "build.webp", "body": "We engineer scalable digital products and experiences ready for real-world impact." },
+        { "title": "Scale", "tone": "winter", "image": "scale.webp", "body": "We tend what we plant, measuring, refining and growing it long after launch." }
       ]
     },
     "news": { "heading": "Thoughts from our world, to yours.", "all": { "label": "Read all", "href": "/blog" } },
@@ -90,7 +90,8 @@
     },
     "footer": {
       "cta": { "label": "Work with us", "href": "/contact" },
-      "offices": [{ "city": "Karachi", "timezone": "Asia/Karachi" }],
+      "offices": [{ "city": "Karachi", "timezone": "Asia/Karachi", "email": "hello@otherdev.com", "phone": "+92 315 689 3331" }],
+      "legalLinks": [{ "label": "Privacy", "href": "/legals/privacy" }],
       "social": [
         { "label": "LinkedIn", "href": "https://linkedin.com/company/theotherdev/" },
         { "label": "Instagram", "href": "https://instagram.com/other.dev" },
