@@ -1,16 +1,19 @@
 ---
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="otherdev" description="Digital platforms for pioneering creatives.">
+  <main class="site-container py-[var(--section-padding-lg)]">
+    <h1 class="type-hero max-w-5xl">otherdev builds digital platforms for pioneering creatives.</h1>
+    <p class="type-body-paragraph-l text-ink-2 mt-8 max-w-xl">Foundation check: serif heading, sans body, palette tokens.</p>
+    <div class="mt-12 grid grid-cols-5 gap-2">
+      {["autumn", "winter", "summer", "spring", "neutral"].map((s) => (
+        <div class="flex flex-col gap-2">
+          {[100, 500, 900].map((n) => (
+            <div class="h-12 rounded-md" style={`background: var(--global-${s}-${n})`}></div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </main>
+</Layout>

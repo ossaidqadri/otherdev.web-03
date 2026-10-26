@@ -3,7 +3,7 @@ import { realpathSync } from "node:fs";
 import { dirname, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import svelte from "@astrojs/svelte";
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -23,6 +23,26 @@ export default defineConfig({
   // Fully static: no server, so no adapter. Add @astrojs/cloudflare (v13+) only when
   // the chat endpoint arrives, with `export const prerender = false` on that route.
   output: "static",
+  // Self-hosted at build (hashed URLs, preload from the layout). `local()` on purpose: in
+  // Astro 7.4 `npm()` hands file:// URLs to fetch() and stops the dev server.
+  fonts: [
+    {
+      // Variable sans: wght axis 300-900 (read from the font's fvar table).
+      name: "Saans",
+      cssVariable: "--font-saans",
+      provider: fontProviders.local(),
+      fallbacks: ["ui-sans-serif", "system-ui", "sans-serif"],
+      options: { variants: [{ weight: "300 900", style: "normal", src: ["./src/assets/fonts/saans-variable.woff2"] }] },
+    },
+    {
+      // Static condensed serif, one weight: headings only.
+      name: "Serrif",
+      cssVariable: "--font-serrif",
+      provider: fontProviders.local(),
+      fallbacks: ["Georgia", "serif"],
+      options: { variants: [{ weight: 400, style: "normal", src: ["./src/assets/fonts/serrif-condensed-regular.woff2"] }] },
+    },
+  ],
   integrations: [svelte()],
   vite: {
     // Setting allow replaces Vite's default, so the project root goes back in.
