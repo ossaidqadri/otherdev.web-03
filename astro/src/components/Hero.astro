@@ -57,11 +57,27 @@ const words = hero.statement.split(" ");
   .word[data-on] {
     opacity: 1;
   }
+  @media (prefers-reduced-motion: reduce) {
+    .layer {
+      grid-area: auto;
+      opacity: 1;
+    }
+    .layer-statement {
+      margin-top: 4rem;
+      color: #fff;
+    }
+    .word {
+      color: inherit;
+      opacity: 1;
+    }
+  }
   .pill {
     display: inline-block;
     padding: 1rem 1.5rem;
     border-radius: 9999px;
-    background: rgb(255 255 255 / 0.16);
-    color: #fff;
+    /* White on the dark sky, dark once the sky has turned pale. */
+    --to-dark: clamp(0, calc((var(--p) - 0.3) * 5), 1);
+    background: color-mix(in oklab, rgb(255 255 255 / 0.16) calc((1 - var(--to-dark)) * 100%), rgb(0 0 0 / 0.06));
+    color: color-mix(in oklab, #fff calc((1 - var(--to-dark)) * 100%), var(--global-neutral-900));
   }
 </style>

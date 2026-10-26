@@ -83,3 +83,16 @@
 @utility section {
 	padding-block: var(--section-padding-lg);
 }
+
+/* Reduced motion: no pinned scenes. Each scene is one screen tall and shows its content. */
+@media (prefers-reduced-motion: reduce) {
+	[data-scene] {
+		height: auto;
+		min-height: 100svh;
+	}
+	[data-scene] > * {
+		position: relative;
+		height: auto;
+		min-height: 100svh;
+	}
+}
