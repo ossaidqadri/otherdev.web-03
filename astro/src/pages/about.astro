@@ -15,16 +15,6 @@ const { about } = (await getEntry("site", "home"))!.data;
       </div>
     </section>
 
-    <section class="overflow-hidden pb-[var(--section-padding-md)]" data-navbar-theme="dark">
-      <ul class="flex h-72 justify-center gap-2 md:h-96">
-        {about.photos.map((p) => (
-          <li class="shrink-0">
-            <img src={p.src} alt={p.alt} width={p.width} height={p.height} loading="lazy" class="h-full w-auto rounded-lg object-cover" />
-          </li>
-        ))}
-      </ul>
-    </section>
-
     <section class="site-container section" data-navbar-theme="dark">
       <h2 class="type-heading-l max-w-3xl">{about.principlesHeading}</h2>
       <ul class="mt-12">
@@ -39,7 +29,6 @@ const { about } = (await getEntry("site", "home"))!.data;
 
     <section class="site-container section pt-0" data-navbar-theme="dark">
       <h2 class="type-heading-l max-w-3xl">{about.teamHeading}</h2>
-      <img src={about.teamPhoto.src} alt={about.teamPhoto.alt} width={about.teamPhoto.width} height={about.teamPhoto.height} loading="lazy" class="mt-12 aspect-[16/9] w-full rounded-xl object-cover" />
       <ul class="mt-12 grid gap-x-2 gap-y-12 md:grid-cols-3">
         {about.team.map((m) => (
           <li>

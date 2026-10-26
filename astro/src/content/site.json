@@ -39,13 +39,6 @@
     "about": {
       "heading": "otherdev is a catalyst for disruptive ideas through creative innovation. A studio of radical optimists crafting new identities, systems, experiences and genres.",
       "body": "Based in Karachi, we are a full-service digital studio that designs and engineers web platforms, Shopify experiences, AI-powered products and custom digital solutions from the ground up, with a focus on bringing ideas to life through thoughtful design.",
-      "photos": [
-        { "src": "https://media.otherdev.com/site/about/about-team-new.webp", "alt": "Kabeer and Ossaid on campus", "width": 3096, "height": 1376 },
-        { "src": "https://media.otherdev.com/site/about/packaging-vertical.webp", "alt": "Packaging for otherdev hampers", "width": 1080, "height": 1920 },
-        { "src": "https://media.otherdev.com/site/about/talha-and-me-123651.jpg", "alt": "Behind the scenes of a shoot", "width": 720, "height": 1280 },
-        { "src": "https://media.otherdev.com/site/about/kabeer-and-ossaid-ai-landscape.webp", "alt": "Portrait of the two founders", "width": 2048, "height": 1600 }
-      ],
-      "teamPhoto": { "src": "https://media.otherdev.com/site/about/kabeer-and-ossaid-ai-landscape.webp", "alt": "Portrait of the two founders", "width": 2048, "height": 1600 },
       "principlesHeading": "We’re guided by principles that we believe in and live by.",
       "principles": [
         { "title": "Create Dangerously", "body": "Pursue excellence in execution and attention to detail." },
