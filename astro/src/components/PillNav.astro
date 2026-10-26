@@ -5,9 +5,9 @@ const { pill } = (await getEntry("site", "home"))!.data;
 ---
 
 <nav aria-label="Sections" class="pill-nav type-body-button-s fixed bottom-6 left-1/2 z-50 -translate-x-1/2" data-pill>
-  <ul class="flex gap-1 rounded-full p-1.5">
+  <ul class="flex h-14 items-center rounded-full px-[8.5px]">
     {pill.map((p) => (
-      <li><a href={`#${p.target}`} class="block rounded-full px-3.5 py-2.5">{p.label}</a></li>
+      <li><a href={`#${p.target}`} class="block rounded-full px-[15.5px] py-3.5">{p.label}</a></li>
     ))}
   </ul>
 </nav>

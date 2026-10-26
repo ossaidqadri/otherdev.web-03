@@ -7,13 +7,32 @@ const site = (await getEntry("site", "home"))!.data;
 <!-- Progressive blur at the top edge: content softens as it scrolls under the header. -->
 <div class="pointer-events-none fixed inset-x-0 top-0 z-40 h-28 backdrop-blur-md [mask-image:linear-gradient(to_bottom,black_30%,transparent_100%)]" aria-hidden="true"></div>
 
-<header class="header fixed inset-x-0 top-0 z-50 flex items-center justify-between px-[var(--container-padding)] py-6">
+<header class="header fixed inset-x-0 top-0 z-50 flex items-center justify-between px-[var(--container-padding)] py-8">
   <a href="/" class="type-heading-m" aria-label={`${site.name} home`}>{site.name}</a>
-  <nav aria-label="Main" class="type-body-button-s flex items-center gap-7">
+  <nav aria-label="Main" class="type-body-button-m flex items-center gap-7">
     {site.nav.map((l) => <a href={l.href} class="hidden md:inline">{l.label}</a>)}
     <a href={site.cta.href}>{site.cta.label}</a>
+    <button type="button" popovertarget="menu" aria-label="Open menu" class="menu-toggle md:hidden">
+      <svg width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M0 1h22M0 11h22" /></svg>
+    </button>
   </nav>
 </header>
+
+<!-- Phone menu: a native popover, so open, close, Escape and focus return need no script. -->
+<div id="menu" popover class="menu type-heading-m">
+  <div class="flex items-center justify-between px-[var(--container-padding)] py-8">
+    <a href="/" class="type-heading-m" aria-label={`${site.name} home`}>{site.name}</a>
+    <div class="type-body-button-m flex items-center gap-7">
+      <a href={site.cta.href}>{site.cta.label}</a>
+      <button type="button" popovertarget="menu" popovertargetaction="hide" aria-label="Close menu">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 1l16 16M17 1L1 17" /></svg>
+      </button>
+    </div>
+  </div>
+  <ul class="flex flex-1 flex-col items-center justify-center gap-5 pb-24">
+    {site.nav.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+  </ul>
+</div>
 
 <style>
   /* The motion layer flips data-nav-theme on <html> from the section under the header. */
@@ -28,5 +47,19 @@ const site = (await getEntry("site", "home"))!.data;
   :global(html[data-nav-theme="footer"]) .header {
     opacity: 0;
     pointer-events: none;
+  }
+  .menu {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    border: 0;
+    color: var(--global-neutral-900);
+    background: linear-gradient(to bottom, var(--global-winter-300), var(--global-winter-100) 60%, #fff);
+  }
+  .menu:popover-open {
+    display: flex;
+    flex-direction: column;
   }
 </style>

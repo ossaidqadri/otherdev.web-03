@@ -5,15 +5,22 @@ const { clients: copy } = (await getEntry("site", "home"))!.data;
 const clients = await getCollection("clients");
 ---
 
-<section id="clients" class="section" data-navbar-theme="dark" data-section>
+<section id="clients" class="clients section" data-navbar-theme="dark" data-section>
   <div class="site-container">
     <h2 class="type-heading-l max-w-4xl">{copy.heading}</h2>
     <ul class="mt-[calc(4rem*var(--scale))] grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-6">
       {clients.map((c) => (
         <li class="bg-card flex aspect-[212/128] items-center justify-center rounded-lg p-6">
-          <img src={c.data.logo} alt={c.data.name} loading="lazy" class="h-10 w-24 object-contain md:w-32" />
+          <img src={c.data.logo} alt={c.data.name} loading="lazy" class="h-14 w-28 object-contain md:w-36" />
         </li>
       ))}
     </ul>
   </div>
 </section>
+
+<style>
+  /* Continues the hero's cream and fades to white, as the reference does. */
+  .clients {
+    background: linear-gradient(to bottom, var(--global-summer-100), #fff 28rem);
+  }
+</style>
