@@ -47,4 +47,32 @@ const clients = defineCollection({
   }),
 });
 
-export const collections = { projects, blog, clients };
+const link = z.object({ label: z.string(), href: z.string() });
+
+// All home page copy, so no text is hardcoded in components. A single entry, `home`.
+const site = defineCollection({
+  loader: file("src/content/site.json"),
+  schema: z.object({
+    name: z.string(),
+    nav: z.array(link),
+    cta: link,
+    pill: z.array(z.object({ label: z.string(), target: z.string() })),
+    hero: z.object({ headline: z.string(), button: link, statement: z.string() }),
+    clients: z.object({ heading: z.string() }),
+    work: z.object({ heading: z.string(), all: link, count: z.number().int().positive() }),
+    process: z.object({
+      heading: z.string(),
+      steps: z.array(z.object({ title: z.string(), body: z.string() })),
+    }),
+    news: z.object({ heading: z.string(), all: link }),
+    constellations: z.object({ heading: z.string(), body: z.string(), button: link }),
+    footer: z.object({
+      cta: link,
+      offices: z.array(z.object({ city: z.string(), timezone: z.string() })),
+      social: z.array(link),
+      legal: z.string(),
+    }),
+  }),
+});
+
+export const collections = { projects, blog, clients, site };

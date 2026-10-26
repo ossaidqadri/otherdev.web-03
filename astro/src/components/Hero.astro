@@ -1,0 +1,67 @@
+---
+import { getEntry } from "astro:content";
+
+const { hero } = (await getEntry("site", "home"))!.data;
+const words = hero.statement.split(" ");
+---
+
+<section class="hero relative h-[240vh]" data-navbar-theme="light" data-scene="hero">
+  <div class="stage sticky top-0 flex h-screen flex-col justify-between py-[var(--section-padding-sm)] pt-[28vh]">
+    <!-- Two layers share one spot: the motion layer sets --p (0 to 1, scroll through the
+         scene) and the headline gives way to the word-by-word statement. -->
+    <div class="site-container grid w-full">
+      <h1 class="layer layer-headline type-hero max-w-[56rem] text-white">{hero.headline}</h1>
+      <p class="layer layer-statement type-hero max-w-[64rem]" data-reveal-words>
+        {words.map((w, i) => (
+          <>
+            <span class="word" data-word>{w}</span>{i < words.length - 1 ? " " : ""}
+          </>
+        ))}
+      </p>
+    </div>
+    <div class="site-container w-full">
+      <a href={hero.button.href} class="pill type-body-button-m">{hero.button.label}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Sky runs the whole scene: brown, navy, pale blue, cream. */
+  .hero {
+    --p: 0;
+    background: linear-gradient(
+      to bottom,
+      #200a04 0%,
+      #1a2342 18%,
+      #355080 36%,
+      #6d87b0 52%,
+      #dfe6f0 78%,
+      var(--global-summer-100) 100%
+    );
+  }
+  .layer {
+    grid-area: 1 / 1;
+  }
+  .layer-headline {
+    opacity: clamp(0, calc(1 - (var(--p) - 0.12) * 10), 1);
+  }
+  .layer-statement {
+    opacity: clamp(0, calc((var(--p) - 0.2) * 10), 1);
+    pointer-events: none;
+  }
+  .word {
+    color: var(--global-neutral-900);
+    opacity: 0.35;
+    transition: opacity 0.3s var(--ease-out, ease-out);
+  }
+  .word[data-on] {
+    opacity: 1;
+  }
+  .pill {
+    display: inline-block;
+    padding: 1rem 1.5rem;
+    border-radius: 9999px;
+    background: rgb(255 255 255 / 0.16);
+    color: #fff;
+  }
+</style>

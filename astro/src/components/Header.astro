@@ -1,0 +1,33 @@
+---
+import { getEntry } from "astro:content";
+
+const site = (await getEntry("site", "home"))!.data;
+---
+
+<!-- Progressive blur at the top edge: content softens as it scrolls under the header. -->
+<div class="header-blur pointer-events-none fixed inset-x-0 top-0 z-40 h-28" aria-hidden="true"></div>
+
+<header class="header fixed inset-x-0 top-0 z-50 flex items-center justify-between px-[var(--container-padding)] py-6">
+  <a href="/" class="type-heading-m" aria-label={`${site.name} home`}>{site.name}</a>
+  <nav aria-label="Main" class="type-body-button-s flex items-center gap-7">
+    {site.nav.map((l) => <a href={l.href} class="hidden md:inline">{l.label}</a>)}
+    <a href={site.cta.href}>{site.cta.label}</a>
+  </nav>
+</header>
+
+<style>
+  /* The motion layer flips data-nav-theme on <html> from the section under the header. */
+  .header {
+    color: var(--nav-fg, #fff);
+    transition: color 0.2s var(--ease-out, ease-out);
+  }
+  :global(html[data-nav-theme="dark"]) .header {
+    --nav-fg: var(--global-neutral-900);
+  }
+  .header-blur {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+  }
+</style>

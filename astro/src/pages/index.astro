@@ -1,19 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
 ---
 
 <Layout title="otherdev" description="Digital platforms for pioneering creatives.">
-  <main class="site-container py-[var(--section-padding-lg)]">
-    <h1 class="type-hero max-w-5xl">otherdev builds digital platforms for pioneering creatives.</h1>
-    <p class="type-body-paragraph-l text-ink-2 mt-8 max-w-xl">Foundation check: serif heading, sans body, palette tokens.</p>
-    <div class="mt-12 grid grid-cols-5 gap-2">
-      {["autumn", "winter", "summer", "spring", "neutral"].map((s) => (
-        <div class="flex flex-col gap-2">
-          {[100, 500, 900].map((n) => (
-            <div class="h-12 rounded-md" style={`background: var(--global-${s}-${n})`}></div>
-          ))}
-        </div>
-      ))}
-    </div>
+  <main>
+    <Hero />
   </main>
 </Layout>
