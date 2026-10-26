@@ -11,7 +11,7 @@ const clients = await getCollection("clients");
     <ul class="mt-[calc(4rem*var(--scale))] grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-6">
       {clients.map((c) => (
         <li class="bg-card flex aspect-[212/128] items-center justify-center rounded-lg p-6">
-          <img src={c.data.logo} alt={c.data.name} loading="lazy" class="h-10 w-32 object-contain" />
+          <img src={c.data.logo} alt={c.data.name} loading="lazy" class="h-10 w-24 object-contain md:w-32" />
         </li>
       ))}
     </ul>

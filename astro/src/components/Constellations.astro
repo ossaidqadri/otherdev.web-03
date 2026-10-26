@@ -5,7 +5,7 @@ const { constellations: c } = (await getEntry("site", "home"))!.data;
 ---
 
 <section class="constellations relative h-[200vh]" data-navbar-theme="light" data-scene="constellations">
-  <div class="sticky top-0 flex h-screen flex-col justify-between pt-[20vh] pb-[var(--section-padding-sm)]">
+  <div class="sticky top-0 flex h-svh flex-col justify-between pt-[20vh] pb-28 md:pb-[var(--section-padding-sm)]">
     <div class="site-container relative z-10 w-full">
       <h2 class="type-display-s text-white">{c.heading}</h2>
       <p class="type-display-s mt-2 max-w-[62rem] text-white/50">{c.body}</p>
@@ -32,6 +32,12 @@ const { constellations: c } = (await getEntry("site", "home"))!.data;
   .scrub-video {
     pointer-events: none;
     opacity: 0;
+  }
+  /* The body copy at display size runs ~620px tall on a 360px phone, pushing the button off the pinned screen. */
+  @media (max-width: 47.99rem) {
+    .constellations .type-display-s {
+      font-size: 1.75rem;
+    }
   }
   .pill {
     display: inline-block;

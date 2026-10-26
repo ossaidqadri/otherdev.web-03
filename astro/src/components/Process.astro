@@ -34,8 +34,11 @@ const imageFor = (file: string) => art[`/src/assets/process/${file}`];
 </section>
 
 <style>
+  /* Scroll-snap must stop at the same gutter, or the first card snaps flush to the viewport edge. */
   .process-row {
-    padding-inline-start: max(var(--container-padding), calc((100vw - var(--container-width)) / 2 + var(--container-padding)));
+    --gutter: max(var(--container-padding), calc((100vw - var(--container-width)) / 2 + var(--container-padding)));
+    padding-inline-start: var(--gutter);
+    scroll-padding-inline-start: var(--gutter);
     scrollbar-width: none;
   }
   .process-row::-webkit-scrollbar {
