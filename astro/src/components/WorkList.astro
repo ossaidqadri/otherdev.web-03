@@ -1,0 +1,40 @@
+---
+import { getCollection, getEntry } from "astro:content";
+
+const { work } = (await getEntry("site", "home"))!.data;
+const projects = (await getCollection("projects"))
+  .sort((a, b) => b.data.year - a.data.year)
+  .slice(0, work.count);
+---
+
+<section id="work" class="section" data-navbar-theme="dark" data-section>
+  <div class="site-container">
+    <div class="flex items-end justify-between gap-6">
+      <h2 class="type-heading-l max-w-4xl">{work.heading}</h2>
+      <a href={work.all.href} class="type-heading-l text-ink-3 shrink-0">{work.all.label} →</a>
+    </div>
+    <ul class="mt-[calc(4rem*var(--scale))]">
+      {projects.map((p) => (
+        <li class="border-border border-t py-16">
+          <a href={`/work/${p.id}`} class="grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-16">
+            <div class="flex flex-col justify-between gap-8">
+              <div>
+                <h3 class="type-heading-m">{p.data.title}</h3>
+                {p.data.excerpt && <p class="type-body-paragraph-l text-ink-3 mt-3 line-clamp-3 max-w-md">{p.data.excerpt}</p>}
+              </div>
+              <span class="type-body-regular-xs bg-card w-fit rounded-md px-2.5 py-1.5">{p.data.year}</span>
+            </div>
+            <img
+              src={p.data.cover.src}
+              alt={p.data.cover.alt}
+              width={p.data.cover.width}
+              height={p.data.cover.height}
+              loading="lazy"
+              class="aspect-[455/256] w-full rounded-xl object-cover object-top"
+            />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -78,3 +78,8 @@
 	max-width: var(--container-width);
 	padding-inline: var(--container-padding);
 }
+
+/* Vertical rhythm between home sections. */
+@utility section {
+	padding-block: var(--section-padding-lg);
+}
