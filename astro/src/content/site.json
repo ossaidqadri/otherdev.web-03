@@ -37,9 +37,40 @@
       "button": { "label": "Our approach", "href": "/about" }
     },
     "about": {
-      "heading": "Other Dev produces digital platforms for pioneering creatives.",
+      "heading": "otherdev is a catalyst for disruptive ideas through creative innovation. A studio of radical optimists crafting new identities, systems, experiences and genres.",
       "body": "Based in Karachi, we are a full-service digital studio that designs and engineers web platforms, Shopify experiences, AI-powered products and custom digital solutions from the ground up, with a focus on bringing ideas to life through thoughtful design.",
-      "team": "Our team is Kabeer Jaffri and Ossaid Qadri, who met while studying at Habib Public School."
+      "principlesHeading": "We’re guided by principles that we believe in and live by.",
+      "principles": [
+        { "title": "Create Dangerously", "body": "Pursue excellence in execution and attention to detail." },
+        { "title": "Champion Openness", "body": "Work openly with others to create better outcomes." },
+        { "title": "Forever Curious", "body": "Make meaningful contributions that drive progress." },
+        { "title": "Think New", "body": "Guide, influence, and bring clarity to the path ahead." },
+        { "title": "Future First", "body": "Stay open, adaptable, and always ready to learn." }
+      ],
+      "teamHeading": "We’re a multi-disciplinary team of curious designers, developers, and strategists.",
+      "team": [
+        { "name": "Kabeer Jaffri", "role": "Co-founder" },
+        { "name": "Ossaid Qadri", "role": "Co-founder" }
+      ]
+    },
+    "approach": {
+      "heading": "From first spark to lasting legacy, we guide you through every stage of creation, transformation, and regeneration.",
+      "steps": [
+        { "title": "Think", "body": "We lead on strategy, research, and positioning to uncover opportunities, define clear directions, and align around a vision." },
+        { "title": "Create", "body": "We craft brand identities, design systems, and content that transforms dull strategy into sharp market-defining work." },
+        { "title": "Build", "body": "We develop robust, scalable products, websites, and experiences that bring ideas to life and are ready for real-world impact." },
+        { "title": "Scale", "body": "We optimise, grow, and innovate to evolve with new opportunities and deliver long-term value." }
+      ],
+      "projectsHeading": "We partnered with",
+      "closing": { "heading": "Your next chapter starts here.", "body": "Let’s talk about how we can help you shape it.", "button": { "label": "Contact us", "href": "/contact" } }
+    },
+    "newsletter": {
+      "heading": "Let’s keep in touch.",
+      "body": "Pick what you want to hear about, and we’ll only send the good stuff.",
+      "interestsLabel": "I want to hear about...",
+      "interests": ["Studio Updates", "Open Roles", "Business Opportunities"],
+      "consent": "We’ll never share your details. By signing up, you agree to receive communications from otherdev.",
+      "note": "Signups open soon."
     },
     "contact": {
       "heading": "Tell us what you are building.",

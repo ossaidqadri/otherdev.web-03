@@ -1,14 +1,54 @@
 ---
-import { getEntry } from "astro:content";
+import CtaScene from "@/components/CtaScene.astro";
 import Layout from "@/layouts/Layout.astro";
+import { getEntry } from "astro:content";
 
 const { about } = (await getEntry("site", "home"))!.data;
 ---
 
 <Layout title="About | otherdev" description={about.body}>
-  <main class="site-container section pt-40" data-navbar-theme="dark">
-    <h1 class="type-display-s max-w-5xl">{about.heading}</h1>
-    <p class="type-heading-l mt-12 max-w-4xl">{about.body}</p>
-    <p class="type-body-paragraph-xl text-ink-3 mt-12 max-w-2xl">{about.team}</p>
+  <main>
+    <section class="about-hero" data-navbar-theme="dark">
+      <div class="site-container pt-48 pb-[var(--section-padding-lg)]">
+        <h1 class="type-hero max-w-5xl">{about.heading}</h1>
+        <p class="type-heading-l text-ink-3 mt-10 max-w-3xl">{about.body}</p>
+      </div>
+    </section>
+
+    <section class="site-container section" data-navbar-theme="dark">
+      <h2 class="type-heading-l max-w-3xl">{about.principlesHeading}</h2>
+      <ul class="mt-12">
+        {about.principles.map((p) => (
+          <li class="border-border border-t py-6 last:border-b">
+            <h3 class="type-body-regular-l">{p.title}</h3>
+            <p class="type-body-paragraph-l text-ink-3 mt-1">{p.body}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="site-container section pt-0" data-navbar-theme="dark">
+      <h2 class="type-heading-l max-w-3xl">{about.teamHeading}</h2>
+      <ul class="mt-12 grid gap-x-2 gap-y-12 md:grid-cols-3">
+        {about.team.map((m) => (
+          <li>
+            <p class="type-body-regular-l">{m.name}</p>
+            <p class="type-body-regular-l text-ink-3">{m.role}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <CtaScene
+      heading="Ready to make the leap?"
+      body="Let’s turn curiosity into collaboration. Share your vision, and we’ll help shape it into something unforgettable."
+      button={{ label: "Contact us", href: "/contact" }}
+    />
   </main>
 </Layout>
+
+<style>
+  .about-hero {
+    background: linear-gradient(to bottom, var(--global-autumn-200) 0%, #fff 100%);
+  }
+</style>
