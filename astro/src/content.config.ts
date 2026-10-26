@@ -62,7 +62,7 @@ const site = defineCollection({
     work: z.object({ heading: z.string(), all: link, count: z.number().int().positive() }),
     process: z.object({
       heading: z.string(),
-      steps: z.array(z.object({ title: z.string(), body: z.string() })),
+      steps: z.array(z.object({ title: z.string(), body: z.string(), image: z.string() })),
     }),
     news: z.object({ heading: z.string(), all: link }),
     constellations: z.object({ heading: z.string(), body: z.string(), button: link }),

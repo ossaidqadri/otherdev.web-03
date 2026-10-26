@@ -20,7 +20,7 @@ export type TooltipPayload = Tooltip.TooltipSeries;
 // Helper to extract item config from a payload.
 export function getPayloadConfigFromPayload(
 	config: ChartConfig,
-	payload: TooltipPayload,
+	payload: TooltipPayload | undefined,
 	key: string,
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	data?: Record<string, any> | null

@@ -1,0 +1,44 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+
+const { process } = (await getEntry("site", "home"))!.data;
+// Card art lives in src/assets/process; the site collection names each file.
+const art = import.meta.glob<ImageMetadata>("../assets/process/*", { eager: true, import: "default" });
+const imageFor = (file: string) => art[`../assets/process/${file}`];
+---
+
+<section id="process" class="section overflow-hidden" data-navbar-theme="dark" data-section>
+  <div class="site-container">
+    <h2 class="type-heading-l max-w-4xl">{process.heading}</h2>
+  </div>
+  <!-- Starts on the container edge and bleeds off the right; scrolls sideways when narrow. -->
+  <ul
+    class="process-row mt-[calc(4rem*var(--scale))] flex snap-x gap-2 overflow-x-auto pb-1"
+    data-lenis-prevent-x
+  >
+    {process.steps.map((s) => {
+      const img = imageFor(s.image);
+      return (
+        <li class="bg-card flex h-[40rem] w-[min(26.5rem,80vw)] shrink-0 snap-start flex-col justify-between overflow-hidden rounded-lg">
+          <div class="p-8">
+            <h3 class="type-heading-xs">{s.title}</h3>
+            <p class="type-body-paragraph-l text-ink-3 mt-1 max-w-[19rem]">{s.body}</p>
+          </div>
+          {img && <Image src={img} alt="" widths={[400, 800]} sizes="26.5rem" class="mx-auto w-full" />}
+        </li>
+      );
+    })}
+  </ul>
+</section>
+
+<style>
+  .process-row {
+    padding-inline-start: max(var(--container-padding), calc((100vw - var(--container-width)) / 2 + var(--container-padding)));
+    scrollbar-width: none;
+  }
+  .process-row::-webkit-scrollbar {
+    display: none;
+  }
+</style>
