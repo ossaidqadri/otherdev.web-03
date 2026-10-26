@@ -30,6 +30,9 @@ pnpm-debug.log*
 .claude/settings.local.json
 .env.local
 
+# placeholder client logos (third-party marks); replace with otherdev's own, then remove this line
+public/clients/
+
 # clone / reference-site research: screenshots, extracted assets, scratch captures
 docs/research/
 docs/design-references/

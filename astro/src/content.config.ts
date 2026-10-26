@@ -1,6 +1,6 @@
 import { defineCollection } from "astro:content";
 import { z } from "astro/zod";
-import { glob } from "astro/loaders";
+import { file, glob } from "astro/loaders";
 
 // Media lives on R2 and is referenced by absolute URL; width and height come from the
 // upload record so layouts can reserve space before the image loads.
@@ -35,4 +35,16 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { projects, blog };
+// Client logos for the home grid. `placeholder: true` marks stand-ins that must be replaced
+// with otherdev's own clients before launch; the placeholder files live in the git-ignored
+// public/clients/ folder.
+const clients = defineCollection({
+  loader: file("src/content/clients.json"),
+  schema: z.object({
+    name: z.string(),
+    logo: z.string().startsWith("/"),
+    placeholder: z.boolean().default(false),
+  }),
+});
+
+export const collections = { projects, blog, clients };

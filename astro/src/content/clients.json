@@ -1,0 +1,74 @@
+[
+  {
+    "id": "accel",
+    "name": "Accel",
+    "logo": "/clients/accel.svg",
+    "placeholder": true
+  },
+  {
+    "id": "elevenlabs",
+    "name": "ElevenLabs",
+    "logo": "/clients/elevenlabs.svg",
+    "placeholder": true
+  },
+  {
+    "id": "knotel",
+    "name": "Knotel",
+    "logo": "/clients/knotel.svg",
+    "placeholder": true
+  },
+  {
+    "id": "sylvera",
+    "name": "Sylvera",
+    "logo": "/clients/sylvera.svg",
+    "placeholder": true
+  },
+  {
+    "id": "tessian",
+    "name": "Tessian",
+    "logo": "/clients/tessian.svg",
+    "placeholder": true
+  },
+  {
+    "id": "design-district",
+    "name": "Design District",
+    "logo": "/clients/design-district.svg",
+    "placeholder": true
+  },
+  {
+    "id": "zid",
+    "name": "Zid",
+    "logo": "/clients/zid.svg",
+    "placeholder": true
+  },
+  {
+    "id": "ello",
+    "name": "Ello",
+    "logo": "/clients/ello.svg",
+    "placeholder": true
+  },
+  {
+    "id": "lightberry",
+    "name": "Lightberry",
+    "logo": "/clients/lightberry.svg",
+    "placeholder": true
+  },
+  {
+    "id": "uk-research-and-innovation",
+    "name": "UK Research and Innovation",
+    "logo": "/clients/uk-research-and-innovation.svg",
+    "placeholder": true
+  },
+  {
+    "id": "adblock",
+    "name": "AdBlock",
+    "logo": "/clients/adblock.svg",
+    "placeholder": true
+  },
+  {
+    "id": "quaisr",
+    "name": "Quaisr",
+    "logo": "/clients/quaisr.svg",
+    "placeholder": true
+  }
+]
