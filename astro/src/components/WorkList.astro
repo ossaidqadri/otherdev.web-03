@@ -16,30 +16,47 @@ const projects = all ? sorted : sorted.slice(0, work.count);
   <div class="site-container">
     <div class="flex items-end justify-between gap-6">
       <h2 class="type-heading-l max-w-4xl">{work.heading}</h2>
-      {!all && <a href={work.all.href} class="type-heading-l text-ink-3 shrink-0">{work.all.label} →</a>}
+      {!all && (
+        <a href={work.all.href} class="group relative -mr-2.5 inline-flex shrink-0 items-center rounded-lg px-2.5 py-1.5">
+          <span class="type-heading-l relative z-10 inline-flex items-center gap-1 opacity-40">
+            <span>{work.all.label}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-8 translate-y-[0.03em]" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+          </span>
+          <span aria-hidden="true" class="wash group-hover:opacity-100 group-focus-visible:opacity-100"></span>
+        </a>
+      )}
     </div>
-    <ul class="mt-[calc(4rem*var(--scale))]">
+    <ul class="mt-24">
       {projects.map((p) => (
         <li class="border-border border-t py-16">
-          <a href={`/work/${p.id}`} class="grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-16">
-            <div class="flex flex-col justify-between gap-8">
+          <a href={`/work/${p.id}`} class="group flex flex-col gap-6 md:grid md:h-[490px] md:grid-cols-3 md:gap-4">
+            <div class="flex flex-col justify-between gap-8 md:pr-16">
               <div>
-                <h3 class="type-heading-m">{p.data.title}</h3>
-                {p.data.excerpt && <p class="type-body-paragraph-l text-ink-3 mt-3 line-clamp-3 max-w-md">{p.data.excerpt}</p>}
+                <h3 class="type-heading-l">{p.data.title}</h3>
+                {p.data.excerpt && <p class="type-heading-s text-ink-3 mt-3 line-clamp-3">{p.data.excerpt}</p>}
               </div>
-              <span class="type-body-regular-xs bg-card w-fit rounded-md px-2.5 py-1.5">{p.data.year}</span>
+              <span class="type-body-button-s inline-flex w-fit items-center rounded-sm px-2.5 py-1.5 transition duration-300 hover:brightness-[0.97]" style="background: var(--semantic-transparent-weak)">{p.data.year}</span>
             </div>
-            <img
-              src={p.data.cover.src}
-              alt={p.data.cover.alt}
-              width={p.data.cover.width}
-              height={p.data.cover.height}
-              loading="lazy"
-              class="aspect-[455/256] w-full rounded-xl object-cover object-top"
-            />
+            <div class="relative aspect-[455/256] overflow-hidden rounded-lg md:col-span-2 md:aspect-auto">
+              <img
+                src={p.data.cover.src}
+                alt={p.data.cover.alt}
+                width={p.data.cover.width}
+                height={p.data.cover.height}
+                loading="lazy"
+                class="size-full object-cover object-top"
+              />
+              {p.data.gallery[0] && (
+                <img
+                  src={p.data.gallery[0].src}
+                  alt=""
+                  loading="lazy"
+                  class="absolute inset-0 size-full object-cover object-top opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                />
+              )}
+            </div>
           </a>
         </li>
       ))}
     </ul>
-  </div>
-</section>
+  </div></section>
