@@ -20,7 +20,7 @@ Astro 7 + Svelte 5, fully static (no server, no adapter), deployed to Cloudflare
 
 - GSAP + ScrollTrigger + Lenis. Lenis runs with `autoRaf: false`, driven by `gsap.ticker`; `lenis.on('scroll', ScrollTrigger.update)`; `gsap.ticker.lagSmoothing(0)`.
 - With `<ClientRouter />`, init on `astro:page-load` and kill triggers/tickers before the swap. Use `gsap.matchMedia()` for breakpoints and `prefers-reduced-motion`.
-- Animate transform and opacity only. Load the `motion` skill first.
+- Animate transform and opacity only. Load the `gsap-*` and `lenis` skills before touching scroll scenes; `motion` for general animation practice.
 
 ## Deploy
 
