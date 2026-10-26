@@ -89,6 +89,7 @@ function initPage() {
 
     for (const scene of scenes) {
       const r = scene.getBoundingClientRect();
+      if (r.height <= innerHeight) continue;
       const p = clamp(-r.top / (r.height - innerHeight));
       scene.style.setProperty("--p", p.toFixed(4));
       // Scenes whose sky changes tone flip the header colour part-way: data-flip="<from>:<to>:<at>".

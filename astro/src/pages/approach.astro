@@ -17,38 +17,88 @@ const lead = (s = "") => s.replace(/\.\.\.$/, "").split(/(?<=\.)\s/)[0] ?? "";
       </div>
     </section>
 
-    <section class="site-container section" data-navbar-theme="dark">
-      <ol>
-        {approach.steps.map((s) => (
-          <li class="border-border grid gap-4 border-t py-12 last:border-b md:grid-cols-[1fr_2fr]">
-            <h2 class="type-display-s">{s.title}</h2>
-            <p class="type-heading-l text-ink-3 max-w-2xl">{s.body}</p>
-          </li>
+    <!-- One screen of scrubbed video; --p (scroll through the scene) fades the four steps in turn. -->
+    <section class="steps relative" style={`height: ${approach.steps.length * 100 + 100}vh`} data-navbar-theme="light" data-scene="approach">
+      <div class="sticky top-0 h-svh overflow-hidden">
+        <video
+          class="scrub-video absolute inset-0 h-full w-full object-cover"
+          src="https://media.otherdev.com/site/video/approach-scrub.mp4"
+          muted
+          playsinline
+          preload="metadata"
+          aria-hidden="true"
+          data-scrub
+        ></video>
+        <div class="absolute inset-0 bg-black/25"></div>
+        {approach.steps.map((s, i) => (
+          <div class="step absolute inset-0 flex items-center" style={`--i: ${i}`}>
+            <div class="site-container w-full text-white">
+              <h2 class="type-display-m">{s.title}</h2>
+              <p class="type-heading-s mt-6 max-w-xl text-white/80">{s.body}</p>
+            </div>
+          </div>
         ))}
-      </ol>
+      </div>
     </section>
 
-    <section class="site-container section pt-0" data-navbar-theme="dark">
-      <h2 class="type-heading-l">{approach.projectsHeading}</h2>
-      <ul class="mt-12 grid gap-2 md:grid-cols-3">
-        {featured.map((p) => (
-          <li>
-            <a href={`/work/${p.id}`} class="block">
-              <img src={p.data.cover.src} alt={p.data.cover.alt} width={p.data.cover.width} height={p.data.cover.height} loading="lazy" class="aspect-[4/3] w-full rounded-lg object-cover object-top" />
-              <h3 class="type-body-regular-l mt-4">{p.data.title}</h3>
-              <p class="type-body-paragraph-m text-ink-3 mt-2">{lead(p.data.excerpt)}</p>
-            </a>
-          </li>
-        ))}
-      </ul>
+    <section class="partners" data-navbar-theme="light">
+      <div class="site-container section">
+        <h2 class="type-display-m text-white">{approach.projectsHeading}</h2>
+        <ul class="mt-16 grid gap-2 md:grid-cols-3">
+          {featured.map((p) => (
+            <li>
+              <a href={`/work/${p.id}`} class="block text-white">
+                <img src={p.data.cover.src} alt={p.data.cover.alt} width={p.data.cover.width} height={p.data.cover.height} loading="lazy" class="aspect-[4/3] w-full rounded-lg object-cover object-top" />
+                <h3 class="type-body-regular-l mt-4">{p.data.title}</h3>
+                <p class="type-body-paragraph-m mt-2 text-white/60">{lead(p.data.excerpt)}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
 
-    <CtaScene heading={approach.closing.heading} body={approach.closing.body} button={approach.closing.button} />
+    <CtaScene heading={approach.closing.heading} body={approach.closing.body} button={approach.closing.button} dark />
   </main>
 </Layout>
 
 <style>
   .approach-hero {
     background: linear-gradient(to bottom, #200a04 0%, #1a2342 45%, #355080 100%);
+  }
+  .steps {
+    --p: 0;
+  }
+  .scrub-video {
+    opacity: 0;
+  }
+  .step {
+    --d: calc(var(--p) * var(--n, 4) - (var(--i) + 0.5));
+    opacity: clamp(0, calc(1.6 - abs(var(--d)) * 3), 1);
+    pointer-events: none;
+  }
+  .steps { --n: 4; }
+  .partners {
+    background: var(--global-autumn-900);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .steps {
+      height: auto !important;
+    }
+    .steps > div {
+      height: auto;
+      overflow: visible;
+      padding-block: 6rem;
+      background: var(--global-autumn-900);
+    }
+    .steps .scrub-video,
+    .steps .bg-black\/25 {
+      display: none;
+    }
+    .step {
+      position: static;
+      opacity: 1;
+      margin-bottom: 4rem;
+    }
   }
 </style>

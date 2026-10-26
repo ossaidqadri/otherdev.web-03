@@ -3,13 +3,15 @@ interface Props {
   heading: string;
   body: string;
   button: { label: string; href: string };
+  /** Plain dark brown instead of the cream-to-brown sky, for pages whose last section is already dark. */
+  dark?: boolean;
 }
 
-const { heading, body, button } = Astro.props;
+const { heading, body, button, dark = false } = Astro.props;
 ---
 
 <!-- Pre-footer scene: the sky runs from cream to the footer's dark brown. -->
-<section class="cta relative h-[160vh]" data-navbar-theme="light" data-scene="cta">
+<section class:list={["cta relative", dark ? "cta-dark min-h-svh" : "h-[160vh]"]} data-navbar-theme="light" data-scene="cta">
   <div class="sticky top-0 flex h-svh items-center">
     <div class="site-container w-full">
       <h2 class="type-display-m max-w-4xl text-white">{heading}</h2>
@@ -22,6 +24,9 @@ const { heading, body, button } = Astro.props;
 <style>
   .cta {
     background: linear-gradient(to bottom, var(--global-summer-100) 0%, #6d87b0 35%, #1a2342 68%, var(--global-autumn-900) 100%);
+  }
+  .cta-dark {
+    background: var(--global-autumn-900);
   }
   .pill {
     padding: 1rem 1.5rem;
