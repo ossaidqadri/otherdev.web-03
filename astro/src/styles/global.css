@@ -96,3 +96,29 @@
 		min-height: 100svh;
 	}
 }
+
+/* Markdown body copy on detail pages. */
+.prose-site {
+	max-width: 44rem;
+}
+.prose-site > * + * {
+	margin-top: 1.25em;
+}
+.prose-site h2 {
+	font-size: 1.5rem;
+	line-height: 1.2;
+	margin-top: 2em;
+}
+.prose-site a {
+	text-decoration: underline;
+}
+.prose-site pre {
+	overflow-x: auto;
+	padding: 1rem;
+	border-radius: var(--radius);
+	background: var(--semantic-bg-card);
+	font-size: 0.875rem;
+}
+.prose-site code {
+	font-family: ui-monospace, monospace;
+}

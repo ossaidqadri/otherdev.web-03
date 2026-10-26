@@ -1,17 +1,22 @@
 ---
 import { getCollection, getEntry } from "astro:content";
 
+interface Props {
+  /** Show every project and drop the "See all" link (the /work page). */
+  all?: boolean;
+}
+
+const { all = false } = Astro.props;
 const { work } = (await getEntry("site", "home"))!.data;
-const projects = (await getCollection("projects"))
-  .sort((a, b) => b.data.year - a.data.year)
-  .slice(0, work.count);
+const sorted = (await getCollection("projects")).sort((a, b) => b.data.year - a.data.year);
+const projects = all ? sorted : sorted.slice(0, work.count);
 ---
 
 <section id="work" class="section" data-navbar-theme="dark" data-section>
   <div class="site-container">
     <div class="flex items-end justify-between gap-6">
       <h2 class="type-heading-l max-w-4xl">{work.heading}</h2>
-      <a href={work.all.href} class="type-heading-l text-ink-3 shrink-0">{work.all.label} →</a>
+      {!all && <a href={work.all.href} class="type-heading-l text-ink-3 shrink-0">{work.all.label} →</a>}
     </div>
     <ul class="mt-[calc(4rem*var(--scale))]">
       {projects.map((p) => (

@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+
+const posts = (await getCollection("blog")).sort((a, b) => +b.data.publishedAt - +a.data.publishedAt);
+const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
+---
+
+<Layout title="Blog | otherdev" description="Notes from the otherdev studio.">
+  <main class="site-container section pt-40" data-navbar-theme="dark">
+    <h1 class="type-display-s">Thoughts from our world, to yours.</h1>
+    <ul class="border-border mt-16 border-t">
+      {posts.map((p) => (
+        <li class="border-border border-b py-8">
+          <a href={`/blog/${p.id}`} class="block">
+            <h2 class="type-heading-m">{p.data.title}</h2>
+            <time class="type-body-regular-s text-ink-3 mt-2 block" datetime={p.data.publishedAt.toISOString()}>{date.format(p.data.publishedAt)}</time>
+            {p.data.excerpt && <p class="type-body-paragraph-l text-ink-3 mt-3 max-w-2xl">{p.data.excerpt}</p>}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </main>
+</Layout>

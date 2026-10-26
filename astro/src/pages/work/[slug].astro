@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  return (await getCollection("projects")).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { title, year, link, downloadUrl, excerpt, cover, gallery } = entry.data;
+const { Content } = await render(entry);
+const href = link && (link.startsWith("http") ? link : `https://${link}`);
+---
+
+<Layout title={`${title} | otherdev`} description={excerpt ?? title}>
+  <main class="site-container section pt-40" data-navbar-theme="dark">
+    <a href="/work" class="type-body-regular-m text-ink-3">← Work</a>
+    <h1 class="type-display-s mt-6 max-w-4xl">{title}</h1>
+    <p class="type-body-regular-m text-ink-3 mt-4">
+      {year}
+      {href && <> · <a href={href} rel="noopener noreferrer" target="_blank" class="underline">{link}</a></>}
+      {downloadUrl && <> · <a href={downloadUrl} class="underline">Download</a></>}
+    </p>
+    <img src={cover.src} alt={cover.alt} width={cover.width} height={cover.height} class="mt-12 w-full rounded-xl" />
+    <div class="prose-site type-article-body mt-12"><Content /></div>
+    <ul class="mt-16 grid gap-2 md:grid-cols-2">
+      {gallery.map((g) => (
+        <li><img src={g.src} alt={g.alt} width={g.width} height={g.height} loading="lazy" class="w-full rounded-lg" /></li>
+      ))}
+    </ul>
+  </main>
+</Layout>
