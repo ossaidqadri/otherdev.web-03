@@ -4,7 +4,7 @@ import { getEntry } from "astro:content";
 const site = (await getEntry("site", "home"))!.data;
 ---
 
-<!-- Progressive blur at the top edge: content softens as it scrolls under the header. -->
+{/* Progressive blur at the top edge: content softens as it scrolls under the header. */}
 <div class="pointer-events-none fixed inset-x-0 top-0 z-40 h-28 backdrop-blur-md [mask-image:linear-gradient(to_bottom,black_30%,transparent_100%)]" aria-hidden="true"></div>
 
 <header class="header fixed inset-x-0 top-0 z-50 flex items-center justify-between px-[var(--container-padding)] py-8">
@@ -18,7 +18,7 @@ const site = (await getEntry("site", "home"))!.data;
   </nav>
 </header>
 
-<!-- Phone menu: a native popover, so open, close, Escape and focus return need no script. -->
+{/* Phone menu: a native popover, so open, close, Escape and focus return need no script. */}
 <div id="menu" popover class="menu type-heading-m">
   <div class="flex items-center justify-between px-[var(--container-padding)] py-8">
     <a href="/" class="wordmark" aria-label={`${site.name} home`}>{site.name}</a>
