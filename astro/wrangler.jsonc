@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "otherdev",
+  // Static assets only, no Worker script: `astro build` writes dist/ and `wrangler deploy`
+  // uploads it. Without this file `wrangler deploy` runs `astro add cloudflare` and adds
+  // an adapter, KV sessions and an Images binding the site does not use.
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    // Unknown paths get 404.html with a real 404 status.
+    "not_found_handling": "404-page"
+  },
+  "observability": { "enabled": true }
+}
