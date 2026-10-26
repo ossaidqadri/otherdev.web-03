@@ -113,7 +113,7 @@ function destroyPage() {
 }
 
 if (!reduced.matches) {
-  lenis = new Lenis({ syncTouch: false, anchors: true });
+  lenis = new Lenis({ autoRaf: true, syncTouch: false, anchors: true });
   document.addEventListener("astro:before-swap", () => {
     lenis?.stop();
     destroyPage();
