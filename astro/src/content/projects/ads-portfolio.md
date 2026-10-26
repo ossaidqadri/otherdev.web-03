@@ -2,7 +2,7 @@
 {
   "title": "Ads Portfolio & Creative Design",
   "year": 2026,
-  "link": "media.otherdev.com/OD-Ads-Digital-Issue.pdf",
+  "link": "media.otherdev.com/site/projects/OD-Ads-Digital-Issue.pdf",
   "downloadUrl": "https://media.otherdev.com/site/projects/OD-Ads-Digital-Issue.pdf",
   "excerpt": "From cold-audience launches for premium leather fashion to multi-year engagement campaigns for streetwear brands, this portfolio documents real Meta ad performance across four active clients. ",
   "cover": {
