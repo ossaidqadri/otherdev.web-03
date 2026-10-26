@@ -47,7 +47,7 @@ const decode = (s: string) => s.replace(/&(#?\w+);/g, (m, e: string) => ENTITIES
 // Payload's rich text arrives as HTML built from paragraphs, h2, br, strong, code and pre.
 // Anything else throws so a new tag is handled on purpose, not dropped.
 function toMarkdown(html = ""): string {
-  const tags = new Set([...html.matchAll(/<([a-z0-9]+)[\s>]/g)].map((m) => m[1]));
+  const tags = new Set([...html.matchAll(/<([a-z0-9]+)[\s>]/g)].flatMap((m) => (m[1] ? [m[1]] : [])));
   const unknown = [...tags].filter((t) => !["div", "p", "h2", "br", "strong", "code", "pre"].includes(t));
   if (unknown.length) throw new Error(`unhandled tags: ${unknown.join(", ")}`);
   const md = html

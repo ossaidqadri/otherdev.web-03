@@ -87,7 +87,7 @@ export function useHighlightedCode(value: () => string, language: () => string) 
 		// The last line is still being written, so it is tokenized every time.
 		const tail = code.slice(end);
 
-		return [...next.lines, highlighter.highlight(tail, next.state).lines[0]];
+		return [...next.lines, highlighter.highlight(tail, next.state).lines[0] ?? []];
 	});
 
 	return {
