@@ -164,7 +164,9 @@ function initPage() {
     // Fonts change line breaks and so the length of every pinned scene.
     void document.fonts.ready.then(() => ScrollTrigger.refresh());
     onScroll();
-    return () => cleanups.forEach((fn) => fn());
+    return () => {
+      for (const fn of cleanups) fn();
+    };
   });
 }
 

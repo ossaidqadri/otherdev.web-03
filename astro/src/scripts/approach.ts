@@ -12,10 +12,11 @@ const clamp = (n: number) => Math.min(1, Math.max(0, n));
 
 export function initApproach(scene: HTMLElement) {
   const H = Number(scene.dataset.videoShare);
-  const video = scene.querySelector<HTMLElement>("[data-layer=video]")!;
+  const video = scene.querySelector<HTMLElement>("[data-layer=video]");
   const steps = [...scene.querySelectorAll<HTMLElement>("[data-step]")];
   const partners = [...scene.querySelectorAll<HTMLElement>("[data-layer=partner]")];
-  const copy = scene.querySelector<HTMLElement>("[data-layer=partner-copy]")!;
+  const copy = scene.querySelector<HTMLElement>("[data-layer=partner-copy]");
+  if (!video || !copy) return;
   const names = [...scene.querySelectorAll<HTMLElement>("[data-name]")];
   const lines = [...scene.querySelectorAll<HTMLElement>("[data-line]")];
   const probe = scene.querySelector<HTMLElement>("[data-indent-probe]");

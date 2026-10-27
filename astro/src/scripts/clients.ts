@@ -21,7 +21,7 @@ function initClients() {
     if (!cell || !outgoing) return;
     last = cell;
     await outgoing.animate({ opacity: [1, 0] }, { duration: 400, easing: "ease-in-out", fill: "forwards" }).finished;
-    outgoing.getAnimations().forEach((a) => a.cancel());
+    for (const a of outgoing.getAnimations()) a.cancel();
     let incoming: HTMLElement | undefined;
     // Draw from hidden cells and the pool in proportion to their size, so every client turns up.
     if (hidden.length && Math.random() < hidden.length / (hidden.length + pool.length)) {

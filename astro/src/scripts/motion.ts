@@ -18,7 +18,7 @@ if (videos.length) {
     },
     { rootMargin: "100% 0px" },
   );
-  videos.forEach((v) => io.observe(v));
+  for (const v of videos) io.observe(v);
 }
 
 if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
