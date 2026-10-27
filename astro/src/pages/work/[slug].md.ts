@@ -6,7 +6,7 @@ export const getStaticPaths = (async () =>
   (await getCollection("projects")).map((entry) => ({ params: { slug: entry.id }, props: { entry } }))) satisfies GetStaticPaths;
 
 export const GET: APIRoute = ({ props }) => {
-  const { title, year, tags, link, excerpt } = props.entry.data;
+  const { title, year, tags, link } = props.entry.data;
   const facts = [`- Year: ${year}`, ...(tags.length ? [`- Services: ${tags.join(", ")}`] : []), ...(link ? [`- Link: ${link.startsWith("http") ? link : `https://${link}`}`] : [])];
-  return markdownResponse(title, [...(excerpt ? [`> ${excerpt}`, ""] : []), ...facts], props.entry.body);
+  return markdownResponse(title, facts, props.entry.body);
 };
