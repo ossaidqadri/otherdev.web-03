@@ -6,10 +6,10 @@
   "link": "binyousufgroup.com",
   "excerpt": "Bin Yousuf Group attracts international investors to their Karachi waterfront properties (EMAAR Oceanfront, HMR Waterfront) with an Astro real estate platform — GSAP animations, Google...",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/real-estate-platform-development-for-bin-yousuf-group/bin-yousuf-homepage-cover.webp",
-    "alt": "bin yousuf homepage cover",
-    "width": 1891,
-    "height": 873
+    "src": "https://media.otherdev.com/site/projects/real-estate-platform-development-for-bin-yousuf-group/binyousuf-cover-3.webp",
+    "alt": "Bin Yousuf Group, the BYG wordmark over a waterfront tower development",
+    "width": 2400,
+    "height": 1350
   },
   "gallery": [
     {

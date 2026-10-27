@@ -6,10 +6,10 @@
   "link": "parcheh81.com",
   "excerpt": "Parcheh81 sells premium Pakistani textiles online with a Shopify theme that translates fabric texture and artistry into an immersive digital shopping experience — mobile-first design...",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/branding-website-development-for-parcheh81/parcheh-collections-all.webp",
-    "alt": "parcheh collections all",
-    "width": 5456,
-    "height": 3124
+    "src": "https://media.otherdev.com/site/projects/branding-website-development-for-parcheh81/parcheh-cover-3.webp",
+    "alt": "Parcheh81, the wordmark over three models in leather jackets",
+    "width": 2400,
+    "height": 1350
   },
   "gallery": [
     {

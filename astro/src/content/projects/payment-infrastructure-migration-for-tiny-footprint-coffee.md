@@ -6,10 +6,10 @@
   "link": "tinyfootprintcoffee.com",
   "excerpt": "Migrated Tiny Footprint Coffee subscription infrastructure from Recharge to Shopify Payments with zero downtime for the world first carbon-negative coffee brand.",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/payment-infrastructure-migration-for-tiny-footprint-coffee/tinyfootprint-home-hero.webp",
-    "alt": "tinyfootprint home hero",
-    "width": 3960,
-    "height": 2198
+    "src": "https://media.otherdev.com/site/projects/payment-infrastructure-migration-for-tiny-footprint-coffee/tinyfootprint-cover-3.webp",
+    "alt": "Tiny Footprint Coffee, the badge over ripe coffee cherries",
+    "width": 2400,
+    "height": 1350
   },
   "gallery": [
     {

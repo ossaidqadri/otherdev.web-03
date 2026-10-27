@@ -6,10 +6,10 @@
   "link": "https://groovypakistan.com/",
   "excerpt": "Built a dynamic fashion e-commerce site for Groovy Pakistan, creating an intuitive shopping pathway that mirrors the brand energy and drives conversions.",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/website-development-for-groovy-pakistan/groovy-home-hero.webp",
-    "alt": "groovy home hero",
-    "width": 3960,
-    "height": 2198
+    "src": "https://media.otherdev.com/site/projects/website-development-for-groovy-pakistan/groovy-cover-3.webp",
+    "alt": "Groovy, the wordmark over models in streetwear",
+    "width": 2400,
+    "height": 1350
   },
   "gallery": [
     {

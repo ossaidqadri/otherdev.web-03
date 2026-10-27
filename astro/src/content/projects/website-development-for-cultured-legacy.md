@@ -6,10 +6,10 @@
   "link": "culturedlegacy.shop",
   "excerpt": "Crafted an elevated e-commerce experience for Cultured Legacy, balancing heritage aesthetics with modern shopping flow to drive discovery and purchases.",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/website-development-for-cultured-legacy/cultured-legacy-home.webp",
-    "alt": "cultured legacy home",
-    "width": 4980,
-    "height": 2608
+    "src": "https://media.otherdev.com/site/projects/website-development-for-cultured-legacy/culturedlegacy-cover-3.webp",
+    "alt": "Cultured Legacy, the wordmark over a spread of printed tees",
+    "width": 2400,
+    "height": 1350
   },
   "gallery": [
     {
