@@ -113,25 +113,9 @@
 	}
 }
 
-/* Page change: the browser's own cross-document view transition, no router and no JS. The new page slides up over
-   the old one, which dims and lifts a little; the fixed header and pill stay put. Transform and opacity only.
-   Browsers without support just load the next page. */
-@keyframes page-over {
-	from {
-		translate: 0 100%;
-	}
-}
-@keyframes page-away {
-	to {
-		translate: 0 100%;
-	}
-}
-@keyframes page-under {
-	to {
-		translate: 0 -6%;
-		opacity: 0.5;
-	}
-}
+/* Page change: the browser's own cross-document view transition, no router and no JS (GSAP can't span a full page
+   load). Its default is a crossfade; we only retime it to the reference's 0.3s ease-out-quart. The header, blur and
+   pill are named so they fade in place instead of with the page. Browsers without support just load the next page. */
 @media (prefers-reduced-motion: no-preference) {
 	@view-transition {
 		navigation: auto;
@@ -145,31 +129,11 @@
 	.pill-nav {
 		view-transition-name: site-pill;
 	}
-	::view-transition-old(root),
-	::view-transition-new(root) {
-		animation-duration: 0.6s;
-		animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-		animation-fill-mode: both;
-		mix-blend-mode: normal;
-	}
-	::view-transition-old(root) {
-		animation-name: page-under;
-	}
-	::view-transition-new(root) {
-		animation-name: page-over;
-		z-index: 1;
-	}
-	/* Back: the page you leave slides down off the top of the one beneath. */
-	html:active-view-transition-type(back) {
-		&::view-transition-old(root) {
-			animation-name: page-away;
-			z-index: 1;
-		}
-		&::view-transition-new(root) {
-			animation-name: page-under;
-			animation-direction: reverse;
-			z-index: 0;
-		}
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation-duration: 0.3s;
+		animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
 	}
 }
 
