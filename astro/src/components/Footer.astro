@@ -24,7 +24,7 @@ const clock = (tz: string) =>
         {f.offices.map((o) => (
           <li>
             <h3 class="type-heading-m">{o.city}</h3>
-            <p class="type-heading-m text-white/50" data-clock={o.timezone}>{clock(o.timezone)}</p>
+            <time class="type-heading-m block text-white/50" data-clock={o.timezone}>{clock(o.timezone)}</time>
             {/* Click copies, as on the reference; a copy icon fades in to the left on hover. */}
             <div class="type-body-button-m mt-8 flex flex-col items-start gap-1">
               {[o.email, o.phone].map((v) => (

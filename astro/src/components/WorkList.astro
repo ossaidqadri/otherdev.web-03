@@ -25,10 +25,11 @@ const hoverImage = (p: (typeof projects)[number]) => p.data.gallery.find((g) => 
         </span>
       </Button>
     </div>
-    {/* Phones, as on the reference: rule 72 under the heading, 48 of padding either side of a row, a rule after the last. */}
+    {/* As on the reference: a rule before every row and one after the last; on phones the first sits 72 under the
+        heading and rows pad 48. */}
     <ul class="mt-18 md:mt-24">
       {projects.map((p) => (
-        <li class="border-border border-t py-12 max-md:last:border-b md:py-16">
+        <li class="border-border border-t py-12 last:border-b md:py-16">
           <a href={`/work/${p.id}`} class="group flex w-full flex-col gap-6 transition-opacity duration-200 md:grid md:h-[490px] md:grid-cols-3 md:gap-4">
             <div class="flex flex-col justify-between gap-6 md:gap-8 md:pr-16">
               <div>
