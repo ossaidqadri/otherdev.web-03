@@ -12,6 +12,7 @@
     { "title": "GitHub", "link": { "label": "Follow", "href": "https://github.com/theotherdev" } }
   ],
   "linkedin": "LinkedIn",
+  "testimonials": [],
   "faq": {
     "heading": "Have questions?",
     "sub": "We’ve got answers.",

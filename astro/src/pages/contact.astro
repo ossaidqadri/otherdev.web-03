@@ -1,24 +1,32 @@
 ---
 import { Image } from "astro:assets";
-import Clients from "@/components/Clients.astro";
+import ClientGrid from "@/components/ClientGrid.astro";
 import CopyButton from "@/components/CopyButton.astro";
 import CtaScene from "@/components/CtaScene.astro";
+import Testimonials from "@/components/Testimonials.astro";
 import Words from "@/components/Words.astro";
-import { Button } from "@/lib/components/ui/button";
 import Layout from "@/layouts/Layout.astro";
 import { getPage, getSite } from "@/lib/site";
 
 const contact = await getPage("contact");
 const { team } = await getPage("about");
+const { clients } = await getPage("home");
 const { footer, ui } = await getSite();
 const STEP = 75;
 const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]";
-// The reference's people and inbox rows: 16px on desktop, 18px below lg, 450 weight.
-const row = "flex min-w-0 flex-col text-base leading-[1.3] font-[450] tracking-[-0.01rem] max-lg:text-lg";
-const card = "rounded-[var(--radius-lg)] bg-[var(--semantic-fill-secondary)] p-6 md:p-8";
+// The reference's two panels: a 6% tint, 16px corners, 32px padding, the title 64px above the first row.
+const card = "flex flex-1 flex-col gap-16 rounded-[var(--card-radius)] bg-[var(--semantic-transparent-weak)] p-[var(--card-padding)]";
+// A person or inbox: name over a 60% line, the way to reach them at the bottom right.
+const row = "flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-4";
+const text = "text-[var(--semantic-text-primary)]";
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: contact.faq.items.map((i) => ({ "@type": "Question", name: i.q, acceptedAnswer: { "@type": "Answer", text: i.a } })),
+};
 ---
 
-<Layout title="Contact | Other Dev" description={contact.body}>
+<Layout title="Contact | Other Dev" description={contact.body} jsonLd={faqLd}>
   <main id="main">
     {/* Headline and sub fade up word by word on load, as on the services hero. */}
     <section class="contact-hero pt-[var(--container-navpadding)]" data-navbar-theme="dark">
@@ -35,92 +43,126 @@ const card = "rounded-[var(--radius-lg)] bg-[var(--semantic-fill-secondary)] p-6
         {footer.offices.map((o) => (
           <>
             <hr class={rule} />
-            <div class="flex w-full flex-col gap-8 py-[var(--section-padding-sm)]">
-              <div class="flex flex-col">
-                <h2 class="type-heading-l">{o.city}</h2>
-                <time class="type-heading-l block min-h-[1lh] opacity-40" data-clock={o.timezone}></time>
+            {/* One office: a time-of-day disc, the city and its clock, copy buttons and the address on the left, a 4:3 photo on the right. */}
+            <div class="grid gap-4 md:grid-cols-2">
+              <div class="flex flex-col gap-16 py-7">
+                <div aria-hidden="true" class="relative size-16 overflow-hidden rounded-full" style="background: linear-gradient(180deg, var(--global-summer-400) 0%, var(--global-summer-600) 22%, var(--global-summer-800) 71%, var(--global-autumn-900) 95%)">
+                  <div data-sun class="absolute inset-0" style="background: linear-gradient(180deg, var(--global-summer-500) 0%, var(--global-summer-600) 15%, var(--global-summer-700) 35%, var(--global-autumn-900) 75%); opacity: 0.4"></div>
+                </div>
+                <div class="flex flex-col gap-8">
+                  <div class="flex flex-col">
+                    <h2 class={`type-heading-l ${text}`}>{o.city}</h2>
+                    <time class={`type-heading-l block min-h-[1lh] opacity-40 ${text}`} data-clock={o.timezone}></time>
+                  </div>
+                  {/* Click copies, with a toast (Footer.astro); the reference's 24px lines. */}
+                  <div class={`type-heading-m flex flex-col items-start gap-1 ${text}`}>
+                    <CopyButton value={o.email} />
+                    <CopyButton value={o.phone} />
+                  </div>
+                </div>
+                {o.address.length > 0 && (
+                  <a href={o.mapUrl} target="_blank" rel="noopener noreferrer" class={`type-heading-s mt-auto w-fit ${text}`}>
+                    {o.address.map((line) => <span class="block">{line}</span>)}
+                    <span class="sr-only">{ui.opensInNewTab}</span>
+                  </a>
+                )}
               </div>
-              {/* Click copies, with a toast (Footer.astro); the reference's 24px lines. */}
-              <div class="type-heading-m flex flex-col items-start gap-1">
-                <CopyButton value={o.email} />
-                <CopyButton value={o.phone} />
-              </div>
+              {o.photo && (
+                <div class="relative aspect-[4/3] overflow-hidden rounded-[var(--card-radius)]">
+                  <Image src={o.photo.src} alt={o.photo.alt} width={800} height={600} widths={[480, 640, 800, 1280]} sizes="(min-width: 768px) 50vw, 100vw" fit="cover" loading="lazy" class="absolute inset-0 size-full object-cover" />
+                </div>
+              )}
             </div>
           </>
         ))}
         <hr class={rule} />
 
-        {/* The reference's two panels: a light card each for the people and the general inboxes. */}
-        <div class="grid gap-4 py-[var(--section-padding-sm)] md:grid-cols-2">
-          <div class={`${card} flex flex-col gap-8`}>
-            <h2 class="type-heading-m">{contact.foundersHeading}</h2>
-            <ul class="flex flex-col gap-6">
+        <div class="flex flex-col gap-4 md:flex-row">
+          <div class={card}>
+            <p class={`type-heading-m ${text}`}>{contact.foundersHeading}</p>
+            <div class="flex flex-col gap-6">
               {team.map((m, i) => (
-                <li class="flex flex-col gap-6">
+                <div class="flex flex-col gap-6">
                   {i > 0 && <hr class={rule} />}
-                  <div class="flex flex-wrap items-center gap-4">
-                    <div class="relative hidden size-[2.625rem] shrink-0 overflow-hidden rounded-full sm:block">
-                      <Image src={m.photo.src} alt="" width={96} height={96} fit="cover" position="top" loading="lazy" class="size-full object-cover" />
+                  <div class={row}>
+                    <div class="flex items-center gap-4">
+                      <div class="relative hidden size-[2.625rem] shrink-0 overflow-hidden rounded-full sm:block">
+                        <Image src={m.photo.src} alt={m.name} width={96} height={96} fit="cover" position="top" loading="lazy" class="size-full object-cover" />
+                      </div>
+                      <div class="flex flex-col text-base leading-[1.3] font-[450] tracking-[-0.01rem]">
+                        <p class={text}>{m.name}</p>
+                        <p class={`opacity-60 ${text}`}>{m.role}</p>
+                      </div>
                     </div>
-                    <div class={`${row} flex-1`}>
-                      <p>{m.name}</p>
-                      <p class="opacity-60">{m.role}</p>
-                    </div>
-                    {m.linkedin && (
-                      <Button href={m.linkedin} rel="noopener noreferrer" target="_blank" variant="nav" size="nav" class="type-body-button-s">
-                        {contact.linkedin}<span class="sr-only">{ui.opensInNewTab}</span>
-                      </Button>
-                    )}
+                    {m.email && <CopyButton value={m.email} class={`type-body-button-m ${text}`} />}
                   </div>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
 
-          <div class={`${card} flex flex-col gap-8`}>
-            <h2 class="type-heading-m">{contact.generalHeading}</h2>
-            <ul class="flex flex-col gap-6">
+          <div class={card}>
+            <p class={`type-heading-m ${text}`}>{contact.generalHeading}</p>
+            <div class="flex flex-col gap-6">
               {contact.general.map((g, i) => (
-                <li class="flex flex-col gap-6">
+                <div class="flex flex-col gap-6">
                   {i > 0 && <hr class={rule} />}
-                  <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
-                    <div class={row}>
-                      <p>{g.title}</p>
-                      {g.note && <p class="opacity-60">{g.note}</p>}
+                  <div class={row}>
+                    <div class="flex flex-col text-base leading-[1.3] font-[450] tracking-[-0.01rem]">
+                      <p class={text}>{g.title}</p>
+                      {g.note && <p class={`opacity-60 ${text}`}>{g.note}</p>}
                     </div>
-                    {g.copy && <CopyButton value={g.copy} class="type-body-button-s" />}
+                    {g.copy && <CopyButton value={g.copy} class={`type-body-button-m ${text}`} />}
                     {g.link && (
-                      <Button href={g.link.href} rel="noopener noreferrer" target="_blank" variant="nav" size="nav" class="type-body-button-s">
+                      <a href={g.link.href} target="_blank" rel="noopener noreferrer" class={`type-body-button-m ${text}`}>
                         {g.link.label}<span class="sr-only">{ui.opensInNewTab}</span>
-                      </Button>
+                      </a>
                     )}
                   </div>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <Clients />
-
-    {/* Native <details>: no script, and each answer opens in place. */}
     <section data-navbar-theme="dark">
-      <div class="site-container flex flex-col gap-[var(--section-padding-sm)] py-[var(--section-padding-md)]">
-        <div class="flex flex-col">
-          <h2 class="type-heading-l">{contact.faq.heading}</h2>
-          <p class="type-heading-l opacity-40">{contact.faq.sub}</p>
+      <div class="site-container flex flex-col gap-[var(--section-padding-md)] py-[var(--section-padding-lg)]">
+        <h2 class="type-heading-l max-w-[64rem]">{clients.heading}</h2>
+        <div class="flex flex-col gap-2">
+          <ClientGrid cells={6} />
+          <Testimonials items={contact.testimonials} />
         </div>
-        <div class="flex flex-col">
+      </div>
+    </section>
+
+    {/* Each answer opens in place: the row's dot grows in and the panel's height eases open, as on the reference. */}
+    <section data-navbar-theme="dark">
+      <div class="site-container flex flex-col gap-[var(--section-padding-sm)] py-[var(--section-padding-lg)]">
+        <div class="flex w-full flex-col items-start gap-2 md:flex-row md:items-end md:gap-8">
+          <div class="flex-1">
+            <h2 class={`type-heading-l max-w-[64rem] ${text}`}>{contact.faq.heading}</h2>
+            <p class={`type-heading-l max-w-[64rem] opacity-40 ${text}`}>{contact.faq.sub}</p>
+          </div>
+        </div>
+        <div class="flex w-full flex-col" data-faq>
+          <hr class={rule} />
           {contact.faq.items.map((item) => (
-            <details class="group border-t border-[var(--semantic-transparent-core)] last:border-b">
-              <summary class="type-heading-s flex cursor-pointer list-none items-center justify-between gap-6 py-6 [&::-webkit-details-marker]:hidden">
-                {item.q}
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5 shrink-0 transition-transform duration-200 group-open:rotate-45" aria-hidden="true"><path d="M5 12h14" /><path d="M12 5v14" /></svg>
-              </summary>
-              <p class="type-body-regular-m max-w-[44rem] pb-6 opacity-60">{item.a}</p>
-            </details>
+            <div class="w-full">
+              <button type="button" aria-expanded="false" class="group flex w-full cursor-pointer items-center py-8 text-left">
+                <span aria-hidden="true" class="w-0 shrink-0 transition-all duration-200 group-hover:w-6 group-aria-expanded:w-6">
+                  <span class={`block size-4 origin-center scale-0 rounded-full bg-[var(--semantic-text-primary)] opacity-0 transition duration-200 ease-out group-hover:scale-100 group-hover:opacity-100 group-aria-expanded:scale-100 group-aria-expanded:opacity-100`}></span>
+                </span>
+                <span class={`type-heading-s ${text}`}>{item.q}</span>
+              </button>
+              <div class="-mt-6 grid grid-rows-[0fr] pb-6 transition-[grid-template-rows] duration-300 ease-out">
+                <div class="overflow-hidden">
+                  <p class={`type-heading-s pb-2 opacity-40 ${text}`}>{item.a}</p>
+                </div>
+              </div>
+              <hr class={rule} />
+            </div>
           ))}
         </div>
       </div>
@@ -136,3 +178,19 @@ const card = "rounded-[var(--radius-lg)] bg-[var(--semantic-fill-secondary)] p-6
     background: linear-gradient(var(--global-summer-400) 0%, var(--global-summer-300) 50%, var(--global-summer-100) 80%, var(--global-summer-50) 95%, #fff 100%);
   }
 </style>
+
+<script>
+  // The disc beside each office is a gradient whose dusk layer takes a random strength on each load, as on the reference.
+  for (const el of document.querySelectorAll<HTMLElement>("[data-sun]")) el.style.opacity = String(Math.random());
+
+  // FAQ: one button per answer; opening flips aria-expanded and the grid row from 0fr to 1fr.
+  for (const btn of document.querySelectorAll<HTMLButtonElement>("[data-faq] button[aria-expanded]")) {
+    const panel = btn.nextElementSibling as HTMLElement;
+    btn.addEventListener("click", () => {
+      const open = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!open));
+      panel.classList.toggle("grid-rows-[0fr]", open);
+      panel.classList.toggle("grid-rows-[1fr]", !open);
+    });
+  }
+</script>

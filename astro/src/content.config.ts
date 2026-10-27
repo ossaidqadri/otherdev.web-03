@@ -69,7 +69,8 @@ const site = defineCollection({
     closing: z.object({ heading: z.string(), body: z.string(), button: link }),
     footer: z.object({
       cta: link,
-      offices: z.array(z.object({ city: z.string(), timezone: z.string(), email: z.string(), phone: z.string() })),
+      // `address` lines and `photo` show on /contact beside the office; the footer uses only city, clock, email and phone.
+      offices: z.array(z.object({ city: z.string(), timezone: z.string(), email: z.string(), phone: z.string(), address: z.array(z.string()).default([]), mapUrl: z.url().optional(), photo: image.optional() })),
       legalLinks: z.array(link),
       social: z.array(link),
       legal: z.string(),
@@ -109,7 +110,7 @@ const pageSchemas = z.discriminatedUnion("page", [
     principlesHeading: z.string(),
     principles: z.array(z.object({ title: z.string(), body: z.string() })),
     teamHeading: z.string(),
-    team: z.array(z.object({ name: z.string(), role: z.string(), photo: image, linkedin: z.url().optional(), bio: z.string().optional() })),
+    team: z.array(z.object({ name: z.string(), role: z.string(), photo: image, linkedin: z.url().optional(), email: z.string().optional(), bio: z.string().optional() })),
   }),
   z.object({
     page: z.literal("approach"),
@@ -143,6 +144,8 @@ const pageSchemas = z.discriminatedUnion("page", [
     general: z.array(z.object({ title: z.string(), note: z.string().optional(), link: link.optional(), copy: z.string().optional() })),
     // Label of each founder's profile link.
     linkedin: z.string(),
+    // Client quotes under the logos; the block is left out while the list is empty. `href` is the project it came from.
+    testimonials: z.array(z.object({ quote: z.string(), name: z.string(), role: z.string(), href: z.string().optional() })).default([]),
     faq: z.object({ heading: z.string(), sub: z.string(), items: z.array(z.object({ q: z.string(), a: z.string() })) }),
     closing: z.object({ heading: z.string(), body: z.string(), button: link }),
   }),

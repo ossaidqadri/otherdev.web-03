@@ -1,0 +1,53 @@
+---
+// Client quotes in one panel, as on the reference's contact page: the quote at 55% width, the name and role
+// under it, the next quote crossfading in. Nothing renders until the list has an entry.
+interface Props {
+  items: { quote: string; name: string; role: string; href?: string }[];
+}
+const { items } = Astro.props;
+---
+
+{items.length > 0 && (
+  <div class="grid" data-testimonials>
+    {items.map((t, i) => {
+      const Tag = t.href ? "a" : "div";
+      return (
+        <figure class:list={["group flex flex-col overflow-hidden rounded-[var(--radius-lg)] bg-[var(--semantic-transparent-weak)] p-6 text-[var(--semantic-text-primary)] transition-opacity duration-500 [grid-area:1/1] md:min-h-[26rem] md:p-12", i > 0 && "pointer-events-none opacity-0"]} data-testimonial aria-hidden={i > 0 ? "true" : undefined}>
+          <Tag href={t.href} class="flex flex-1 flex-col justify-between gap-12 md:gap-6">
+            <blockquote class="type-subheading-m md:w-[55%]">{t.quote}</blockquote>
+            <figcaption class="type-body-paragraph-m flex flex-col md:w-[55%]">
+              <span>{t.name}</span>
+              <span class="flex items-center gap-1 opacity-60">
+                {t.role}
+                {t.href && <span aria-hidden="true" class="transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>}
+              </span>
+            </figcaption>
+          </Tag>
+        </figure>
+      );
+    })}
+  </div>
+)}
+
+<script>
+  // Crossfades every 6s; held while the pointer is over it, and not at all with reduced motion.
+  const root = document.querySelector<HTMLElement>("[data-testimonials]");
+  const items = root ? [...root.querySelectorAll<HTMLElement>("[data-testimonial]")] : [];
+  if (root && items.length > 1 && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    let current = 0;
+    let held = false;
+    const show = (n: number) =>
+      items.forEach((el, k) => {
+        const on = k === n;
+        el.classList.toggle("opacity-0", !on);
+        el.classList.toggle("pointer-events-none", !on);
+        if (on) el.removeAttribute("aria-hidden");
+        else el.setAttribute("aria-hidden", "true");
+      });
+    root.addEventListener("pointerenter", () => (held = true));
+    root.addEventListener("pointerleave", () => (held = false));
+    setInterval(() => {
+      if (!held && !document.hidden) show((current = (current + 1) % items.length));
+    }, 6000);
+  }
+</script>

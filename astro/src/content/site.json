@@ -28,7 +28,12 @@
     },
     "footer": {
       "cta": { "label": "Work with us", "href": "/contact" },
-      "offices": [{ "city": "Karachi", "timezone": "Asia/Karachi", "email": "hello@otherdev.com", "phone": "+92 315 689 3331" }],
+      "offices": [{
+        "city": "Karachi", "timezone": "Asia/Karachi", "email": "hello@otherdev.com", "phone": "+92 315 689 3331",
+        "address": ["Karachi, Pakistan"],
+        "mapUrl": "https://www.google.com/maps/search/?api=1&query=Karachi%2C+Pakistan",
+        "photo": { "src": "https://media.otherdev.com/site/misc/karachi-office-2.webp", "alt": "The Quaid-e-Azam Mausoleum in Karachi against a clear evening sky, photographed by Kashif Afridi on Unsplash", "width": 1600, "height": 1200 }
+      }],
       "legalLinks": [{ "label": "Privacy", "href": "/legals/privacy" }],
       "social": [
         { "label": "LinkedIn", "href": "https://linkedin.com/company/theotherdev/" },
