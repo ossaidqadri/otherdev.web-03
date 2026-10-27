@@ -2,9 +2,10 @@
 import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 import { Card } from "@/lib/components/ui/card";
-import { getPage } from "@/lib/site";
+import { getPage, getSite } from "@/lib/site";
 
 const { process } = await getPage("home");
+const { ui } = await getSite();
 // Card art lives in src/assets/process; the site collection names each file.
 const art = import.meta.glob<ImageMetadata>("@/assets/process/*", { eager: true, import: "default" });
 const imageFor = (file: string) => art[`/src/assets/process/${file}`];
@@ -41,6 +42,8 @@ const imageFor = (file: string) => art[`/src/assets/process/${file}`];
     </ul>
     </div>
   </div>
+  {/* Follows the pointer over the carousel (scripts/drag.ts moves it to <body> so no transformed ancestor traps it). */}
+  <span data-drag-cursor aria-hidden="true" class="type-body-button-s pointer-events-none fixed top-0 left-0 z-50 rounded-[16px] bg-[#44546B]/14 px-3 py-2 whitespace-nowrap text-white opacity-0 backdrop-blur-[16px] transition-opacity duration-150 select-none">{ui.drag}</span>
 </section>
 
 <script>
