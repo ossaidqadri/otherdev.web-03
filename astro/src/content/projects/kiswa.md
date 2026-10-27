@@ -13,40 +13,40 @@
   },
   "gallery": [
     {
-      "src": "https://media.otherdev.com/site/projects/kiswa/kiswa-noire-collections-mobile.webp",
-      "alt": "kiswa noire collections mobile",
-      "width": 1170,
-      "height": 2532
+      "src": "https://media.otherdev.com/site/projects/kiswa/shots/01-m-collections.webp",
+      "alt": "Kiswa Noir collections page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/kiswa/kiswa-noire-collections.webp",
-      "alt": "kiswa noire collections",
+      "src": "https://media.otherdev.com/site/projects/kiswa/shots/02-m-product.webp",
+      "alt": "Kiswa Noir product page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/kiswa/shots/03-d-product.webp",
+      "alt": "Kiswa Noir product page on desktop",
       "width": 2880,
-      "height": 2018
+      "height": 1620
     },
     {
-      "src": "https://media.otherdev.com/site/projects/kiswa/kiswa-noire-home-hero.webp",
-      "alt": "kiswa noire home hero",
+      "src": "https://media.otherdev.com/site/projects/kiswa/shots/04-m-recommended.webp",
+      "alt": "Kiswa Noir recommended page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/kiswa/shots/05-m-grid.webp",
+      "alt": "Kiswa Noir grid page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/kiswa/shots/06-d-collections.webp",
+      "alt": "Kiswa Noir collections page on desktop",
       "width": 2880,
-      "height": 2018
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/kiswa/kiswa-noire-product-mobile-2.webp",
-      "alt": "kiswa noire product mobile",
-      "width": 1290,
-      "height": 2796
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/kiswa/kiswa-noire-product-mobile.webp",
-      "alt": "kiswa noire product mobile",
-      "width": 1290,
-      "height": 2796
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/kiswa/kiswa-noire-product.webp",
-      "alt": "kiswa noire product",
-      "width": 2880,
-      "height": 2018
+      "height": 1620
     }
   ]
 }
