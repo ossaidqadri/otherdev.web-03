@@ -13,52 +13,40 @@
   },
   "gallery": [
     {
-      "src": "https://media.otherdev.com/site/projects/narkins/narkins-collage.webp",
-      "alt": "narkins collage",
+      "src": "https://media.otherdev.com/site/projects/narkins/shots/01-m-home.webp",
+      "alt": "Narkin's Builders home page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/narkins/shots/02-m-blog.webp",
+      "alt": "Narkin's Builders blog page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/narkins/shots/03-d-home.webp",
+      "alt": "Narkin's Builders home page on desktop",
       "width": 2880,
-      "height": 5383
+      "height": 1620
     },
     {
-      "src": "https://media.otherdev.com/site/projects/narkins/narkins-hcr.webp",
-      "alt": "narkins hcr",
-      "width": 3840,
-      "height": 2160
+      "src": "https://media.otherdev.com/site/projects/narkins/shots/04-m-about.webp",
+      "alt": "Narkin's Builders about page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/narkins/narkins-home-hero.webp",
-      "alt": "narkins home hero",
-      "width": 2728,
-      "height": 1562
+      "src": "https://media.otherdev.com/site/projects/narkins/shots/05-m-narkins-boutique-residency.webp",
+      "alt": "Narkin's Builders narkins boutique residency page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/narkins/narkins-project-1.webp",
-      "alt": "narkins project",
-      "width": 1440,
-      "height": 2691
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/narkins/narkins-project-2.webp",
-      "alt": "narkins project",
-      "width": 1440,
-      "height": 2691
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/narkins/narkins-project-3.webp",
-      "alt": "narkins project",
-      "width": 1440,
-      "height": 2691
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/narkins/narkins-project-4.webp",
-      "alt": "narkins project",
-      "width": 1440,
-      "height": 2691
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/narkins/narkins-project-5.webp",
-      "alt": "narkins project",
-      "width": 1440,
-      "height": 2691
+      "src": "https://media.otherdev.com/site/projects/narkins/shots/06-d-blog.webp",
+      "alt": "Narkin's Builders blog page on desktop",
+      "width": 2880,
+      "height": 1620
     }
   ]
 }
