@@ -31,7 +31,9 @@
 				// The pressed wash is a separate sliding element (scripts/work-filter.ts), so only the label dims.
 				toggle: "relative isolate opacity-20 hover:opacity-60 focus-visible:opacity-60 aria-pressed:opacity-100 transition-opacity duration-300",
 				// A bare text trigger (FAQ rows, "read more", copy lines): the caller sets layout and opacity.
-				plain: "",
+				// Undoes what `base` adds to a styled button, so it behaves like a native <button>:
+				// the browser's own focus outline, selectable text, no transition, no flex shrink lock.
+				plain: "focus-visible:ring-0 focus-visible:[outline-style:auto] select-text transition-none shrink",
 			},
 			size: {
 				default: "h-9 gap-1.5 px-3 has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5",
