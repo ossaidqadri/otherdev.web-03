@@ -13,52 +13,40 @@
   },
   "gallery": [
     {
-      "src": "https://media.otherdev.com/site/projects/car-wala/car-wala-detail-1.webp",
-      "alt": "car wala detail",
-      "width": 2880,
-      "height": 2018
+      "src": "https://media.otherdev.com/site/projects/car-wala/shots/01-m-home.webp",
+      "alt": "Carwala home page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/car-wala/car-wala-detail-2.webp",
-      "alt": "car wala detail",
-      "width": 2880,
-      "height": 2018
+      "src": "https://media.otherdev.com/site/projects/car-wala/shots/02-m-pricing.webp",
+      "alt": "Carwala pricing page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/car-wala/car-wala-detail-3.webp",
-      "alt": "car wala detail",
+      "src": "https://media.otherdev.com/site/projects/car-wala/shots/03-d-home.webp",
+      "alt": "Carwala home page on desktop",
       "width": 2880,
-      "height": 2018
+      "height": 1620
     },
     {
-      "src": "https://media.otherdev.com/site/projects/car-wala/car-wala-detail-4.webp",
-      "alt": "car wala detail",
-      "width": 2880,
-      "height": 2018
+      "src": "https://media.otherdev.com/site/projects/car-wala/shots/04-m-gallery.webp",
+      "alt": "Carwala gallery page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/car-wala/car-wala-detail-5.webp",
-      "alt": "car wala detail",
-      "width": 2880,
-      "height": 2018
+      "src": "https://media.otherdev.com/site/projects/car-wala/shots/05-m-calendar.webp",
+      "alt": "Carwala calendar page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/car-wala/car-wala-detail-6.webp",
-      "alt": "car wala detail",
+      "src": "https://media.otherdev.com/site/projects/car-wala/shots/06-d-pricing.webp",
+      "alt": "Carwala pricing page on desktop",
       "width": 2880,
-      "height": 2018
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/car-wala/car-wala-exterior.webp",
-      "alt": "car wala exterior",
-      "width": 2880,
-      "height": 2018
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/car-wala/car-wala-interior.webp",
-      "alt": "car wala interior",
-      "width": 2880,
-      "height": 2018
+      "height": 1620
     }
   ]
 }
