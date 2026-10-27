@@ -6,10 +6,10 @@
   "link": "narkinsbuilders.com/blog",
   "excerpt": "Narkins Builders grew organic traffic 30% after SEO migration to MDX with schema markup — outranking Pakistan top real estate developers.",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/seo-implementation-technical-optimization-for-narkins-builders/narkins-seo-blog-hero.webp",
-    "alt": "narkins seo blog hero",
-    "width": 3320,
-    "height": 1738
+    "src": "https://media.otherdev.com/site/projects/seo-implementation-technical-optimization-for-narkins-builders/seo-cover-3.webp",
+    "alt": "Narkin's Builders SEO, the logo over the residency building render",
+    "width": 2400,
+    "height": 1350
   },
   "gallery": [
     {
