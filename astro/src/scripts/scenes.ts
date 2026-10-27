@@ -32,9 +32,17 @@ function scrubVideo(ctx: gsap.Context, video: HTMLVideoElement, scene: HTMLEleme
         { yPercent: 0, ease: "none", scrollTrigger: { trigger: scene, start: "top bottom", end: "top top", scrub: true, invalidateOnRefresh: true } },
       );
     }
-    gsap.to(video, {
-      currentTime: video.duration,
+    // GSAP eases a proxy time; the video seeks to it only between seeks. Writing currentTime every tick
+    // cancels the seek in flight, so frames only paint now and then and the flower steps instead of moving.
+    const time = { t: video.currentTime };
+    const seek = () => {
+      if (!video.seeking && Math.abs(video.currentTime - time.t) > 0.001) video.currentTime = time.t;
+    };
+    video.addEventListener("seeked", seek, { signal });
+    gsap.to(time, {
+      t: video.duration,
       ease: "none",
+      onUpdate: seek,
       scrollTrigger: {
         trigger: scene,
         start: "top top",
