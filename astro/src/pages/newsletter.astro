@@ -10,7 +10,7 @@ const n = await getPage("newsletter");
 const { ui } = await getSite();
 ---
 
-<Layout title="Newsletter | otherdev" description={n.body}>
+<Layout title="Newsletter | Other Dev" description={n.body}>
   <main id="main" class="site-container section pt-48" data-navbar-theme="dark">
     <h1 class="type-hero max-w-4xl">{n.heading}</h1>
     <p class="type-heading-l text-ink-3 mt-6 max-w-2xl">{n.body}</p>

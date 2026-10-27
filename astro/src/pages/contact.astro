@@ -6,7 +6,7 @@ import Layout from "@/layouts/Layout.astro";
 const contact = await getPage("contact");
 ---
 
-<Layout title="Contact | otherdev" description={contact.body}>
+<Layout title="Contact | Other Dev" description={contact.body}>
   <main id="main" class="site-container section pt-40" data-navbar-theme="dark">
     <h1 class="type-display-s max-w-5xl">{contact.heading}</h1>
     <p class="type-heading-l text-ink-3 mt-8 max-w-3xl">{contact.body}</p>
