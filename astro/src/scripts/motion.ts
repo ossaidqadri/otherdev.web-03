@@ -15,9 +15,14 @@ let teardown: (() => void)[] = [];
 function scrubVideo(video: HTMLVideoElement, scene: HTMLElement, signal: AbortSignal) {
   // Scroll writes a target; one loop eases currentTime toward it. Seeks never queue up
   // (skipped while one is in flight) and the poster stays until a real frame has painted.
+  // Measured on the reference: after a scroll jump its video closes 64% of the gap in 124ms and 87% in
+  // 246ms, then lands exactly on the target: an exponential with a ~123ms time constant. Seeking adds
+  // about 10ms here, so the model uses 110ms to land on the same curve.
+  const TAU = 0.11;
   let target = 0;
   let current = 0;
   let ready = false;
+  let last = performance.now();
   const update = () => {
     const r = scene.getBoundingClientRect();
     // As on the reference: a video marked data-scrub-rise (footer) rises from 45% below while the
@@ -30,10 +35,15 @@ function scrubVideo(video: HTMLVideoElement, scene: HTMLElement, signal: AbortSi
     const end = Number(video.dataset.scrubEnd ?? 1);
     target = clamp(-r.top / ((r.height - innerHeight) * end)) * (video.duration || 0);
   };
-  const frame = () => {
-    if (ready && !video.seeking) {
-      current += (target - current) * 0.18;
-      if (Math.abs(target - video.currentTime) > 0.02) video.currentTime = current;
+  const frame = (now: number) => {
+    // Time-based, so the catch-up feels the same at 60 and 120 Hz; a long gap (hidden tab) counts as 100ms.
+    const dt = Math.min((now - last) / 1000, 0.1);
+    last = now;
+    if (ready) {
+      // The easing always advances with time; only the seek itself waits for the previous one.
+      current += (target - current) * (1 - Math.exp(-dt / TAU));
+      if (Math.abs(target - current) < 0.001) current = target;
+      if (!video.seeking && Math.abs(current - video.currentTime) > 0.001) video.currentTime = current;
     }
     if (!signal.aborted) requestAnimationFrame(frame);
   };
@@ -137,7 +147,9 @@ function destroyPage() {
 }
 
 if (!reduced.matches) {
-  lenis = new Lenis({ autoRaf: true, syncTouch: false, anchors: true });
+  // lerp 0.2 is the reference's own setting (read from its bundle); Lenis' default 0.1 trails a wheel
+  // flick by about twice as long.
+  lenis = new Lenis({ autoRaf: true, lerp: 0.2, syncTouch: false, anchors: true });
   document.addEventListener("astro:before-swap", () => {
     lenis?.stop();
     destroyPage();
