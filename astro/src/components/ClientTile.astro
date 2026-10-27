@@ -5,7 +5,7 @@ import { Card } from "@/lib/components/ui/card";
 const { client: c } = Astro.props as { client: CollectionEntry<"clients"> };
 ---
 
-<Card variant="tile" class:list={["group h-32 items-center justify-center bg-[var(--semantic-transparent-weak)] p-6 transition-colors duration-200 hover:bg-[var(--semantic-neutral-core)] active:bg-[var(--semantic-neutral-strong)]", c.data.url && "cursor-pointer"]}>
+<Card variant="tile" class:list={["group items-center justify-center bg-[var(--semantic-transparent-weak)] p-[calc(1.5rem*var(--scale,1))] transition-colors duration-200 hover:bg-[var(--semantic-neutral-core)] active:bg-[var(--semantic-neutral-strong)]", c.data.url && "cursor-pointer"]}>
   <div class="flex h-20 w-full items-center justify-center">
     <img src={c.data.logo} alt={c.data.name} loading="lazy" class="size-full object-contain transition-[filter] duration-200 group-hover:invert group-active:invert" />
   </div>
