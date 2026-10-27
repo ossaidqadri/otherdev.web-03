@@ -1,38 +1,81 @@
 ---
+import Words from "@/components/Words.astro";
 import { Button } from "@/lib/components/ui/button";
 
+// Pinned closing scene, as on the reference (home "constellations" and every page's closing):
+// 200vh, the copy fades up word by word on entry (75ms a word through heading and body), and past
+// halfway (data-on, set by motion.ts) the text and pill turn white over 0.5s as the sky darkens.
 interface Props {
   heading: string;
   body: string;
   button: { label: string; href: string };
-  /** Plain dark brown instead of the cream-to-brown sky, for pages whose last section is already dark. */
-  dark?: boolean;
+  /** CSS background for the sky; defaults to the closing sky (white, cream, blue, navy, brown). */
+  sky?: string;
+  id?: string;
 }
 
-const { heading, body, button, dark = false } = Astro.props;
+const {
+  heading,
+  body,
+  button,
+  sky = "linear-gradient(180deg, var(--semantic-bg-page) 0%, rgb(237 232 227) 17.9459%, rgb(135 161 196) 45.2668%, rgb(24 38 68) 88.0191%, rgb(30 19 16) 100%)",
+  id,
+} = Astro.props;
+const STEP = 75;
+const headingWords = heading.split(/\s+/).length;
 ---
 
-{/* Pre-footer scene: the sky runs from cream to the footer's dark brown. */}
-<section class:list={["cta relative", dark ? "cta-dark min-h-svh" : "h-[160vh]"]} data-navbar-theme="light" data-scene="cta">
-  <div class="sticky top-0 flex h-svh items-center">
+<section id={id} class="cta-scene relative h-[200vh]" style={`background: ${sky}`} data-navbar-theme="dark" data-scene="cta" data-flip="dark:light:0.5" data-on-at="0.5">
+  <div class="sticky top-0 flex h-svh flex-col justify-between py-[var(--section-padding-lg)]">
+    {/* Word gaps are 0.45em of the 16px block, not of the words, which is what the reference measures to. */}
     <div class="site-container w-full">
-      <h2 class="type-display-m max-w-4xl text-white">{heading}</h2>
-      <p class="type-heading-l mt-6 max-w-3xl text-white/60">{body}</p>
-      <Button href={button.href} variant="glass" size="pill" class="type-body-button-m mt-12">{button.label}</Button>
+      <div class="flex max-w-[64rem] flex-col gap-y-[10px]">
+        <Words as="h2" text={heading} step={STEP} class="heading gap-x-[0.45em] gap-y-[0.1em]" word="type-mega-button" />
+        <Words text={body} step={STEP} start={headingWords} class="body gap-x-[0.45em] gap-y-[0.1em]" word="type-mega-button" />
+      </div>
+    </div>
+    <div class="site-container w-full">
+      <Button href={button.href} variant="glass" size="pill" class="type-body-button-m">{button.label}</Button>
     </div>
   </div>
 </section>
 
 <style>
-  .cta {
-    background: linear-gradient(to bottom, var(--global-summer-100) 0%, #6d87b0 35%, #1a2342 68%, var(--global-autumn-900) 100%);
+  /* Pale-sky pill until data-on, then the white pill; hover follows each look. */
+  .cta-scene {
+    --pill-bg: var(--semantic-transparent-weak);
+    --pill-fg: var(--global-neutral-900);
+    --pill-bg-hover: var(--semantic-neutral-core);
+    --pill-fg-hover: #fff;
+    --pill-fade: 0.5s;
   }
-  .cta-dark {
-    background: var(--global-autumn-900);
+  .heading,
+  .body {
+    color: var(--global-neutral-900);
+    transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .body {
+    opacity: 0.4;
+  }
+  .cta-scene[data-on] {
+    --pill-bg: rgb(255 255 255 / 0.16);
+    --pill-fg: #fff;
+    --pill-bg-hover: #ffffff52;
+  }
+  .cta-scene[data-on] .heading,
+  .cta-scene[data-on] .body {
+    color: #fff;
   }
   @media (prefers-reduced-motion: reduce) {
-    .cta {
-      height: auto;
+    .cta-scene {
+      --pill-fg: #fff;
+      --pill-bg: rgb(255 255 255 / 0.16);
+      --pill-bg-hover: #ffffff52;
+      background: var(--global-autumn-900) !important;
+    }
+    .heading,
+    .body {
+      color: #fff;
     }
   }
 </style>

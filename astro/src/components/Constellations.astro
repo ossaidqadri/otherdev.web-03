@@ -1,68 +1,14 @@
 ---
-import Words from "@/components/Words.astro";
-import { Button } from "@/lib/components/ui/button";
+import CtaScene from "@/components/CtaScene.astro";
 import { getPage } from "@/lib/site";
 
 const { constellations: c } = await getPage("home");
-// One stagger runs through the heading into the body (75ms a word), as on the reference.
-const STEP = 75;
-const headingWords = c.heading.split(/\s+/).length;
 ---
 
-<section class="constellations relative h-[200vh]" data-navbar-theme="dark" data-scene="constellations" data-flip="dark:light:0.5" data-on-at="0.5">
-  <div class="sticky top-0 flex h-svh flex-col justify-between py-[var(--section-padding-lg)]">
-    {/* Word gaps are 0.45em of the 16px block, not of the words, which is what the reference measures to. */}
-    <div class="site-container w-full">
-      <div class="flex max-w-[64rem] flex-col gap-y-[10px]">
-        <Words as="h2" text={c.heading} step={STEP} class="heading gap-x-[0.45em] gap-y-[0.1em]" word="type-mega-button" />
-        <Words text={c.body} step={STEP} start={headingWords} class="body gap-x-[0.45em] gap-y-[0.1em]" word="type-mega-button" />
-      </div>
-    </div>
-    <div class="site-container w-full">
-      <Button href={c.button.href} variant="glass" size="pill" class="type-body-button-m">{c.button.label}</Button>
-    </div>
-  </div>
-</section>
-
-<style>
-  /* Cream through orange to brown. Past halfway (data-on, set by the motion layer) all text turns
-     white over 0.5s, as measured on the reference. The pill (Button "glass") follows via --pill-*. */
-  .constellations {
-    --pill-bg: rgb(0 0 0 / 0.06);
-    --pill-fg: var(--global-neutral-900);
-    --pill-fade: 0.5s;
-    background: linear-gradient(to bottom, #fff 0%, var(--global-summer-500) 45%, var(--global-summer-700) 75%, var(--global-autumn-900) 100%);
-  }
-  .heading,
-  .body {
-    color: var(--global-neutral-900);
-    transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .body {
-    opacity: 0.4;
-  }
-  .constellations[data-on] {
-    --pill-bg: rgb(255 255 255 / 0.16);
-    --pill-fg: #fff;
-  }
-  .constellations[data-on] .heading,
-  .constellations[data-on] .body {
-    color: #fff;
-  }
-  /* At phone width the copy plus button must fit the pinned screen. */
-  @media (max-width: 47.99rem) {
-    .constellations .type-mega-button {
-      font-size: 1.75rem;
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .constellations {
-      --pill-fg: #fff;
-      background: linear-gradient(to bottom, var(--global-summer-700), var(--global-autumn-900));
-    }
-    .heading,
-    .body {
-      color: #fff;
-    }
-  }
-</style>
+{/* Home's closing scene: cream through orange to brown. */}
+<CtaScene
+  heading={c.heading}
+  body={c.body}
+  button={c.button}
+  sky="linear-gradient(to bottom, #fff 0%, var(--global-summer-500) 45%, var(--global-summer-700) 75%, var(--global-autumn-900) 100%)"
+/>

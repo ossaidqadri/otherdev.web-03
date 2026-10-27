@@ -76,5 +76,7 @@ const words = hero.statement.split(" ");
     --to-dark: clamp(0, calc((var(--p) - 0.3) * 5), 1);
     --pill-bg: color-mix(in oklab, rgb(255 255 255 / 0.16) calc((1 - var(--to-dark)) * 100%), rgb(0 0 0 / 0.06));
     --pill-fg: color-mix(in oklab, #fff calc((1 - var(--to-dark)) * 100%), var(--global-neutral-900));
+    /* Hover as on the reference: brighter white on the dark sky, the dark fill once it is pale. */
+    --pill-bg-hover: color-mix(in oklab, #ffffff52 calc((1 - var(--to-dark)) * 100%), var(--semantic-neutral-core));
   }
 </style>

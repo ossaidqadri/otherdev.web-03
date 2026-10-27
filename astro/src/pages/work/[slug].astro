@@ -1,10 +1,12 @@
 ---
 import { getCollection, render } from "astro:content";
 import CtaScene from "@/components/CtaScene.astro";
+import PillNav from "@/components/PillNav.astro";
+import WorkCard from "@/components/WorkCard.astro";
 import { Badge } from "@/lib/components/ui/badge";
-import { Card } from "@/lib/components/ui/card";
+import { Button } from "@/lib/components/ui/button";
 import Layout from "@/layouts/Layout.astro";
-import { getSite } from "@/lib/site";
+import { getPage, getSite } from "@/lib/site";
 
 export async function getStaticPaths() {
   const all = (await getCollection("projects")).sort((a, b) => b.data.year - a.data.year);
@@ -17,12 +19,22 @@ export async function getStaticPaths() {
 
 const { entry, related } = Astro.props;
 const { ui, closing } = await getSite();
-const { title, year, link, downloadUrl, excerpt, cover, gallery } = entry.data;
+const { work } = await getPage("home");
+const { title, year, tags, link, downloadUrl, excerpt, cover, gallery } = entry.data;
 const { Content } = await render(entry);
 const href = link && (link.startsWith("http") ? link : `https://${link}`);
+// First sentence leads the intro; the full write-up opens on "Read more", as on the reference.
+const lead = (excerpt ?? "").replace(/\.\.\.$/, "").split(/(?<=\.)\s/)[0] ?? "";
 
-// Gallery rhythm from the reference: one wide, two side by side, repeating.
-const wide = (i: number) => i % 3 === 0;
+// Gallery rhythm from the reference: one 16:9 tile, then a pair of 4:5 tiles, repeating. The cover
+// opens it; gallery shots that repeat the cover are dropped.
+const media = [cover, ...gallery.filter((g) => g.src !== cover.src)];
+const rows: (typeof media)[] = [];
+for (let i = 0; i < media.length; ) {
+  const pair = rows.length % 2 === 1;
+  rows.push(media.slice(i, i + (pair ? 2 : 1)));
+  i += pair ? 2 : 1;
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -33,56 +45,132 @@ const jsonLd = {
   dateCreated: String(year),
   ...(href ? { url: href } : {}),
 };
+const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]";
 ---
 
 <Layout title={`${title} | otherdev`} description={excerpt ?? title} type="article" jsonLd={jsonLd}>
   <main>
-    <section class="case-hero" data-navbar-theme="dark">
-      <div class="site-container pt-48 pb-16">
-        <h1 class="type-hero max-w-5xl">{title}</h1>
-        <div class="mt-10 flex flex-wrap gap-2">
-          <Badge variant="chip" class="type-body-regular-xs">{year}</Badge>
-          {href && <Badge href={href} rel="noopener noreferrer" target="_blank" variant="chip" class="type-body-regular-xs">{link}</Badge>}
-          {downloadUrl && <Badge href={downloadUrl} variant="chip" class="type-body-regular-xs">{ui.download}</Badge>}
+    <section id="overview" class="case-hero pt-[var(--container-navpadding)] pb-[var(--section-padding-lg)]" data-navbar-theme="dark">
+      <div class="site-container flex flex-col gap-[var(--section-padding-md)] pt-[var(--section-padding-sm)]">
+        <div class="type-mega-button max-w-[64rem] pt-16">
+          <h1>{title}</h1>
         </div>
-        <div class="prose-site type-body-paragraph-m mt-10"><Content /></div>
+        <div class="flex w-full flex-col md:flex-row" data-read-more>
+          <div class="flex flex-1 flex-col items-start gap-8 md:sticky md:top-[var(--container-navpadding)] md:self-start md:pr-[var(--card-padding)]">
+            {tags.length > 0 && (
+              <div class="flex flex-wrap items-center gap-1">
+                {tags.map((t) => <Badge variant="tag" class="type-body-button-s">{t}</Badge>)}
+              </div>
+            )}
+            <div class="type-heading-s flex max-w-[40rem] flex-col gap-1">
+              <p>{lead}</p>
+              <button type="button" aria-expanded="false" aria-controls="case-details" class="w-fit cursor-pointer text-left opacity-40 transition-opacity duration-300 hover:opacity-60 focus-visible:opacity-60" data-more={ui.readMore} data-less={ui.readLess}>{ui.readMore}</button>
+            </div>
+          </div>
+          {/* Opens to the full write-up and the facts; height eases open like the reference's. */}
+          <div id="case-details" class="details grid min-w-0 md:flex-1">
+            <div class="min-h-0 overflow-hidden">
+              <div class="flex w-full max-w-[40rem] flex-col gap-14 max-md:pt-[var(--section-padding-sm)]">
+                <hr class={rule} />
+                <div class="flex flex-col">
+                  <div class="prose-site type-article-body flex flex-col gap-6 pb-12 opacity-80"><Content /></div>
+                  <dl class="flex w-full flex-col gap-6">
+                    <div class="flex w-full items-start gap-1">
+                      <dt class="type-body-button-s flex-1 py-1.5 opacity-40">{ui.year}</dt>
+                      <dd class="flex flex-1 flex-wrap gap-1.5"><Badge variant="tag" class="type-body-button-s">{year}</Badge></dd>
+                    </div>
+                    {tags.length > 0 && (
+                      <>
+                        <hr class={rule} />
+                        <div class="flex w-full items-start gap-1">
+                          <dt class="type-body-button-s flex-1 py-1.5 opacity-40">{ui.discipline}</dt>
+                          <dd class="flex flex-1 flex-wrap gap-1.5">{tags.map((t) => <Badge variant="tag" class="type-body-button-s">{t}</Badge>)}</dd>
+                        </div>
+                      </>
+                    )}
+                    {(href || downloadUrl) && (
+                      <>
+                        <hr class={rule} />
+                        <div class="flex w-full items-start gap-1">
+                          <dt class="type-body-button-s flex-1 py-1.5 opacity-40">{ui.website}</dt>
+                          <dd class="flex flex-1 flex-wrap gap-1.5">
+                            {href && <Badge href={href} rel="noopener noreferrer" target="_blank" variant="tag" class="type-body-button-s">{link}</Badge>}
+                            {downloadUrl && <Badge href={downloadUrl} variant="tag" class="type-body-button-s">{ui.download}</Badge>}
+                          </dd>
+                        </div>
+                      </>
+                    )}
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="site-container" data-navbar-theme="dark">
-      <img src={cover.src} alt={cover.alt} width={cover.width} height={cover.height} class="w-full rounded-xl" />
-      <ul class="mt-2 grid gap-2 md:grid-cols-2">
-        {gallery.map((g, i) => (
-          <li class={wide(i) ? "md:col-span-2" : ""}>
-            <img src={g.src} alt={g.alt} width={g.width} height={g.height} loading="lazy" class="w-full rounded-xl" />
-          </li>
+    <section id="the-work" class="pb-[var(--section-padding-lg)]" data-navbar-theme="dark">
+      <div class="site-container flex flex-col gap-4">
+        {rows.map((row) => (
+          <div class:list={["grid gap-4", row.length > 1 && "md:grid-cols-2"]}>
+            {row.map((m) => (
+              <div class:list={["relative w-full overflow-hidden rounded-[var(--radius-lg)] bg-[var(--semantic-fill-secondary)]", row.length > 1 ? "aspect-[4/5]" : "aspect-video"]}>
+                <img src={m.src} alt={m.alt} width={m.width} height={m.height} loading="lazy" class="absolute inset-0 size-full scale-[1.01] object-cover object-top" />
+              </div>
+            ))}
+          </div>
         ))}
-      </ul>
+      </div>
     </section>
 
-    <section class="site-container section" data-navbar-theme="dark">
-      <div class="flex items-end justify-between gap-6">
-        <h2 class="type-heading-l">{ui.relatedWork}</h2>
-        <a href="/work" class="type-heading-l text-ink-3">{ui.seeAll} →</a>
+    <section id="more-work" class="pb-[var(--section-padding-lg)]" data-navbar-theme="dark">
+      <div class="site-container flex flex-col gap-[var(--section-padding-sm)]">
+        <div class="flex w-full flex-col items-start gap-2 md:flex-row md:items-end md:gap-8">
+          <div class="flex-1"><h2 class="type-heading-l max-w-[64rem]">{ui.relatedWork}</h2></div>
+          <Button href={work.all.href} variant="nav" size="nav" class="type-heading-l -ml-2.5 rounded-lg md:ml-0">
+            <span class="inline-flex items-center gap-1 opacity-40">
+              <span>{ui.seeAll}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-8 translate-y-[0.03em]" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+            </span>
+          </Button>
+        </div>
+        <hr class={rule} />
+        <ul class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {related.map((p) => <li><WorkCard project={p} /></li>)}
+        </ul>
+        <hr class={rule} />
       </div>
-      <ul class="border-border mt-12 grid gap-2 border-t pt-12 md:grid-cols-3">
-        {related.map((p) => (
-          <li>
-            <a href={`/work/${p.id}`} class="block">
-              <Card variant="tile" class="block aspect-[4/3]"><img src={p.data.cover.src} alt={p.data.cover.alt} width={p.data.cover.width} height={p.data.cover.height} loading="lazy" class="size-full object-cover object-top" /></Card>
-              <h3 class="type-body-regular-l mt-4">{p.data.title}</h3>
-            </a>
-          </li>
-        ))}
-      </ul>
     </section>
 
     <CtaScene heading={closing.heading} body={closing.body} button={closing.button} />
   </main>
+  <PillNav items={[{ label: ui.overview, target: "overview" }, { label: ui.theWork, target: "the-work" }, { label: ui.moreWork, target: "more-work" }]} />
 </Layout>
 
 <style>
+  /* Pale sky fading to white, as the reference's per-project hero (otherdev has no per-project colour yet). */
   .case-hero {
-    background: linear-gradient(to bottom, var(--global-winter-200) 0%, #fff 100%);
+    background: linear-gradient(180deg, transparent 27%, rgb(247 249 252) 82%, #fff 100%), var(--global-winter-100);
+  }
+  .details {
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  [data-read-more][data-open] .details {
+    grid-template-rows: 1fr;
+    opacity: 1;
   }
 </style>
+
+<script>
+  document.addEventListener("click", (e) => {
+    const btn = (e.target as Element).closest<HTMLButtonElement>("[data-read-more] button[aria-expanded]");
+    const root = btn?.closest<HTMLElement>("[data-read-more]");
+    if (!btn || !root) return;
+    const open = !root.hasAttribute("data-open");
+    root.toggleAttribute("data-open", open);
+    btn.setAttribute("aria-expanded", String(open));
+    btn.textContent = (open ? btn.dataset.less : btn.dataset.more) ?? "";
+  });
+</script>

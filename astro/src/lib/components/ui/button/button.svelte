@@ -19,7 +19,9 @@
 				link: `${stock} text-primary underline-offset-4 hover:underline`,
 				// Site variants. glass: the pill over scene skies; a scene restyles it by setting
 				// --pill-bg, --pill-fg and --pill-fade (colour transition) on an ancestor.
-				glass: "bg-[var(--pill-bg,rgb(255_255_255/0.16))] text-[color:var(--pill-fg,#fff)] transition-[color,background-color] duration-[var(--pill-fade,0ms)] ease-in-out",
+				// Hover as on the reference: on dark skies white 16% -> 32%; a scene on a pale sky sets
+				// --pill-bg-hover/--pill-fg-hover to the dark fill with white text.
+				glass: "bg-[var(--pill-bg,rgb(255_255_255/0.16))] text-[color:var(--pill-fg,#fff)] hover:bg-[var(--pill-bg-hover,#ffffff52)] hover:text-[color:var(--pill-fg-hover,#fff)] focus-visible:bg-[var(--pill-bg-hover,#ffffff52)] focus-visible:text-[color:var(--pill-fg-hover,#fff)] transition-[color,background-color] duration-[var(--pill-fade,0ms)] ease-in-out",
 				card: "bg-card text-card-foreground",
 				// Text link with a 7.5% wash of its own colour fading in behind it on hover.
 				nav: "rounded-sm hover:bg-current/7.5 hover:backdrop-blur-[32px] focus-visible:bg-current/7.5 transition-[background-color,backdrop-filter] duration-300 ease-in-out",

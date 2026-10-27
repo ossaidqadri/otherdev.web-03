@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getSite } from "@/lib/site";
+
+// Project card from the reference's work grid (/work and Related Work): 4:5 cover, title, and the
+// lead sentence fading in word by word on hover (shown outright on phones).
+const { project: p } = Astro.props as { project: CollectionEntry<"projects"> };
+const { ui } = await getSite();
+// First sentence of the excerpt; the stored excerpts are cut mid-sentence with "...".
+const lead = (s = "") => s.replace(/\.\.\.$/, "").split(/(?<=\.)\s/)[0] ?? "";
+---
+
+<a href={`/work/${p.id}`} data-cursor-label={ui.seeWork} class="card group flex flex-col overflow-hidden rounded-[var(--radius-lg)]">
+  <div class="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--card-radius)]">
+    <img src={p.data.cover.src} alt={p.data.cover.alt} width={p.data.cover.width} height={p.data.cover.height} loading="lazy" class="absolute inset-0 size-full object-cover object-top" />
+  </div>
+  <div class="flex flex-col pt-4 pr-[var(--card-padding)] pb-[var(--card-padding)]">
+    <h3 class="type-heading-m">{p.data.title}</h3>
+    <p class="type-heading-m opacity-40">
+      {lead(p.data.excerpt).split(" ").map((w, i) => (
+        <span class="md:opacity-0 md:transition-opacity md:duration-300 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 motion-reduce:transition-none" style={`transition-delay: ${i * 60}ms`}>{w} </span>
+      ))}
+    </p>
+  </div>
+</a>

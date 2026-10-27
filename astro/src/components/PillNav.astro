@@ -2,12 +2,18 @@
 import { Button } from "@/lib/components/ui/button";
 import { getSite } from "@/lib/site";
 
+interface Props {
+  /** Sections to list, as { label, target id }; defaults to the home page's. */
+  items?: { label?: string; target: string }[];
+}
+
 const { pill, ui } = await getSite();
+const { items = pill } = Astro.props;
 ---
 
 <nav aria-label={ui.sectionsNav} class="pill-nav type-body-button-s fixed bottom-6 left-1/2 z-50 -translate-x-1/2" data-pill>
   <ul class="flex items-center rounded-full p-2 backdrop-blur-md">
-    {pill.map((p) => (
+    {items.map((p) => (
       <li><Button href={`#${p.target}`} variant="spy" size="spy" class="flex">{p.label}</Button></li>
     ))}
   </ul>
@@ -17,7 +23,7 @@ const { pill, ui } = await getSite();
   .pill-nav {
     transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1), translate 0.3s cubic-bezier(0, 0, 0.2, 1);
   }
-  /* Hidden before the hero is a quarter scrolled, and over the footer scene, as on the reference. */
+  /* Hidden near the top of the page (motion.ts) and over the footer scene, as on the reference. */
   :global(html[data-pill-hidden]) .pill-nav,
   :global(html[data-nav-theme="footer"]) .pill-nav {
     opacity: 0;

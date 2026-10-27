@@ -90,10 +90,12 @@ function initPage() {
     // Header follows the section under it; the pill follows the one under the bottom edge.
     root.dataset.navTheme = themeAt(40) ?? "light";
     root.dataset.pillTheme = themeAt(innerHeight - 40) ?? "dark";
+    // Pages without the home hero show their pill after ~300px of scroll (measured on the reference's case pages).
+    if (!hero) root.toggleAttribute("data-pill-hidden", y < 300);
 
-    // The last section whose top has passed mid-screen stays current, so News stays lit over the
-    // scene after it, as on the reference.
-    const mid = innerHeight / 2;
+    // The last section whose top has passed 42% down the screen stays current (reference switches
+    // between 372 and 380px at 900 tall), so News stays lit over the scene after it.
+    const mid = innerHeight * 0.42;
     const current = spy.findLast((a) => (document.getElementById(a.hash.slice(1))?.getBoundingClientRect().top ?? Infinity) <= mid);
     for (const a of spy) {
       if (a === current) a.setAttribute("aria-current", "true");
