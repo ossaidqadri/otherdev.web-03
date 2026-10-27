@@ -4,12 +4,9 @@ import { getSite } from "@/lib/site";
 
 const { footer: f, name, ui } = await getSite();
 const poster = "https://media.otherdev.com/site/video/footer-flower-poster.webp";
-// "10:42pm", the reference's clock format.
-const clock = (tz: string) =>
-  new Intl.DateTimeFormat("en", { hour: "numeric", minute: "2-digit", timeZone: tz })
-    .format(new Date())
-    .replace(/\s/g, "")
-    .toLowerCase();
+// The page is static, so a time rendered here would be the build's. The clocks start empty and the
+// script below fills them (and refreshes the year, which is only right as of the last deploy).
+const year = String(new Date().getFullYear());
 ---
 
 {/* One sky runs the whole footer: dark brown through burnt orange to amber. */}
@@ -24,7 +21,7 @@ const clock = (tz: string) =>
         {f.offices.map((o) => (
           <li>
             <h3 class="type-heading-m">{o.city}</h3>
-            <time class="type-heading-m block text-white/50" data-clock={o.timezone}>{clock(o.timezone)}</time>
+            <time class="type-heading-m block min-h-[1lh] text-white/50" data-clock={o.timezone}></time>
             {/* Click copies, as on the reference; a copy icon fades in to the left on hover. */}
             <div class="type-body-button-m mt-8 flex flex-col items-start gap-1">
               {[o.email, o.phone].map((v) => (
@@ -68,7 +65,7 @@ const clock = (tz: string) =>
           ))}
         </ul>
       </nav>
-      <p class="type-body-button-s absolute bottom-28 left-[calc(var(--container-padding)+10px)] z-10 md:bottom-10">{f.legal} {new Date().getFullYear()}</p>
+      <p class="type-body-button-s absolute bottom-28 left-[calc(var(--container-padding)+10px)] z-10 md:bottom-10">{f.legal} <time datetime={year} data-year>{year}</time></p>
       <ul class="type-body-button-s absolute right-[var(--container-padding)] bottom-[calc(7rem-6px)] z-10 flex gap-2 md:bottom-[calc(2.5rem-6px)]">
         {f.legalLinks.map((l) => <li><Button href={l.href} variant="nav" size="nav">{l.label}</Button></li>)}
       </ul>
@@ -84,18 +81,38 @@ const clock = (tz: string) =>
 </style>
 
 <script>
-  // Live office times; re-runs on every ClientRouter navigation.
-  const tick = () => {
-    for (const el of document.querySelectorAll<HTMLElement>("[data-clock]")) {
-      el.textContent = new Intl.DateTimeFormat("en", {
-        hour: "numeric",
-        minute: "2-digit",
-        timeZone: el.dataset.clock ?? "UTC",
-      })
-        .format(new Date())
-        .replace(/\s/g, "")
-        .toLowerCase();
+  // Office clocks ("10:42pm", the reference's format, with a 24h `datetime` for the <time> element) and
+  // the copyright year. One formatter pair per timezone; the timer lands on each minute change and
+  // sleeps while the tab is hidden.
+  const formats = new Map<string, [Intl.DateTimeFormat, Intl.DateTimeFormat]>();
+  const formatsFor = (timeZone: string) => {
+    let pair = formats.get(timeZone);
+    if (!pair) {
+      pair = [
+        new Intl.DateTimeFormat("en", { hour: "numeric", minute: "2-digit", timeZone }),
+        new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZone }),
+      ];
+      formats.set(timeZone, pair);
     }
+    return pair;
+  };
+  const render = () => {
+    const now = new Date();
+    for (const el of document.querySelectorAll<HTMLTimeElement>("time[data-clock]")) {
+      const [shown, machine] = formatsFor(el.dataset.clock ?? "UTC");
+      el.textContent = shown.format(now).replace(/\s/g, "").toLowerCase();
+      el.dateTime = machine.format(now);
+    }
+    for (const el of document.querySelectorAll<HTMLTimeElement>("time[data-year]")) {
+      el.textContent = el.dateTime = String(now.getFullYear());
+    }
+  };
+  let timer = 0;
+  const stop = () => clearTimeout(timer);
+  const run = () => {
+    stop();
+    render();
+    timer = window.setTimeout(run, 60_000 - (Date.now() % 60_000));
   };
   // Office email and phone copy on click, confirmed by a toast in the reference's Sonner style.
   let hideToast = 0;
@@ -118,9 +135,8 @@ const clock = (tz: string) =>
       toast(copyFailed);
     }
   });
-  document.addEventListener("astro:page-load", () => {
-    tick();
-    const id = setInterval(tick, 30_000);
-    document.addEventListener("astro:before-swap", () => clearInterval(id), { once: true });
-  });
+  // The footer is replaced on every ClientRouter navigation, so start again after each swap.
+  document.addEventListener("astro:page-load", run);
+  document.addEventListener("astro:before-swap", stop);
+  document.addEventListener("visibilitychange", () => (document.hidden ? stop() : run()));
 </script>
