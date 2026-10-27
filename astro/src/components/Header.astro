@@ -7,7 +7,7 @@ const site = (await getEntry("site", "home"))!.data;
 {/* Progressive blur at the top edge: content softens as it scrolls under the header. */}
 <div class="pointer-events-none fixed inset-x-0 top-0 z-40 h-28 backdrop-blur-md [mask-image:linear-gradient(to_bottom,black_30%,transparent_100%)]" aria-hidden="true"></div>
 
-<header class="header fixed inset-x-0 top-0 z-50 flex items-center justify-between px-[var(--container-padding)] py-8">
+<header class="header fixed inset-x-0 top-0 z-50 flex items-center justify-between px-[var(--container-padding)] py-6 md:py-8">
   <a href="/" class="wordmark" aria-label={`${site.name} home`}>{site.name}</a>
   <nav aria-label="Main" class="type-body-button-m -mr-2.5 flex items-center gap-2">
     {site.nav.map((l) => <a href={l.href} class="nav-link hidden md:inline-flex"><span class="relative z-10">{l.label}</span><span class="nav-hover" aria-hidden="true"></span></a>)}
@@ -20,7 +20,7 @@ const site = (await getEntry("site", "home"))!.data;
 
 {/* Phone menu: a native popover, so open, close, Escape and focus return need no script. */}
 <div id="menu" popover class="menu type-heading-m">
-  <div class="flex items-center justify-between px-[var(--container-padding)] py-8">
+  <div class="flex items-center justify-between px-[var(--container-padding)] py-6 md:py-8">
     <a href="/" class="wordmark" aria-label={`${site.name} home`}>{site.name}</a>
     <div class="type-body-button-m flex items-center gap-7">
       <a href={site.cta.href}>{site.cta.label}</a>

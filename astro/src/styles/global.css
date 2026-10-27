@@ -138,7 +138,7 @@
 /* Brand wordmark: the reference's heavy upright caps, set in the same Saans face. */
 .wordmark {
 	font-family: var(--font-sans);
-	font-size: 1.5rem;
+	font-size: 1.25rem;
 	font-weight: 850;
 	letter-spacing: -0.05em;
 	line-height: 1;
