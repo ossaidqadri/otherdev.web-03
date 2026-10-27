@@ -56,6 +56,14 @@ const organization = {
     <meta name="generator" content={Astro.generator} />
     <Font cssVariable="--font-saans" preload={[{ weight: "450", style: "normal" }]} />
     <Font cssVariable="--font-serrif" preload />
+    {/* Back and Forward slide the other way (global.css, :active-view-transition-type(back)). Has to be a classic
+        script in the head: pagereveal fires before the first render, which is too early for the module scripts. */}
+    <script is:inline>
+      addEventListener("pagereveal", (e) => {
+        const a = self.navigation?.activation;
+        if (e.viewTransition && a?.navigationType === "traverse" && a.entry.index < a.from.index) e.viewTransition.types.add("back");
+      });
+    </script>
   </head>
   <body>
     {/* First tab stop: jumps past the header; visible only while focused. Targets <main id="main"> on each page. */}

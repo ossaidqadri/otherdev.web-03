@@ -120,6 +120,11 @@
 		translate: 0 100%;
 	}
 }
+@keyframes page-away {
+	to {
+		translate: 0 100%;
+	}
+}
 @keyframes page-under {
 	to {
 		translate: 0 -6%;
@@ -132,6 +137,9 @@
 	}
 	.header {
 		view-transition-name: site-header;
+	}
+	.header-blur {
+		view-transition-name: site-blur;
 	}
 	.pill-nav {
 		view-transition-name: site-pill;
@@ -149,6 +157,18 @@
 	::view-transition-new(root) {
 		animation-name: page-over;
 		z-index: 1;
+	}
+	/* Back: the page you leave slides down off the top of the one beneath. */
+	html:active-view-transition-type(back) {
+		&::view-transition-old(root) {
+			animation-name: page-away;
+			z-index: 1;
+		}
+		&::view-transition-new(root) {
+			animation-name: page-under;
+			animation-direction: reverse;
+			z-index: 0;
+		}
 	}
 }
 

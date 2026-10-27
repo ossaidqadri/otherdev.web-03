@@ -24,8 +24,6 @@ export default defineConfig({
   // Fully static: no server, so no adapter. Add @astrojs/cloudflare (v13+) only when
   // the chat endpoint arrives, with `export const prerender = false` on that route.
   output: "static",
-  // Plain page loads, so links are prefetched on hover (the router used to switch this on).
-  prefetch: { prefetchAll: true },
   // Project and team images live on R2. <Image> fetches them at build and writes resized, cropped webp files
   // (srcset) next to the site, so a card never downloads a 2400px original.
   image: { remotePatterns: [{ protocol: "https", hostname: "media.otherdev.com" }] },
