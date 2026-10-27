@@ -50,7 +50,8 @@ const year = String(new Date().getFullYear());
         <source src="https://media.otherdev.com/site/video/footer-flower.webm" type="video/webm" />
       </video>
       <nav aria-label={ui.socialNav} class="type-body-button-s absolute inset-x-0 top-0 z-10 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-[var(--container-padding)] py-8">
-        <span class="wordmark">{name}</span>
+        {/* The mark stands in for the wordmark, as New Genre's flower does; same path as favicon.svg. */}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label={name} class="size-8 shrink-0 fill-current"><path fill-rule="evenodd" d="M34 4a30 30 0 1 0 0 60 30 30 0 0 0 0-60Zm0 16a14 14 0 1 1 0 28 14 14 0 0 1 0-28ZM64 64h30a30 30 0 0 1 0 60H64Zm16 16v28h14a14 14 0 0 0 0-28Z" /></svg>
         {/* Chips as on the reference: a 29px tap target with the nav wash on hover; -mr keeps the text on the margin. */}
         <ul class="-mr-2.5 flex gap-2">
           {f.social.map((s) => (
