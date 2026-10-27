@@ -1,6 +1,12 @@
 [
   { "id": "wish", "name": "Wish", "logo": "/clients/wish.svg" },
+  { "id": "groovy", "name": "Groovy Pakistan", "logo": "/clients/groovy.svg" },
+  { "id": "parcheh81", "name": "Parcheh81", "logo": "/clients/parcheh81.svg" },
   { "id": "bin-yousuf", "name": "Bin Yousuf Group", "logo": "/clients/bin-yousuf.svg" },
+  { "id": "narkins", "name": "Narkin's Builders", "logo": "/clients/narkins.svg" },
   { "id": "kiswa-noir", "name": "Kiswa Noir", "logo": "/clients/kiswa-noir.svg" },
-  { "id": "narkins", "name": "Narkin's Builders", "logo": "/clients/narkins.svg" }
+  { "id": "adina-household", "name": "Adina Household", "logo": "/clients/adina-household.svg" },
+  { "id": "olly-shinder", "name": "Olly Shinder", "logo": "/clients/olly-shinder.svg" },
+  { "id": "tiny-footprint", "name": "Tiny Footprint Coffee", "logo": "/clients/tiny-footprint.svg" },
+  { "id": "ek-qadam-aur", "name": "Ek Qadam Aur", "logo": "/clients/ek-qadam-aur.svg" }
 ]
