@@ -109,7 +109,7 @@ const pageSchemas = z.discriminatedUnion("page", [
     principlesHeading: z.string(),
     principles: z.array(z.object({ title: z.string(), body: z.string() })),
     teamHeading: z.string(),
-    team: z.array(z.object({ name: z.string(), role: z.string(), photo: image, linkedin: z.url().optional() })),
+    team: z.array(z.object({ name: z.string(), role: z.string(), photo: image, linkedin: z.url().optional(), bio: z.string().optional() })),
   }),
   z.object({
     page: z.literal("approach"),

@@ -63,6 +63,8 @@
 		WithElementRef<HTMLAnchorAttributes> & {
 			variant?: ButtonVariant;
 			size?: ButtonSize;
+			/** Glass pills: an arrow slides open at the end of the label on hover and focus. */
+			reveal?: boolean;
 		};
 </script>
 
@@ -71,6 +73,7 @@
 		class: className,
 		variant = "default",
 		size = "default",
+		reveal = false,
 		ref = $bindable(null),
 		href = undefined,
 		type = "button",
@@ -80,11 +83,19 @@
 	}: ButtonProps = $props();
 </script>
 
+{#snippet arrow()}
+	{#if reveal}
+		<span aria-hidden="true" class="inline-flex w-0 overflow-hidden transition-[width] duration-300 ease-out group-hover/button:w-5 group-focus-visible/button:w-5">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 size-4 shrink-0"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+		</span>
+	{/if}
+{/snippet}
+
 {#if href}
 	<a
 		bind:this={ref}
 		data-slot="button"
-		class={cn(buttonVariants({ variant, size }), className)}
+		class={cn(buttonVariants({ variant, size }), reveal && "gap-0", className)}
 		href={disabled ? undefined : href}
 		aria-disabled={disabled}
 		role={disabled ? "link" : undefined}
@@ -92,6 +103,7 @@
 		{...restProps}
 	>
 		{@render children?.()}
+		{@render arrow()}
 	</a>
 {:else}
 	<button
@@ -103,5 +115,6 @@
 		{...restProps}
 	>
 		{@render children?.()}
+		{@render arrow()}
 	</button>
 {/if}

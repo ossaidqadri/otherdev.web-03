@@ -11,7 +11,8 @@ const { pill, ui } = await getSite();
 const { items = pill } = Astro.props;
 ---
 
-<nav aria-label={ui.sectionsNav} class="pill-nav type-body-button-s fixed bottom-6 left-1/2 z-50 -translate-x-1/2" data-pill>
+{/* Desktop only, as on the reference: phones get no floating section nav. */}
+<nav aria-label={ui.sectionsNav} class="pill-nav type-body-button-s fixed bottom-6 left-1/2 z-50 hidden -translate-x-1/2 md:block" data-pill>
   <ul class="flex items-center rounded-full p-2 backdrop-blur-md">
     {items.map((p) => (
       <li><Button href={`#${p.target}`} variant="spy" size="spy" class="flex">{p.label}</Button></li>
