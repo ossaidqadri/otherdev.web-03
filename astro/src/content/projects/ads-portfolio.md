@@ -7,10 +7,10 @@
   "downloadUrl": "https://media.otherdev.com/site/projects/ads-portfolio/OD-Ads-Digital-Issue.pdf",
   "excerpt": "From cold-audience launches for premium leather fashion to multi-year engagement campaigns for streetwear brands, this portfolio documents real Meta ad performance across four active clients. ",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/ads-portfolio/OD-Ads-Digital-Issue_90162133_1-1.png",
-    "alt": "ads portfolio hero",
-    "width": 2000,
-    "height": 2000
+    "src": "https://media.otherdev.com/site/projects/ads-portfolio/ads-cover.webp",
+    "alt": "Ads portfolio, the Other Dev mark between two Parcheh81 campaign photographs",
+    "width": 2400,
+    "height": 1350
   },
   "gallery": [
     {
