@@ -6,50 +6,50 @@
   "link": "adinahousehold.com",
   "excerpt": "Od Adina Household is a headless Shopify storefront built using Hydrogen and Oxygen to deliver a faster and more flexible commerce experience than traditional theme...",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/adina-household-hero.webp",
+    "src": "https://media.otherdev.com/site/projects/adina-household/adina-household-hero.webp",
     "alt": "adina household hero",
     "width": 2047,
     "height": 1400
   },
   "gallery": [
     {
-      "src": "https://media.otherdev.com/site/projects/adina-household-detail-1.webp",
+      "src": "https://media.otherdev.com/site/projects/adina-household/adina-household-detail-1.webp",
       "alt": "adina household detail",
       "width": 2047,
       "height": 1400
     },
     {
-      "src": "https://media.otherdev.com/site/projects/adina-household-detail-2.webp",
+      "src": "https://media.otherdev.com/site/projects/adina-household/adina-household-detail-2.webp",
       "alt": "adina household detail",
       "width": 2047,
       "height": 1400
     },
     {
-      "src": "https://media.otherdev.com/site/projects/adina-household-detail-3.webp",
+      "src": "https://media.otherdev.com/site/projects/adina-household/adina-household-detail-3.webp",
       "alt": "adina household detail",
       "width": 2047,
       "height": 1400
     },
     {
-      "src": "https://media.otherdev.com/site/projects/adina-household-detail-4.webp",
+      "src": "https://media.otherdev.com/site/projects/adina-household/adina-household-detail-4.webp",
       "alt": "adina household detail",
       "width": 2047,
       "height": 1400
     },
     {
-      "src": "https://media.otherdev.com/site/projects/adina-household-detail-5.webp",
+      "src": "https://media.otherdev.com/site/projects/adina-household/adina-household-detail-5.webp",
       "alt": "adina household detail",
       "width": 2047,
       "height": 1400
     },
     {
-      "src": "https://media.otherdev.com/site/projects/adina-household-detail-6.webp",
+      "src": "https://media.otherdev.com/site/projects/adina-household/adina-household-detail-6.webp",
       "alt": "adina household detail",
       "width": 2047,
       "height": 1400
     },
     {
-      "src": "https://media.otherdev.com/site/projects/adina-household-hero.webp",
+      "src": "https://media.otherdev.com/site/projects/adina-household/adina-household-hero.webp",
       "alt": "adina household hero",
       "width": 2047,
       "height": 1400

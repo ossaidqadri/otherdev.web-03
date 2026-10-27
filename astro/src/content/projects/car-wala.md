@@ -6,56 +6,56 @@
   "link": "carwala.org",
   "excerpt": "Carwala is a modern booking and lead generation platform built for a professional car wash and detailing service. We designed a fast, mobile first experience...",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/car-wala-exterior.webp",
+    "src": "https://media.otherdev.com/site/projects/car-wala/car-wala-exterior.webp",
     "alt": "car wala exterior",
     "width": 2880,
     "height": 2018
   },
   "gallery": [
     {
-      "src": "https://media.otherdev.com/site/projects/car-wala-detail-1.webp",
+      "src": "https://media.otherdev.com/site/projects/car-wala/car-wala-detail-1.webp",
       "alt": "car wala detail",
       "width": 2880,
       "height": 2018
     },
     {
-      "src": "https://media.otherdev.com/site/projects/car-wala-detail-2.webp",
+      "src": "https://media.otherdev.com/site/projects/car-wala/car-wala-detail-2.webp",
       "alt": "car wala detail",
       "width": 2880,
       "height": 2018
     },
     {
-      "src": "https://media.otherdev.com/site/projects/car-wala-detail-3.webp",
+      "src": "https://media.otherdev.com/site/projects/car-wala/car-wala-detail-3.webp",
       "alt": "car wala detail",
       "width": 2880,
       "height": 2018
     },
     {
-      "src": "https://media.otherdev.com/site/projects/car-wala-detail-4.webp",
+      "src": "https://media.otherdev.com/site/projects/car-wala/car-wala-detail-4.webp",
       "alt": "car wala detail",
       "width": 2880,
       "height": 2018
     },
     {
-      "src": "https://media.otherdev.com/site/projects/car-wala-detail-5.webp",
+      "src": "https://media.otherdev.com/site/projects/car-wala/car-wala-detail-5.webp",
       "alt": "car wala detail",
       "width": 2880,
       "height": 2018
     },
     {
-      "src": "https://media.otherdev.com/site/projects/car-wala-detail-6.webp",
+      "src": "https://media.otherdev.com/site/projects/car-wala/car-wala-detail-6.webp",
       "alt": "car wala detail",
       "width": 2880,
       "height": 2018
     },
     {
-      "src": "https://media.otherdev.com/site/projects/car-wala-exterior.webp",
+      "src": "https://media.otherdev.com/site/projects/car-wala/car-wala-exterior.webp",
       "alt": "car wala exterior",
       "width": 2880,
       "height": 2018
     },
     {
-      "src": "https://media.otherdev.com/site/projects/car-wala-interior.webp",
+      "src": "https://media.otherdev.com/site/projects/car-wala/car-wala-interior.webp",
       "alt": "car wala interior",
       "width": 2880,
       "height": 2018

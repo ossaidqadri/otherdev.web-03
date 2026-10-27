@@ -6,20 +6,20 @@
   "link": "www.ntlex.com",
   "excerpt": "Delivered full brand identity, mobile trading app, and enterprise infrastructure for NTL Exchange, a unified platform powering secure real-time exchange.",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/ntl-exchange-home.webp",
+    "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ntl-exchange/ntl-exchange-home.webp",
     "alt": "ntl exchange home",
     "width": 1440,
     "height": 1451
   },
   "gallery": [
     {
-      "src": "https://media.otherdev.com/site/projects/ntl-exchange-home.webp",
+      "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ntl-exchange/ntl-exchange-home.webp",
       "alt": "ntl exchange home",
       "width": 1440,
       "height": 1451
     },
     {
-      "src": "https://media.otherdev.com/site/projects/ntl-exchange-mobile.webp",
+      "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ntl-exchange/ntl-exchange-mobile.webp",
       "alt": "ntl exchange mobile",
       "width": 1080,
       "height": 1920

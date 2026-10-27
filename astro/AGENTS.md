@@ -15,7 +15,7 @@ Astro 7 + Svelte 5, fully static (no server, no adapter), deployed to Cloudflare
 ## Content and media
 
 - Content lives in `src/content/` as markdown/JSON behind Zod schemas (`astro/zod`, Zod 4) in `src/content.config.ts`. Every collection needs a `glob` or `file` loader. Nothing hardcoded in components.
-- Media is served from R2 (`image.remotePatterns` for optimisation). Large files stay out of git.
+- Media is served from R2 (`image.remotePatterns` for optimisation). Large files stay out of git. R2 layout: `site/projects/<slug>/<file>` (slug = content id), `site/team`, `site/video`, `site/misc`.
 
 ## Motion
 

@@ -3,30 +3,30 @@
   "title": "Ads Portfolio & Creative Design",
   "year": 2026,
   "tags": ["Design", "Experience"],
-  "link": "media.otherdev.com/site/projects/OD-Ads-Digital-Issue.pdf",
-  "downloadUrl": "https://media.otherdev.com/site/projects/OD-Ads-Digital-Issue.pdf",
+  "link": "media.otherdev.com/site/projects/ads-portfolio/OD-Ads-Digital-Issue.pdf",
+  "downloadUrl": "https://media.otherdev.com/site/projects/ads-portfolio/OD-Ads-Digital-Issue.pdf",
   "excerpt": "From cold-audience launches for premium leather fashion to multi-year engagement campaigns for streetwear brands, this portfolio documents real Meta ad performance across four active clients. ",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/OD-Ads-Digital-Issue_90162133_1-1.png",
+    "src": "https://media.otherdev.com/site/projects/ads-portfolio/OD-Ads-Digital-Issue_90162133_1-1.png",
     "alt": "ads portfolio hero",
     "width": 2000,
     "height": 2000
   },
   "gallery": [
     {
-      "src": "https://media.otherdev.com/site/projects/OD-Ads-Digital-Issue_90162133_1.png",
+      "src": "https://media.otherdev.com/site/projects/ads-portfolio/OD-Ads-Digital-Issue_90162133_1.png",
       "alt": "Ads image cover",
       "width": 2000,
       "height": 2000
     },
     {
-      "src": "https://media.otherdev.com/site/projects/OD-Ads-Digital-Issue_90162133_2.png",
+      "src": "https://media.otherdev.com/site/projects/ads-portfolio/OD-Ads-Digital-Issue_90162133_2.png",
       "alt": "Ads issue page 2",
       "width": 2000,
       "height": 2000
     },
     {
-      "src": "https://media.otherdev.com/site/projects/OD-Ads-Digital-Issue_90162133_3.png",
+      "src": "https://media.otherdev.com/site/projects/ads-portfolio/OD-Ads-Digital-Issue_90162133_3.png",
       "alt": "Ads issue page 3",
       "width": 2000,
       "height": 2000

@@ -6,62 +6,62 @@
   "link": "narkinsbuilders.com",
   "excerpt": "Narkin’s Builders is a modern real estate website and lead generation platform developed to showcase projects, publish updates, and convert visitors into qualified sales inquiries....",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/narkins-home-hero.webp",
+    "src": "https://media.otherdev.com/site/projects/narkins/narkins-home-hero.webp",
     "alt": "narkins home hero",
     "width": 2728,
     "height": 1562
   },
   "gallery": [
     {
-      "src": "https://media.otherdev.com/site/projects/narkins-collage.webp",
+      "src": "https://media.otherdev.com/site/projects/narkins/narkins-collage.webp",
       "alt": "narkins collage",
       "width": 2880,
       "height": 5383
     },
     {
-      "src": "https://media.otherdev.com/site/projects/narkins-hcr.webp",
+      "src": "https://media.otherdev.com/site/projects/narkins/narkins-hcr.webp",
       "alt": "narkins hcr",
       "width": 3840,
       "height": 2160
     },
     {
-      "src": "https://media.otherdev.com/site/projects/narkins-home-hero.webp",
+      "src": "https://media.otherdev.com/site/projects/narkins/narkins-home-hero.webp",
       "alt": "narkins home hero",
       "width": 2728,
       "height": 1562
     },
     {
-      "src": "https://media.otherdev.com/site/projects/narkins-project-1.webp",
+      "src": "https://media.otherdev.com/site/projects/narkins/narkins-project-1.webp",
       "alt": "narkins project",
       "width": 1440,
       "height": 2691
     },
     {
-      "src": "https://media.otherdev.com/site/projects/narkins-project-2.webp",
+      "src": "https://media.otherdev.com/site/projects/narkins/narkins-project-2.webp",
       "alt": "narkins project",
       "width": 1440,
       "height": 2691
     },
     {
-      "src": "https://media.otherdev.com/site/projects/narkins-project-3.webp",
+      "src": "https://media.otherdev.com/site/projects/narkins/narkins-project-3.webp",
       "alt": "narkins project",
       "width": 1440,
       "height": 2691
     },
     {
-      "src": "https://media.otherdev.com/site/projects/narkins-project-4.webp",
+      "src": "https://media.otherdev.com/site/projects/narkins/narkins-project-4.webp",
       "alt": "narkins project",
       "width": 1440,
       "height": 2691
     },
     {
-      "src": "https://media.otherdev.com/site/projects/narkins-project-5.webp",
+      "src": "https://media.otherdev.com/site/projects/narkins/narkins-project-5.webp",
       "alt": "narkins project",
       "width": 1440,
       "height": 2691
     },
     {
-      "src": "https://media.otherdev.com/site/projects/attachments.zip",
+      "src": "https://media.otherdev.com/site/projects/narkins/attachments.zip",
       "alt": "attachments"
     }
   ]
