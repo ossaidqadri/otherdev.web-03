@@ -30,6 +30,8 @@
 				// Filter/view toggles driven by aria-pressed (scripts/work-filter.ts flips it).
 				// The pressed wash is a separate sliding element (scripts/work-filter.ts), so only the label dims.
 				toggle: "relative isolate opacity-20 hover:opacity-60 focus-visible:opacity-60 aria-pressed:opacity-100 transition-opacity duration-300",
+				// A bare text trigger (FAQ rows, "read more", copy lines): the caller sets layout and opacity.
+				plain: "",
 			},
 			size: {
 				default: "h-9 gap-1.5 px-3 has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5",
@@ -46,6 +48,7 @@
 				nav: "h-auto gap-1 px-2.5 py-1.5",
 				spy: "h-10 px-4",
 				"icon-nav": "size-8 rounded-sm",
+				bare: "h-auto",
 				filter: "h-auto px-1.5",
 				"icon-filter": "h-auto p-1",
 			},
