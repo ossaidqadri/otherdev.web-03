@@ -13,46 +13,40 @@
   },
   "gallery": [
     {
-      "src": "https://media.otherdev.com/site/projects/adina-household/adina-household-detail-1.webp",
-      "alt": "adina household detail",
-      "width": 2047,
-      "height": 1400
+      "src": "https://media.otherdev.com/site/projects/adina-household/shots/adina-02-m-home.webp",
+      "alt": "Adina Household home page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/adina-household/adina-household-detail-2.webp",
-      "alt": "adina household detail",
-      "width": 2047,
-      "height": 1400
+      "src": "https://media.otherdev.com/site/projects/adina-household/shots/adina-03-m-all.webp",
+      "alt": "All products on mobile, Heritage Persian cups and saucers",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/adina-household/adina-household-detail-3.webp",
-      "alt": "adina household detail",
-      "width": 2047,
-      "height": 1400
+      "src": "https://media.otherdev.com/site/projects/adina-household/shots/adina-01-d-home.webp",
+      "alt": "Adina Household home page on desktop, hero over a styled tabletop",
+      "width": 2880,
+      "height": 1620
     },
     {
-      "src": "https://media.otherdev.com/site/projects/adina-household/adina-household-detail-4.webp",
-      "alt": "adina household detail",
-      "width": 2047,
-      "height": 1400
+      "src": "https://media.otherdev.com/site/projects/adina-household/shots/adina-05-m-ceramics.webp",
+      "alt": "Ceramics collection on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/adina-household/adina-household-detail-5.webp",
-      "alt": "adina household detail",
-      "width": 2047,
-      "height": 1400
+      "src": "https://media.otherdev.com/site/projects/adina-household/shots/adina-06-m-tableware.webp",
+      "alt": "Tableware collection on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/adina-household/adina-household-detail-6.webp",
-      "alt": "adina household detail",
-      "width": 2047,
-      "height": 1400
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/adina-household/adina-household-hero.webp",
-      "alt": "adina household hero",
-      "width": 2047,
-      "height": 1400
+      "src": "https://media.otherdev.com/site/projects/adina-household/shots/adina-04-d-all.webp",
+      "alt": "All products grid on desktop",
+      "width": 2880,
+      "height": 1620
     }
   ]
 }

@@ -13,88 +13,40 @@
   },
   "gallery": [
     {
-      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/finlit-complete-course-mobile.webp",
-      "alt": "finlit complete course mobile",
-      "width": 1440,
-      "height": 2691
+      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/shots/finlit-02-m-home.webp",
+      "alt": "Finlit home page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/finlit-course-mobile.webp",
-      "alt": "finlit course mobile",
-      "width": 1440,
-      "height": 2691
+      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/shots/finlit-03-m-courses.webp",
+      "alt": "Finlit course catalogue on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/finlit-courses-mobile.webp",
-      "alt": "finlit courses mobile",
-      "width": 1440,
-      "height": 2691
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/finlit-courses-page.webp",
-      "alt": "finlit courses page",
-      "width": 3958,
-      "height": 2550
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/finlit-courses.webp",
-      "alt": "finlit courses",
-      "width": 3000,
-      "height": 3000
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/finlit-desktop-hero.webp",
-      "alt": "finlit desktop hero",
-      "width": 3702,
-      "height": 2198
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/finlit-footer-mobile.webp",
-      "alt": "finlit footer mobile",
-      "width": 1440,
-      "height": 2691
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/finlit-group.webp",
-      "alt": "finlit group",
+      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/shots/finlit-04-d-courses.webp",
+      "alt": "Finlit course catalogue on desktop",
       "width": 2880,
-      "height": 5382
+      "height": 1620
     },
     {
-      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/finlit-home-mobile.webp",
-      "alt": "finlit home mobile",
-      "width": 1440,
-      "height": 2691
+      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/shots/finlit-05-m-trading.webp",
+      "alt": "Finlit trading simulator on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/finlit-homepage.webp",
-      "alt": "finlit homepage",
-      "width": 3958,
-      "height": 2552
+      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/shots/finlit-07-m-home2.webp",
+      "alt": "Finlit home page on mobile, the three steps and the about section",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/finlit-logo.webp",
-      "alt": "finlit logo",
-      "width": 1080,
-      "height": 1080
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/finlit-team.webp",
-      "alt": "finlit team",
-      "width": 1080,
-      "height": 1080
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/finlit-trading-page.webp",
-      "alt": "finlit trading page",
-      "width": 3958,
-      "height": 2550
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/finlit-trading.webp",
-      "alt": "finlit trading",
-      "width": 1000,
-      "height": 1000
+      "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/shots/finlit-01-d-home.webp",
+      "alt": "Finlit home page on desktop, Finance, Simplified",
+      "width": 2880,
+      "height": 1620
     }
   ]
 }

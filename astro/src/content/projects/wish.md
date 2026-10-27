@@ -13,6 +13,42 @@
   },
   "gallery": [
     {
+      "src": "https://media.otherdev.com/site/projects/wish/shots/wish-02-m-home.webp",
+      "alt": "Wish shop grid on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/wish/shots/wish-03-m-lowrise.webp",
+      "alt": "Wish low-rise jean product page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/wish/shots/wish-01-d-home.webp",
+      "alt": "Wish shop grid on desktop",
+      "width": 2880,
+      "height": 1620
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/wish/shots/wish-05-m-janco.webp",
+      "alt": "Wish Janco look-alike jean product page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/wish/shots/wish-06-m-embroidered.webp",
+      "alt": "Wish embroidered hip-hop jean product page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/wish/shots/wish-04-d-vintage.webp",
+      "alt": "Wish vintage washed jean product page on desktop",
+      "width": 2880,
+      "height": 1620
+    },
+    {
       "src": "https://media.otherdev.com/site/projects/wish/wish-boy.webp",
       "alt": "wish boy",
       "width": 1355,
@@ -29,108 +65,6 @@
       "alt": "wish girl",
       "width": 3860,
       "height": 4822
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/wish/wish-home-hero.webp",
-      "alt": "wish home hero",
-      "width": 2772,
-      "height": 1562
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/wish/wish-logo.webp",
-      "alt": "wish logo",
-      "width": 1000,
-      "height": 1000
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/wish/wish-otherdev.webp",
-      "alt": "wish Other Dev",
-      "width": 1000,
-      "height": 1000
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/wish/wish-phones.webp",
-      "alt": "wish phones",
-      "width": 1350,
-      "height": 900
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/wish/wish-product-1.webp",
-      "alt": "wish product",
-      "width": 1440,
-      "height": 2691
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/wish/wish-product-2.webp",
-      "alt": "wish product",
-      "width": 1440,
-      "height": 2691
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/wish/wish-product-3.webp",
-      "alt": "wish product",
-      "width": 1440,
-      "height": 2691
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/wish/wish-product-4.webp",
-      "alt": "wish product",
-      "width": 1440,
-      "height": 2691
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/wish/wish-product-5.webp",
-      "alt": "wish product",
-      "width": 1440,
-      "height": 2691
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/wish/wish-redirect.webp",
-      "alt": "wish redirect",
-      "width": 2728,
-      "height": 1562
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/wish/wish-screenshot-1.webp",
-      "alt": "wish screenshot",
-      "width": 1080,
-      "height": 1920
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/wish/wish-screenshot-2.webp",
-      "alt": "wish screenshot",
-      "width": 1080,
-      "height": 2312
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/wish/wish-screenshot-3.webp",
-      "alt": "wish screenshot",
-      "width": 1080,
-      "height": 2312
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/wish/wish-screenshot-4.webp",
-      "alt": "wish screenshot",
-      "width": 1080,
-      "height": 2312
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/wish/wish-screenshot-5.webp",
-      "alt": "wish screenshot",
-      "width": 1080,
-      "height": 2312
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/wish/wish-screenshot-6.webp",
-      "alt": "wish screenshot",
-      "width": 1080,
-      "height": 2312
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/wish/wish-slideshow.webp",
-      "alt": "wish slideshow",
-      "width": 2880,
-      "height": 5383
     }
   ]
 }
