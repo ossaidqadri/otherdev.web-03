@@ -1,17 +1,28 @@
 ---
 import { getCollection, render } from "astro:content";
+import CtaScene from "@/components/CtaScene.astro";
+import PostCard from "@/components/PostCard.astro";
+import { Badge } from "@/lib/components/ui/badge";
+import { Button } from "@/lib/components/ui/button";
 import Layout from "@/layouts/Layout.astro";
 import { getSite } from "@/lib/site";
 
 export async function getStaticPaths() {
-  return (await getCollection("blog")).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+  const all = (await getCollection("blog")).sort((a, b) => +b.data.publishedAt - +a.data.publishedAt);
+  // Up to three other posts, newest first, wrapping so every post links onward.
+  return all.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: { entry, related: all.length > 1 ? Array.from({ length: Math.min(3, all.length - 1) }, (_, n) => all[(i + n + 1) % all.length]!) : [] },
+  }));
 }
 
-const { entry } = Astro.props;
-const { ui } = await getSite();
+const { entry, related } = Astro.props;
+const { ui, closing } = await getSite();
 const { title, excerpt, publishedAt } = entry.data;
 const { Content } = await render(entry);
-const date = new Intl.DateTimeFormat("en", { dateStyle: "long" }).format(publishedAt);
+const monthYear = new Intl.DateTimeFormat("en", { month: "long", year: "numeric" }).format(publishedAt);
+const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
+const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]";
 ---
 
 <Layout
@@ -27,10 +38,61 @@ const date = new Intl.DateTimeFormat("en", { dateStyle: "long" }).format(publish
     author: { "@type": "Organization", name: "otherdev" },
   }}
 >
-  <main class="site-container section pt-40" data-navbar-theme="dark">
-    <a href="/blog" class="type-body-regular-m text-ink-3">← {ui.backToBlog}</a>
-    <h1 class="type-display-s mt-6 max-w-4xl">{title}</h1>
-    <time class="type-body-regular-m text-ink-3 mt-4 block" datetime={publishedAt.toISOString()}>{date}</time>
-    <div class="prose-site type-article-body mt-12"><Content /></div>
+  <main>
+    {/* Title and date badge beside the cover. Posts have no cover art yet, so a gradient stands in. */}
+    <section class="post-hero pt-[var(--container-navpadding)]" data-navbar-theme="dark">
+      <div class="site-container flex flex-col-reverse gap-4 py-[var(--section-padding-lg)] md:flex-row md:justify-between">
+        <div class="flex flex-col justify-between gap-[var(--section-padding-sm)] md:pt-[var(--card-padding)] md:pb-[var(--card-padding)]">
+          <h1 class="type-heading-xl max-w-[40rem]">{title}</h1>
+          <div class="flex flex-wrap items-center gap-1">
+            <Badge variant="tag" class="type-body-button-s">{monthYear}</Badge>
+          </div>
+        </div>
+        <div class="w-full shrink-0 md:w-[26.667rem]">
+          <div class="aspect-[4/5] w-full rounded-[var(--card-radius)] bg-[linear-gradient(160deg,var(--global-winter-300-dark),var(--global-autumn-50-dark))]"></div>
+        </div>
+      </div>
+    </section>
+
+    <section data-navbar-theme="dark">
+      <div class="site-container flex flex-col gap-[var(--section-padding-sm)] pb-[var(--section-padding-md)]">
+        <hr class={rule} />
+        {/* Column and spacing as the reference: 640 wide, 24 between blocks, 48 above and below a heading.
+            The prose rules are unlayered, so overriding them takes `!`. */}
+        <div class="prose-site type-article-body mx-auto flex w-full max-w-[40rem]! flex-col gap-6 pb-12 opacity-80 [&>*+*]:mt-0! [&_h2]:mt-6! [&_h2+*]:mt-6!"><Content /></div>
+        <hr class={rule} />
+      </div>
+    </section>
+
+    {related.length > 0 && (
+      <section class="related pb-[var(--section-padding-lg)]" data-navbar-theme="dark">
+        <div class="site-container flex flex-col gap-[var(--section-padding-sm)] pt-[var(--section-padding-md)]">
+          <div class="flex w-full flex-col items-start gap-2 md:flex-row md:items-end md:gap-8">
+            <div class="flex-1"><h2 class="type-heading-l max-w-[64rem]">{ui.relatedPosts}</h2></div>
+            <Button href="/blog" variant="nav" size="nav" class="type-heading-l -ml-2.5 rounded-lg md:ml-0">
+              <span class="inline-flex items-center gap-1 opacity-40">
+                <span>{ui.seeAll}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-8 translate-y-[0.03em]" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+              </span>
+            </Button>
+          </div>
+          <hr class={rule} />
+          <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {related.map((p) => (
+              <li><PostCard href={`/blog/${p.id}`} title={p.data.title} excerpt={p.data.excerpt} label={date.format(p.data.publishedAt)} /></li>
+            ))}
+          </ul>
+          <hr class={rule} />
+        </div>
+      </section>
+    )}
+
+    <CtaScene heading={closing.heading} body={closing.body} button={closing.button} />
   </main>
 </Layout>
+
+<style>
+  .post-hero {
+    background: linear-gradient(180deg, var(--global-spring-200) 0%, #fff 75%);
+  }
+</style>
