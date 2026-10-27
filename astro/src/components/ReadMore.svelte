@@ -1,22 +1,21 @@
 <script lang="ts">
 	import type { Snippet } from "svelte";
-	import { Badge } from "@/lib/components/ui/badge";
 	import { Button } from "@/lib/components/ui/button";
 	import * as Collapsible from "@/lib/components/ui/collapsible";
 
 	// The case study's summary on the left and the full write-up on the right. The write-up stays mounted and its height
 	// eases open (grid rows 0fr to 1fr), so the left column keeps its width while it is closed.
-	let { lead, tags, more, less, details }: { lead: string; tags: string[]; more?: string; less?: string; details?: Snippet } = $props();
+	// The tags and the write-up come in as static slots (Astro renders them), so only the toggle ships as JS.
+	// `children` is declared only so Astro's type check accepts more than one slot.
+	let { lead, more, less, tags, details }: { lead: string; more?: string; less?: string; tags?: Snippet; details?: Snippet; children?: Snippet } = $props();
 	let open = $state(false);
 </script>
 
 <Collapsible.Root bind:open class="flex w-full flex-col md:flex-row">
 	<div class="flex flex-1 flex-col items-start gap-8 md:sticky md:top-[var(--container-navpadding)] md:self-start md:pr-[var(--card-padding)]">
-		{#if tags.length > 0}
+		{#if tags}
 			<div class="flex flex-wrap items-center gap-1">
-				{#each tags as t (t)}
-					<Badge variant="tag" class="type-body-button-s">{t}</Badge>
-				{/each}
+				{@render tags()}
 			</div>
 		{/if}
 		<div class="type-heading-s flex max-w-[40rem] flex-col gap-1">

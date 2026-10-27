@@ -57,7 +57,8 @@ const jsonLd = {
         <div class="type-mega-button max-w-[64rem] pt-16">
           <h1>{title}</h1>
         </div>
-        <ReadMore client:visible lead={lead} tags={tags} more={ui.readMore} less={ui.readLess}>
+        <ReadMore client:idle={{ timeout: 3000 }} lead={lead} more={ui.readMore} less={ui.readLess}>
+          {tags.length > 0 && <Fragment slot="tags">{tags.map((t) => <Badge variant="tag" class="type-body-button-s">{t}</Badge>)}</Fragment>}
           <Fragment slot="details">
             <Separator />
             <div class="flex flex-col">
