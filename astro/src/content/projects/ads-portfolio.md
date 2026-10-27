@@ -14,22 +14,40 @@
   },
   "gallery": [
     {
-      "src": "https://media.otherdev.com/site/projects/ads-portfolio/OD-Ads-Digital-Issue_90162133_1.png",
-      "alt": "Ads image cover",
-      "width": 2000,
-      "height": 2000
+      "src": "https://media.otherdev.com/site/projects/ads-portfolio/shots/01-m-cover.webp",
+      "alt": "Ads Portfolio cover page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/ads-portfolio/OD-Ads-Digital-Issue_90162133_2.png",
-      "alt": "Ads issue page 2",
-      "width": 2000,
-      "height": 2000
+      "src": "https://media.otherdev.com/site/projects/ads-portfolio/shots/02-m-summary.webp",
+      "alt": "Ads Portfolio summary page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/ads-portfolio/OD-Ads-Digital-Issue_90162133_3.png",
-      "alt": "Ads issue page 3",
-      "width": 2000,
-      "height": 2000
+      "src": "https://media.otherdev.com/site/projects/ads-portfolio/shots/03-d-photos.webp",
+      "alt": "Ads Portfolio photos page on desktop",
+      "width": 2880,
+      "height": 1620
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/ads-portfolio/shots/04-m-snapshot.webp",
+      "alt": "Ads Portfolio snapshot page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/ads-portfolio/shots/05-m-metrics.webp",
+      "alt": "Ads Portfolio metrics page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/ads-portfolio/shots/06-d-table.webp",
+      "alt": "Ads Portfolio table page on desktop",
+      "width": 2880,
+      "height": 1620
     }
   ]
 }
