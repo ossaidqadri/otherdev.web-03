@@ -1,0 +1,25 @@
+---
+import type { HTMLTag } from "astro/types";
+
+// Text split into word spans laid out with flex gaps (tighter than a space, as on the reference),
+// each fading up in turn (`hero-word-in` in global.css). Words start hidden and play once an
+// ancestor or the element itself carries `data-in`.
+interface Props {
+  text: string;
+  as?: HTMLTag;
+  class?: string;
+  /** Classes for each word span. */
+  word?: string;
+  /** Stagger between words and the index the first word starts at, in ms and words. */
+  step?: number;
+  start?: number;
+  [attr: string]: unknown;
+}
+
+const { text, as: Tag = "p", class: className, word, step = 100, start = 0, ...rest } = Astro.props;
+const words = text.split(/\s+/).filter(Boolean);
+---
+
+<Tag class:list={["words flex flex-wrap items-center", className]} {...rest}>
+  {words.map((w, i) => <span class={word} style={`--d: ${(start + i) * step}ms`} data-word>{w}</span>)}
+</Tag>

@@ -1,4 +1,5 @@
 ---
+import Words from "@/components/Words.astro";
 import { Button } from "@/lib/components/ui/button";
 import { getPage } from "@/lib/site";
 
@@ -11,13 +12,10 @@ const words = hero.statement.split(" ");
     {/* Two layers share one spot: the motion layer sets --p (0 to 1, scroll through the
          scene) and the headline gives way to the word-by-word statement. */}
     <div class="site-container grid w-full">
-      <h1 class="layer layer-headline type-hero max-w-5xl text-white">{hero.headline}</h1>
-      <p class="layer layer-statement type-hero max-w-[64rem]" data-reveal-words>
-        {words.map((w, i) => (
-          <>
-            <span class="word" data-word>{w}</span>{i < words.length - 1 ? " " : ""}
-          </>
-        ))}
+      <Words as="h1" text={hero.headline} data-in class="layer layer-headline content-start gap-x-[calc(0.625rem*var(--scale,1))] gap-y-[calc(0.25rem*var(--scale,1))] max-w-[64rem] text-white" word="type-hero" />
+      {/* Same word gaps; these words fill in with scroll progress instead of the entrance. */}
+      <p class="layer layer-statement flex max-w-[64rem] flex-wrap content-start items-center gap-x-[calc(0.625rem*var(--scale,1))] gap-y-[calc(0.25rem*var(--scale,1))]" data-reveal-words>
+        {words.map((w) => <span class="word type-hero" data-word>{w}</span>)}
       </p>
     </div>
     <div class="pill-colors site-container w-full">

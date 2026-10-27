@@ -66,7 +66,7 @@ function initPage() {
   const spy = [...document.querySelectorAll<HTMLAnchorElement>("[data-pill] a")];
   const scenes = [...document.querySelectorAll<HTMLElement>("[data-scene]")];
   const hero = document.querySelector<HTMLElement>("[data-scene=hero]");
-  const words = [...document.querySelectorAll<HTMLElement>("[data-word]")];
+  const words = [...document.querySelectorAll<HTMLElement>("[data-reveal-words] [data-word]")];
 
   const themeAt = (y: number) =>
     sections.find((s) => {
@@ -84,16 +84,19 @@ function initPage() {
     root.dataset.navTheme = themeAt(40) ?? "light";
     root.dataset.pillTheme = themeAt(innerHeight - 40) ?? "dark";
 
+    // The last section whose top has passed mid-screen stays current, so News stays lit over the
+    // scene after it, as on the reference.
     const mid = innerHeight / 2;
+    const current = spy.findLast((a) => (document.getElementById(a.hash.slice(1))?.getBoundingClientRect().top ?? Infinity) <= mid);
     for (const a of spy) {
-      const r = document.getElementById(a.hash.slice(1))?.getBoundingClientRect();
-      const on = !!r && r.top <= mid && r.bottom > mid;
-      if (on) a.setAttribute("aria-current", "true");
+      if (a === current) a.setAttribute("aria-current", "true");
       else a.removeAttribute("aria-current");
     }
 
     for (const scene of scenes) {
       const r = scene.getBoundingClientRect();
+      // Word entrances (Words.astro) play once, when the scene's top reaches mid-screen.
+      if (r.top <= innerHeight / 2) scene.setAttribute("data-in", "");
       if (r.height <= innerHeight) continue;
       const p = clamp(-r.top / (r.height - innerHeight));
       scene.style.setProperty("--p", p.toFixed(4));

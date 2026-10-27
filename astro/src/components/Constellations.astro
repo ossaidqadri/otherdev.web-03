@@ -1,15 +1,22 @@
 ---
+import Words from "@/components/Words.astro";
 import { Button } from "@/lib/components/ui/button";
 import { getPage } from "@/lib/site";
 
 const { constellations: c } = await getPage("home");
+// One stagger runs through the heading into the body (75ms a word), as on the reference.
+const STEP = 75;
+const headingWords = c.heading.split(/\s+/).length;
 ---
 
 <section class="constellations relative h-[200vh]" data-navbar-theme="dark" data-scene="constellations" data-flip="dark:light:0.5" data-on-at="0.5">
   <div class="sticky top-0 flex h-svh flex-col justify-between pt-[var(--section-padding-lg)] pb-28 md:pb-[var(--section-padding-lg)]">
+    {/* Word gaps are 0.45em of the 16px block, not of the words, which is what the reference measures to. */}
     <div class="site-container w-full">
-      <h2 class="heading type-mega-button">{c.heading}</h2>
-      <p class="body type-mega-button mt-2.5 max-w-[64rem]">{c.body}</p>
+      <div class="flex max-w-[64rem] flex-col gap-y-[10px]">
+        <Words as="h2" text={c.heading} step={STEP} class="heading gap-x-[0.45em] gap-y-[0.1em]" word="type-mega-button" />
+        <Words text={c.body} step={STEP} start={headingWords} class="body gap-x-[0.45em] gap-y-[0.1em]" word="type-mega-button" />
+      </div>
     </div>
     <div class="site-container w-full">
       <Button href={c.button.href} variant="glass" size="pill" class="type-body-button-m">{c.button.label}</Button>
