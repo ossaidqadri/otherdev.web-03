@@ -6,10 +6,10 @@
   "link": "carwala.org",
   "excerpt": "Carwala is a modern booking and lead generation platform built for a professional car wash and detailing service. We designed a fast, mobile first experience...",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/car-wala/car-wala-exterior.webp",
-    "alt": "car wala exterior",
-    "width": 2880,
-    "height": 2018
+    "src": "https://media.otherdev.com/site/projects/car-wala/carwala-cover.webp",
+    "alt": "Car Wala, the badge over a detailer pouring foam on a black bonnet",
+    "width": 2400,
+    "height": 1350
   },
   "gallery": [
     {
