@@ -1,19 +1,109 @@
 ---
+import { Image } from "astro:assets";
+import CopyButton from "@/components/CopyButton.astro";
+import Words from "@/components/Words.astro";
 import { Button } from "@/lib/components/ui/button";
-import { getPage } from "@/lib/site";
 import Layout from "@/layouts/Layout.astro";
+import { getPage, getSite } from "@/lib/site";
 
 const contact = await getPage("contact");
+const { team } = await getPage("about");
+const { footer, ui } = await getSite();
+const STEP = 75;
+const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]";
+// The reference's people and inbox rows: 16px on desktop, 18px below lg, 450 weight.
+const row = "flex min-w-0 flex-col text-base leading-[1.3] font-[450] tracking-[-0.01rem] max-lg:text-lg";
 ---
 
 <Layout title="Contact | Other Dev" description={contact.body}>
-  <main id="main" class="site-container section pt-40" data-navbar-theme="dark">
-    <h1 class="type-display-s max-w-5xl">{contact.heading}</h1>
-    <p class="type-heading-l text-ink-3 mt-8 max-w-3xl">{contact.body}</p>
-    <ul class="mt-12 flex flex-wrap gap-2">
-      {contact.links.map((l) => (
-        <li><Button href={l.href} rel="noopener noreferrer" target="_blank" variant="card" size="pill" class="type-body-button-m">{l.label}</Button></li>
-      ))}
-    </ul>
+  <main id="main">
+    {/* Headline and sub fade up word by word on load, as on the services hero. */}
+    <section class="contact-hero pt-[var(--container-navpadding)]" data-navbar-theme="dark">
+      <div class="site-container py-[var(--section-padding-lg)]">
+        <div class="flex max-w-[64rem] flex-col gap-y-[10px]" data-in>
+          <Words as="h1" text={contact.hero.heading} step={STEP} class="gap-x-[0.45em] gap-y-[0.1em]" word="type-mega-button" />
+          <Words text={contact.hero.sub} step={STEP} start={contact.hero.heading.split(/\s+/).length} class="gap-x-[0.45em] gap-y-[0.1em] opacity-40" word="type-mega-button" />
+        </div>
+      </div>
+    </section>
+
+    <section data-navbar-theme="dark">
+      <div class="site-container flex flex-col gap-[var(--section-padding-sm)] pt-[var(--section-padding-sm)] pb-[var(--section-padding-lg)]">
+        {footer.offices.map((o) => (
+          <>
+            <hr class={rule} />
+            <div class="flex w-full flex-col gap-8 py-[var(--section-padding-sm)]">
+              <div class="flex flex-col">
+                <h2 class="type-heading-l">{o.city}</h2>
+                <time class="type-heading-l block min-h-[1lh] opacity-40" data-clock={o.timezone}></time>
+              </div>
+              {/* Click copies, with a toast (Footer.astro); the reference's 24px lines. */}
+              <div class="type-heading-m flex flex-col items-start gap-1">
+                <CopyButton value={o.email} />
+                <CopyButton value={o.phone} />
+              </div>
+            </div>
+          </>
+        ))}
+        <hr class={rule} />
+
+        <div class="grid gap-[var(--section-padding-sm)] py-[var(--section-padding-sm)] md:grid-cols-2 md:gap-x-16">
+          <div class="flex flex-col gap-8">
+            <h2 class="type-heading-m">{contact.foundersHeading}</h2>
+            <ul class="flex flex-col gap-6">
+              {team.map((m, i) => (
+                <li class="flex flex-col gap-6">
+                  {i > 0 && <hr class={rule} />}
+                  <div class="flex flex-wrap items-center gap-4">
+                    <div class="relative hidden size-[2.625rem] shrink-0 overflow-hidden rounded-full sm:block">
+                      <Image src={m.photo.src} alt="" width={96} height={96} fit="cover" position="top" loading="lazy" class="size-full object-cover" />
+                    </div>
+                    <div class={`${row} flex-1`}>
+                      <p>{m.name}</p>
+                      <p class="opacity-60">{m.role}</p>
+                    </div>
+                    {m.linkedin && (
+                      <Button href={m.linkedin} rel="noopener noreferrer" target="_blank" variant="nav" size="nav" class="type-body-button-s">
+                        {contact.linkedin}<span class="sr-only">{ui.opensInNewTab}</span>
+                      </Button>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="flex flex-col gap-8">
+            <h2 class="type-heading-m">{contact.generalHeading}</h2>
+            <ul class="flex flex-col gap-6">
+              {contact.general.map((g, i) => (
+                <li class="flex flex-col gap-6">
+                  {i > 0 && <hr class={rule} />}
+                  <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
+                    <div class={row}>
+                      <p>{g.title}</p>
+                      {g.note && <p class="opacity-60">{g.note}</p>}
+                    </div>
+                    {g.copy && <CopyButton value={g.copy} class="type-body-button-s" />}
+                    {g.link && (
+                      <Button href={g.link.href} rel="noopener noreferrer" target="_blank" variant="nav" size="nav" class="type-body-button-s">
+                        {g.link.label}<span class="sr-only">{ui.opensInNewTab}</span>
+                      </Button>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </Layout>
+
+<style>
+  /* The reference's warm hero: amber into cream and out to white. */
+  .contact-hero {
+    background: linear-gradient(var(--global-summer-400) 0%, var(--global-summer-300) 50%, var(--global-summer-100) 80%, var(--global-summer-50) 95%, #fff 100%);
+  }
+</style>

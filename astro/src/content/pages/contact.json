@@ -1,10 +1,14 @@
 {
   "page": "contact",
-  "heading": "Tell us what you are building.",
+  "hero": { "heading": "Tell us what you are building.", "sub": "We reply within a working day." },
   "body": "The quickest way to reach us is WhatsApp. We reply within a working day.",
-  "links": [
-    { "label": "WhatsApp", "href": "https://wa.me/923156893331?text=Hi!%20I%20found%20you%20through%20otherdev.com%20and%20would%20love%20to%20discuss%20a%20project." },
-    { "label": "LinkedIn", "href": "https://linkedin.com/company/theotherdev/" },
-    { "label": "Instagram", "href": "https://instagram.com/other.dev" }
-  ]
+  "foundersHeading": "Founders",
+  "generalHeading": "General",
+  "general": [
+    { "title": "WhatsApp", "note": "The quickest way to reach us", "link": { "label": "Message us", "href": "https://wa.me/923156893331?text=Hi!%20I%20found%20you%20through%20otherdev.com%20and%20would%20love%20to%20discuss%20a%20project." } },
+    { "title": "General inquiries", "note": "We reply within a working day", "copy": "hello@otherdev.com" },
+    { "title": "LinkedIn", "link": { "label": "Follow", "href": "https://linkedin.com/company/theotherdev/" } },
+    { "title": "Instagram", "link": { "label": "Follow", "href": "https://instagram.com/other.dev" } }
+  ],
+  "linkedin": "LinkedIn"
 }

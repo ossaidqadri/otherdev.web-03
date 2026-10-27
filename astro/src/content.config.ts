@@ -128,7 +128,18 @@ const pageSchemas = z.discriminatedUnion("page", [
     note: z.string(),
     fields: z.object({ firstName: z.string(), lastName: z.string(), email: z.string() }),
   }),
-  z.object({ page: z.literal("contact"), heading: z.string(), body: z.string(), links: z.array(link) }),
+  z.object({
+    page: z.literal("contact"),
+    hero: z.object({ heading: z.string(), sub: z.string() }),
+    // Meta description.
+    body: z.string(),
+    foundersHeading: z.string(),
+    generalHeading: z.string(),
+    // One row per way to reach the studio: a link, or a value the visitor can copy.
+    general: z.array(z.object({ title: z.string(), note: z.string().optional(), link: link.optional(), copy: z.string().optional() })),
+    // Label of each founder's profile link.
+    linkedin: z.string(),
+  }),
   z.object({
     page: z.literal("services"),
     hero: z.object({ heading: z.string(), sub: z.string() }),
