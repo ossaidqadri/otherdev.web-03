@@ -36,7 +36,7 @@ const hoverImage = (p: (typeof projects)[number]) => p.data.gallery.find((g) => 
             <div class="flex flex-col justify-between gap-6 md:gap-8 md:pr-16">
               <div>
                 <h3 class="type-heading-l">{p.data.title}</h3>
-                {p.data.excerpt && <p class="type-heading-s mt-3 opacity-40">{p.data.excerpt}</p>}
+                {p.data.excerpt && <p class="type-heading-s mt-3 opacity-60">{p.data.excerpt}</p>}
               </div>
               <span class="flex flex-wrap gap-1">
                 {(p.data.tags.length ? p.data.tags : [String(p.data.year)]).map((t) => (

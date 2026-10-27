@@ -32,7 +32,7 @@ const imageFor = (file: string) => art[`/src/assets/process/${file}`];
               {/* Plain h3/p: shadcn's CardTitle renders a div and would drop the heading. */}
               <div class="relative z-[1] flex flex-col gap-1 p-[var(--card-padding)]">
                 <h3 class="type-heading-m transition-colors duration-300 group-hover/card:text-[var(--semantic-text-primary-dark)]">{s.title}</h3>
-                <p class="type-heading-s opacity-40 transition-colors duration-300 group-hover/card:text-[var(--semantic-text-primary-dark)]">{s.body}</p>
+                <p class="type-heading-s opacity-60 transition-colors duration-300 group-hover/card:text-[var(--semantic-text-primary-dark)]">{s.body}</p>
               </div>
               {/* Text plus a square art box, as on the reference (591px tall on desktop, 466px on phones). */}
               <div class="relative mt-auto aspect-square w-full">
