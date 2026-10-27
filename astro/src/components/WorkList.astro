@@ -27,8 +27,8 @@ const filters =["Strategy", "Design", "Technology", "Experience"].filter((t) => 
 
 <section id="work" class="section" data-navbar-theme="dark" data-section>
   <div class="site-container">
-    <div class="flex items-end justify-between gap-6">
-      <h2 class="type-heading-l max-w-4xl">{work.heading}</h2>
+    <div class="flex w-full flex-col items-start gap-2 md:flex-row md:items-end md:gap-8">
+      <div class="flex-1"><h2 class="type-heading-l max-w-[64rem]">{work.heading}</h2></div>
       {!all && (
         <Button href={work.all.href} variant="nav" size="nav" class="type-heading-l -ml-2.5 rounded-lg md:ml-0">
           <span class="inline-flex items-center gap-1 opacity-40">
