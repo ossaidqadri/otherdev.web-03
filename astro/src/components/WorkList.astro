@@ -12,7 +12,7 @@ const sorted = await getCollection("projects");
 const projects = work.featured.flatMap((id) => sorted.filter((p) => p.id === id));
 // Hover fades to the first gallery shot that isn't the cover (the reference fades in a video;
 // projects have none yet).
-const banner = { width: 1280, height: 720, widths: [640, 960, 1280], sizes: "(min-width: 768px) 66vw, 100vw", fit: "cover" as const, position: "top", loading: "lazy" as const };
+const banner = { width: 1280, height: 720, widths: [480, 720, 960, 1280], sizes: "(min-width: 768px) 66vw, 100vw", fit: "cover" as const, position: "top", loading: "lazy" as const };
 const hoverImage = (p: (typeof projects)[number]) => p.data.gallery.find((g) => g.src !== p.data.cover.src && (g.width ?? 0) > (g.height ?? 0) * 1.4);
 ---
 
