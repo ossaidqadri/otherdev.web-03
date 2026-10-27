@@ -13,8 +13,9 @@ const site = await getSite();
   <nav aria-label={site.ui.mainNav} class="type-body-button-m -mr-2.5 flex items-center gap-2">
     {site.nav.map((l) => <Button href={l.href} variant="nav" size="nav" class="hidden md:inline-flex">{l.label}</Button>)}
     <Button href={site.cta.href} variant="nav" size="nav">{site.cta.label}</Button>
-    <Button popovertarget="menu" aria-label={site.ui.menuOpen} variant="nav" size="icon-nav" class="md:hidden">
-      <svg width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M0 1h22M0 11h22" /></svg>
+    {/* Three 1px bars, 20px wide, 5.5px apart, as on the reference. */}
+    <Button popovertarget="menu" aria-label={site.ui.menuOpen} variant="nav" size="icon-nav" class="mr-2.5 size-5 flex-col gap-[5.5px] md:hidden">
+      {[0, 1, 2].map(() => <span class="h-px w-5 bg-current" aria-hidden="true"></span>)}
     </Button>
   </nav>
 </header>
@@ -26,7 +27,7 @@ const site = await getSite();
     <div class="type-body-button-m flex items-center gap-7">
       <a href={site.cta.href}>{site.cta.label}</a>
       <Button popovertarget="menu" popovertargetaction="hide" aria-label={site.ui.menuClose} variant="nav" size="icon-nav">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 1l16 16M17 1L1 17" /></svg>
+        <svg width="18" height="18" class="size-auto" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 1l16 16M17 1L1 17" /></svg>
       </Button>
     </div>
   </div>

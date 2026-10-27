@@ -8,7 +8,7 @@ const words = hero.statement.split(" ");
 ---
 
 <section class="hero relative h-[240vh]" data-navbar-theme="light" data-scene="hero" data-flip="light:dark:0.45">
-  <div class="stage sticky top-0 flex h-svh flex-col justify-between pt-[28.4vh] pb-28 md:pb-[var(--section-padding-lg)]">
+  <div class="stage sticky top-0 flex h-svh flex-col justify-between pt-[calc(var(--container-navpadding)+var(--section-padding-lg))] pb-[var(--section-padding-lg)]">
     {/* Two layers share one spot: the motion layer sets --p (0 to 1, scroll through the
          scene) and the headline gives way to the word-by-word statement. */}
     <div class="site-container grid w-full">
