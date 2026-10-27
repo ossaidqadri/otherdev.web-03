@@ -1,8 +1,8 @@
 ---
 {
   "title": "The Power of Static Typing in Programming",
-  "excerpt": "In the ever-evolving landscape of software development, the debate between dynamic and static typing continues to be a hot topic. While dynamic typing offers fl",
-  "publishedAt": "2026-05-15T21:22:06.069Z"
+  "excerpt": "In the ever-evolving landscape of software development, the debate between dynamic and static typing continues to be a hot topic. While dynamic typing offers flexibility and rapid development, static typing brings its ow",
+  "publishedAt": "2024-04-07T00:00:00.000Z"
 }
 ---
 
@@ -19,7 +19,6 @@ function greet(name: string): string {
 
 // This will throw an error at compile time, preventing potential runtime issues.
 let message: string = greet(123)
-
 ```
 
 ## Enhanced Readability and Maintainability
@@ -30,7 +29,7 @@ Static typing makes code more readable and maintainable. By explicitly declaring
 
 Modern IDEs leverage static typing to offer advanced features like code completion, refactoring, and static analysis. These tools can automatically detect issues, suggest fixes, and safely refactor code, enhancing developer productivity and reducing the likelihood of introducing bugs during refactoring.
 
-```ts
+```csharp
 // Refactoring example: Renaming a method in C#
 public class Calculator {
     public int Add(int a, int b) {
