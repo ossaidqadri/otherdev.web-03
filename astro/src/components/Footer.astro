@@ -45,7 +45,8 @@ const year = String(new Date().getFullYear());
         data-scrub
         data-scrub-rise
       >
-        <source src="https://media.otherdev.com/site/video/footer-flower-mobile.webm" type="video/webm" media="(max-width: 767px)" />
+        {/* Keyframe every 8 frames: scrubbing seeks constantly, and with one keyframe each seek decoded from frame 0. */}
+        <source src="https://media.otherdev.com/site/video/footer-flower-mobile-scrub.webm" type="video/webm" media="(max-width: 767px)" />
         <source src="https://media.otherdev.com/site/video/footer-flower.webm" type="video/webm" />
       </video>
       <nav aria-label={ui.socialNav} class="type-body-button-s absolute inset-x-0 top-0 z-10 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-[var(--container-padding)] py-8">
