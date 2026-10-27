@@ -12,7 +12,12 @@
     { "title": "GitHub", "link": { "label": "Follow", "href": "https://github.com/theotherdev" } }
   ],
   "linkedin": "LinkedIn",
-  "testimonials": [],
+  "testimonials": [
+    { "quote": "Other Dev understood Narkin’s from the first conversation. The website and the blog they built are exactly how we want to be seen.", "name": "Sarim Nara", "role": "Narkin’s Builders", "href": "/work/narkins" },
+    { "quote": "From the project pages to the enquiry forms, everything works the way our sales team needs it to.", "name": "Wahib", "role": "Bin Yousuf Group", "href": "/work/real-estate-platform-development-for-bin-yousuf-group" },
+    { "quote": "Every drop puts real pressure on a store. Other Dev built ours to take it.", "name": "Ammar", "role": "Cultured Legacy", "href": "/work/website-development-for-cultured-legacy" },
+    { "quote": "A clean, fast store that lets the clothes do the talking.", "name": "Ammar", "role": "Groovy", "href": "/work/website-development-for-groovy-pakistan" }
+  ],
   "faq": {
     "heading": "Have questions?",
     "sub": "We’ve got answers.",
