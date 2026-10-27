@@ -15,7 +15,7 @@ interface Props {
   jsonLd?: Record<string, unknown>;
 }
 
-const SITE_NAME = "otherdev";
+const SITE_NAME = "Other Dev";
 const { title, description, image, imageAlt = title, type = "website", published, noindex, jsonLd } = Astro.props;
 const canonical = noindex ? null : new URL(Astro.url.pathname, Astro.site);
 const imageUrl = new URL(image ?? "/og-default.jpg", Astro.site).href;

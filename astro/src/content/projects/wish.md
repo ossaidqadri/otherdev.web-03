@@ -44,7 +44,7 @@
     },
     {
       "src": "https://media.otherdev.com/site/projects/wish/wish-otherdev.webp",
-      "alt": "wish otherdev",
+      "alt": "wish Other Dev",
       "width": 1000,
       "height": 1000
     },

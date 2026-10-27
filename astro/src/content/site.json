@@ -1,12 +1,12 @@
 {
   "global": {
-    "name": "otherdev",
-    "description": "otherdev produces digital platforms for pioneering creatives. Full-service web development and design studio based in Karachi, specializing in fashion and design fields.",
+    "name": "Other Dev",
+    "description": "Other Dev produces digital platforms for pioneering creatives. Full-service web development and design studio based in Karachi, specializing in fashion and design fields.",
     "seo": {
-      "home": "otherdev produces digital platforms for pioneering creatives. Full-service web development and design studio based in Karachi, specializing in fashion and design fields.",
+      "home": "Other Dev produces digital platforms for pioneering creatives. Full-service web development and design studio based in Karachi, specializing in fashion and design fields.",
       "work": "Explore our premium web design and development projects. We engineer digital solutions for pioneering brands across real estate, e-commerce, SaaS, and more.",
       "services": "Brand, product and technology expertise, all under one roof.",
-      "blog": "Thoughts, insights, and updates from the otherdev studio on web development, design, and digital platforms."
+      "blog": "Thoughts, insights, and updates from the Other Dev studio on web development, design, and digital platforms."
     },
     "nav": [
       { "label": "Work", "href": "/work" },
@@ -35,7 +35,7 @@
         { "label": "Instagram", "href": "https://instagram.com/other.dev" },
         { "label": "WhatsApp", "href": "https://wa.me/923156893331" }
       ],
-      "legal": "© otherdev"
+      "legal": "© Other Dev"
     },
     "ui": {
       "menuOpen": "Open menu",
@@ -44,6 +44,8 @@
       "sectionsNav": "Sections",
       "socialNav": "Social",
       "readOnLinkedin": "Read on LinkedIn",
+      "opensInNewTab": "(opens in a new tab)",
+      "skipToContent": "Skip to content",
       "filterLabel": "Filter by category",
       "viewLabel": "View",
       "gridView": "Grid view",

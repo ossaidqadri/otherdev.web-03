@@ -1,7 +1,7 @@
 {
   "page": "home",
   "hero": {
-    "headline": "otherdev builds digital platforms for pioneering creatives.",
+    "headline": "Other Dev builds digital platforms for pioneering creatives.",
     "button": { "label": "Our work", "href": "#work" },
     "statement": "We design and build websites, products and brands for fashion and design studios, from first sketch to launch."
   },
