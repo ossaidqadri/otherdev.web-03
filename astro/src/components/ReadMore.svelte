@@ -4,12 +4,12 @@
 	import { Button } from "@/lib/components/ui/button";
 	import * as Collapsible from "@/lib/components/ui/collapsible";
 
+	// The case study's summary on the left and the full write-up on the right. The write-up stays mounted and its height
+	// eases open (grid rows 0fr to 1fr), so the left column keeps its width while it is closed.
 	let { lead, tags, more, less, details }: { lead: string; tags: string[]; more?: string; less?: string; details?: Snippet } = $props();
 	let open = $state(false);
 </script>
 
-<!-- The case study's summary on the left and the full write-up on the right. The write-up stays mounted and its height
-     eases open (grid rows 0fr to 1fr), so the left column keeps its width while it is closed. -->
 <Collapsible.Root bind:open class="flex w-full flex-col md:flex-row">
 	<div class="flex flex-1 flex-col items-start gap-8 md:sticky md:top-[var(--container-navpadding)] md:self-start md:pr-[var(--card-padding)]">
 		{#if tags.length > 0}

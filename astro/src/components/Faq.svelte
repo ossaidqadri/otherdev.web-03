@@ -2,13 +2,13 @@
 	import * as Accordion from "@/lib/components/ui/accordion";
 	import { Separator } from "@/lib/components/ui/separator";
 
+	// Each answer opens in place and any number can be open: the row's dot grows in and the panel's height eases open,
+	// as on the reference. The trigger keeps its 32px padding closed and open; the panel is pulled up 24px and the
+	// item adds the 24px back, so only the answer's own height animates.
 	let { items }: { items: { q: string; a: string }[] } = $props();
 </script>
 
-<!-- Each answer opens in place: the row's dot grows in and the panel's height eases open, as on the reference.
-     The trigger keeps its 32px padding closed and open; the panel is pulled up 24px and the item adds the 24px back,
-     so only the answer's own height animates. -->
-<Accordion.Root type="single" class="overflow-visible rounded-none border-0">
+<Accordion.Root type="multiple" class="overflow-visible rounded-none border-0">
 	<Separator />
 	{#each items as item, i (item.q)}
 		<Accordion.Item value={String(i)} class="w-full border-0 pb-6 not-last:border-b-0 data-open:bg-transparent">
