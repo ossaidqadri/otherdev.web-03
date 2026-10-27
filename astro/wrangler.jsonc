@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "otherdev",
+  // Must match the Worker the Cloudflare build is connected to (Workers & Pages), or its builds warn.
+  "name": "web-03",
   // Static assets only, no Worker script: `astro build` writes dist/ and `wrangler deploy`
   // uploads it. Without this file `wrangler deploy` runs `astro add cloudflare` and adds
   // an adapter, KV sessions and an Images binding the site does not use.
