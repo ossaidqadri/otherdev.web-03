@@ -143,6 +143,8 @@ const pageSchemas = z.discriminatedUnion("page", [
     general: z.array(z.object({ title: z.string(), note: z.string().optional(), link: link.optional(), copy: z.string().optional() })),
     // Label of each founder's profile link.
     linkedin: z.string(),
+    faq: z.object({ heading: z.string(), sub: z.string(), items: z.array(z.object({ q: z.string(), a: z.string() })) }),
+    closing: z.object({ heading: z.string(), body: z.string(), button: link }),
   }),
   z.object({
     page: z.literal("services"),

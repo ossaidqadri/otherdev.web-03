@@ -1,6 +1,6 @@
 {
   "page": "contact",
-  "hero": { "heading": "Tell us what you are building.", "sub": "We reply within a working day." },
+  "hero": { "heading": "Work with us", "sub": "Tell us what you are building." },
   "body": "The quickest way to reach us is WhatsApp. We reply within a working day.",
   "foundersHeading": "Founders",
   "generalHeading": "General",
@@ -8,7 +8,24 @@
     { "title": "WhatsApp", "note": "The quickest way to reach us", "link": { "label": "Message us", "href": "https://wa.me/923156893331?text=Hi!%20I%20found%20you%20through%20otherdev.com%20and%20would%20love%20to%20discuss%20a%20project." } },
     { "title": "General inquiries", "note": "We reply within a working day", "copy": "hello@otherdev.com" },
     { "title": "LinkedIn", "link": { "label": "Follow", "href": "https://linkedin.com/company/theotherdev/" } },
-    { "title": "Instagram", "link": { "label": "Follow", "href": "https://instagram.com/other.dev" } }
+    { "title": "Instagram", "link": { "label": "Follow", "href": "https://instagram.com/other.dev" } },
+    { "title": "GitHub", "link": { "label": "Follow", "href": "https://github.com/theotherdev" } }
   ],
-  "linkedin": "LinkedIn"
+  "linkedin": "LinkedIn",
+  "faq": {
+    "heading": "Have questions?",
+    "sub": "We’ve got answers.",
+    "items": [
+      { "q": "How do we get started?", "a": "Message us on WhatsApp or write to hello@otherdev.com with what you are building. We reply within a working day." },
+      { "q": "What do you build?", "a": "Enterprise software, IoT and cloud infrastructure, websites and digital platforms, and the brands that go with them." },
+      { "q": "How does your process work?", "a": "Four steps: Think, Create, Build and Scale. We find the direction, shape the identity and systems, engineer the product, then keep measuring and refining it. Our approach page has the detail." },
+      { "q": "Do you support projects after launch?", "a": "Yes. Scale is the last step of how we work: we keep measuring, refining and growing what we launch." },
+      { "q": "Where are you based?", "a": "Karachi, Pakistan." }
+    ]
+  },
+  "closing": {
+    "heading": "Explore a gallery of our galaxies.",
+    "body": "Chart our constellation of past projects — designs, brands, and experiences that shaped industries, shifted perceptions, and set new standards.",
+    "button": { "label": "Our Approach", "href": "/approach" }
+  }
 }
