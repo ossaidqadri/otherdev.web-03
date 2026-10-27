@@ -1,10 +1,10 @@
 {
   "global": {
     "name": "Other Dev",
-    "description": "Other Dev produces digital platforms for pioneering creatives. Full-service web development and design studio based in Karachi, specializing in fashion and design fields.",
+    "description": "Other Dev designs enterprise software, manages IoT and cloud infrastructure, and builds websites and digital platforms. A full-service studio based in Karachi.",
     "seo": {
-      "home": "Other Dev produces digital platforms for pioneering creatives. Full-service web development and design studio based in Karachi, specializing in fashion and design fields.",
-      "work": "Explore our premium web design and development projects. We engineer digital solutions for pioneering brands across real estate, e-commerce, SaaS, and more.",
+      "home": "Other Dev designs enterprise software, manages IoT and cloud infrastructure, and builds websites and digital platforms. A full-service studio based in Karachi.",
+      "work": "Explore our projects: enterprise software, IoT and cloud infrastructure, web design and development, e-commerce and more.",
       "services": "Brand, product and technology expertise, all under one roof.",
       "blog": "Thoughts, insights, and updates from the Other Dev studio on web development, design, and digital platforms."
     },
@@ -44,8 +44,6 @@
       "sectionsNav": "Sections",
       "socialNav": "Social",
       "readOnLinkedin": "Read on LinkedIn",
-      "opensInNewTab": "(opens in a new tab)",
-      "skipToContent": "Skip to content",
       "opensInNewTab": "(opens in a new tab)",
       "skipToContent": "Skip to content",
       "filterLabel": "Filter by category",
