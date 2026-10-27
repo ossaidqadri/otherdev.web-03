@@ -59,6 +59,10 @@ const site = defineCollection({
   loader: file("src/content/site.json"),
   schema: z.object({
     name: z.string(),
+    // Default meta description, also the Organization description and the llms.txt summary.
+    description: z.string(),
+    // Meta description per page, keyed by route name (home, work, services, blog).
+    seo: z.record(z.string(), z.string()),
     nav: z.array(link),
     cta: link,
     pill: z.array(z.object({ label: z.string(), target: z.string() })),

@@ -1,12 +1,13 @@
 ---
 import WorkIndex from "@/components/WorkIndex.astro";
 import Layout from "@/layouts/Layout.astro";
-import { getPage } from "@/lib/site";
+import { getPage, getSite } from "@/lib/site";
 
 const { hero } = await getPage("work");
+const { seo } = await getSite();
 ---
 
-<Layout title="Work | otherdev" description="Selected projects from otherdev, a Karachi web studio.">
+<Layout title="Work | otherdev" description={seo.work!}>
   <main>
     {/* Top padding is the nav's plus a section's, as on the reference (headline at 256px on desktop). */}
     <section class="work-hero pt-[var(--container-navpadding)]" data-navbar-theme="dark">

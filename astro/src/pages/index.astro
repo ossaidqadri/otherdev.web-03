@@ -7,9 +7,12 @@ import Process from "@/components/Process.astro";
 import News from "@/components/News.astro";
 import Constellations from "@/components/Constellations.astro";
 import PillNav from "@/components/PillNav.astro";
+import { getSite } from "@/lib/site";
+
+const { seo } = await getSite();
 ---
 
-<Layout title="otherdev" description="Digital platforms for pioneering creatives.">
+<Layout title="otherdev" description={seo.home!}>
   <main>
     <Hero />
     <Clients />

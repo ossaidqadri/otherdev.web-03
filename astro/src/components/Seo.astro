@@ -1,25 +1,38 @@
 ---
+import { SEO } from "astro-seo";
+
 interface Props {
   title: string;
   description: string;
   image?: string;
   type?: "website" | "article";
+  /** Articles only: goes into article:published_time. */
+  published?: Date;
+  /** The 404 is one file for every URL: no canonical, kept out of search. */
+  noindex?: boolean;
   jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, image = "/og-default.jpg", type = "website", jsonLd } = Astro.props;
-const url = new URL(Astro.url.pathname, Astro.site);
-const imageUrl = new URL(image, Astro.site);
+const SITE_NAME = "otherdev";
+const { title, description, image = "/og-default.jpg", type = "website", published, noindex, jsonLd } = Astro.props;
+const canonical = noindex ? null : new URL(Astro.url.pathname, Astro.site);
+const imageUrl = new URL(image, Astro.site).href;
 ---
 
-<title>{title}</title>
-<meta name="description" content={description} />
-<link rel="canonical" href={url} />
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-<meta property="og:type" content={type} />
-<meta property="og:url" content={url} />
-<meta property="og:site_name" content="otherdev" />
-<meta property="og:image" content={imageUrl} />
-<meta name="twitter:card" content="summary_large_image" />
+<SEO
+  title={title}
+  description={description}
+  noindex={noindex}
+  canonical={canonical}
+  openGraph={{
+    basic: { title, type, image: imageUrl, url: canonical ?? undefined },
+    optional: { description, siteName: SITE_NAME, locale: "en_GB" },
+    image: { type: "image/jpeg", width: 1200, height: 630, alt: SITE_NAME },
+    article: published ? { publishedTime: published.toISOString() } : undefined,
+  }}
+  twitter={{ card: "summary_large_image", title, description, image: imageUrl, imageAlt: SITE_NAME }}
+  // Full-size image and text previews in search results, as v2 allowed.
+  robotsExtras={noindex ? undefined : "max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
+/>
+<link rel="sitemap" href="/sitemap-index.xml" />
 {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>}

@@ -9,13 +9,13 @@ import { getPage, getSite } from "@/lib/site";
 // /blog: headline, the newest post featured beside its cover, the rest as cards, then the
 // newsletter and the shared closing. Layout, sizes and hovers follow the reference's news page.
 const { hero } = await getPage("blog");
-const { closing, ui } = await getSite();
+const { closing, ui, seo } = await getSite();
 const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
 const [featured, ...rest] = (await getCollection("blog")).sort((a, b) => +b.data.publishedAt - +a.data.publishedAt);
 const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]";
 ---
 
-<Layout title="Blog | otherdev" description="Notes from the otherdev studio.">
+<Layout title="Blog | otherdev" description={seo.blog!}>
   <main>
     <section class="blog-hero pt-[var(--container-navpadding)]" data-navbar-theme="dark">
       <div class="site-container py-[var(--section-padding-lg)]">

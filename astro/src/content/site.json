@@ -1,6 +1,13 @@
 {
   "global": {
     "name": "otherdev",
+    "description": "otherdev produces digital platforms for pioneering creatives. Full-service web development and design studio based in Karachi, specializing in fashion and design fields.",
+    "seo": {
+      "home": "otherdev produces digital platforms for pioneering creatives. Full-service web development and design studio based in Karachi, specializing in fashion and design fields.",
+      "work": "Explore our premium web design and development projects. We engineer digital solutions for pioneering brands across real estate, e-commerce, SaaS, and more.",
+      "services": "Brand, product and technology expertise, all under one roof.",
+      "blog": "Thoughts, insights, and updates from the otherdev studio on web development, design, and digital platforms."
+    },
     "nav": [
       { "label": "Work", "href": "/work" },
       { "label": "Services", "href": "/services" },

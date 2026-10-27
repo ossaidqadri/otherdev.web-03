@@ -5,7 +5,7 @@ import { getPage } from "@/lib/site";
 const page = await getPage("notFound");
 ---
 
-<Layout title="Not found | otherdev" description={page.heading}>
+<Layout title="Not found | otherdev" description={page.heading} noindex>
   <main class="site-container section pt-40" data-navbar-theme="dark">
     <h1 class="type-display-s">{page.heading}</h1>
     <a href={page.link.href} class="type-heading-m text-ink-3 mt-8 inline-block">{page.link.label} →</a>

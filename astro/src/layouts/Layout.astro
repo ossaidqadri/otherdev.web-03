@@ -5,6 +5,7 @@ import CursorLabel from "@/components/CursorLabel.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import Seo from "@/components/Seo.astro";
+import { getSite } from "@/lib/site";
 import "@/styles/global.css";
 
 interface Props {
@@ -12,16 +13,23 @@ interface Props {
   description: string;
   image?: string;
   type?: "website" | "article";
+  published?: Date;
+  noindex?: boolean;
   jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, image, type, jsonLd } = Astro.props;
+const { title, description, image, type, published, noindex, jsonLd } = Astro.props;
+const site = await getSite();
+// Home only; profile links come from the footer's social list (WhatsApp is a chat link, not a profile).
 const organization = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "otherdev",
+  name: site.name,
   url: Astro.site,
-  sameAs: ["https://linkedin.com/company/theotherdev/", "https://instagram.com/other.dev"],
+  logo: new URL("/android-chrome-512x512.png", Astro.site).href,
+  description: site.description,
+  address: { "@type": "PostalAddress", addressLocality: site.footer.offices[0]?.city, addressCountry: "PK" },
+  sameAs: site.footer.social.filter((s) => !s.href.includes("wa.me")).map((s) => s.href),
 };
 ---
 
@@ -35,6 +43,8 @@ const organization = {
       description={description}
       image={image}
       type={type}
+      published={published}
+      noindex={noindex}
       jsonLd={jsonLd ?? (Astro.url.pathname === "/" ? organization : undefined)}
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
