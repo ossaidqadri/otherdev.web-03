@@ -13,16 +13,40 @@
   },
   "gallery": [
     {
-      "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ek-qadam-aur/ek-qadam-aur-about.webp",
-      "alt": "ek qadam aur about",
-      "width": 1305,
-      "height": 900
+      "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ek-qadam-aur/shots/01-m-home.webp",
+      "alt": "Ek Qadam Aur home page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ek-qadam-aur/ek-qadam-aur-home-hero.webp",
-      "alt": "ek qadam aur home hero",
-      "width": 3320,
-      "height": 1738
+      "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ek-qadam-aur/shots/02-m-home.webp",
+      "alt": "Ek Qadam Aur home page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ek-qadam-aur/shots/03-d-home.webp",
+      "alt": "Ek Qadam Aur home page on desktop",
+      "width": 2880,
+      "height": 1620
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ek-qadam-aur/shots/04-m-home.webp",
+      "alt": "Ek Qadam Aur home page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ek-qadam-aur/shots/05-m-home.webp",
+      "alt": "Ek Qadam Aur home page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ek-qadam-aur/shots/06-d-home.webp",
+      "alt": "Ek Qadam Aur home page on desktop",
+      "width": 2880,
+      "height": 1620
     }
   ]
 }
