@@ -1,5 +1,6 @@
 ---
 import { Button } from "@/lib/components/ui/button";
+import { Separator } from "@/lib/components/ui/separator";
 import { getSite } from "@/lib/site";
 
 const site = await getSite();
@@ -22,17 +23,21 @@ const site = await getSite();
 
 {/* Phone menu: a native popover with the Sheet's top-side classes, so open, close, Escape and focus return need no JS. */}
 <div id="menu" popover data-slot="sheet-content" data-side="top" data-lenis-prevent class="menu type-heading-m fixed inset-x-0 top-0 z-50 m-0 h-dvh max-h-none w-full max-w-none flex-col border-0 p-0">
-  <div class="flex items-center justify-between px-[var(--container-padding)] py-6">
+  {/* Same row as the header, so opening the menu only turns the bars into an X. */}
+  <div class="absolute inset-x-0 top-0 z-10 flex items-center justify-between px-[var(--container-padding)] py-6">
     <a href="/" class="wordmark" aria-label={`${site.name} home`}>{site.name}</a>
-    <div class="type-body-button-m flex items-center gap-7">
-      <a href={site.cta.href}>{site.cta.label}</a>
-      <Button popovertarget="menu" popovertargetaction="hide" aria-label={site.ui.menuClose} variant="nav" size="icon-nav">
-        <svg width="18" height="18" class="size-auto" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 1l16 16M17 1L1 17" /></svg>
+    <div class="type-body-button-m -mr-2.5 flex items-center gap-2">
+      <Button href={site.cta.href} variant="nav" size="nav">{site.cta.label}</Button>
+      <Button popovertarget="menu" popovertargetaction="hide" aria-label={site.ui.menuClose} variant="nav" size="icon-nav" class="mr-2.5 size-5">
+        <svg width="20" height="20" class="size-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M2.93 2.93l14.14 14.14M17.07 2.93L2.93 17.07" /></svg>
       </Button>
     </div>
   </div>
-  <ul class="flex flex-1 flex-col items-center justify-center gap-5 pb-24">
-    {site.nav.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+  {/* Centred on the whole screen: the pages, a short rule, then the call to action. */}
+  <ul class="flex h-full flex-col items-center justify-center gap-5">
+    {site.nav.map((l) => <li><Button href={l.href} variant="nav" size="nav" class="type-heading-l rounded-lg">{l.label}</Button></li>)}
+    <li aria-hidden="true" class="my-1.5"><Separator decorative class="data-horizontal:w-[30px]" /></li>
+    <li><Button href={site.cta.href} variant="nav" size="nav" class="type-heading-l rounded-lg">{site.cta.label}</Button></li>
   </ul>
 </div>
 
