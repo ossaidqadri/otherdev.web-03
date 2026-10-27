@@ -26,7 +26,7 @@ const { closing } = await getSite();
         <ul>
           {about.principles.map((p) => (
             <li>
-              <Separator decorative />
+              <Separator />
               {/* A dot grows in on the left on hover, as on the reference's principle rows. */}
               <div class="group flex cursor-default flex-col gap-2 py-8">
                 <div class="flex items-center">
@@ -39,7 +39,7 @@ const { closing } = await getSite();
               </div>
             </li>
           ))}
-          <li><Separator decorative /></li>
+          <li><Separator /></li>
         </ul>
       </div>
     </section>

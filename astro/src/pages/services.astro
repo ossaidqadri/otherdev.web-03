@@ -37,7 +37,7 @@ const STEP = 75;
             <ul>
               {g.data.items.map((i) => (
                 <li>
-                  <Separator decorative />
+                  <Separator />
                   {/* A dot grows in on the left on hover, as on the reference's service rows. */}
                   <div class="group flex cursor-default items-center py-8">
                     <div class="w-0 shrink-0 transition-all duration-200 group-hover:w-6">
@@ -47,7 +47,7 @@ const STEP = 75;
                   </div>
                 </li>
               ))}
-              <li><Separator decorative /></li>
+              <li><Separator /></li>
             </ul>
           </div>
         ))}

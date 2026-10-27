@@ -33,7 +33,7 @@ const date = `${new Intl.DateTimeFormat("en", { month: "long", timeZone: "UTC" }
 
     <section data-navbar-theme="dark">
       <div class="site-container flex flex-col gap-[var(--section-padding-sm)] pt-[var(--section-padding-sm)] pb-[var(--section-padding-lg)]">
-        <Separator decorative />
+        <Separator />
         {/* The date in a 256px column, the policy in the reference's 640px article column beside it. */}
         <div class="flex flex-col gap-8 lg:grid lg:grid-cols-[16rem_40rem] lg:gap-x-28">
           <p class="type-body-regular-l self-start pt-1 leading-none opacity-60">
@@ -42,7 +42,7 @@ const date = `${new Intl.DateTimeFormat("en", { month: "long", timeZone: "UTC" }
           </p>
           <div class="prose-site type-article-body article-prose"><Content /></div>
         </div>
-        <Separator decorative />
+        <Separator />
       </div>
     </section>
   </main>

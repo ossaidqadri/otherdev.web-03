@@ -57,9 +57,9 @@ const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
 
     <section data-navbar-theme="dark">
       <div class="site-container flex flex-col gap-[var(--section-padding-sm)] pb-[var(--section-padding-md)]">
-        <Separator decorative />
+        <Separator />
         <div class="prose-site type-article-body article-prose mx-auto w-full"><Content /></div>
-        <Separator decorative />
+        <Separator />
       </div>
     </section>
 
@@ -75,13 +75,13 @@ const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
               </span>
             </Button>
           </div>
-          <Separator decorative />
+          <Separator />
           <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((p) => (
               <li><PostCard href={`/blog/${p.id}`} title={p.data.title} excerpt={p.data.excerpt} label={date.format(p.data.publishedAt)} /></li>
             ))}
           </ul>
-          <Separator decorative />
+          <Separator />
         </div>
       </section>
     )}
