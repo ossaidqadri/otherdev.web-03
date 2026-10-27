@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import { Button } from "@/lib/components/ui/button";
 import { Checkbox } from "@/lib/components/ui/checkbox";
 import { Input } from "@/lib/components/ui/input";
+import { Label } from "@/lib/components/ui/label";
 import { getPage, getSite } from "@/lib/site";
 import { Separator } from "@/lib/components/ui/separator";
 
@@ -12,7 +13,7 @@ const { ui } = await getSite();
 const STEP = 75;
 // The reference's fields: 16px type, soft fill that darkens on hover, example text at 40%.
 const field = "type-body-button-m h-auto w-full rounded-[var(--radius-sm)] bg-[var(--semantic-transparent-weak)] p-4 placeholder:opacity-40 hover:bg-[var(--semantic-transparent-core)] duration-200";
-const label = "type-body-button-m flex items-start justify-between";
+const label = "type-body-button-m flex items-start justify-between gap-0 select-auto";
 ---
 
 <Layout title="Newsletter | Other Dev" description={n.body}>
@@ -29,31 +30,31 @@ const label = "type-body-button-m flex items-start justify-between";
 
     <section data-navbar-theme="dark">
       <div class="site-container flex flex-col gap-[var(--section-padding-sm)] pb-[var(--section-padding-lg)]">
-        <Separator decorative />
+        <Separator />
         {/* Disabled until a signup backend is chosen; the form then needs hydrating (Checkbox is a bits-ui button). */}
         <form class="w-full max-w-[40rem]" aria-describedby="newsletter-note">
           <fieldset disabled class="flex min-w-0 flex-col gap-8">
             <div class="grid gap-8 md:grid-cols-2 md:gap-4">
               <div class="flex flex-col gap-2">
-                <label for="first" class={label}>{n.fields.firstName}</label>
+                <Label for="first" class={label}>{n.fields.firstName}</Label>
                 <Input variant="soft" id="first" name="first" class={field} placeholder={n.examples.firstName} autocomplete="given-name" />
               </div>
               <div class="flex flex-col gap-2">
-                <label for="last" class={label}>{n.fields.lastName}</label>
+                <Label for="last" class={label}>{n.fields.lastName}</Label>
                 <Input variant="soft" id="last" name="last" class={field} placeholder={n.examples.lastName} autocomplete="family-name" />
               </div>
             </div>
             <div class="flex flex-col gap-2">
-              <label for="email" class={label}>{n.fields.email}</label>
+              <Label for="email" class={label}>{n.fields.email}</Label>
               <Input variant="soft" id="email" type="email" name="email" class={field} placeholder={n.examples.email} autocomplete="email" />
             </div>
             <fieldset class="flex w-full flex-col gap-2">
               <legend class="type-body-button-m mb-2">{n.interestsLabel}</legend>
               {n.interests.map((i, k) => (
-                <label for={`interest-${k}`} class="flex w-full cursor-pointer items-start gap-3">
+                <Label for={`interest-${k}`} class="flex w-full cursor-pointer items-start gap-3 select-auto">
                   <Checkbox id={`interest-${k}`} name="interests" value={i} class="size-6 rounded-[var(--radius-sm)] border-0 bg-[var(--semantic-transparent-core)] data-checked:bg-[var(--global-contrast)]" />
                   <span class="type-body-regular-m min-h-6 flex-1 py-px">{i}</span>
-                </label>
+                </Label>
               ))}
             </fieldset>
             <p class="type-body-paragraph-xs max-w-lg opacity-60">{n.consent} <a href={n.privacy.href} class="underline-offset-2 hover:underline">{n.privacy.label}</a>.</p>
@@ -61,7 +62,7 @@ const label = "type-body-button-m flex items-start justify-between";
           </fieldset>
           <p id="newsletter-note" class="type-body-regular-s mt-4 opacity-60">{n.note}</p>
         </form>
-        <Separator decorative />
+        <Separator />
       </div>
     </section>
   </main>

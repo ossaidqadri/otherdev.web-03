@@ -21,7 +21,7 @@ const wash = "pointer-events-none absolute z-0 bg-current/5 backdrop-blur-[32px]
       <div role="group" aria-label={ui.filterLabel} class="relative flex w-full flex-wrap items-center gap-2 lg:w-auto lg:flex-1">
         <span class={`${wash} rounded-[var(--radius-lg)]`} data-wash data-inset="2 7 2 6" aria-hidden="true"></span>
         <Button data-filter="all" aria-pressed="true" variant="toggle" size="filter" class="type-heading-l max-md:text-lg!">{ui.all}</Button>
-        <span class="mx-2 h-px w-6 bg-[var(--semantic-text-primary)] opacity-20" aria-hidden="true"></span>
+        <Separator decorative class="mx-2 shrink data-horizontal:w-6 bg-[color:var(--semantic-text-primary)] opacity-20" />
         {filters.map((t) => <Button data-filter={t} aria-pressed="false" variant="toggle" size="filter" class="type-heading-l max-md:text-lg!">{t}</Button>)}
       </div>
       <div role="group" aria-label={ui.viewLabel} class="relative flex items-center gap-2 lg:mt-1">
@@ -35,7 +35,7 @@ const wash = "pointer-events-none absolute z-0 bg-current/5 backdrop-blur-[32px]
       </div>
     </div>
 
-    <Separator decorative />
+    <Separator />
 
     <ul class="work-index grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3" data-view="grid" data-work-list>
       {projects.map((p) => (
