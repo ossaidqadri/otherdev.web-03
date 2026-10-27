@@ -33,6 +33,7 @@
       "social": [
         { "label": "LinkedIn", "href": "https://linkedin.com/company/theotherdev/" },
         { "label": "Instagram", "href": "https://instagram.com/other.dev" },
+        { "label": "GitHub", "href": "https://github.com/theotherdev" },
         { "label": "WhatsApp", "href": "https://wa.me/923156893331" }
       ],
       "legal": "© Other Dev"
