@@ -1,41 +1,58 @@
 ---
 import CtaScene from "@/components/CtaScene.astro";
 import TeamCard from "@/components/TeamCard.astro";
+import Words from "@/components/Words.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getPage, getSite } from "@/lib/site";
 
 const about = await getPage("about");
 const { closing } = await getSite();
+const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]";
 ---
 
 <Layout title="About | Other Dev" description={about.body}>
   <main id="main">
-    <section class="about-hero" data-navbar-theme="dark">
-      <div class="site-container pt-48 pb-[var(--section-padding-lg)]">
-        <h1 class="type-hero max-w-5xl">{about.heading}</h1>
-        <p class="type-heading-l text-ink-3 mt-10 max-w-3xl">{about.body}</p>
+    {/* Headline fades up word by word on load, as on the reference. */}
+    <section class="about-hero pt-[var(--container-navpadding)]" data-navbar-theme="dark">
+      <div class="site-container flex flex-col gap-12 py-[var(--section-padding-lg)]" data-in>
+        <Words as="h1" text={about.heading} step={40} class="max-w-[1100px] gap-x-[calc(0.625rem*var(--scale,1))] gap-y-[calc(0.25rem*var(--scale,1))]" word="type-mega-button" />
+        <p class="type-heading-m max-w-[40rem] opacity-40">{about.body}</p>
       </div>
     </section>
 
-    <section class="site-container section" data-navbar-theme="dark">
-      <h2 class="type-heading-l max-w-3xl">{about.principlesHeading}</h2>
-      <ul class="mt-12">
-        {about.principles.map((p) => (
-          <li class="border-border border-t py-6 last:border-b">
-            <h3 class="type-body-regular-l">{p.title}</h3>
-            <p class="type-body-paragraph-l text-ink-3 mt-1">{p.body}</p>
-          </li>
-        ))}
-      </ul>
+    <section class="about-principles" data-navbar-theme="dark">
+      <div class="site-container flex flex-col gap-[var(--section-padding-sm)] py-[var(--section-padding-lg)]">
+        <h2 class="type-heading-l max-w-[64rem]">{about.principlesHeading}</h2>
+        <ul>
+          {about.principles.map((p) => (
+            <li>
+              <hr class={rule} />
+              {/* A dot grows in on the left on hover, as on the reference's principle rows. */}
+              <div class="group flex cursor-default flex-col gap-2 py-8">
+                <div class="flex items-center">
+                  <div class="w-0 shrink-0 transition-all duration-200 group-hover:w-6">
+                    <span class="block size-4 origin-center scale-0 rounded-full bg-[var(--semantic-text-primary)] opacity-0 transition duration-200 ease-out group-hover:scale-100 group-hover:opacity-100"></span>
+                  </div>
+                  <h3 class="type-heading-m">{p.title}</h3>
+                </div>
+                <p class="type-heading-m opacity-40">{p.body}</p>
+              </div>
+            </li>
+          ))}
+          <li><hr class={rule} /></li>
+        </ul>
+      </div>
     </section>
 
-    <section class="site-container section pt-0" data-navbar-theme="dark">
-      <h2 class="type-heading-l max-w-3xl">{about.teamHeading}</h2>
-      <ul class="mt-12 grid gap-x-2 gap-y-12 md:grid-cols-3">
-        {about.team.map((m) => (
-          <li><TeamCard {...m} /></li>
-        ))}
-      </ul>
+    <section data-navbar-theme="dark">
+      <div class="site-container flex flex-col gap-[var(--section-padding-md)] py-[var(--section-padding-lg)]">
+        <h2 class="type-heading-l max-w-[64rem]">{about.teamHeading}</h2>
+        <ul class="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          {about.team.map((m) => (
+            <li><TeamCard {...m} /></li>
+          ))}
+        </ul>
+      </div>
     </section>
 
     <CtaScene heading={closing.heading} body={closing.body} button={closing.button} />
@@ -43,7 +60,11 @@ const { closing } = await getSite();
 </Layout>
 
 <style>
+  /* The reference's hero runs from warm stone to near white, then a second layer fades that into the page. */
   .about-hero {
-    background: linear-gradient(to bottom, var(--global-autumn-200) 0%, #fff 100%);
+    background: linear-gradient(var(--global-autumn-300) 0%, var(--global-autumn-50) 100%);
+  }
+  .about-principles {
+    background: linear-gradient(var(--global-autumn-50), transparent 320px);
   }
 </style>
