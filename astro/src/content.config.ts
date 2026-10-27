@@ -127,6 +127,10 @@ const pageSchemas = z.discriminatedUnion("page", [
     consent: z.string(),
     note: z.string(),
     fields: z.object({ firstName: z.string(), lastName: z.string(), email: z.string() }),
+    // Link closing the consent line: "... Read our <Privacy Policy>."
+    privacy: link,
+    // Example text shown at 40% inside each field.
+    examples: z.object({ firstName: z.string(), lastName: z.string(), email: z.string() }),
   }),
   z.object({
     page: z.literal("contact"),
