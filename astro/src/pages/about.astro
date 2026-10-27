@@ -2,9 +2,10 @@
 import CtaScene from "@/components/CtaScene.astro";
 import TeamCard from "@/components/TeamCard.astro";
 import Layout from "@/layouts/Layout.astro";
-import { getEntry } from "astro:content";
+import { getPage, getSite } from "@/lib/site";
 
-const { about } = (await getEntry("site", "home"))!.data;
+const about = await getPage("about");
+const { closing } = await getSite();
 ---
 
 <Layout title="About | otherdev" description={about.body}>
@@ -37,11 +38,7 @@ const { about } = (await getEntry("site", "home"))!.data;
       </ul>
     </section>
 
-    <CtaScene
-      heading="Ready to make the leap?"
-      body="Let’s turn curiosity into collaboration. Share your vision, and we’ll help shape it into something unforgettable."
-      button={{ label: "Contact us", href: "/contact" }}
-    />
+    <CtaScene heading={closing.heading} body={closing.body} button={closing.button} />
   </main>
 </Layout>
 

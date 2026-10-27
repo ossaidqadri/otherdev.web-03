@@ -1,4 +1,6 @@
 ---
+import { getSite } from "@/lib/site";
+
 interface Props {
   name: string;
   role: string;
@@ -10,6 +12,7 @@ interface Props {
 }
 
 const { name, role, photo, linkedin, overlay = false } = Astro.props;
+const { ui } = await getSite();
 const Tag = linkedin ? "a" : "div";
 ---
 
@@ -36,7 +39,7 @@ const Tag = linkedin ? "a" : "div";
       <p class="type-body-regular-l text-ink-3">{role}</p>
     </>
   )}
-  {linkedin && <span class="hover-pill type-body-button-s" aria-hidden="true">Read on LinkedIn</span>}
+  {linkedin && <span class="hover-pill type-body-button-s" aria-hidden="true">{ui.readOnLinkedin}</span>}
 </Tag>
 
 <style>

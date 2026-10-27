@@ -1,7 +1,7 @@
 ---
-import { getEntry } from "astro:content";
+import { getPage } from "@/lib/site";
 
-const { hero } = (await getEntry("site", "home"))!.data;
+const { hero } = await getPage("home");
 const words = hero.statement.split(" ");
 ---
 

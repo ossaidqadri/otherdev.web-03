@@ -1,8 +1,12 @@
 ---
-import { getCollection, getEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import { getPage, getSite } from "@/lib/site";
 import TeamCard from "@/components/TeamCard.astro";
 
-const { news, about, newsletter } = (await getEntry("site", "home"))!.data;
+const { news } = await getPage("home");
+const about = await getPage("about");
+const newsletter = await getPage("newsletter");
+const { ui } = await getSite();
 const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
 
 // The newest blog posts, three at most. Posts have no cover art yet, so a gradient stands in.
@@ -42,8 +46,8 @@ const cards = (await getCollection("blog"))
         {/* Disabled until a signup backend is chosen. */}
         <form>
           <fieldset disabled class="flex flex-col gap-2">
-            <input type="email" placeholder="Email Address" aria-label="Email" class="type-body-regular-m w-full rounded-md bg-white/70 px-4 py-3 disabled:opacity-60" />
-            <button type="submit" class="type-body-button-m w-fit rounded-full bg-white/80 px-5 py-3 disabled:opacity-60">Sign me up</button>
+            <input type="email" placeholder={ui.emailPlaceholder} aria-label="Email" class="type-body-regular-m w-full rounded-md bg-white/70 px-4 py-3 disabled:opacity-60" />
+            <button type="submit" class="type-body-button-m w-fit rounded-full bg-white/80 px-5 py-3 disabled:opacity-60">{ui.signUp}</button>
           </fieldset>
           <p class="type-body-regular-xs mt-3 opacity-60">{newsletter.note}</p>
         </form>

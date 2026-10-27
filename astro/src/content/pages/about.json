@@ -1,0 +1,18 @@
+{
+  "page": "about",
+  "heading": "otherdev is a catalyst for disruptive ideas through creative innovation. A studio of radical optimists crafting new identities, systems, experiences and genres.",
+  "body": "Based in Karachi, we are a full-service digital studio that designs and engineers web platforms, Shopify experiences, AI-powered products and custom digital solutions from the ground up, with a focus on bringing ideas to life through thoughtful design.",
+  "principlesHeading": "We’re guided by principles that we believe in and live by.",
+  "principles": [
+    { "title": "Create Dangerously", "body": "Pursue excellence in execution and attention to detail." },
+    { "title": "Champion Openness", "body": "Work openly with others to create better outcomes." },
+    { "title": "Forever Curious", "body": "Make meaningful contributions that drive progress." },
+    { "title": "Think New", "body": "Guide, influence, and bring clarity to the path ahead." },
+    { "title": "Future First", "body": "Stay open, adaptable, and always ready to learn." }
+  ],
+  "teamHeading": "We’re a multi-disciplinary team of curious designers, developers, and strategists.",
+  "team": [
+    { "name": "Kabeer Jaffri", "role": "Co-founder", "photo": { "src": "https://media.otherdev.com/site/team/kabeer.webp", "alt": "Kabeer Jaffri", "width": 900, "height": 1126 }, "linkedin": "https://www.linkedin.com/in/kabeerjaffri/" },
+    { "name": "Ossaid Qadri", "role": "Co-founder", "photo": { "src": "https://media.otherdev.com/site/team/ossaid.webp", "alt": "Ossaid Qadri", "width": 720, "height": 900 }, "linkedin": "https://www.linkedin.com/in/ossaidqadri/" }
+  ]
+}

@@ -52,7 +52,8 @@ const clients = defineCollection({
 
 const link = z.object({ label: z.string(), href: z.string() });
 
-// All home page copy, so no text is hardcoded in components. A single entry, `home`.
+// Copy that appears on every page: nav, footer, shared closing block and small UI strings.
+// One entry, `global`.
 const site = defineCollection({
   loader: file("src/content/site.json"),
   schema: z.object({
@@ -60,6 +61,24 @@ const site = defineCollection({
     nav: z.array(link),
     cta: link,
     pill: z.array(z.object({ label: z.string(), target: z.string() })),
+    closing: z.object({ heading: z.string(), body: z.string(), button: link }),
+    footer: z.object({
+      cta: link,
+      offices: z.array(z.object({ city: z.string(), timezone: z.string(), email: z.string(), phone: z.string() })),
+      legalLinks: z.array(link),
+      social: z.array(link),
+      legal: z.string(),
+    }),
+    ui: z.record(z.string(), z.string()),
+  }),
+});
+
+// Per-page copy, one JSON file per page in src/content/pages/. The `page` field matches the file
+// name; read a page through getPage() in src/lib/site.ts, which narrows to that page's shape.
+const closing = z.object({ heading: z.string(), body: z.string(), button: link });
+const pageSchemas = z.discriminatedUnion("page", [
+  z.object({
+    page: z.literal("home"),
     hero: z.object({ headline: z.string(), button: link, statement: z.string() }),
     clients: z.object({ heading: z.string() }),
     work: z.object({ heading: z.string(), all: link, featured: z.array(z.string()).min(1) }),
@@ -77,39 +96,48 @@ const site = defineCollection({
     }),
     news: z.object({ heading: z.string(), all: link }),
     constellations: z.object({ heading: z.string(), body: z.string(), button: link }),
-    about: z.object({
-      heading: z.string(),
-      body: z.string(),
-      principlesHeading: z.string(),
-      principles: z.array(z.object({ title: z.string(), body: z.string() })),
-      teamHeading: z.string(),
-      team: z.array(z.object({ name: z.string(), role: z.string(), photo: image, linkedin: z.url().optional() })),
-    }),
-    approach: z.object({
-      heading: z.string(),
-      steps: z.array(z.object({ title: z.string(), body: z.string() })),
-      projectsHeading: z.string(),
-      closing: z.object({ heading: z.string(), body: z.string(), button: link }),
-    }),
-    newsletter: z.object({
-      heading: z.string(),
-      body: z.string(),
-      interestsLabel: z.string(),
-      interests: z.array(z.string()),
-      consent: z.string(),
-      note: z.string(),
-    }),
-    contact: z.object({ heading: z.string(), body: z.string(), links: z.array(link) }),
-    footer: z.object({
-      cta: link,
-      offices: z.array(z.object({ city: z.string(), timezone: z.string(), email: z.string(), phone: z.string() })),
-      legalLinks: z.array(link),
-      social: z.array(link),
-      legal: z.string(),
-    }),
   }),
+  z.object({
+    page: z.literal("about"),
+    heading: z.string(),
+    body: z.string(),
+    principlesHeading: z.string(),
+    principles: z.array(z.object({ title: z.string(), body: z.string() })),
+    teamHeading: z.string(),
+    team: z.array(z.object({ name: z.string(), role: z.string(), photo: image, linkedin: z.url().optional() })),
+  }),
+  z.object({
+    page: z.literal("approach"),
+    heading: z.string(),
+    steps: z.array(z.object({ title: z.string(), body: z.string() })),
+    projectsHeading: z.string(),
+    closing,
+  }),
+  z.object({
+    page: z.literal("newsletter"),
+    heading: z.string(),
+    body: z.string(),
+    interestsLabel: z.string(),
+    interests: z.array(z.string()),
+    consent: z.string(),
+    note: z.string(),
+    fields: z.object({ firstName: z.string(), lastName: z.string(), email: z.string() }),
+  }),
+  z.object({ page: z.literal("contact"), heading: z.string(), body: z.string(), links: z.array(link) }),
+  z.object({
+    page: z.literal("services"),
+    hero: z.object({ heading: z.string(), sub: z.string() }),
+    closing,
+  }),
+  z.object({ page: z.literal("work"), hero: z.object({ heading: z.string(), sub: z.string() }) }),
+  z.object({ page: z.literal("blog"), heading: z.string() }),
+  z.object({ page: z.literal("notFound"), heading: z.string(), link }),
+]);
+const pages = defineCollection({
+  // Id from the `page` field: the default id slugifies file names (notFound becomes notfound).
+  loader: glob({ base: "./src/content/pages", pattern: "*.json", generateId: ({ data }) => String(data.page) }),
+  schema: pageSchemas,
 });
-
 // Service groups for /services, one entry per group.
 const services = defineCollection({
   loader: file("src/content/services.json"),
@@ -122,4 +150,4 @@ const legal = defineCollection({
   schema: z.object({ title: z.string(), updated: z.coerce.date() }),
 });
 
-export const collections = { projects, blog, clients, site, services, legal };
+export const collections = { projects, blog, clients, site, pages, services, legal };

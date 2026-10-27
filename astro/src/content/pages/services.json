@@ -1,0 +1,12 @@
+{
+  "page": "services",
+  "hero": {
+    "heading": "We have the skill to shape what’s next.",
+    "sub": "Brand, product, and technology expertise—all under one roof."
+  },
+  "closing": {
+    "heading": "Explore a gallery of our galaxies.",
+    "body": "Chart our constellation of past projects — designs, brands, and experiences that shaped industries, shifted perceptions, and set new standards.",
+    "button": { "label": "Our Approach", "href": "/approach" }
+  }
+}

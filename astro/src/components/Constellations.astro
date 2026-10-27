@@ -1,7 +1,7 @@
 ---
-import { getEntry } from "astro:content";
+import { getPage } from "@/lib/site";
 
-const { constellations: c } = (await getEntry("site", "home"))!.data;
+const { constellations: c } = await getPage("home");
 ---
 
 <section class="constellations relative h-[200vh]" data-navbar-theme="dark" data-scene="constellations" data-flip="dark:light:0.5" data-on-at="0.5">

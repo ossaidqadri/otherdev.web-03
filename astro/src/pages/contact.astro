@@ -1,8 +1,8 @@
 ---
-import { getEntry } from "astro:content";
+import { getPage } from "@/lib/site";
 import Layout from "@/layouts/Layout.astro";
 
-const { contact } = (await getEntry("site", "home"))!.data;
+const contact = await getPage("contact");
 ---
 
 <Layout title="Contact | otherdev" description={contact.body}>

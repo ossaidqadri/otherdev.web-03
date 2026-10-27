@@ -1,8 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { getEntry } from "astro:content";
+import { getPage, getSite } from "@/lib/site";
 
-const { newsletter: n } = (await getEntry("site", "home"))!.data;
+const n = await getPage("newsletter");
+const { ui } = await getSite();
 const field = "bg-card type-body-regular-m w-full rounded-md px-4 py-3 disabled:opacity-60";
 ---
 
@@ -14,10 +15,10 @@ const field = "bg-card type-body-regular-m w-full rounded-md px-4 py-3 disabled:
     <form class="mt-12 max-w-xl" aria-describedby="newsletter-note">
       <fieldset disabled class="grid gap-3">
         <div class="grid gap-3 md:grid-cols-2">
-          <input class={field} name="first" placeholder="First Name" autocomplete="given-name" aria-label="First name" />
-          <input class={field} name="last" placeholder="Last Name" autocomplete="family-name" aria-label="Last name" />
+          <input class={field} name="first" placeholder={n.fields.firstName} autocomplete="given-name" aria-label={n.fields.firstName} />
+          <input class={field} name="last" placeholder={n.fields.lastName} autocomplete="family-name" aria-label={n.fields.lastName} />
         </div>
-        <input class={field} type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" />
+        <input class={field} type="email" name="email" placeholder={n.fields.email} autocomplete="email" aria-label={n.fields.email} />
         <p class="type-body-regular-m mt-4">{n.interestsLabel}</p>
         {n.interests.map((i) => (
           <label class="type-body-regular-m flex items-center gap-3">
@@ -25,7 +26,7 @@ const field = "bg-card type-body-regular-m w-full rounded-md px-4 py-3 disabled:
           </label>
         ))}
         <p class="type-body-regular-xs text-ink-3 mt-2">{n.consent}</p>
-        <button type="submit" class="type-body-button-m bg-foreground text-background mt-2 w-fit rounded-full px-6 py-4 disabled:opacity-60">Submit</button>
+        <button type="submit" class="type-body-button-m bg-foreground text-background mt-2 w-fit rounded-full px-6 py-4 disabled:opacity-60">{ui.submit}</button>
       </fieldset>
       <p id="newsletter-note" class="type-body-regular-s text-ink-3 mt-4">{n.note}</p>
     </form>

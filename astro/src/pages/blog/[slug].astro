@@ -1,12 +1,14 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
+import { getSite } from "@/lib/site";
 
 export async function getStaticPaths() {
   return (await getCollection("blog")).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
 }
 
 const { entry } = Astro.props;
+const { ui } = await getSite();
 const { title, excerpt, publishedAt } = entry.data;
 const { Content } = await render(entry);
 const date = new Intl.DateTimeFormat("en", { dateStyle: "long" }).format(publishedAt);
@@ -26,7 +28,7 @@ const date = new Intl.DateTimeFormat("en", { dateStyle: "long" }).format(publish
   }}
 >
   <main class="site-container section pt-40" data-navbar-theme="dark">
-    <a href="/blog" class="type-body-regular-m text-ink-3">← Blog</a>
+    <a href="/blog" class="type-body-regular-m text-ink-3">← {ui.backToBlog}</a>
     <h1 class="type-display-s mt-6 max-w-4xl">{title}</h1>
     <time class="type-body-regular-m text-ink-3 mt-4 block" datetime={publishedAt.toISOString()}>{date}</time>
     <div class="prose-site type-article-body mt-12"><Content /></div>

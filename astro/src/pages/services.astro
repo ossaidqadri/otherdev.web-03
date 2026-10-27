@@ -2,7 +2,9 @@
 import CtaScene from "@/components/CtaScene.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { getPage } from "@/lib/site";
 
+const page = await getPage("services");
 const groups = (await getCollection("services")).sort((a, b) => a.data.order - b.data.order);
 ---
 
@@ -10,8 +12,8 @@ const groups = (await getCollection("services")).sort((a, b) => a.data.order - b
   <main>
     <section class="services-hero" data-navbar-theme="dark">
       <div class="site-container pt-48 pb-[var(--section-padding-lg)]">
-        <h1 class="type-hero max-w-4xl">We have the skill to shape what’s next.</h1>
-        <p class="type-hero text-ink-3 mt-2 max-w-4xl">Brand, product, and technology expertise—all under one roof.</p>
+        <h1 class="type-hero max-w-4xl">{page.hero.heading}</h1>
+        <p class="type-hero text-ink-3 mt-2 max-w-4xl">{page.hero.sub}</p>
       </div>
     </section>
     <div class="site-container pb-[var(--section-padding-lg)]">
@@ -27,11 +29,7 @@ const groups = (await getCollection("services")).sort((a, b) => a.data.order - b
         </section>
       ))}
     </div>
-    <CtaScene
-      heading="Explore a gallery of our galaxies."
-      body="Chart our constellation of past projects — designs, brands, and experiences that shaped industries, shifted perceptions, and set new standards."
-      button={{ label: "Our Approach", href: "/approach" }}
-    />
+    <CtaScene heading={page.closing.heading} body={page.closing.body} button={page.closing.button} />
   </main>
 </Layout>
 

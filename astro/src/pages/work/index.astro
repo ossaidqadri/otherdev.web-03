@@ -1,14 +1,17 @@
 ---
 import WorkList from "@/components/WorkList.astro";
 import Layout from "@/layouts/Layout.astro";
+import { getPage } from "@/lib/site";
+
+const { hero } = await getPage("work");
 ---
 
 <Layout title="Work | otherdev" description="Selected projects from otherdev, a Karachi web studio.">
   <main>
     <section class="work-hero" data-navbar-theme="dark">
       <div class="site-container pt-48 pb-[var(--section-padding-sm)]">
-        <h1 class="type-hero">Our work</h1>
-        <p class="type-hero text-ink-3">Selected projects</p>
+        <h1 class="type-hero">{hero.heading}</h1>
+        <p class="type-hero text-ink-3">{hero.sub}</p>
       </div>
     </section>
     <WorkList all />

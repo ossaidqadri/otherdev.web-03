@@ -1,9 +1,10 @@
 ---
 import CtaScene from "@/components/CtaScene.astro";
 import Layout from "@/layouts/Layout.astro";
-import { getCollection, getEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import { getPage } from "@/lib/site";
 
-const { approach } = (await getEntry("site", "home"))!.data;
+const approach = await getPage("approach");
 const featured = (await getCollection("projects")).sort((a, b) => b.data.year - a.data.year).slice(0, 3);
 // First sentence of the excerpt; the stored excerpts are cut mid-sentence with "...".
 const lead = (s = "") => s.replace(/\.\.\.$/, "").split(/(?<=\.)\s/)[0] ?? "";

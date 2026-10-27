@@ -1,6 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
+import { getPage } from "@/lib/site";
+
+const page = await getPage("blog");
 
 const posts = (await getCollection("blog")).sort((a, b) => +b.data.publishedAt - +a.data.publishedAt);
 const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
@@ -8,7 +11,7 @@ const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
 
 <Layout title="Blog | otherdev" description="Notes from the otherdev studio.">
   <main class="site-container section pt-40" data-navbar-theme="dark">
-    <h1 class="type-display-s">Thoughts from our world, to yours.</h1>
+    <h1 class="type-display-s">{page.heading}</h1>
     <ul class="border-border mt-16 border-t">
       {posts.map((p) => (
         <li class="border-border border-b py-8">

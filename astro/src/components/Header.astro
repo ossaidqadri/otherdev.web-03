@@ -1,7 +1,7 @@
 ---
-import { getEntry } from "astro:content";
+import { getSite } from "@/lib/site";
 
-const site = (await getEntry("site", "home"))!.data;
+const site = await getSite();
 ---
 
 {/* Progressive blur at the top edge: content softens as it scrolls under the header. */}
@@ -9,10 +9,10 @@ const site = (await getEntry("site", "home"))!.data;
 
 <header class="header fixed inset-x-0 top-0 z-50 flex items-center justify-between px-[var(--container-padding)] py-6 md:py-8">
   <a href="/" class="wordmark" aria-label={`${site.name} home`}>{site.name}</a>
-  <nav aria-label="Main" class="type-body-button-m -mr-2.5 flex items-center gap-2">
+  <nav aria-label={site.ui.mainNav} class="type-body-button-m -mr-2.5 flex items-center gap-2">
     {site.nav.map((l) => <a href={l.href} class="nav-link hidden md:inline-flex"><span class="relative z-10">{l.label}</span><span class="nav-hover" aria-hidden="true"></span></a>)}
     <a href={site.cta.href} class="nav-link inline-flex"><span class="relative z-10">{site.cta.label}</span><span class="nav-hover" aria-hidden="true"></span></a>
-    <button type="button" popovertarget="menu" aria-label="Open menu" class="menu-toggle md:hidden">
+    <button type="button" popovertarget="menu" aria-label={site.ui.menuOpen} class="menu-toggle md:hidden">
       <svg width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M0 1h22M0 11h22" /></svg>
     </button>
   </nav>
@@ -24,7 +24,7 @@ const site = (await getEntry("site", "home"))!.data;
     <a href="/" class="wordmark" aria-label={`${site.name} home`}>{site.name}</a>
     <div class="type-body-button-m flex items-center gap-7">
       <a href={site.cta.href}>{site.cta.label}</a>
-      <button type="button" popovertarget="menu" popovertargetaction="hide" aria-label="Close menu">
+      <button type="button" popovertarget="menu" popovertargetaction="hide" aria-label={site.ui.menuClose}>
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 1l16 16M17 1L1 17" /></svg>
       </button>
     </div>

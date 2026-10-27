@@ -1,0 +1,12 @@
+{
+  "page": "approach",
+  "heading": "From first spark to lasting legacy, we guide you through every stage of creation, transformation, and regeneration.",
+  "steps": [
+    { "title": "Think", "body": "We lead on strategy, research, and positioning to uncover opportunities, define clear directions, and align around a vision." },
+    { "title": "Create", "body": "We craft brand identities, design systems, and content that transforms dull strategy into sharp market-defining work." },
+    { "title": "Build", "body": "We develop robust, scalable products, websites, and experiences that bring ideas to life and are ready for real-world impact." },
+    { "title": "Scale", "body": "We optimise, grow, and innovate to evolve with new opportunities and deliver long-term value." }
+  ],
+  "projectsHeading": "We partnered with",
+  "closing": { "heading": "Your next chapter starts here.", "body": "Let’s talk about how we can help you shape it.", "button": { "label": "Contact us", "href": "/contact" } }
+}

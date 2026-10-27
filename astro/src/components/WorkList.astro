@@ -1,5 +1,6 @@
 ---
-import { getCollection, getEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import { getPage, getSite } from "@/lib/site";
 
 interface Props {
   /** Show every project and drop the "See all" link (the /work page). */
@@ -7,7 +8,8 @@ interface Props {
 }
 
 const { all = false } = Astro.props;
-const { work } = (await getEntry("site", "home"))!.data;
+const { work } = await getPage("home");
+const { ui } = await getSite();
 const sorted = (await getCollection("projects")).sort((a, b) => b.data.year - a.data.year);
 // Home shows the hand-picked projects in the order site.json lists them.
 const projects = all
@@ -32,16 +34,16 @@ const filters = ["Strategy", "Design", "Technology", "Experience"].filter((t) =>
     </div>
     {all && (
       <div class="mt-12 flex flex-wrap items-center justify-between gap-6" data-work-controls>
-        <div role="group" aria-label="Filter by category" class="type-heading-s flex flex-wrap items-center gap-x-1">
-          <button type="button" data-filter="all" aria-pressed="true" class="filter-pill">All</button>
+        <div role="group" aria-label={ui.filterLabel} class="type-heading-s flex flex-wrap items-center gap-x-1">
+          <button type="button" data-filter="all" aria-pressed="true" class="filter-pill">{ui.all}</button>
           <span class="bg-border mx-2 h-px w-6" aria-hidden="true"></span>
           {filters.map((t) => <button type="button" data-filter={t} aria-pressed="false" class="filter-pill">{t}</button>)}
         </div>
-        <div role="group" aria-label="View" class="flex items-center gap-1">
-          <button type="button" data-set-view="grid" aria-pressed="false" aria-label="Grid view" class="view-btn">
+        <div role="group" aria-label={ui.viewLabel} class="flex items-center gap-1">
+          <button type="button" data-set-view="grid" aria-pressed="false" aria-label={ui.gridView} class="view-btn">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1" /><rect x="11" y="2" width="5" height="5" rx="1" /><rect x="2" y="11" width="5" height="5" rx="1" /><rect x="11" y="11" width="5" height="5" rx="1" /></svg>
           </button>
-          <button type="button" data-set-view="list" aria-pressed="true" aria-label="List view" class="view-btn">
+          <button type="button" data-set-view="list" aria-pressed="true" aria-label={ui.listView} class="view-btn">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4h14M2 9h14M2 14h14" /></svg>
           </button>
         </div>

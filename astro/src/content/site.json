@@ -1,5 +1,5 @@
 {
-  "home": {
+  "global": {
     "name": "otherdev",
     "nav": [
       { "label": "Work", "href": "/work" },
@@ -14,72 +14,10 @@
       { "label": "Services", "target": "process" },
       { "label": "News", "target": "news" }
     ],
-    "hero": {
-      "headline": "otherdev builds digital platforms for pioneering creatives.",
-      "button": { "label": "Our work", "href": "#work" },
-      "statement": "We design and build websites, products and brands for fashion and design studios, from first sketch to launch."
-    },
-    "clients": { "heading": "Our trusted partners, from bold startups to global icons." },
-    "work": { "heading": "Our work, from petal to planet.", "all": { "label": "See all", "href": "/work" }, "featured": ["branding-website-development-for-boulevard-pakistan", "wish", "website-development-for-groovy-pakistan"] },
-    "process": {
-      "heading": "Our process, crafted through decades of experience.",
-      "steps": [
-        { "title": "Think", "tone": "spring", "image": "think.png", "body": "We read the soil to find where ideas take root, uncovering opportunities, directions, and missions." },
-        { "title": "Create", "tone": "summer", "image": "create.webp", "body": "We coax the invisible into the inevitable, crafting identities and systems to support your growth." },
-        { "title": "Build", "tone": "autumn", "image": "build.webp", "body": "We engineer scalable digital products and experiences ready for real-world impact." },
-        { "title": "Scale", "tone": "winter", "image": "scale.webp", "body": "We tend what we plant, measuring, refining and growing it long after launch." }
-      ]
-    },
-    "news": { "heading": "Thoughts from our world, to yours.", "all": { "label": "Read all", "href": "/blog" } },
-    "constellations": {
-      "heading": "All our constellations, under one sky.",
-      "body": "Find out how we chart the path from idea to icon, through strategy, creation, building and scaling, turning the unseeable into the undeniable.",
-      "button": { "label": "Our approach", "href": "/about" }
-    },
-    "about": {
-      "heading": "otherdev is a catalyst for disruptive ideas through creative innovation. A studio of radical optimists crafting new identities, systems, experiences and genres.",
-      "body": "Based in Karachi, we are a full-service digital studio that designs and engineers web platforms, Shopify experiences, AI-powered products and custom digital solutions from the ground up, with a focus on bringing ideas to life through thoughtful design.",
-      "principlesHeading": "We’re guided by principles that we believe in and live by.",
-      "principles": [
-        { "title": "Create Dangerously", "body": "Pursue excellence in execution and attention to detail." },
-        { "title": "Champion Openness", "body": "Work openly with others to create better outcomes." },
-        { "title": "Forever Curious", "body": "Make meaningful contributions that drive progress." },
-        { "title": "Think New", "body": "Guide, influence, and bring clarity to the path ahead." },
-        { "title": "Future First", "body": "Stay open, adaptable, and always ready to learn." }
-      ],
-      "teamHeading": "We’re a multi-disciplinary team of curious designers, developers, and strategists.",
-      "team": [
-        { "name": "Kabeer Jaffri", "role": "Co-founder", "photo": { "src": "https://media.otherdev.com/site/team/kabeer.webp", "alt": "Kabeer Jaffri", "width": 900, "height": 1126 }, "linkedin": "https://www.linkedin.com/in/kabeerjaffri/" },
-        { "name": "Ossaid Qadri", "role": "Co-founder", "photo": { "src": "https://media.otherdev.com/site/team/ossaid.webp", "alt": "Ossaid Qadri", "width": 720, "height": 900 }, "linkedin": "https://www.linkedin.com/in/ossaidqadri/" }
-      ]
-    },
-    "approach": {
-      "heading": "From first spark to lasting legacy, we guide you through every stage of creation, transformation, and regeneration.",
-      "steps": [
-        { "title": "Think", "body": "We lead on strategy, research, and positioning to uncover opportunities, define clear directions, and align around a vision." },
-        { "title": "Create", "body": "We craft brand identities, design systems, and content that transforms dull strategy into sharp market-defining work." },
-        { "title": "Build", "body": "We develop robust, scalable products, websites, and experiences that bring ideas to life and are ready for real-world impact." },
-        { "title": "Scale", "body": "We optimise, grow, and innovate to evolve with new opportunities and deliver long-term value." }
-      ],
-      "projectsHeading": "We partnered with",
-      "closing": { "heading": "Your next chapter starts here.", "body": "Let’s talk about how we can help you shape it.", "button": { "label": "Contact us", "href": "/contact" } }
-    },
-    "newsletter": {
-      "heading": "Let’s keep in touch.",
-      "body": "Pick what you want to hear about, and we’ll only send the good stuff.",
-      "interestsLabel": "I want to hear about...",
-      "interests": ["Studio Updates", "Open Roles", "Business Opportunities"],
-      "consent": "We’ll never share your details. By signing up, you agree to receive communications from otherdev.",
-      "note": "Signups open soon."
-    },
-    "contact": {
-      "heading": "Tell us what you are building.",
-      "body": "The quickest way to reach us is WhatsApp. We reply within a working day.",
-      "links": [
-        { "label": "WhatsApp", "href": "https://wa.me/923156893331?text=Hi!%20I%20found%20you%20through%20otherdev.com%20and%20would%20love%20to%20discuss%20a%20project." },
-        { "label": "LinkedIn", "href": "https://linkedin.com/company/theotherdev/" },
-        { "label": "Instagram", "href": "https://instagram.com/other.dev" }
-      ]
+    "closing": {
+      "heading": "Ready to make the leap?",
+      "body": "Let’s turn curiosity into collaboration. Share your vision, and we’ll help shape it into something unforgettable.",
+      "button": { "label": "Contact us", "href": "/contact" }
     },
     "footer": {
       "cta": { "label": "Work with us", "href": "/contact" },
@@ -91,6 +29,29 @@
         { "label": "WhatsApp", "href": "https://wa.me/923156893331" }
       ],
       "legal": "© otherdev"
+    },
+    "ui": {
+      "menuOpen": "Open menu",
+      "menuClose": "Close menu",
+      "mainNav": "Main",
+      "sectionsNav": "Sections",
+      "socialNav": "Social",
+      "readOnLinkedin": "Read on LinkedIn",
+      "filterLabel": "Filter by category",
+      "viewLabel": "View",
+      "gridView": "Grid view",
+      "listView": "List view",
+      "all": "All",
+      "relatedWork": "Related Work",
+      "seeAll": "See all",
+      "backToWork": "Work",
+      "backToBlog": "Blog",
+      "download": "Download",
+      "legal": "Legal",
+      "lastUpdated": "Last updated",
+      "submit": "Submit",
+      "signUp": "Sign me up",
+      "emailPlaceholder": "Email Address"
     }
   }
 }

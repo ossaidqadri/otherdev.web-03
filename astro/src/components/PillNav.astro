@@ -1,10 +1,10 @@
 ---
-import { getEntry } from "astro:content";
+import { getSite } from "@/lib/site";
 
-const { pill } = (await getEntry("site", "home"))!.data;
+const { pill, ui } = await getSite();
 ---
 
-<nav aria-label="Sections" class="pill-nav type-body-button-s fixed bottom-6 left-1/2 z-50 -translate-x-1/2" data-pill>
+<nav aria-label={ui.sectionsNav} class="pill-nav type-body-button-s fixed bottom-6 left-1/2 z-50 -translate-x-1/2" data-pill>
   <ul class="flex items-center rounded-full p-2 backdrop-blur-md">
     {pill.map((p) => (
       <li><a href={`#${p.target}`} class="flex h-10 items-center rounded-full px-4">{p.label}</a></li>

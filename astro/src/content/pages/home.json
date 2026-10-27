@@ -1,0 +1,29 @@
+{
+  "page": "home",
+  "hero": {
+    "headline": "otherdev builds digital platforms for pioneering creatives.",
+    "button": { "label": "Our work", "href": "#work" },
+    "statement": "We design and build websites, products and brands for fashion and design studios, from first sketch to launch."
+  },
+  "clients": { "heading": "Our trusted partners, from bold startups to global icons." },
+  "work": {
+    "heading": "Our work, from petal to planet.",
+    "all": { "label": "See all", "href": "/work" },
+    "featured": ["branding-website-development-for-boulevard-pakistan", "wish", "website-development-for-groovy-pakistan"]
+  },
+  "process": {
+    "heading": "Our process, crafted through decades of experience.",
+    "steps": [
+      { "title": "Think", "tone": "spring", "image": "think.png", "body": "We read the soil to find where ideas take root, uncovering opportunities, directions, and missions." },
+      { "title": "Create", "tone": "summer", "image": "create.webp", "body": "We coax the invisible into the inevitable, crafting identities and systems to support your growth." },
+      { "title": "Build", "tone": "autumn", "image": "build.webp", "body": "We engineer scalable digital products and experiences ready for real-world impact." },
+      { "title": "Scale", "tone": "winter", "image": "scale.webp", "body": "We tend what we plant, measuring, refining and growing it long after launch." }
+    ]
+  },
+  "news": { "heading": "Thoughts from our world, to yours.", "all": { "label": "Read all", "href": "/blog" } },
+  "constellations": {
+    "heading": "All our constellations, under one sky.",
+    "body": "Find out how we chart the path from idea to icon, through strategy, creation, building and scaling, turning the unseeable into the undeniable.",
+    "button": { "label": "Our approach", "href": "/approach" }
+  }
+}

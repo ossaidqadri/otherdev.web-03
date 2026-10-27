@@ -1,10 +1,13 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { getPage } from "@/lib/site";
+
+const page = await getPage("notFound");
 ---
 
-<Layout title="Not found | otherdev" description="This page doesn't exist.">
+<Layout title="Not found | otherdev" description={page.heading}>
   <main class="site-container section pt-40" data-navbar-theme="dark">
-    <h1 class="type-display-s">That page isn't here.</h1>
-    <a href="/" class="type-heading-m text-ink-3 mt-8 inline-block">Back home →</a>
+    <h1 class="type-display-s">{page.heading}</h1>
+    <a href={page.link.href} class="type-heading-m text-ink-3 mt-8 inline-block">{page.link.label} →</a>
   </main>
 </Layout>

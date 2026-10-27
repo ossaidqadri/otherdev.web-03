@@ -1,0 +1,10 @@
+{
+  "page": "newsletter",
+  "heading": "Let’s keep in touch.",
+  "body": "Pick what you want to hear about, and we’ll only send the good stuff.",
+  "interestsLabel": "I want to hear about...",
+  "interests": ["Studio Updates", "Open Roles", "Business Opportunities"],
+  "consent": "We’ll never share your details. By signing up, you agree to receive communications from otherdev.",
+  "note": "Signups open soon.",
+  "fields": { "firstName": "First Name", "lastName": "Last Name", "email": "Email" }
+}
