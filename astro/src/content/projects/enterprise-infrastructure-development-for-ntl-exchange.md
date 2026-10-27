@@ -2,6 +2,7 @@
 {
   "title": "Enterprise infrastructure development for NTL Exchange",
   "year": 2024,
+  "tags": ["Design", "Technology"],
   "link": "www.ntlex.com",
   "excerpt": "Delivered full brand identity, mobile trading app, and enterprise infrastructure for NTL Exchange, a unified platform powering secure real-time exchange.",
   "cover": {

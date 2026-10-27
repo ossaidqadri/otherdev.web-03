@@ -2,6 +2,7 @@
 {
   "title": "Branding & website development for Wish",
   "year": 2024,
+  "tags": ["Design", "Technology"],
   "link": "wishapparels.com",
   "excerpt": "Wish Apparels sells minimalist fashion online with a custom Shopify theme — 25+ locales, advanced product zoom, five curated color schemes, and Core Web Vitals-optimized...",
   "cover": {

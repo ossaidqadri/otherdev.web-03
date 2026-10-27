@@ -2,6 +2,7 @@
 {
   "title": "Website Development for Groovy Pakistan",
   "year": 2024,
+  "tags": ["Design", "Technology"],
   "link": "https://groovypakistan.com/",
   "excerpt": "Built a dynamic fashion e-commerce site for Groovy Pakistan, creating an intuitive shopping pathway that mirrors the brand energy and drives conversions.",
   "cover": {

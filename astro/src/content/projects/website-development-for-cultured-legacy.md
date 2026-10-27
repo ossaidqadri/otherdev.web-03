@@ -2,6 +2,7 @@
 {
   "title": "Website Development for Cultured Legacy",
   "year": 2024,
+  "tags": ["Design", "Technology"],
   "link": "culturedlegacy.shop",
   "excerpt": "Crafted an elevated e-commerce experience for Cultured Legacy, balancing heritage aesthetics with modern shopping flow to drive discovery and purchases.",
   "cover": {

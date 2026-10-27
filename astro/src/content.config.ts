@@ -17,6 +17,7 @@ const projects = defineCollection({
   schema: z.object({
     title: z.string(),
     year: z.number().int(),
+    tags: z.array(z.enum(["Strategy", "Design", "Technology", "Experience"])).default([]),
     // Bare host or path as v2 stored it (e.g. "carwala.org"), or a full URL.
     link: z.string().optional(),
     downloadUrl: z.url().optional(),

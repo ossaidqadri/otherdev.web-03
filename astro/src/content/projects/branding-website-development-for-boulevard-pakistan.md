@@ -2,6 +2,7 @@
 {
   "title": "Branding & website development for Boulevard Pakistan",
   "year": 2025,
+  "tags": ["Design", "Technology"],
   "link": "www.blvdretail.co",
   "excerpt": "Boulevard Pakistan is a contemporary menswear brand. Since 2021, Other Dev has shaped their digital identity — a Shopify theme with critical CSS inlining, link...",
   "cover": {

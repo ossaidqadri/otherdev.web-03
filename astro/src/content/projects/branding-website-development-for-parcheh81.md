@@ -2,6 +2,7 @@
 {
   "title": "Branding & website development for Parcheh81",
   "year": 2024,
+  "tags": ["Design", "Technology"],
   "link": "parcheh81.com",
   "excerpt": "Parcheh81 sells premium Pakistani textiles online with a Shopify theme that translates fabric texture and artistry into an immersive digital shopping experience — mobile-first design...",
   "cover": {

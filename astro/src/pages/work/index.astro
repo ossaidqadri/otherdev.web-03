@@ -4,7 +4,19 @@ import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="Work | otherdev" description="Selected projects from otherdev, a Karachi web studio.">
-  <main class="pt-24">
+  <main>
+    <section class="work-hero" data-navbar-theme="dark">
+      <div class="site-container pt-48 pb-[var(--section-padding-sm)]">
+        <h1 class="type-hero">Our work</h1>
+        <p class="type-hero text-ink-3">Selected projects</p>
+      </div>
+    </section>
     <WorkList all />
   </main>
 </Layout>
+
+<style>
+  .work-hero {
+    background: linear-gradient(to bottom, var(--global-winter-300), #fff);
+  }
+</style>

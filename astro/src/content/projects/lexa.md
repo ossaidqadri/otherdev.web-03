@@ -2,6 +2,7 @@
 {
   "title": "Loom Legal Collaborative RAG",
   "year": 2025,
+  "tags": ["Technology"],
   "link": "loom-legal.otherdev.com/",
   "excerpt": "Loom is a full stack legal collaboration platform built for law firms and in house legal teams. We developed a real time collaborative drafting system,...",
   "cover": {

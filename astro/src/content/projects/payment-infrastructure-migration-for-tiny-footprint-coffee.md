@@ -2,6 +2,7 @@
 {
   "title": "Payment infrastructure migration for Tiny-Footprint Coffee",
   "year": 2024,
+  "tags": ["Technology"],
   "link": "tinyfootprintcoffee.com",
   "excerpt": "Migrated Tiny Footprint Coffee subscription infrastructure from Recharge to Shopify Payments with zero downtime for the world first carbon-negative coffee brand.",
   "cover": {

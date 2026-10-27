@@ -2,6 +2,7 @@
 {
   "title": "Adina Household — Headless Shopify Storefront",
   "year": 2026,
+  "tags": ["Design", "Technology"],
   "link": "adinahousehold.com",
   "excerpt": "Od Adina Household is a headless Shopify storefront built using Hydrogen and Oxygen to deliver a faster and more flexible commerce experience than traditional theme...",
   "cover": {

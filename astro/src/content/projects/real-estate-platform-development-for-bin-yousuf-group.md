@@ -2,6 +2,7 @@
 {
   "title": "Real Estate Platform Development for Bin Yousuf Group",
   "year": 2025,
+  "tags": ["Design", "Technology"],
   "link": "binyousufgroup.com",
   "excerpt": "Bin Yousuf Group attracts international investors to their Karachi waterfront properties (EMAAR Oceanfront, HMR Waterfront) with an Astro real estate platform — GSAP animations, Google...",
   "cover": {

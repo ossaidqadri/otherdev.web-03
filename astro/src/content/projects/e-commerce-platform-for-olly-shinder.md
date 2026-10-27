@@ -2,6 +2,7 @@
 {
   "title": "E-commerce Platform for Olly Shinder",
   "year": 2025,
+  "tags": ["Design", "Technology"],
   "link": "olly-shinder.com",
   "excerpt": "Unified London menswear designer Olly Shinder collections and e-commerce under one minimal grid platform, Fashion East incubator meets direct-to-consumer sales.",
   "cover": {

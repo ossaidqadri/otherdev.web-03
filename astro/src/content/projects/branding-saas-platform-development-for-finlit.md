@@ -2,6 +2,7 @@
 {
   "title": "Branding & SaaS Platform Development for Finlit",
   "year": 2025,
+  "tags": ["Design", "Technology"],
   "link": "finlit.deployments.otherdev.com",
   "excerpt": "Finlit built a full-stack SaaS learning platform with branding and visual identity, helping users confidently navigate personal finance — from trading basics to advanced investment...",
   "cover": {

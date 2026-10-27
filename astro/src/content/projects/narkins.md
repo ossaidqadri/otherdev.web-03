@@ -2,6 +2,7 @@
 {
   "title": "Narkins Real Estate Platform",
   "year": 2024,
+  "tags": ["Design", "Technology"],
   "link": "narkinsbuilders.com",
   "excerpt": "Narkin’s Builders is a modern real estate website and lead generation platform developed to showcase projects, publish updates, and convert visitors into qualified sales inquiries....",
   "cover": {

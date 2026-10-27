@@ -2,6 +2,7 @@
 {
   "title": "Kiswa Noir — Custom Shopify Theme ",
   "year": 2025,
+  "tags": ["Design", "Technology"],
   "link": "kiswanoire.com",
   "excerpt": "Kiswa Noir is a custom Shopify theme built to deliver a minimalist, high trust storefront experience without the performance overhead of standard templates. We engineered...",
   "cover": {

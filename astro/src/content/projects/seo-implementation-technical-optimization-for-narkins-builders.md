@@ -2,6 +2,7 @@
 {
   "title": "SEO Implementation & Technical Optimization for Narkins Builders",
   "year": 2025,
+  "tags": ["Strategy", "Technology"],
   "link": "narkinsbuilders.com/blog",
   "excerpt": "Narkins Builders grew organic traffic 30% after SEO migration to MDX with schema markup — outranking Pakistan top real estate developers.",
   "cover": {

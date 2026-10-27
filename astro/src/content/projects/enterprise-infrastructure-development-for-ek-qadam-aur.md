@@ -2,6 +2,7 @@
 {
   "title": "Enterprise infrastructure development for Ek Qadam Aur",
   "year": 2024,
+  "tags": ["Technology"],
   "link": "ekqadamaur.org",
   "excerpt": "Scaled Ek Qadam Aur NGO digital infrastructure from inception through 1000 plus daily users, providing full-stack development, hosting, and ongoing tech support.",
   "cover": {

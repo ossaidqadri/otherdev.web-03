@@ -2,6 +2,7 @@
 {
   "title": "Carwala — Car Wash & Detailing Booking Platform",
   "year": 2026,
+  "tags": ["Design", "Technology"],
   "link": "carwala.org",
   "excerpt": "Carwala is a modern booking and lead generation platform built for a professional car wash and detailing service. We designed a fast, mobile first experience...",
   "cover": {
