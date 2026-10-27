@@ -5,6 +5,7 @@ import TeamCard from "@/components/TeamCard.astro";
 import { Button } from "@/lib/components/ui/button";
 import { Card } from "@/lib/components/ui/card";
 import { Input } from "@/lib/components/ui/input";
+import { Separator } from "@/lib/components/ui/separator";
 
 const { news } = await getPage("home");
 const about = await getPage("about");
@@ -13,26 +14,44 @@ const { ui } = await getSite();
 const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
 
 // The newest blog posts, three at most. Posts have no cover art yet, so a gradient stands in.
+// The date takes the slot the reference uses for the post category.
 const cards = (await getCollection("blog"))
   .sort((a, b) => +b.data.publishedAt - +a.data.publishedAt)
   .slice(0, 3)
-  .map((p) => ({ href: `/blog/${p.id}`, title: p.data.title, label: date.format(p.data.publishedAt) }));
+  .map((p) => ({ href: `/blog/${p.id}`, title: p.data.title, excerpt: p.data.excerpt, label: date.format(p.data.publishedAt) }));
 ---
 
 <section id="news" class="section" data-navbar-theme="dark" data-section>
   <div class="site-container">
     <div class="flex items-end justify-between gap-6">
       <h2 class="type-heading-l max-w-4xl">{news.heading}</h2>
-      <a href={news.all.href} class="type-heading-l text-ink-3 shrink-0">{news.all.label} →</a>
+      <Button href={news.all.href} variant="nav" size="nav" class="type-heading-l -ml-2.5 shrink-0 rounded-lg md:ml-0">
+        <span class="inline-flex items-center gap-1 opacity-40">
+          <span>{news.all.label}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-8 translate-y-[0.03em]" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+        </span>
+      </Button>
     </div>
 
-    <ul class="border-border mt-[calc(4rem*var(--scale))] grid gap-x-2 gap-y-12 border-t pt-16 md:grid-cols-3">
+    <Separator decorative class="mt-24" />
+
+    <ul class="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {cards.map((c) => (
         <li>
-          <a href={c.href} class="group block">
-            <Card variant="tile" class="aspect-[4/5] w-full bg-[linear-gradient(160deg,var(--global-winter-300-dark),var(--global-autumn-50-dark))]" />
-            <p class="type-body-regular-s text-ink-3 mt-4">{c.label}</p>
-            <h3 class="type-body-regular-l mt-1 max-w-sm">{c.title}</h3>
+          {/* Hover: the label row opens above the title, and the title cross-fades to the excerpt. */}
+          <a href={c.href} class="group flex flex-col rounded-[var(--radius-lg)]">
+            <Card variant="tile" class="aspect-[4/5] w-full rounded-[var(--card-radius)] bg-[linear-gradient(160deg,var(--global-winter-300-dark),var(--global-autumn-50-dark))]" />
+            <div class="flex flex-col pt-3 pr-[var(--card-padding)] pb-[var(--card-padding)]">
+              <div class="grid transition-[grid-template-rows] duration-300 ease-in-out md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr] md:group-focus-visible:grid-rows-[1fr]">
+                <p class="type-body-paragraph-xs overflow-hidden pb-1 text-[var(--semantic-text-secondary)] md:opacity-0 md:transition-opacity md:duration-300 md:group-hover:opacity-100 md:group-focus-visible:opacity-100">{c.label}</p>
+              </div>
+              <div class="md:grid">
+                <h3 class="type-heading-s line-clamp-3 md:col-start-1 md:row-start-1 md:transition-opacity md:duration-300 md:group-hover:opacity-0 md:group-focus-visible:opacity-0">{c.title}</h3>
+                {c.excerpt && (
+                  <p class="type-heading-s mt-1 line-clamp-3 text-[var(--semantic-text-secondary)] md:col-start-1 md:row-start-1 md:mt-0 md:text-[var(--semantic-text-primary)] md:opacity-0 md:transition-opacity md:duration-300 md:group-hover:opacity-100 md:group-focus-visible:opacity-100">{c.excerpt}</p>
+                )}
+              </div>
+            </div>
           </a>
         </li>
       ))}
@@ -40,24 +59,43 @@ const cards = (await getCollection("blog"))
       {about.team.map((m) => (
         <li><TeamCard {...m} overlay /></li>
       ))}
-
-      <li>
-        <Card variant="tile" class="aspect-[4/5] justify-between bg-[linear-gradient(135deg,var(--global-neutral-100)_0%,var(--global-summer-300)_45%,var(--global-summer-500)_100%)] p-8 text-[color:var(--global-neutral-900)]">
-          <div>
-            <h3 class="type-heading-m">{newsletter.heading}</h3>
-            <p class="type-body-paragraph-l mt-2 opacity-60">{newsletter.body}</p>
-          </div>
-          {/* Disabled until a signup backend is chosen. */}
-          <form>
-            <fieldset disabled class="flex flex-col gap-2 [--pill-bg:rgb(255_255_255/0.8)] [--pill-fg:currentColor]">
-              <Input variant="soft" type="email" placeholder={ui.emailPlaceholder} aria-label={newsletter.fields.email} class="type-body-regular-m bg-white/70" />
-              <Button type="submit" variant="glass" size="pill-sm" class="type-body-button-m w-fit disabled:opacity-60">{ui.signUp}</Button>
-            </fieldset>
-            <p class="type-body-regular-xs mt-3 opacity-60">{newsletter.note}</p>
-          </form>
-        </Card>
-      </li>
     </ul>
+
+    <Separator decorative class="mt-16" />
+
+    <Card variant="tile" class="newsletter mt-16 flex-row bg-[var(--semantic-transparent-weak)]">
+      <div class="relative z-10 flex flex-1 flex-col gap-12 p-[var(--card-padding)]">
+        <div class="flex max-w-[640px] flex-col gap-1">
+          <h3 class="type-heading-m">{newsletter.heading}</h3>
+          <p class="type-heading-m opacity-40">{newsletter.body}</p>
+        </div>
+        {/* Disabled until a signup backend is chosen. */}
+        <form class="flex max-w-[512px] flex-col gap-2">
+          <fieldset disabled class="flex flex-col gap-2 sm:flex-row">
+            <Input variant="soft" type="email" placeholder={ui.emailPlaceholder} aria-label={newsletter.fields.email} class="type-body-button-m h-auto flex-1 rounded-[var(--radius-sm)] bg-[var(--semantic-transparent-weak)] p-4 placeholder:opacity-40 sm:min-w-[256px]" />
+            <Button type="submit" variant="glass" size="pill" class="type-body-button-m gap-1 [--pill-bg:var(--semantic-transparent-weak)] [--pill-fg:var(--semantic-text-primary)] disabled:opacity-50">
+              {ui.signUp}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+            </Button>
+          </fieldset>
+          <p class="type-body-paragraph-xs max-w-[415px] opacity-60">{newsletter.note}</p>
+        </form>
+      </div>
+    </Card>
   </div>
 </section>
 
+<style>
+  /* The reference's newsletter glow: yellow into orange from the bottom right, centred low on phones. */
+  .newsletter {
+    --newsletter-yellow: #ffe600;
+    --newsletter-orange: var(--global-summer-700-dark);
+    --newsletter-end: var(--semantic-transparent-weak);
+    background-image: radial-gradient(100% 75% at 50% 114%, color-mix(in srgb, var(--newsletter-yellow) 60%, transparent) 0%, color-mix(in srgb, var(--newsletter-orange) 40%, transparent) 29.5837%, var(--newsletter-end) 100%);
+  }
+  @media (min-width: 48rem) {
+    .newsletter {
+      background-image: radial-gradient(75% 300% at 109.6% 147.1%, var(--newsletter-yellow) 0%, var(--newsletter-orange) 29.5837%, var(--newsletter-end) 100%);
+    }
+  }
+</style>
