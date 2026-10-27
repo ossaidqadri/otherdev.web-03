@@ -46,6 +46,7 @@ const clients = defineCollection({
     logo: z.string().startsWith("/"),
     // Shown at the bottom of the card on hover. Not filled in until otherdev supplies real categories.
     category: z.string().optional(),
+    url: z.url().optional(),
     placeholder: z.boolean().default(false),
   }),
 });

@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Card } from "@/lib/components/ui/card";
+
+const { client: c } = Astro.props as { client: CollectionEntry<"clients"> };
+---
+
+<Card variant="tile" class:list={["group h-32 items-center justify-center bg-[var(--semantic-transparent-weak)] p-6 transition-colors duration-200 hover:bg-[var(--semantic-neutral-core)] active:bg-[var(--semantic-neutral-strong)]", c.data.url && "cursor-pointer"]}>
+  <div class="flex h-20 w-full items-center justify-center">
+    <img src={c.data.logo} alt={c.data.name} loading="lazy" class="size-full object-contain transition-[filter] duration-200 group-hover:invert group-active:invert" />
+  </div>
+  {c.data.category && (
+    <span class="type-body-button-xs absolute inset-x-0 bottom-4 text-center text-[var(--semantic-text-contrast)] opacity-0 transition-opacity duration-200 group-hover:opacity-40 group-active:opacity-40">{c.data.category}</span>
+  )}
+  {c.data.url && <a href={c.data.url} target="_blank" rel="noopener" class="absolute inset-0" aria-label={c.data.name}></a>}
+</Card>
