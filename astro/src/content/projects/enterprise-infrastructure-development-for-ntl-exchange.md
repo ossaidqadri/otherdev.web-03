@@ -13,16 +13,40 @@
   },
   "gallery": [
     {
-      "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ntl-exchange/ntl-exchange-home.webp",
-      "alt": "ntl exchange home",
-      "width": 1440,
-      "height": 1451
+      "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ntl-exchange/shots/01-m-chart.webp",
+      "alt": "NTL Exchange chart page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ntl-exchange/ntl-exchange-mobile.webp",
-      "alt": "ntl exchange mobile",
-      "width": 1080,
-      "height": 1920
+      "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ntl-exchange/shots/02-m-login.webp",
+      "alt": "NTL Exchange login page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ntl-exchange/shots/03-d-home.webp",
+      "alt": "NTL Exchange home page on desktop",
+      "width": 2880,
+      "height": 1620
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ntl-exchange/shots/04-m-features.webp",
+      "alt": "NTL Exchange features page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ntl-exchange/shots/05-m-welcome.webp",
+      "alt": "NTL Exchange welcome page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/enterprise-infrastructure-development-for-ntl-exchange/shots/06-d-chart.webp",
+      "alt": "NTL Exchange chart page on desktop",
+      "width": 2880,
+      "height": 1620
     }
   ]
 }
