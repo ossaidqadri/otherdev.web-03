@@ -112,11 +112,43 @@
 	}
 }
 
-/* Page-to-page crossfade: the browser's own cross-document view transition. No router, no JS; unsupported
-   browsers just load the next page. */
+/* Page change: the browser's own cross-document view transition, no router and no JS. The new page slides up over
+   the old one, which dims and lifts a little; the fixed header and pill stay put. Transform and opacity only.
+   Browsers without support just load the next page. */
+@keyframes page-over {
+	from {
+		translate: 0 100%;
+	}
+}
+@keyframes page-under {
+	to {
+		translate: 0 -6%;
+		opacity: 0.5;
+	}
+}
 @media (prefers-reduced-motion: no-preference) {
 	@view-transition {
 		navigation: auto;
+	}
+	.header {
+		view-transition-name: site-header;
+	}
+	.pill-nav {
+		view-transition-name: site-pill;
+	}
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation-duration: 0.6s;
+		animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		animation-fill-mode: both;
+		mix-blend-mode: normal;
+	}
+	::view-transition-old(root) {
+		animation-name: page-under;
+	}
+	::view-transition-new(root) {
+		animation-name: page-over;
+		z-index: 1;
 	}
 }
 
