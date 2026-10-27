@@ -2,6 +2,9 @@
 import { getCollection } from "astro:content";
 import { getPage, getSite } from "@/lib/site";
 import TeamCard from "@/components/TeamCard.astro";
+import { Button } from "@/lib/components/ui/button";
+import { Card } from "@/lib/components/ui/card";
+import { Input } from "@/lib/components/ui/input";
 
 const { news } = await getPage("home");
 const about = await getPage("about");
@@ -27,7 +30,7 @@ const cards = (await getCollection("blog"))
       {cards.map((c) => (
         <li>
           <a href={c.href} class="group block">
-            <div class="news-art aspect-[4/5] w-full rounded-lg"></div>
+            <Card variant="tile" class="aspect-[4/5] w-full bg-[linear-gradient(160deg,var(--global-winter-300-dark),var(--global-autumn-50-dark))]" />
             <p class="type-body-regular-s text-ink-3 mt-4">{c.label}</p>
             <h3 class="type-body-regular-l mt-1 max-w-sm">{c.title}</h3>
           </a>
@@ -38,31 +41,23 @@ const cards = (await getCollection("blog"))
         <li><TeamCard {...m} overlay /></li>
       ))}
 
-      <li class="newsletter flex aspect-[4/5] flex-col justify-between rounded-lg p-8">
-        <div>
-          <h3 class="type-heading-m">{newsletter.heading}</h3>
-          <p class="type-body-paragraph-l mt-2 opacity-60">{newsletter.body}</p>
-        </div>
-        {/* Disabled until a signup backend is chosen. */}
-        <form>
-          <fieldset disabled class="flex flex-col gap-2">
-            <input type="email" placeholder={ui.emailPlaceholder} aria-label="Email" class="type-body-regular-m w-full rounded-md bg-white/70 px-4 py-3 disabled:opacity-60" />
-            <button type="submit" class="type-body-button-m w-fit rounded-full bg-white/80 px-5 py-3 disabled:opacity-60">{ui.signUp}</button>
-          </fieldset>
-          <p class="type-body-regular-xs mt-3 opacity-60">{newsletter.note}</p>
-        </form>
+      <li>
+        <Card variant="tile" class="aspect-[4/5] justify-between bg-[linear-gradient(135deg,var(--global-neutral-100)_0%,var(--global-summer-300)_45%,var(--global-summer-500)_100%)] p-8 text-[color:var(--global-neutral-900)]">
+          <div>
+            <h3 class="type-heading-m">{newsletter.heading}</h3>
+            <p class="type-body-paragraph-l mt-2 opacity-60">{newsletter.body}</p>
+          </div>
+          {/* Disabled until a signup backend is chosen. */}
+          <form>
+            <fieldset disabled class="flex flex-col gap-2 [--pill-bg:rgb(255_255_255/0.8)] [--pill-fg:currentColor]">
+              <Input variant="soft" type="email" placeholder={ui.emailPlaceholder} aria-label={newsletter.fields.email} class="type-body-regular-m bg-white/70" />
+              <Button type="submit" variant="glass" size="pill-sm" class="type-body-button-m w-fit disabled:opacity-60">{ui.signUp}</Button>
+            </fieldset>
+            <p class="type-body-regular-xs mt-3 opacity-60">{newsletter.note}</p>
+          </form>
+        </Card>
       </li>
     </ul>
   </div>
 </section>
 
-<style>
-  /* Posts have no cover art yet: season gradient stands in. */
-  .news-art {
-    background: linear-gradient(160deg, var(--global-winter-300-dark), var(--global-autumn-50-dark));
-  }
-  .newsletter {
-    color: var(--global-neutral-900);
-    background: linear-gradient(135deg, var(--global-neutral-100) 0%, var(--global-summer-300) 45%, var(--global-summer-500) 100%);
-  }
-</style>

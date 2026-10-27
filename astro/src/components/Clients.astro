@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { Card } from "@/lib/components/ui/card";
 import { getPage } from "@/lib/site";
 
 const { clients: copy } = await getPage("home");
@@ -11,13 +12,15 @@ const clients = await getCollection("clients");
     <h2 class="type-heading-l max-w-4xl">{copy.heading}</h2>
     <ul class="mt-[calc(4rem*var(--scale))] grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-6">
       {clients.map((c) => (
-        <li class="group relative flex cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-[var(--semantic-transparent-weak)] p-6 transition-colors duration-200 hover:bg-[var(--semantic-neutral-core)] active:bg-[var(--semantic-neutral-strong)]">
-          <div class="flex h-20 w-full items-center justify-center">
-            <img src={c.data.logo} alt={c.data.name} loading="lazy" class="h-14 w-28 object-contain transition-[filter] duration-200 group-hover:invert group-active:invert md:w-36" />
-          </div>
-          {c.data.category && (
-            <span class="type-body-button-xs absolute inset-x-0 bottom-4 text-center text-[var(--semantic-text-contrast)] opacity-0 transition-opacity duration-200 group-hover:opacity-100">{c.data.category}</span>
-          )}
+        <li>
+          <Card variant="tile" class="group cursor-pointer items-center justify-center bg-[var(--semantic-transparent-weak)] p-6 transition-colors duration-200 hover:bg-[var(--semantic-neutral-core)] active:bg-[var(--semantic-neutral-strong)]">
+            <div class="flex h-20 w-full items-center justify-center">
+              <img src={c.data.logo} alt={c.data.name} loading="lazy" class="h-14 w-28 object-contain transition-[filter] duration-200 group-hover:invert group-active:invert md:w-36" />
+            </div>
+            {c.data.category && (
+              <span class="type-body-button-xs absolute inset-x-0 bottom-4 text-center text-[var(--semantic-text-contrast)] opacity-0 transition-opacity duration-200 group-hover:opacity-100">{c.data.category}</span>
+            )}
+          </Card>
         </li>
       ))}
     </ul>

@@ -1,4 +1,5 @@
 ---
+import { Card } from "@/lib/components/ui/card";
 import { getSite } from "@/lib/site";
 
 interface Props {
@@ -18,22 +19,18 @@ const Tag = linkedin ? "a" : "div";
 
 <Tag
   {...(linkedin ? { href: linkedin, target: "_blank", rel: "noopener noreferrer", "data-hover-label": "" } : {})}
-  class:list={["team-card group relative block", overlay && "aspect-[4/5] overflow-hidden rounded-lg"]}
+  class="team-card group relative block"
 >
-  <img
-    src={photo.src}
-    alt={photo.alt}
-    width={photo.width}
-    height={photo.height}
-    loading="lazy"
-    class:list={["w-full rounded-lg object-cover", overlay ? "h-full" : "mb-4 aspect-[4/5]"]}
-  />
-  {overlay ? (
-    <div class="team-shade absolute inset-x-0 bottom-0 p-6 text-white">
-      <p class="type-body-regular-l">{name}</p>
-      <p class="type-body-regular-l text-white/60">{role}</p>
-    </div>
-  ) : (
+  <Card variant="tile" class={overlay ? "block aspect-[4/5]" : "mb-4 block aspect-[4/5]"}>
+    <img src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy" class="size-full object-cover" />
+    {overlay && (
+      <div class="team-shade absolute inset-x-0 bottom-0 p-6 text-white">
+        <p class="type-body-regular-l">{name}</p>
+        <p class="type-body-regular-l text-white/60">{role}</p>
+      </div>
+    )}
+  </Card>
+  {!overlay && (
     <>
       <p class="type-body-regular-l">{name}</p>
       <p class="type-body-regular-l text-ink-3">{role}</p>

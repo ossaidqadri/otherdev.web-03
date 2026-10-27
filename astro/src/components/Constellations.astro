@@ -1,4 +1,5 @@
 ---
+import { Button } from "@/lib/components/ui/button";
 import { getPage } from "@/lib/site";
 
 const { constellations: c } = await getPage("home");
@@ -11,39 +12,35 @@ const { constellations: c } = await getPage("home");
       <p class="body type-mega-button mt-2.5 max-w-[64rem]">{c.body}</p>
     </div>
     <div class="site-container w-full">
-      <a href={c.button.href} class="pill type-body-button-m">{c.button.label}</a>
+      <Button href={c.button.href} variant="glass" size="pill" class="type-body-button-m">{c.button.label}</Button>
     </div>
   </div>
 </section>
 
 <style>
   /* Cream through orange to brown. Past halfway (data-on, set by the motion layer) all text turns
-     white over 0.5s, as measured on the reference. */
+     white over 0.5s, as measured on the reference. The pill (Button "glass") follows via --pill-*. */
   .constellations {
+    --pill-bg: rgb(0 0 0 / 0.06);
+    --pill-fg: var(--global-neutral-900);
+    --pill-fade: 0.5s;
     background: linear-gradient(to bottom, #fff 0%, var(--global-summer-500) 45%, var(--global-summer-700) 75%, var(--global-autumn-900) 100%);
   }
   .heading,
-  .body,
-  .pill {
+  .body {
     color: var(--global-neutral-900);
-    transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .body {
     opacity: 0.4;
   }
-  .pill {
-    display: inline-block;
-    padding: 1rem 1.5rem;
-    border-radius: 9999px;
-    background: rgb(0 0 0 / 0.06);
+  .constellations[data-on] {
+    --pill-bg: rgb(255 255 255 / 0.16);
+    --pill-fg: #fff;
   }
   .constellations[data-on] .heading,
-  .constellations[data-on] .body,
-  .constellations[data-on] .pill {
+  .constellations[data-on] .body {
     color: #fff;
-  }
-  .constellations[data-on] .pill {
-    background: rgb(255 255 255 / 0.16);
   }
   /* At phone width the copy plus button must fit the pinned screen. */
   @media (max-width: 47.99rem) {
@@ -53,11 +50,11 @@ const { constellations: c } = await getPage("home");
   }
   @media (prefers-reduced-motion: reduce) {
     .constellations {
+      --pill-fg: #fff;
       background: linear-gradient(to bottom, var(--global-summer-700), var(--global-autumn-900));
     }
     .heading,
-    .body,
-    .pill {
+    .body {
       color: #fff;
     }
   }

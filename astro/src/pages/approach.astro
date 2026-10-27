@@ -1,5 +1,6 @@
 ---
 import CtaScene from "@/components/CtaScene.astro";
+import { Card } from "@/lib/components/ui/card";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { getPage } from "@/lib/site";
@@ -49,7 +50,7 @@ const lead = (s = "") => s.replace(/\.\.\.$/, "").split(/(?<=\.)\s/)[0] ?? "";
           {featured.map((p) => (
             <li>
               <a href={`/work/${p.id}`} class="block text-white">
-                <img src={p.data.cover.src} alt={p.data.cover.alt} width={p.data.cover.width} height={p.data.cover.height} loading="lazy" class="aspect-[4/3] w-full rounded-lg object-cover object-top" />
+                <Card variant="tile" class="block aspect-[4/3]"><img src={p.data.cover.src} alt={p.data.cover.alt} width={p.data.cover.width} height={p.data.cover.height} loading="lazy" class="size-full object-cover object-top" /></Card>
                 <h3 class="type-body-regular-l mt-4">{p.data.title}</h3>
                 <p class="type-body-paragraph-m mt-2 text-white/60">{lead(p.data.excerpt)}</p>
               </a>

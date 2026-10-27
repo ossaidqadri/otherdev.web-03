@@ -1,4 +1,6 @@
 ---
+import { Button } from "@/lib/components/ui/button";
+
 interface Props {
   heading: string;
   body: string;
@@ -16,7 +18,7 @@ const { heading, body, button, dark = false } = Astro.props;
     <div class="site-container w-full">
       <h2 class="type-display-m max-w-4xl text-white">{heading}</h2>
       <p class="type-heading-l mt-6 max-w-3xl text-white/60">{body}</p>
-      <a href={button.href} class="pill type-body-button-m mt-12 inline-block">{button.label}</a>
+      <Button href={button.href} variant="glass" size="pill" class="type-body-button-m mt-12">{button.label}</Button>
     </div>
   </div>
 </section>
@@ -27,12 +29,6 @@ const { heading, body, button, dark = false } = Astro.props;
   }
   .cta-dark {
     background: var(--global-autumn-900);
-  }
-  .pill {
-    padding: 1rem 1.5rem;
-    border-radius: 9999px;
-    background: rgb(255 255 255 / 0.16);
-    color: #fff;
   }
   @media (prefers-reduced-motion: reduce) {
     .cta {

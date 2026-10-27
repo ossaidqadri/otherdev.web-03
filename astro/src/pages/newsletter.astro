@@ -1,32 +1,36 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { Button } from "@/lib/components/ui/button";
+import { Checkbox } from "@/lib/components/ui/checkbox";
+import { Field, FieldLabel } from "@/lib/components/ui/field";
+import { Input } from "@/lib/components/ui/input";
 import { getPage, getSite } from "@/lib/site";
 
 const n = await getPage("newsletter");
 const { ui } = await getSite();
-const field = "bg-card type-body-regular-m w-full rounded-md px-4 py-3 disabled:opacity-60";
 ---
 
 <Layout title="Newsletter | otherdev" description={n.body}>
   <main class="site-container section pt-48" data-navbar-theme="dark">
     <h1 class="type-hero max-w-4xl">{n.heading}</h1>
     <p class="type-heading-l text-ink-3 mt-6 max-w-2xl">{n.body}</p>
-    {/* Disabled until a signup backend is chosen. */}
+    {/* Disabled until a signup backend is chosen; the form then needs hydrating (Checkbox is a bits-ui button). */}
     <form class="mt-12 max-w-xl" aria-describedby="newsletter-note">
       <fieldset disabled class="grid gap-3">
         <div class="grid gap-3 md:grid-cols-2">
-          <input class={field} name="first" placeholder={n.fields.firstName} autocomplete="given-name" aria-label={n.fields.firstName} />
-          <input class={field} name="last" placeholder={n.fields.lastName} autocomplete="family-name" aria-label={n.fields.lastName} />
+          <Input variant="soft" class="type-body-regular-m" name="first" placeholder={n.fields.firstName} autocomplete="given-name" aria-label={n.fields.firstName} />
+          <Input variant="soft" class="type-body-regular-m" name="last" placeholder={n.fields.lastName} autocomplete="family-name" aria-label={n.fields.lastName} />
         </div>
-        <input class={field} type="email" name="email" placeholder={n.fields.email} autocomplete="email" aria-label={n.fields.email} />
+        <Input variant="soft" class="type-body-regular-m" type="email" name="email" placeholder={n.fields.email} autocomplete="email" aria-label={n.fields.email} />
         <p class="type-body-regular-m mt-4">{n.interestsLabel}</p>
-        {n.interests.map((i) => (
-          <label class="type-body-regular-m flex items-center gap-3">
-            <input type="checkbox" name="interests" value={i} />{i}
-          </label>
+        {n.interests.map((i, k) => (
+          <Field orientation="horizontal">
+            <Checkbox id={`interest-${k}`} name="interests" value={i} />
+            <FieldLabel for={`interest-${k}`} class="type-body-regular-m">{i}</FieldLabel>
+          </Field>
         ))}
         <p class="type-body-regular-xs text-ink-3 mt-2">{n.consent}</p>
-        <button type="submit" class="type-body-button-m bg-foreground text-background mt-2 w-fit rounded-full px-6 py-4 disabled:opacity-60">{ui.submit}</button>
+        <Button type="submit" size="pill" class="type-body-button-m mt-2 w-fit disabled:opacity-60">{ui.submit}</Button>
       </fieldset>
       <p id="newsletter-note" class="type-body-regular-s text-ink-3 mt-4">{n.note}</p>
     </form>

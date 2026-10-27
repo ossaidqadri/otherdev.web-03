@@ -1,4 +1,5 @@
 ---
+import { Button } from "@/lib/components/ui/button";
 import { getPage } from "@/lib/site";
 
 const { hero } = await getPage("home");
@@ -19,8 +20,8 @@ const words = hero.statement.split(" ");
         ))}
       </p>
     </div>
-    <div class="site-container w-full">
-      <a href={hero.button.href} class="pill type-body-button-m">{hero.button.label}</a>
+    <div class="pill-colors site-container w-full">
+      <Button href={hero.button.href} variant="glass" size="pill" class="type-body-button-m">{hero.button.label}</Button>
     </div>
   </div>
 </section>
@@ -72,13 +73,10 @@ const words = hero.statement.split(" ");
       opacity: 1;
     }
   }
-  .pill {
-    display: inline-block;
-    padding: 1rem 1.5rem;
-    border-radius: 9999px;
-    /* White on the dark sky, dark once the sky has turned pale. */
+  /* The pill (Button "glass") is white on the dark sky and turns dark once the sky has gone pale. */
+  .pill-colors {
     --to-dark: clamp(0, calc((var(--p) - 0.3) * 5), 1);
-    background: color-mix(in oklab, rgb(255 255 255 / 0.16) calc((1 - var(--to-dark)) * 100%), rgb(0 0 0 / 0.06));
-    color: color-mix(in oklab, #fff calc((1 - var(--to-dark)) * 100%), var(--global-neutral-900));
+    --pill-bg: color-mix(in oklab, rgb(255 255 255 / 0.16) calc((1 - var(--to-dark)) * 100%), rgb(0 0 0 / 0.06));
+    --pill-fg: color-mix(in oklab, #fff calc((1 - var(--to-dark)) * 100%), var(--global-neutral-900));
   }
 </style>

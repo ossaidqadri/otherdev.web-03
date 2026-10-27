@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from "astro:content";
 import CtaScene from "@/components/CtaScene.astro";
+import { Badge } from "@/lib/components/ui/badge";
+import { Card } from "@/lib/components/ui/card";
 import Layout from "@/layouts/Layout.astro";
 import { getSite } from "@/lib/site";
 
@@ -39,9 +41,9 @@ const jsonLd = {
       <div class="site-container pt-48 pb-16">
         <h1 class="type-hero max-w-5xl">{title}</h1>
         <div class="mt-10 flex flex-wrap gap-2">
-          <span class="bg-card type-body-regular-xs rounded-md px-2.5 py-1.5">{year}</span>
-          {href && <a href={href} rel="noopener noreferrer" target="_blank" class="bg-card type-body-regular-xs rounded-md px-2.5 py-1.5">{link}</a>}
-          {downloadUrl && <a href={downloadUrl} class="bg-card type-body-regular-xs rounded-md px-2.5 py-1.5">{ui.download}</a>}
+          <Badge variant="chip" class="type-body-regular-xs">{year}</Badge>
+          {href && <Badge href={href} rel="noopener noreferrer" target="_blank" variant="chip" class="type-body-regular-xs">{link}</Badge>}
+          {downloadUrl && <Badge href={downloadUrl} variant="chip" class="type-body-regular-xs">{ui.download}</Badge>}
         </div>
         <div class="prose-site type-body-paragraph-m mt-10"><Content /></div>
       </div>
@@ -67,7 +69,7 @@ const jsonLd = {
         {related.map((p) => (
           <li>
             <a href={`/work/${p.id}`} class="block">
-              <img src={p.data.cover.src} alt={p.data.cover.alt} width={p.data.cover.width} height={p.data.cover.height} loading="lazy" class="aspect-[4/3] w-full rounded-lg object-cover object-top" />
+              <Card variant="tile" class="block aspect-[4/3]"><img src={p.data.cover.src} alt={p.data.cover.alt} width={p.data.cover.width} height={p.data.cover.height} loading="lazy" class="size-full object-cover object-top" /></Card>
               <h3 class="type-body-regular-l mt-4">{p.data.title}</h3>
             </a>
           </li>
