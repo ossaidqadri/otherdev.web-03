@@ -27,9 +27,10 @@ const Tag = linkedin ? "a" : "div";
   {overlay ? (
     <Card variant="tile" class="block aspect-[4/5]">
       <img src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy" class="size-full object-cover" />
+      {/* The reference bakes this into the photo; ours is live text in the same serif. */}
       <div class="team-shade absolute inset-x-0 bottom-0 p-6 text-white max-md:hidden">
-        <p class="type-body-regular-l">{name}</p>
-        <p class="type-body-regular-l text-white/60">{role}</p>
+        <p class="type-subheading-m">{name}</p>
+        <p class="type-subheading-m text-white/60">{role}</p>
       </div>
     </Card>
   ) : (
@@ -40,24 +41,31 @@ const Tag = linkedin ? "a" : "div";
     </div>
   )}
 
-  {/* Phones have no hover, so the "Read on LinkedIn" row, name and bio sit under the photo, as the
-      reference's cards do. From md the overlay (home) or name and role (/about) take over. */}
+  {/* Home grid, like the reference's post cards: the name sits under the photo; on hover the role and
+      "Read on LinkedIn" row opens above it and the name swaps to the bio. Phones have no hover, so the
+      row, name and bio are all shown. */}
   {overlay ? (
-    <div class="flex flex-col pt-3 pr-[var(--card-padding)] pb-[var(--card-padding)] md:hidden">
-      <p class="type-body-paragraph-xs flex items-center gap-1 pb-1 text-[var(--semantic-text-secondary)]">
-        <span>{role}</span>
-        {linkedin && (
-          <>
-            <span aria-hidden="true">·</span>
-            <span class="inline-flex items-center gap-0.5">
-              {ui.readOnLinkedin}
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7" /><path d="M7 7h10v10" /></svg>
-            </span>
-          </>
+    <div class="flex flex-col pt-3 pr-[var(--card-padding)] pb-[var(--card-padding)]">
+      <div class="grid transition-[grid-template-rows] duration-300 ease-in-out md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr] md:group-focus-visible:grid-rows-[1fr]">
+        <p class="type-body-paragraph-xs flex items-center gap-1 overflow-hidden pb-1 text-[var(--semantic-text-secondary)] md:opacity-0 md:transition-opacity md:duration-300 md:group-hover:opacity-100 md:group-focus-visible:opacity-100">
+          <span>{role}</span>
+          {linkedin && (
+            <>
+              <span aria-hidden="true">·</span>
+              <span class="inline-flex items-center gap-0.5">
+                {ui.readOnLinkedin}
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7" /><path d="M7 7h10v10" /></svg>
+              </span>
+            </>
+          )}
+        </p>
+      </div>
+      <div class="md:grid">
+        <p class="type-heading-s md:col-start-1 md:row-start-1 md:transition-opacity md:duration-300 md:group-hover:opacity-0 md:group-focus-visible:opacity-0">{name}</p>
+        {bio && (
+          <p class="type-heading-s mt-1 text-[var(--semantic-text-secondary)] md:col-start-1 md:row-start-1 md:mt-0 md:text-[var(--semantic-text-primary)] md:opacity-0 md:transition-opacity md:duration-300 md:group-hover:opacity-100 md:group-focus-visible:opacity-100">{bio}</p>
         )}
-      </p>
-      <p class="type-heading-s">{name}</p>
-      {bio && <p class="type-heading-s mt-1 text-[var(--semantic-text-secondary)]">{bio}</p>}
+      </div>
     </div>
   ) : (
     <div class="flex flex-col pt-4">

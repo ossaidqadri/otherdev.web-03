@@ -13,6 +13,6 @@
   "teamHeading": "We’re a multi-disciplinary team of curious designers, developers, and strategists.",
   "team": [
     { "name": "Kabeer Jaffri", "role": "Co-founder", "photo": { "src": "https://media.otherdev.com/site/team/kabeer.webp", "alt": "Kabeer Jaffri", "width": 900, "height": 1126 }, "linkedin": "https://www.linkedin.com/in/kabeerjaffri/", "bio": "Kabeer leads engineering at Other Dev, taking projects from architecture and product design through to deployment for startups and established businesses." },
-    { "name": "Ossaid Qadri", "role": "Co-founder", "photo": { "src": "https://media.otherdev.com/site/team/ossaid.webp", "alt": "Ossaid Qadri", "width": 720, "height": 900 }, "linkedin": "https://www.linkedin.com/in/ossaidqadri/", "bio": "Ossaid builds web platforms and custom software for retail and real estate clients, and has had fixes merged into Astro and Payload CMS." }
+    { "name": "Ossaid Qadri", "role": "Co-founder", "photo": { "src": "https://media.otherdev.com/site/team/ossaid.webp", "alt": "Ossaid Qadri", "width": 720, "height": 900 }, "linkedin": "https://www.linkedin.com/in/ossaidqadri/", "bio": "Ossaid builds web platforms and custom retail and enterprise software, and has had fixes merged into Astro and Payload CMS." }
   ]
 }
