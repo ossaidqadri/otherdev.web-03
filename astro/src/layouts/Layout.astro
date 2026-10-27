@@ -66,6 +66,14 @@ const organization = {
     <slot />
     <Footer />
 <CursorLabel />
+    {/* The scene scripts load after the page does (motion.ts), so start the header and pill in their top-of-page state now: nothing flashes. */}
+    <script is:inline>
+      {
+        const r = document.documentElement;
+        r.dataset.navTheme = document.querySelector("[data-navbar-theme]")?.dataset.navbarTheme ?? "light";
+        if (scrollY < 300) r.setAttribute("data-pill-hidden", "");
+      }
+    </script>
     <script>import "@/scripts/motion";</script>
   </body>
 </html>
