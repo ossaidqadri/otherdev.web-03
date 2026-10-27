@@ -6,10 +6,10 @@
   "link": "www.blvdretail.co",
   "excerpt": "Boulevard Pakistan is a contemporary menswear brand. Since 2021, Other Dev has shaped their digital identity — a Shopify theme with critical CSS inlining, link...",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/branding-website-development-for-boulevard-pakistan/boulevard-home-hero.webp",
-    "alt": "boulevard home hero",
-    "width": 2880,
-    "height": 2018
+    "src": "https://media.otherdev.com/site/projects/branding-website-development-for-boulevard-pakistan/boulevard-cover.webp",
+    "alt": "Boulevard, the BLVD wordmark over the storefront product grid",
+    "width": 2400,
+    "height": 1350
   },
   "gallery": [
     {

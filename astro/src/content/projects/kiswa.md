@@ -6,10 +6,10 @@
   "link": "kiswanoire.com",
   "excerpt": "Kiswa Noir is a custom Shopify theme built to deliver a minimalist, high trust storefront experience without the performance overhead of standard templates. We engineered...",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/kiswa/kiswa-noire-home-hero.webp",
-    "alt": "kiswa noire home hero",
-    "width": 2880,
-    "height": 2018
+    "src": "https://media.otherdev.com/site/projects/kiswa/kiswa-cover.webp",
+    "alt": "Kiswa Noir, the wordmark over the storefront model shoot",
+    "width": 2400,
+    "height": 1350
   },
   "gallery": [
     {
