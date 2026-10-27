@@ -3,61 +3,31 @@ import { getCollection } from "astro:content";
 import { Badge } from "@/lib/components/ui/badge";
 import { Button } from "@/lib/components/ui/button";
 import { Card } from "@/lib/components/ui/card";
-import { Separator } from "@/lib/components/ui/separator";
-import { getPage, getSite } from "@/lib/site";
+import { getPage } from "@/lib/site";
 
-interface Props {
-  /** Show every project and drop the "See all" link (the /work page). */
-  all?: boolean;
-}
-
-const { all = false } = Astro.props;
+// Home "Our work": the hand-picked projects, in the order home.json lists them.
 const { work } = await getPage("home");
-const { ui } = await getSite();
-const sorted = (await getCollection("projects")).sort((a, b) => b.data.year - a.data.year);
-// Home shows the hand-picked projects in the order site.json lists them.
-const projects = all
-  ? sorted
-  : work.featured.flatMap((id) => sorted.filter((p) => p.id === id));
+const sorted = await getCollection("projects");
+const projects = work.featured.flatMap((id) => sorted.filter((p) => p.id === id));
 // Hover fades to the first gallery shot that isn't the cover (the reference fades in a video;
 // projects have none yet).
 const hoverImage = (p: (typeof projects)[number]) => p.data.gallery.find((g) => g.src !== p.data.cover.src);
-const filters =["Strategy", "Design", "Technology", "Experience"].filter((t) => projects.some((p) => p.data.tags.includes(t as never)));
 ---
 
 <section id="work" class="section" data-navbar-theme="dark" data-section>
   <div class="site-container">
     <div class="flex w-full flex-col items-start gap-2 md:flex-row md:items-end md:gap-8">
       <div class="flex-1"><h2 class="type-heading-l max-w-[64rem]">{work.heading}</h2></div>
-      {!all && (
-        <Button href={work.all.href} variant="nav" size="nav" class="type-heading-l -ml-2.5 rounded-lg md:ml-0">
-          <span class="inline-flex items-center gap-1 opacity-40">
-            <span>{work.all.label}</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-8 translate-y-[0.03em]" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
-          </span>
-        </Button>
-      )}
+      <Button href={work.all.href} variant="nav" size="nav" class="type-heading-l -ml-2.5 rounded-lg md:ml-0">
+        <span class="inline-flex items-center gap-1 opacity-40">
+          <span>{work.all.label}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-8 translate-y-[0.03em]" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+        </span>
+      </Button>
     </div>
-    {all && (
-      <div class="mt-12 flex flex-wrap items-center justify-between gap-6" data-work-controls>
-        <div role="group" aria-label={ui.filterLabel} class="type-heading-s flex flex-wrap items-center gap-x-1">
-          <Button data-filter="all" aria-pressed="true" variant="toggle" size="nav">{ui.all}</Button>
-          <Separator decorative class="mx-2 data-horizontal:w-6" />
-          {filters.map((t) => <Button data-filter={t} aria-pressed="false" variant="toggle" size="nav">{t}</Button>)}
-        </div>
-        <div role="group" aria-label={ui.viewLabel} class="flex items-center gap-1">
-          <Button data-set-view="grid" aria-pressed="false" aria-label={ui.gridView} variant="toggle" size="icon-nav">
-            <svg width="18" height="18" class="size-4.5" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1" /><rect x="11" y="2" width="5" height="5" rx="1" /><rect x="2" y="11" width="5" height="5" rx="1" /><rect x="11" y="11" width="5" height="5" rx="1" /></svg>
-          </Button>
-          <Button data-set-view="list" aria-pressed="true" aria-label={ui.listView} variant="toggle" size="icon-nav">
-            <svg width="18" height="18" class="size-4.5" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4h14M2 9h14M2 14h14" /></svg>
-          </Button>
-        </div>
-      </div>
-    )}
-    <ul class:list={["work-list", all ? "mt-12" : "mt-24"]} data-view="list" data-work-list>
+    <ul class="mt-24">
       {projects.map((p) => (
-        <li class="border-border work-item border-t py-16" data-tags={p.data.tags.join(",")}>
+        <li class="border-border border-t py-16">
           <a href={`/work/${p.id}`} class="group flex w-full flex-col gap-6 transition-opacity duration-200 md:grid md:h-[490px] md:grid-cols-3 md:gap-4">
             <div class="flex flex-col justify-between gap-8 md:pr-16">
               <div>
@@ -94,39 +64,3 @@ const filters =["Strategy", "Design", "Technology", "Experience"].filter((t) => 
     </ul>
   </div>
 </section>
-
-<style>
-  /* Grid view: two columns of cards, media first. */
-  .work-list[data-view="grid"] {
-    display: grid;
-    gap: 3rem 0.5rem;
-  }
-  @media (min-width: 48rem) {
-    .work-list[data-view="grid"] {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-  .work-list[data-view="grid"] .work-item {
-    padding: 0;
-    border: 0;
-  }
-  .work-list[data-view="grid"] .work-item > a {
-    display: flex;
-    flex-direction: column-reverse;
-    height: auto;
-    gap: 1rem;
-  }
-  .work-list[data-view="grid"] .work-item > a > div:last-child {
-    aspect-ratio: 455 / 256;
-  }
-  .work-list[data-view="grid"] .work-item > a > div:first-child {
-    padding-right: 0;
-  }
-  .work-list[data-view="grid"] .work-item p {
-    display: none;
-  }
-</style>
-
-<script>
-  import "@/scripts/work-filter";
-</script>

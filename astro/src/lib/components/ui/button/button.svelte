@@ -26,7 +26,8 @@
 				// Floating section nav: dim until hovered or marked current by the scroll spy (motion.ts).
 				spy: "rounded-full text-(--fg) opacity-40 hover:opacity-100 [&[aria-current]]:opacity-100 transition-opacity duration-300 ease-in-out",
 				// Filter/view toggles driven by aria-pressed (scripts/work-filter.ts flips it).
-				toggle: "rounded-sm opacity-40 not-aria-pressed:hover:opacity-70 aria-pressed:bg-(--semantic-transparent-weak) aria-pressed:opacity-100 transition-[opacity,background-color] duration-200 ease-out",
+				// The pressed wash is a separate sliding element (scripts/work-filter.ts), so only the label dims.
+				toggle: "relative isolate opacity-20 hover:opacity-60 focus-visible:opacity-60 aria-pressed:opacity-100 transition-opacity duration-300",
 			},
 			size: {
 				default: "h-9 gap-1.5 px-3 has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5",
@@ -43,6 +44,8 @@
 				nav: "h-auto gap-1 px-2.5 py-1.5",
 				spy: "h-10 px-4",
 				"icon-nav": "size-8 rounded-sm",
+				filter: "h-auto px-1.5",
+				"icon-filter": "h-auto p-1",
 			},
 		},
 		defaultVariants: {

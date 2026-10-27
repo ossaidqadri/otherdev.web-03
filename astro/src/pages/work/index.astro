@@ -1,5 +1,5 @@
 ---
-import WorkList from "@/components/WorkList.astro";
+import WorkIndex from "@/components/WorkIndex.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getPage } from "@/lib/site";
 
@@ -8,18 +8,21 @@ const { hero } = await getPage("work");
 
 <Layout title="Work | otherdev" description="Selected projects from otherdev, a Karachi web studio.">
   <main>
-    <section class="work-hero" data-navbar-theme="dark">
-      <div class="site-container pt-48 pb-[var(--section-padding-sm)]">
-        <h1 class="type-hero">{hero.heading}</h1>
-        <p class="type-hero text-ink-3">{hero.sub}</p>
+    {/* Top padding is the nav's plus a section's, as on the reference (headline at 256px on desktop). */}
+    <section class="work-hero pt-[var(--container-navpadding)]" data-navbar-theme="dark">
+      <div class="site-container py-[var(--section-padding-lg)]">
+        <div class="type-mega-button max-w-[64rem]">
+          <h1>{hero.heading}</h1>
+          <p class="opacity-40">{hero.sub}</p>
+        </div>
       </div>
     </section>
-    <WorkList all />
+    <WorkIndex />
   </main>
 </Layout>
 
 <style>
   .work-hero {
-    background: linear-gradient(to bottom, var(--global-winter-300), #fff);
+    background: linear-gradient(var(--global-winter-300) 0%, var(--global-spring-50) 90%, #fff 100%);
   }
 </style>

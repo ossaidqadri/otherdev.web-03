@@ -1,0 +1,26 @@
+{/* One pill that trails the cursor 15px down and right over anything marked data-cursor-label="<text>"
+     ("Drag" on the process carousel, "See work" on /work cards), as on the reference. */}
+<span data-cursor-label-pill aria-hidden="true" class="type-body-button-s pointer-events-none fixed top-0 left-0 z-50 rounded-[16px] bg-[#44546B]/14 px-3 py-2 whitespace-nowrap text-white opacity-0 backdrop-blur-[16px] transition-opacity duration-150 select-none"></span>
+
+<script>
+  const OFFSET = 15;
+  if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    let target: HTMLElement | null = null;
+    document.addEventListener("pointermove", (e) => {
+      const pill = document.querySelector<HTMLElement>("[data-cursor-label-pill]");
+      if (!pill) return;
+      const over = (e.target as Element | null)?.closest<HTMLElement>("[data-cursor-label]") ?? null;
+      if (over !== target) {
+        target = over;
+        if (over) pill.textContent = over.dataset.cursorLabel ?? "";
+        pill.style.opacity = over ? "1" : "0";
+      }
+      pill.style.transform = `translate3d(${e.clientX + OFFSET}px, ${e.clientY + OFFSET}px, 0)`;
+    }, { passive: true });
+    document.addEventListener("pointerleave", () => {
+      target = null;
+      const pill = document.querySelector<HTMLElement>("[data-cursor-label-pill]");
+      if (pill) pill.style.opacity = "0";
+    });
+  }
+</script>

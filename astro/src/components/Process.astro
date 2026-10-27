@@ -18,7 +18,7 @@ const imageFor = (file: string) => art[`/src/assets/process/${file}`];
   {/* An Embla carousel like the reference's: the viewport is the container width, the track overflows
        to the page edge (the section clips it), cards are 1/3 wide on desktop, 1/2 on sm, full on phones. */}
   <div class="site-container mt-[calc(4rem*var(--scale))]">
-    <div data-process-viewport>
+    <div data-process-viewport data-cursor-label={ui.drag}>
     <ul class="group/offerings -ml-4 flex touch-pan-y" data-process-track>
       {process.steps.map((s) => {
         const img = imageFor(s.image);
@@ -45,8 +45,6 @@ const imageFor = (file: string) => art[`/src/assets/process/${file}`];
     </ul>
     </div>
   </div>
-  {/* Follows the pointer over the carousel (scripts/drag.ts moves it to <body> so no transformed ancestor traps it). */}
-  <span data-drag-cursor aria-hidden="true" class="type-body-button-s pointer-events-none fixed top-0 left-0 z-50 rounded-[16px] bg-[#44546B]/14 px-3 py-2 whitespace-nowrap text-white opacity-0 backdrop-blur-[16px] transition-opacity duration-150 select-none">{ui.drag}</span>
 </section>
 
 <script>
