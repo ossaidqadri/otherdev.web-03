@@ -12,13 +12,14 @@ interface Props {
   title: string;
   description: string;
   image?: string;
+  imageAlt?: string;
   type?: "website" | "article";
   published?: Date;
   noindex?: boolean;
   jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, image, type, published, noindex, jsonLd } = Astro.props;
+const { title, description, image, imageAlt, type, published, noindex, jsonLd } = Astro.props;
 const site = await getSite();
 // Home only; profile links come from the footer's social list (WhatsApp is a chat link, not a profile).
 const organization = {
@@ -42,6 +43,7 @@ const organization = {
       title={title}
       description={description}
       image={image}
+      imageAlt={imageAlt}
       type={type}
       published={published}
       noindex={noindex}
@@ -51,12 +53,15 @@ const organization = {
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#1e1310" />
     <meta name="generator" content={Astro.generator} />
     <Font cssVariable="--font-saans" preload={[{ weight: "450", style: "normal" }]} />
     <Font cssVariable="--font-serrif" preload />
     <ClientRouter />
   </head>
   <body>
+    {/* First tab stop: jumps past the header; visible only while focused. Targets <main id="main"> on each page. */}
+    <a href="#main" class="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-4 focus-visible:left-4 focus-visible:z-[60] focus-visible:rounded-full focus-visible:bg-card focus-visible:px-6 focus-visible:py-4 focus-visible:ring-2 focus-visible:ring-[var(--semantic-transparent-strong)]">{site.ui.skipToContent}</a>
     <Header />
     <slot />
     <Footer />

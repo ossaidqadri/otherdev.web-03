@@ -5,6 +5,8 @@ interface Props {
   title: string;
   description: string;
   image?: string;
+  /** Describes `image`; defaults to the page title. */
+  imageAlt?: string;
   type?: "website" | "article";
   /** Articles only: goes into article:published_time. */
   published?: Date;
@@ -14,9 +16,11 @@ interface Props {
 }
 
 const SITE_NAME = "otherdev";
-const { title, description, image = "/og-default.jpg", type = "website", published, noindex, jsonLd } = Astro.props;
+const { title, description, image, imageAlt = title, type = "website", published, noindex, jsonLd } = Astro.props;
 const canonical = noindex ? null : new URL(Astro.url.pathname, Astro.site);
-const imageUrl = new URL(image, Astro.site).href;
+const imageUrl = new URL(image ?? "/og-default.jpg", Astro.site).href;
+// Type and size are only known for the bundled default; a page's own cover is left to the crawler.
+const imageMeta = image ? { alt: imageAlt } : { type: "image/jpeg", width: 1200, height: 630, alt: imageAlt };
 ---
 
 <SEO
@@ -27,10 +31,10 @@ const imageUrl = new URL(image, Astro.site).href;
   openGraph={{
     basic: { title, type, image: imageUrl, url: canonical ?? undefined },
     optional: { description, siteName: SITE_NAME, locale: "en_GB" },
-    image: { type: "image/jpeg", width: 1200, height: 630, alt: SITE_NAME },
+    image: imageMeta,
     article: published ? { publishedTime: published.toISOString() } : undefined,
   }}
-  twitter={{ card: "summary_large_image", title, description, image: imageUrl, imageAlt: SITE_NAME }}
+  twitter={{ card: "summary_large_image", title, description, image: imageUrl, imageAlt }}
   // Full-size image and text previews in search results, as v2 allowed.
   robotsExtras={noindex ? undefined : "max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
 />

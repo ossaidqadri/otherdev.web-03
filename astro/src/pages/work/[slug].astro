@@ -48,8 +48,8 @@ const jsonLd = {
 const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]";
 ---
 
-<Layout title={`${title} | otherdev`} description={excerpt ?? title} type="article" jsonLd={jsonLd}>
-  <main>
+<Layout title={`${title} | otherdev`} description={excerpt ?? title} image={cover.src} imageAlt={cover.alt} type="article" jsonLd={jsonLd}>
+  <main id="main">
     <section id="overview" class="case-hero pt-[var(--container-navpadding)] pb-[var(--section-padding-lg)]" data-navbar-theme="dark">
       <div class="site-container flex flex-col gap-[var(--section-padding-md)] pt-[var(--section-padding-sm)]">
         <div class="type-mega-button max-w-[64rem] pt-16">
