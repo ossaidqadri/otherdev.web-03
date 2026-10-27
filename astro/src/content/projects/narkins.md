@@ -59,10 +59,6 @@
       "alt": "narkins project",
       "width": 1440,
       "height": 2691
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/narkins/attachments.zip",
-      "alt": "attachments"
     }
   ]
 }

@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
 import CtaScene from "@/components/CtaScene.astro";
 import PillNav from "@/components/PillNav.astro";
@@ -115,7 +116,12 @@ const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]
           <div class:list={["grid gap-4", row.length > 1 && "md:grid-cols-2"]}>
             {row.map((m) => (
               <div class:list={["relative w-full overflow-hidden rounded-[var(--radius-lg)] bg-[var(--semantic-fill-secondary)]", row.length > 1 ? "aspect-[4/5]" : "aspect-video"]}>
-                <img src={m.src} alt={m.alt} width={m.width} height={m.height} loading="lazy" class="absolute inset-0 size-full scale-[1.01] object-cover object-top" />
+                {/* A 16:9 tile spans the page, a 4:5 tile half of it; each is cropped to its shape at build. */}
+                {row.length > 1 ? (
+                  <Image src={m.src} alt={m.alt} width={800} height={1000} widths={[480, 640, 800]} sizes="(min-width: 768px) 50vw, 100vw" fit="cover" position="top" loading="lazy" class="absolute inset-0 size-full scale-[1.01] object-cover object-top" />
+                ) : (
+                  <Image src={m.src} alt={m.alt} width={1600} height={900} widths={[800, 1200, 1600]} sizes="100vw" fit="cover" position="top" loading="lazy" class="absolute inset-0 size-full scale-[1.01] object-cover object-top" />
+                )}
               </div>
             ))}
           </div>

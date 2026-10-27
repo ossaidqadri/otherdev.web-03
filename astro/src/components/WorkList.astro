@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import { Badge } from "@/lib/components/ui/badge";
 import { Button } from "@/lib/components/ui/button";
@@ -11,6 +12,7 @@ const sorted = await getCollection("projects");
 const projects = work.featured.flatMap((id) => sorted.filter((p) => p.id === id));
 // Hover fades to the first gallery shot that isn't the cover (the reference fades in a video;
 // projects have none yet).
+const banner = { width: 1280, height: 720, widths: [640, 960, 1280], sizes: "(min-width: 768px) 66vw, 100vw", fit: "cover" as const, position: "top", loading: "lazy" as const };
 const hoverImage = (p: (typeof projects)[number]) => p.data.gallery.find((g) => g.src !== p.data.cover.src && (g.width ?? 0) > (g.height ?? 0) * 1.4);
 ---
 
@@ -43,21 +45,10 @@ const hoverImage = (p: (typeof projects)[number]) => p.data.gallery.find((g) => 
               </span>
             </div>
             <Card variant="tile" class="block aspect-[455/256] md:col-span-2 md:aspect-auto">
-              <img
-                src={p.data.cover.src}
-                alt={p.data.cover.alt}
-                width={p.data.cover.width}
-                height={p.data.cover.height}
-                loading="lazy"
-                class="size-full object-cover object-top"
-              />
+              {/* Cropped to 16:9 at build, the shape of the slot; the hover shot fades in over the cover. */}
+              <Image {...banner} src={p.data.cover.src} alt={p.data.cover.alt} class="size-full object-cover object-top" />
               {hoverImage(p) && (
-                <img
-                  src={hoverImage(p)?.src}
-                  alt=""
-                  loading="lazy"
-                  class="absolute inset-0 size-full object-cover object-top opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                />
+                <Image {...banner} src={hoverImage(p)!.src} alt="" class="absolute inset-0 size-full object-cover object-top opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               )}
             </Card>
           </a>

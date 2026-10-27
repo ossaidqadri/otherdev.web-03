@@ -24,6 +24,9 @@ export default defineConfig({
   // Fully static: no server, so no adapter. Add @astrojs/cloudflare (v13+) only when
   // the chat endpoint arrives, with `export const prerender = false` on that route.
   output: "static",
+  // Project and team images live on R2. <Image> fetches them at build and writes resized, cropped webp files
+  // (srcset) next to the site, so a card never downloads a 2400px original.
+  image: { remotePatterns: [{ protocol: "https", hostname: "media.otherdev.com" }] },
   // Self-hosted at build (hashed URLs, preload from the layout). `local()` on purpose: in
   // Astro 7.4 `npm()` hands file:// URLs to fetch() and stops the dev server.
   fonts: [
