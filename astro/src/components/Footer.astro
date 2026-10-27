@@ -13,18 +13,26 @@ const clock = (tz: string) =>
 
 {/* One sky runs the whole footer: dark brown through burnt orange to amber. */}
 <footer class="footer text-white">
-  <section class="min-h-[513px]" data-navbar-theme="footer" data-section>
+  <section class="min-h-[513px]" data-navbar-theme="light" data-section>
     <div class="site-container section" style="padding-block: var(--section-padding-md)">
-      <a href={f.cta.href} class="type-heading-l">{f.cta.label} →</a>
+      <a href={f.cta.href} class="type-heading-l inline-flex items-center gap-1">
+        {f.cta.label}
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-[0.8em]" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+      </a>
       <ul class="mt-16 grid grid-cols-2 md:grid-cols-4">
         {f.offices.map((o) => (
           <li>
             <h3 class="type-heading-m">{o.city}</h3>
             <p class="type-heading-m text-white/50" data-clock={o.timezone}>{clock(o.timezone)}</p>
-            <p class="type-body-button-xs mt-8 text-white/50">
-              <a href={`mailto:${o.email}`} class="block">{o.email}</a>
-              <a href={`tel:${o.phone.replace(/\s/g, "")}`} class="block">{o.phone}</a>
-            </p>
+            {/* Click copies, as on the reference; a copy icon fades in to the left on hover. */}
+            <div class="type-body-button-m mt-8 flex flex-col items-start gap-1">
+              {[o.email, o.phone].map((v) => (
+                <button type="button" data-copy={v} class="group relative cursor-pointer text-left opacity-40 transition-opacity hover:opacity-100 focus-visible:opacity-100">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true" class="pointer-events-none absolute top-1/2 right-full mr-[0.375em] size-[0.875em] -translate-y-1/2 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"><path d="M7 6V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-3v3c0 .55-.45 1-1 1H4a1 1 0 0 1-1-1l.003-14c0-.552.45-1 1.006-1H7Zm-1.998 2L5 20h10V8H5.002ZM9 6h8v10h2V4H9v2Z" /></svg>
+                  {v}
+                </button>
+              ))}
+            </div>
           </li>
         ))}
       </ul>
@@ -45,7 +53,7 @@ const clock = (tz: string) =>
         <source src="https://media.otherdev.com/site/video/footer-flower-mobile.webm" type="video/webm" media="(max-width: 767px)" />
         <source src="https://media.otherdev.com/site/video/footer-flower.webm" type="video/webm" />
       </video>
-      <nav aria-label={ui.socialNav} class="type-body-button-s absolute inset-x-0 top-0 z-10 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-[var(--container-padding)] py-7">
+      <nav aria-label={ui.socialNav} class="type-body-button-s absolute inset-x-0 top-0 z-10 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-[var(--container-padding)] py-8">
         <span class="wordmark">{name}</span>
         <ul class="flex gap-3 md:gap-7">
           {f.social.map((s) => <li><a href={s.href} rel="noopener noreferrer" target="_blank">{s.label}</a></li>)}
@@ -57,6 +65,7 @@ const clock = (tz: string) =>
       </ul>
     </div>
   </section>
+  <p role="status" data-toast data-copied={ui.copied} data-copy-failed={ui.copyFailed} class="type-body-regular-xs pointer-events-none fixed bottom-6 left-1/2 z-[60] w-[356px] max-w-[calc(100vw-2rem)] -translate-x-1/2 translate-y-2 rounded-[16px] bg-[var(--global-neutral-50)] p-4 text-[13px] font-medium text-[var(--global-neutral-900)] opacity-0 shadow-[0_4px_12px_rgb(0_0_0/0.1)] transition-[opacity,translate] duration-300"></p>
 </footer>
 
 <style>
@@ -79,6 +88,27 @@ const clock = (tz: string) =>
         .toLowerCase();
     }
   };
+  // Office email and phone copy on click, confirmed by a toast in the reference's Sonner style.
+  let hideToast = 0;
+  const toast = (text: string) => {
+    const el = document.querySelector<HTMLElement>("[data-toast]");
+    if (!el) return;
+    el.textContent = text;
+    el.classList.remove("opacity-0", "translate-y-2");
+    clearTimeout(hideToast);
+    hideToast = window.setTimeout(() => el.classList.add("opacity-0", "translate-y-2"), 4000);
+  };
+  document.addEventListener("click", async (e) => {
+    const btn = (e.target as Element).closest<HTMLElement>("[data-copy]");
+    if (!btn?.dataset.copy) return;
+    const { copied = "", copyFailed = "" } = document.querySelector<HTMLElement>("[data-toast]")?.dataset ?? {};
+    try {
+      await navigator.clipboard.writeText(btn.dataset.copy);
+      toast(copied);
+    } catch {
+      toast(copyFailed);
+    }
+  });
   document.addEventListener("astro:page-load", () => {
     tick();
     const id = setInterval(tick, 30_000);

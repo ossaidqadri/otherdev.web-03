@@ -17,7 +17,9 @@ const { pill, ui } = await getSite();
   .pill-nav {
     transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1), translate 0.3s cubic-bezier(0, 0, 0.2, 1);
   }
-  :global(html[data-pill-hidden]) .pill-nav {
+  /* Hidden before the hero is a quarter scrolled, and over the footer scene, as on the reference. */
+  :global(html[data-pill-hidden]) .pill-nav,
+  :global(html[data-nav-theme="footer"]) .pill-nav {
     opacity: 0;
     translate: -50% 8px;
     pointer-events: none;
@@ -30,7 +32,8 @@ const { pill, ui } = await getSite();
     box-shadow: 0 1px 24px rgb(40 50 80 / 0.12);
     transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  :global(html[data-pill-theme="light"]) .pill-nav ul {
+  :global(html[data-pill-theme="light"]) .pill-nav ul,
+  :global(html[data-pill-theme="footer"]) .pill-nav ul {
     --fg: #000;
     background: rgb(244 243 242 / 0.92);
   }

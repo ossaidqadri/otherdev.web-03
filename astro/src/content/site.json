@@ -42,6 +42,8 @@
       "gridView": "Grid view",
       "listView": "List view",
       "drag": "Drag",
+      "copied": "Copied to clipboard",
+      "copyFailed": "Couldn’t copy to clipboard",
       "all": "All",
       "relatedWork": "Related Work",
       "seeAll": "See all",

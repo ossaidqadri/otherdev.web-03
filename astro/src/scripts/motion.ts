@@ -20,8 +20,11 @@ function scrubVideo(video: HTMLVideoElement, scene: HTMLElement, signal: AbortSi
   let ready = false;
   const update = () => {
     const r = scene.getBoundingClientRect();
-    // Whole visible life of the scene, slide-in and slide-out included.
-    target = clamp((innerHeight - r.top) / (r.height + innerHeight)) * (video.duration || 0);
+    // As on the reference: while the scene enters, the video rises from 45% below to its place;
+    // once the scene is pinned (top at top) until it ends (bottom at bottom), scroll plays it.
+    const enter = clamp((innerHeight - r.top) / innerHeight);
+    video.style.transform = `translateY(${(45 * (1 - enter)).toFixed(2)}%)`;
+    target = clamp(-r.top / (r.height - innerHeight)) * (video.duration || 0);
   };
   const frame = () => {
     if (ready && !video.seeking) {
