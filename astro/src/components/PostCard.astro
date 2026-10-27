@@ -1,0 +1,29 @@
+---
+import { Card } from "@/lib/components/ui/card";
+
+// Blog card shared by the home news section and /blog. Hover: the date row opens above the title
+// and the title cross-fades to the excerpt. Posts have no cover art yet, so a gradient stands in;
+// the date takes the slot the reference uses for the post category.
+interface Props {
+  href: string;
+  title: string;
+  excerpt?: string;
+  label: string;
+}
+const { href, title, excerpt, label } = Astro.props;
+---
+
+<a href={href} class="group flex flex-col rounded-[var(--radius-lg)]">
+  <Card variant="tile" class="aspect-[4/5] w-full rounded-[var(--card-radius)] bg-[linear-gradient(160deg,var(--global-winter-300-dark),var(--global-autumn-50-dark))]" />
+  <div class="flex flex-col pt-3 pr-[var(--card-padding)] pb-[var(--card-padding)]">
+    <div class="grid transition-[grid-template-rows] duration-300 ease-in-out md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr] md:group-focus-visible:grid-rows-[1fr]">
+      <p class="type-body-paragraph-xs overflow-hidden pb-1 text-[var(--semantic-text-secondary)] md:opacity-0 md:transition-opacity md:duration-300 md:group-hover:opacity-100 md:group-focus-visible:opacity-100">{label}</p>
+    </div>
+    <div class="md:grid">
+      <h3 class="type-heading-s line-clamp-3 md:col-start-1 md:row-start-1 md:transition-opacity md:duration-300 md:group-hover:opacity-0 md:group-focus-visible:opacity-0">{title}</h3>
+      {excerpt && (
+        <p class="type-heading-s mt-1 line-clamp-3 text-[var(--semantic-text-secondary)] md:col-start-1 md:row-start-1 md:mt-0 md:text-[var(--semantic-text-primary)] md:opacity-0 md:transition-opacity md:duration-300 md:group-hover:opacity-100 md:group-focus-visible:opacity-100">{excerpt}</p>
+      )}
+    </div>
+  </div>
+</a>

@@ -1,7 +1,7 @@
 ---
 {
   "title": "A Deep Dive into Spline Interpolation and Real-Time Curve Rendering",
-  "excerpt": "Digital signature capture presents a fascinating intersection of human-computer interaction, computational geometry, and real-time graphics rendering. While users expect their digital signatures to flow as naturally as i",
+  "excerpt": "Digital signature capture presents a fascinating intersection of human-computer interaction, computational geometry, and real-time graphics rendering.",
   "publishedAt": "2025-04-08T00:00:00.000Z"
 }
 ---

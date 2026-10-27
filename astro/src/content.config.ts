@@ -131,7 +131,7 @@ const pageSchemas = z.discriminatedUnion("page", [
     closing,
   }),
   z.object({ page: z.literal("work"), hero: z.object({ heading: z.string(), sub: z.string() }) }),
-  z.object({ page: z.literal("blog"), heading: z.string() }),
+  z.object({ page: z.literal("blog"), hero: z.object({ heading: z.string(), sub: z.string() }) }),
   z.object({ page: z.literal("notFound"), heading: z.string(), link }),
 ]);
 const pages = defineCollection({

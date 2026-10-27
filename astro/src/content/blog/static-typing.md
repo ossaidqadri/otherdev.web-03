@@ -1,7 +1,7 @@
 ---
 {
   "title": "The Power of Static Typing in Programming",
-  "excerpt": "In the ever-evolving landscape of software development, the debate between dynamic and static typing continues to be a hot topic. While dynamic typing offers flexibility and rapid development, static typing brings its ow",
+  "excerpt": "In the ever-evolving landscape of software development, the debate between dynamic and static typing continues to be a hot topic.",
   "publishedAt": "2024-04-07T00:00:00.000Z"
 }
 ---

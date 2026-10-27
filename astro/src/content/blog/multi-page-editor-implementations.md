@@ -1,7 +1,7 @@
 ---
 {
 "title": "More on Multi-Page Editor Implementations",
-"excerpt": "**A page dedicated to incompetent engineers.** In the world of software development, particularly within rapidly evolving organizations, projects often prioritize delivering core value and iterating swiftly. This approac",
+"excerpt": "A page dedicated to incompetent engineers. In the world of software development, particularly within rapidly evolving organizations, projects often prioritize delivering core value and iterating swiftly.",
 "publishedAt": "2025-04-08T00:00:00.000Z"
 }
 ---

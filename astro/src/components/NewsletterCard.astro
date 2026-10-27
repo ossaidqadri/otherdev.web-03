@@ -1,0 +1,46 @@
+---
+import { Button } from "@/lib/components/ui/button";
+import { Card } from "@/lib/components/ui/card";
+import { Input } from "@/lib/components/ui/input";
+import { getPage, getSite } from "@/lib/site";
+
+// Full-width signup card shared by the home news section and /blog.
+const { class: className = "" } = Astro.props;
+const newsletter = await getPage("newsletter");
+const { ui } = await getSite();
+---
+
+<Card variant="tile" class={`newsletter flex-row bg-[var(--semantic-transparent-weak)] ${className}`}>
+  <div class="relative z-10 flex flex-1 flex-col gap-12 p-[var(--card-padding)]">
+    <div class="flex max-w-[640px] flex-col gap-1">
+      <h3 class="type-heading-m">{newsletter.heading}</h3>
+      <p class="type-heading-m opacity-40">{newsletter.body}</p>
+    </div>
+    {/* Disabled until a signup backend is chosen. */}
+    <form class="flex max-w-[512px] flex-col gap-2">
+      <fieldset disabled class="flex flex-col gap-2 sm:flex-row">
+        <Input variant="soft" type="email" placeholder={ui.emailPlaceholder} aria-label={newsletter.fields.email} class="type-body-button-m h-auto flex-1 rounded-[var(--radius-sm)] bg-[var(--semantic-transparent-weak)] p-4 placeholder:opacity-40 sm:min-w-[256px]" />
+        <Button type="submit" variant="glass" size="pill" class="type-body-button-m gap-1 [--pill-bg:var(--semantic-transparent-weak)] [--pill-fg:var(--semantic-text-primary)] disabled:opacity-50">
+          {ui.signUp}
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+        </Button>
+      </fieldset>
+      <p class="type-body-paragraph-xs max-w-[415px] opacity-60">{newsletter.note}</p>
+    </form>
+  </div>
+</Card>
+
+<style>
+  /* The reference's newsletter glow: yellow into orange from the bottom right, centred low on phones. */
+  .newsletter {
+    --newsletter-yellow: #ffe600;
+    --newsletter-orange: var(--global-summer-700-dark);
+    --newsletter-end: var(--semantic-transparent-weak);
+    background-image: radial-gradient(100% 75% at 50% 114%, color-mix(in srgb, var(--newsletter-yellow) 60%, transparent) 0%, color-mix(in srgb, var(--newsletter-orange) 40%, transparent) 29.5837%, var(--newsletter-end) 100%);
+  }
+  @media (min-width: 48rem) {
+    .newsletter {
+      background-image: radial-gradient(75% 300% at 109.6% 147.1%, var(--newsletter-yellow) 0%, var(--newsletter-orange) 29.5837%, var(--newsletter-end) 100%);
+    }
+  }
+</style>
