@@ -13,58 +13,40 @@
   },
   "gallery": [
     {
-      "src": "https://media.otherdev.com/site/projects/real-estate-platform-development-for-bin-yousuf-group/bin-yousuf-emaar-mobile.webp",
-      "alt": "bin yousuf emaar mobile",
-      "width": 1843,
-      "height": 1035
+      "src": "https://media.otherdev.com/site/projects/real-estate-platform-development-for-bin-yousuf-group/shots/01-m-home.webp",
+      "alt": "Bin Yousuf Group home page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/real-estate-platform-development-for-bin-yousuf-group/bin-yousuf-hmr-gallery.webp",
-      "alt": "bin yousuf hmr gallery",
-      "width": 2250,
-      "height": 2250
+      "src": "https://media.otherdev.com/site/projects/real-estate-platform-development-for-bin-yousuf-group/shots/02-m-about.webp",
+      "alt": "Bin Yousuf Group about page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/real-estate-platform-development-for-bin-yousuf-group/bin-yousuf-homepage-cover.webp",
-      "alt": "bin yousuf homepage cover",
-      "width": 1891,
-      "height": 873
+      "src": "https://media.otherdev.com/site/projects/real-estate-platform-development-for-bin-yousuf-group/shots/03-d-home.webp",
+      "alt": "Bin Yousuf Group home page on desktop",
+      "width": 2880,
+      "height": 1620
     },
     {
-      "src": "https://media.otherdev.com/site/projects/real-estate-platform-development-for-bin-yousuf-group/bin-yousuf-lead-system.webp",
-      "alt": "bin yousuf lead system",
-      "width": 1843,
-      "height": 1230
+      "src": "https://media.otherdev.com/site/projects/real-estate-platform-development-for-bin-yousuf-group/shots/04-m-projects-panorama.webp",
+      "alt": "Bin Yousuf Group projects panorama page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/real-estate-platform-development-for-bin-yousuf-group/bin-yousuf-logo.webp",
-      "alt": "bin yousuf logo",
-      "width": 1824,
-      "height": 508
+      "src": "https://media.otherdev.com/site/projects/real-estate-platform-development-for-bin-yousuf-group/shots/05-m-projects-the-views.webp",
+      "alt": "Bin Yousuf Group projects the views page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/real-estate-platform-development-for-bin-yousuf-group/bin-yousuf-luxury-apartments.webp",
-      "alt": "bin yousuf luxury apartments",
-      "width": 3600,
-      "height": 2025
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/real-estate-platform-development-for-bin-yousuf-group/bin-yousuf-panorama-hero.webp",
-      "alt": "bin yousuf panorama hero",
-      "width": 3320,
-      "height": 1738
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/real-estate-platform-development-for-bin-yousuf-group/bin-yousuf-property-showcase.webp",
-      "alt": "bin yousuf property showcase",
-      "width": 1458,
-      "height": 749
-    },
-    {
-      "src": "https://media.otherdev.com/site/projects/real-estate-platform-development-for-bin-yousuf-group/bin-yousuf-site.webp",
-      "alt": "bin yousuf site",
-      "width": 1458,
-      "height": 749
+      "src": "https://media.otherdev.com/site/projects/real-estate-platform-development-for-bin-yousuf-group/shots/06-d-about.webp",
+      "alt": "Bin Yousuf Group about page on desktop",
+      "width": 2880,
+      "height": 1620
     }
   ]
 }
