@@ -11,6 +11,8 @@ interface Props {
   button: { label: string; href: string };
   /** CSS background for the sky; defaults to the closing sky (white, cream, blue, navy, brown). */
   sky?: string;
+  /** Already on a dark sky (after /approach's partners): plain brown, white copy and pill from the start. */
+  dark?: boolean;
   id?: string;
 }
 
@@ -19,13 +21,14 @@ const {
   body,
   button,
   sky = "linear-gradient(180deg, var(--semantic-bg-page) 0%, rgb(237 232 227) 17.9459%, rgb(135 161 196) 45.2668%, rgb(24 38 68) 88.0191%, rgb(30 19 16) 100%)",
+  dark = false,
   id,
 } = Astro.props;
 const STEP = 75;
 const headingWords = heading.split(/\s+/).length;
 ---
 
-<section id={id} class="cta-scene relative h-[200vh]" style={`background: ${sky}`} data-navbar-theme="dark" data-scene="cta" data-flip="dark:light:0.5" data-on-at="0.5">
+<section id={id} class="cta-scene relative h-[200vh]" style={`background: ${dark ? "var(--global-autumn-900)" : sky}`} data-navbar-theme={dark ? "light" : "dark"} data-scene="cta" {...(dark ? { "data-on": "" } : { "data-flip": "dark:light:0.5", "data-on-at": "0.5" })}>
   <div class="sticky top-0 flex h-svh flex-col justify-between py-[var(--section-padding-lg)]">
     {/* Word gaps are 0.45em of the 16px block, not of the words, which is what the reference measures to. */}
     <div class="site-container w-full">

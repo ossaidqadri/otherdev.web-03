@@ -126,7 +126,7 @@ function initPage() {
   onScroll();
 
   for (const video of document.querySelectorAll<HTMLVideoElement>("video[data-scrub]")) {
-    const scene = video.closest<HTMLElement>("[data-scene]");
+    const scene = video.closest<HTMLElement>("[data-scene], [data-scrub-scene]");
     if (scene) scrubVideo(video, scene, signal);
   }
   teardown.push(() => lenis?.off("scroll", onScroll));

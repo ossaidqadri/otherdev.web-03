@@ -1,106 +1,140 @@
 ---
 import CtaScene from "@/components/CtaScene.astro";
-import { Card } from "@/lib/components/ui/card";
+import Words from "@/components/Words.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import { getPage } from "@/lib/site";
+import { getPage, getSite } from "@/lib/site";
 
 const approach = await getPage("approach");
-const featured = (await getCollection("projects")).sort((a, b) => b.data.year - a.data.year).slice(0, 3);
-// First sentence of the excerpt; the stored excerpts are cut mid-sentence with "...".
-const lead = (s = "") => s.replace(/\.\.\.$/, "").split(/(?<=\.)\s/)[0] ?? "";
+const { work } = await getPage("home");
+const { ui } = await getSite();
+const projects = await getCollection("projects");
+// Partners are the home page's featured projects. Name: the client from the title ("X — ..." or
+// "... for X"); line: the excerpt's first sentence. Both are otherdev's own copy, nothing invented.
+const partners = work.featured.flatMap((id) => projects.filter((p) => p.id === id)).map((p) => {
+  const t = p.data.title;
+  const name = t.includes(" — ") ? t.split(" — ")[0]! : t.includes(" for ") ? t.split(" for ").at(-1)! : t;
+  const line = (p.data.excerpt ?? "").replace(/\.\.\.$/, "").split(/(?<=\.)\s/)[0] ?? "";
+  return { name, line, cover: p.data.cover };
+});
+// Scene length from the reference: 92vh per unit, 5 units of scrubbed video, 2.5 per partner, plus a
+// screen; the video owns the first 5 / (5 + 2.5n) of it.
+const UNIT = 92;
+const units = 5 + 2.5 * partners.length;
+const videoShare = 5 / units;
 ---
 
 <Layout title="Approach | otherdev" description={approach.heading}>
   <main>
-    <section class="approach-hero" data-navbar-theme="light">
-      <div class="site-container pt-48 pb-[var(--section-padding-lg)]">
-        <h1 class="type-hero max-w-5xl text-white">{approach.heading}</h1>
+    {/* Pinned 200vh hero on the home sky; past halfway (data-on) the copy and pill turn dark over 0.5s. */}
+    <section class="approach-hero relative h-[200vh]" data-navbar-theme="light" data-scene="approach-hero" data-on-at="0.5">
+      <div class="sticky top-0 flex h-svh flex-col pt-[var(--container-navpadding)]">
+        <div class="site-container flex w-full flex-1 flex-col justify-between py-[var(--section-padding-lg)]">
+          <h1 class="hero-copy type-mega-button max-w-[64rem]">{approach.heading}</h1>
+          <span class="scroll-pill type-body-button-s self-start rounded-full px-4 py-3">{ui.scroll}</span>
+        </div>
       </div>
     </section>
 
-    {/* One screen of scrubbed video; --p (scroll through the scene) fades the four steps in turn. */}
-    <section class="steps relative" style={`height: ${approach.steps.length * 100 + 100}vh`} data-navbar-theme="light" data-scene="approach">
-      <div class="sticky top-0 h-svh overflow-hidden">
-        <video
-          class="scrub-video absolute inset-0 h-full w-full object-cover"
-          src="https://media.otherdev.com/site/video/approach-scrub.mp4"
-          muted
-          playsinline
-          preload="metadata"
-          aria-hidden="true"
-          data-scrub
-        ></video>
-        <div class="absolute inset-0 bg-black/25"></div>
-        {approach.steps.map((s, i) => (
-          <div class="step absolute inset-0 flex items-center" style={`--i: ${i}`}>
-            <div class="site-container w-full text-white">
-              <h2 class="type-display-m">{s.title}</h2>
-              <p class="type-heading-s mt-6 max-w-xl text-white/80">{s.body}</p>
+    <section class="approach-scene relative" data-scrub-scene style={`height: ${100 + UNIT * units}vh`} data-approach data-video-share={videoShare.toFixed(4)}>
+      {/* Header colour: dark over the video, light over the partners. */}
+      <div class="pointer-events-none absolute inset-x-0 top-0" style={`height: ${UNIT * 5}vh`} data-navbar-theme="dark"></div>
+      <div class="pointer-events-none absolute inset-x-0" style={`top: ${UNIT * 5}vh; height: ${100 + UNIT * 2.5 * partners.length}vh`} data-navbar-theme="light"></div>
+      <div class="sticky top-0 h-svh w-full overflow-hidden">
+        <div class="absolute inset-0 opacity-0" data-layer="video">
+          <video
+            class="absolute inset-0 h-full w-full object-cover"
+            src="https://media.otherdev.com/site/video/approach-scrub.mp4"
+            muted
+            playsinline
+            preload="metadata"
+            aria-hidden="true"
+            data-scrub
+            data-scrub-end={videoShare.toFixed(4)}
+          ></video>
+          {approach.steps.map((s) => (
+            <div class="absolute inset-0 flex flex-col justify-end pb-16 opacity-0 md:justify-center md:pb-0" data-step>
+              <div class="site-container flex w-full flex-col gap-6 text-white [text-shadow:0_1px_32px_rgb(0_0_0/0.25)]">
+                <Words as="h2" text={s.title} step={40} class="type-hero" word="inline-block" />
+                <Words text={s.body} step={40} class="type-heading-m max-w-none gap-x-[0.25em] opacity-80 md:max-w-[32rem]" word="inline-block" />
+              </div>
+            </div>
+          ))}
+        </div>
+        {partners.map((p) => (
+          <div class="absolute inset-0 opacity-0" data-layer="partner">
+            <div class="absolute inset-0 opacity-0" data-media>
+              <img src={p.cover.src} alt="" width={p.cover.width} height={p.cover.height} class="absolute inset-0 h-full w-full object-cover" />
+              <div class="absolute inset-0 bg-black/35"></div>
             </div>
           </div>
         ))}
+        <div class="pointer-events-none absolute inset-0 flex flex-col justify-end pb-16 opacity-0 md:justify-center md:pb-0" data-layer="partner-copy">
+          <div class="site-container relative flex w-full flex-col gap-6 text-white">
+            <span class="type-hero pointer-events-none invisible absolute whitespace-pre" data-indent-probe aria-hidden="true">{approach.projectsHeading} </span>
+            <h2 class="type-hero">
+              {approach.projectsHeading}{" "}
+              <span class="relative inline-block align-top">
+                {partners.map((p, i) => (
+                  <span class:list={["inline-block opacity-0", i > 0 && "absolute top-0 left-0"]} data-name>
+                    <Words as="span" text={p.name} step={40} class="inline-flex gap-x-[0.25em]" word="inline-block" />
+                  </span>
+                ))}
+              </span>
+            </h2>
+            <div class="relative">
+              {partners.map((p, i) => (
+                <div class:list={["max-w-none opacity-0 md:ml-[var(--body-indent)] md:max-w-[32rem]", i > 0 && "absolute top-0 left-0"]} data-line>
+                  <Words text={p.line} step={40} class="type-heading-m gap-x-[0.25em]" word="inline-block" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="partners" data-navbar-theme="light">
-      <div class="site-container section">
-        <h2 class="type-display-m text-white">{approach.projectsHeading}</h2>
-        <ul class="mt-16 grid gap-2 md:grid-cols-3">
-          {featured.map((p) => (
-            <li>
-              <a href={`/work/${p.id}`} class="block text-white">
-                <Card variant="tile" class="block aspect-[4/3]"><img src={p.data.cover.src} alt={p.data.cover.alt} width={p.data.cover.width} height={p.data.cover.height} loading="lazy" class="size-full object-cover object-top" /></Card>
-                <h3 class="type-body-regular-l mt-4">{p.data.title}</h3>
-                <p class="type-body-paragraph-m mt-2 text-white/60">{lead(p.data.excerpt)}</p>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-
-    <CtaScene heading={approach.closing.heading} body={approach.closing.body} button={approach.closing.button} />
+    <CtaScene heading={approach.closing.heading} body={approach.closing.body} button={approach.closing.button} dark />
   </main>
 </Layout>
 
 <style>
   .approach-hero {
-    background: linear-gradient(to bottom, #200a04 0%, #1a2342 45%, #355080 100%);
+    background: linear-gradient(180deg, #280e01 0%, #182644 12%, #5a769f 32%, #87a1c4 52%, #c1d3e6 68%, #fdf8ea 88%, #fbf6ec 100%);
   }
-  .steps {
-    --p: 0;
+  .hero-copy {
+    color: #fff;
+    transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .scrub-video {
-    opacity: 0;
+  .scroll-pill {
+    color: #fff;
+    background: rgb(255 255 255 / 0.1);
+    transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .step {
-    --d: calc(var(--p) * var(--n, 4) - (var(--i) + 0.5));
-    opacity: clamp(0, calc(1.6 - abs(var(--d)) * 3), 1);
-    pointer-events: none;
+  .approach-hero[data-on] .hero-copy,
+  .approach-hero[data-on] .scroll-pill {
+    color: var(--semantic-text-primary);
   }
-  .steps { --n: 4; }
-  .partners {
-    background: var(--global-autumn-900);
+  .approach-hero[data-on] .scroll-pill {
+    background: var(--semantic-transparent-weak);
+  }
+  .approach-scene {
+    background: linear-gradient(180deg, #fbf6ec 0%, #fbf6ec 10%, var(--global-autumn-900) 16%);
   }
   @media (prefers-reduced-motion: reduce) {
-    .steps {
+    .approach-hero,
+    .approach-scene {
       height: auto !important;
     }
-    .steps > div {
-      height: auto;
-      overflow: visible;
-      padding-block: 6rem;
-      background: var(--global-autumn-900);
-    }
-    .steps .scrub-video,
-    .steps .bg-black\/25 {
-      display: none;
-    }
-    .step {
-      position: static;
-      opacity: 1;
-      margin-bottom: 4rem;
+    .approach-scene [data-layer],
+    .approach-scene [data-step],
+    .approach-scene [data-name],
+    .approach-scene [data-line] {
+      opacity: 1 !important;
     }
   }
 </style>
+
+<script>
+  import "@/scripts/approach";
+</script>
