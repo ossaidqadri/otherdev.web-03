@@ -1,14 +1,14 @@
 [
-  { "id": "wish", "name": "Wish", "logo": "/clients/wish.svg" },
-  { "id": "groovy", "name": "Groovy Pakistan", "logo": "/clients/groovy.svg" },
-  { "id": "parcheh81", "name": "Parcheh81", "logo": "/clients/parcheh81.svg" },
-  { "id": "bin-yousuf", "name": "Bin Yousuf Group", "logo": "/clients/bin-yousuf.svg" },
-  { "id": "narkins", "name": "Narkin's Builders", "logo": "/clients/narkins.svg" },
-  { "id": "kiswa-noir", "name": "Kiswa Noir", "logo": "/clients/kiswa-noir.svg" },
-  { "id": "adina-household", "name": "Adina Household", "logo": "/clients/adina-household.svg" },
-  { "id": "olly-shinder", "name": "Olly Shinder", "logo": "/clients/olly-shinder.svg" },
-  { "id": "tiny-footprint", "name": "Tiny Footprint Coffee", "logo": "/clients/tiny-footprint.svg" },
-  { "id": "ek-qadam-aur", "name": "Ek Qadam Aur", "logo": "/clients/ek-qadam-aur.svg" },
-  { "id": "carwala", "name": "Carwala", "logo": "/clients/carwala.svg" },
-  { "id": "cultured-legacy", "name": "Cultured Legacy", "logo": "/clients/cultured-legacy.svg" }
+  {"id":"wish","name":"Wish","logo":"/clients/wish.svg","url":"https://wishapparels.art"},
+  {"id":"groovy","name":"Groovy Pakistan","logo":"/clients/groovy.svg","url":"https://groovypakistan.com"},
+  {"id":"parcheh81","name":"Parcheh81","logo":"/clients/parcheh81.svg","url":"https://parcheh81.com"},
+  {"id":"bin-yousuf","name":"Bin Yousuf Group","logo":"/clients/bin-yousuf.svg","url":"https://www.binyousufgroup.com"},
+  {"id":"narkins","name":"Narkin's Builders","logo":"/clients/narkins.svg","url":"https://www.narkinsbuilders.com"},
+  {"id":"kiswa-noir","name":"Kiswa Noir","logo":"/clients/kiswa-noir.svg","url":"https://kiswanoire.com"},
+  {"id":"adina-household","name":"Adina Household","logo":"/clients/adina-household.svg","url":"https://adinahousehold.com"},
+  {"id":"olly-shinder","name":"Olly Shinder","logo":"/clients/olly-shinder.svg","url":"https://olly-shinder.com"},
+  {"id":"tiny-footprint","name":"Tiny Footprint Coffee","logo":"/clients/tiny-footprint.svg","url":"https://tinyfootprintcoffee.com"},
+  {"id":"ek-qadam-aur","name":"Ek Qadam Aur","logo":"/clients/ek-qadam-aur.svg","url":"https://www.ekqadamaur.org"},
+  {"id":"carwala","name":"Carwala","logo":"/clients/carwala.svg","url":"https://www.carwala.org"},
+  {"id":"cultured-legacy","name":"Cultured Legacy","logo":"/clients/cultured-legacy.svg","url":"https://culturedlegacy.shop"}
 ]
