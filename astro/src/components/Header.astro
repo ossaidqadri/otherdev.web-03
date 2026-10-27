@@ -20,7 +20,7 @@ const site = await getSite();
 </header>
 
 {/* Phone menu: a native popover with the Sheet's top-side classes, so open, close, Escape and focus return need no JS. */}
-<div id="menu" popover data-slot="sheet-content" data-side="top" data-lenis-prevent class="menu type-heading-m fixed inset-x-0 top-0 z-50 m-0 flex h-dvh max-h-none w-full max-w-none flex-col border-0 p-0">
+<div id="menu" popover data-slot="sheet-content" data-side="top" data-lenis-prevent class="menu type-heading-m fixed inset-x-0 top-0 z-50 m-0 h-dvh max-h-none w-full max-w-none flex-col border-0 p-0">
   <div class="flex items-center justify-between px-[var(--container-padding)] py-6">
     <a href="/" class="wordmark" aria-label={`${site.name} home`}>{site.name}</a>
     <div class="type-body-button-m flex items-center gap-7">
@@ -56,7 +56,9 @@ const site = await getSite();
     translate: 0 -2.5rem;
     transition: opacity 0.2s ease-in-out, translate 0.2s ease-in-out, display 0.2s allow-discrete, overlay 0.2s allow-discrete;
   }
+  /* display only while open: a display utility on the element would override the UA's hidden state. */
   .menu:popover-open {
+    display: flex;
     opacity: 1;
     translate: 0 0;
     @starting-style {
