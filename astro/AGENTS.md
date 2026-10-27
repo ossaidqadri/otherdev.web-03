@@ -5,6 +5,7 @@ Astro 7 + Svelte 5, fully static (no server, no adapter), deployed to Cloudflare
 ## Working here
 
 - Bun only. `bun run typecheck` (`astro check` plus `svelte-check`). Don't run it while a dev server is up: it re-optimises the shared `.vite` cache under the server and breaks islands.
+- `src/lib/cn-tables.ts` is generated (gitignored) by the `cn` Vite plugin on every dev start and build. On a fresh clone start dev or build once before `typecheck`, or the import in `src/lib/utils.ts` has nothing to resolve.
 - TypeScript stays on 6: `@astrojs/check` and `@astrojs/svelte` peer-depend on `^5 || ^6`, TS 7 is unsupported.
 - Run `bunx @sveltejs/mcp@latest svelte-autofixer <file> --svelte-version 5` on every `.svelte` file. Runes only.
 - For any Astro API, config, routing or adapter question, query the `astro-docs` MCP (`.mcp.json`) and ctx7 `/withastro/docs` before writing code. Versions here are newer than training data.
