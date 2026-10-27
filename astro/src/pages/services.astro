@@ -5,12 +5,12 @@ import Words from "@/components/Words.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { getPage, getSite } from "@/lib/site";
+import { Separator } from "@/lib/components/ui/separator";
 
 const page = await getPage("services");
 const { seo } = await getSite();
 const { clients } = await getPage("home");
 const groups = (await getCollection("services")).sort((a, b) => a.data.order - b.data.order);
-const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]";
 const STEP = 75;
 ---
 
@@ -37,7 +37,7 @@ const STEP = 75;
             <ul>
               {g.data.items.map((i) => (
                 <li>
-                  <hr class={rule} />
+                  <Separator decorative />
                   {/* A dot grows in on the left on hover, as on the reference's service rows. */}
                   <div class="group flex cursor-default items-center py-8">
                     <div class="w-0 shrink-0 transition-all duration-200 group-hover:w-6">
@@ -47,7 +47,7 @@ const STEP = 75;
                   </div>
                 </li>
               ))}
-              <li><hr class={rule} /></li>
+              <li><Separator decorative /></li>
             </ul>
           </div>
         ))}

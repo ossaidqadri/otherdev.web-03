@@ -5,6 +5,7 @@ import NewsletterCard from "@/components/NewsletterCard.astro";
 import PostCard from "@/components/PostCard.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getPage, getSite } from "@/lib/site";
+import { Separator } from "@/lib/components/ui/separator";
 
 // /blog: headline, the newest post featured beside its cover, the rest as cards, then the
 // newsletter and the shared closing. Layout, sizes and hovers follow the reference's news page.
@@ -12,7 +13,6 @@ const { hero } = await getPage("blog");
 const { closing, ui, seo } = await getSite();
 const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
 const [featured, ...rest] = (await getCollection("blog")).sort((a, b) => +b.data.publishedAt - +a.data.publishedAt);
-const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]";
 ---
 
 <Layout title="Blog | Other Dev" description={seo.blog!}>
@@ -27,7 +27,7 @@ const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]
 
       {featured && (
         <div class="site-container flex flex-col gap-8 pb-[var(--section-padding-lg)]">
-          <hr class={rule} />
+          <Separator decorative />
           {/* Hover: the date shows and the excerpt slides up from below the title. */}
           <a href={`/blog/${featured.id}`} data-cursor-label={ui.readMore} class="group hidden w-full gap-4 md:flex md:flex-row md:items-stretch">
             <div class="flex flex-1 flex-col justify-between gap-[var(--section-padding-sm)] pr-16">
@@ -47,7 +47,7 @@ const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]
               <div class="aspect-[4/5] w-full rounded-[var(--card-radius)] bg-[linear-gradient(160deg,var(--global-winter-300-dark),var(--global-autumn-50-dark))]"></div>
             </div>
           </a>
-          <hr class={`${rule} hidden md:block`} />
+          <Separator decorative class="hidden md:block" />
         </div>
       )}
     </section>

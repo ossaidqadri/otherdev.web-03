@@ -6,6 +6,7 @@ import { Badge } from "@/lib/components/ui/badge";
 import { Button } from "@/lib/components/ui/button";
 import Layout from "@/layouts/Layout.astro";
 import { getSite } from "@/lib/site";
+import { Separator } from "@/lib/components/ui/separator";
 
 export async function getStaticPaths() {
   const all = (await getCollection("blog")).sort((a, b) => +b.data.publishedAt - +a.data.publishedAt);
@@ -22,7 +23,6 @@ const { title, excerpt, publishedAt } = entry.data;
 const { Content } = await render(entry);
 const monthYear = new Intl.DateTimeFormat("en", { month: "long", year: "numeric" }).format(publishedAt);
 const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
-const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]";
 ---
 
 <Layout
@@ -57,9 +57,9 @@ const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]
 
     <section data-navbar-theme="dark">
       <div class="site-container flex flex-col gap-[var(--section-padding-sm)] pb-[var(--section-padding-md)]">
-        <hr class={rule} />
+        <Separator decorative />
         <div class="prose-site type-article-body article-prose mx-auto w-full"><Content /></div>
-        <hr class={rule} />
+        <Separator decorative />
       </div>
     </section>
 
@@ -75,13 +75,13 @@ const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]
               </span>
             </Button>
           </div>
-          <hr class={rule} />
+          <Separator decorative />
           <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((p) => (
               <li><PostCard href={`/blog/${p.id}`} title={p.data.title} excerpt={p.data.excerpt} label={date.format(p.data.publishedAt)} /></li>
             ))}
           </ul>
-          <hr class={rule} />
+          <Separator decorative />
         </div>
       </section>
     )}

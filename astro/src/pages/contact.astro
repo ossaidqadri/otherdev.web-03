@@ -7,13 +7,13 @@ import Testimonials from "@/components/Testimonials.astro";
 import Words from "@/components/Words.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getPage, getSite } from "@/lib/site";
+import { Separator } from "@/lib/components/ui/separator";
 
 const contact = await getPage("contact");
 const { team } = await getPage("about");
 const { clients } = await getPage("home");
 const { footer, ui } = await getSite();
 const STEP = 75;
-const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]";
 // The reference's two panels: a 6% tint, 16px corners, 32px padding, the title 64px above the first row.
 const card = "flex flex-1 flex-col gap-16 rounded-[var(--card-radius)] bg-[var(--semantic-transparent-weak)] p-[var(--card-padding)]";
 // A person or inbox: name over a 60% line, the way to reach them at the bottom right.
@@ -42,7 +42,7 @@ const faqLd = {
       <div class="site-container flex flex-col gap-[var(--section-padding-sm)] pt-[var(--section-padding-sm)] pb-[var(--section-padding-lg)]">
         {footer.offices.map((o) => (
           <>
-            <hr class={rule} />
+            <Separator decorative />
             {/* One office: a time-of-day disc, the city and its clock, copy buttons and the address on the left, a 4:3 photo on the right. */}
             <div class="grid gap-4 md:grid-cols-2">
               <div class="flex flex-col gap-16 py-7">
@@ -75,7 +75,7 @@ const faqLd = {
             </div>
           </>
         ))}
-        <hr class={rule} />
+        <Separator decorative />
 
         <div class="flex flex-col gap-4 md:flex-row">
           <div class={card}>
@@ -83,7 +83,7 @@ const faqLd = {
             <div class="flex flex-col gap-6">
               {team.map((m, i) => (
                 <div class="flex flex-col gap-6">
-                  {i > 0 && <hr class={rule} />}
+                  {i > 0 && <Separator decorative />}
                   <div class={row}>
                     <div class="flex items-center gap-4">
                       <div class="relative hidden size-[2.625rem] shrink-0 overflow-hidden rounded-full sm:block">
@@ -106,7 +106,7 @@ const faqLd = {
             <div class="flex flex-col gap-6">
               {contact.general.map((g, i) => (
                 <div class="flex flex-col gap-6">
-                  {i > 0 && <hr class={rule} />}
+                  {i > 0 && <Separator decorative />}
                   <div class={row}>
                     <div class="flex flex-col text-base leading-[1.3] font-[450] tracking-[-0.01rem]">
                       <p class={text}>{g.title}</p>
@@ -147,7 +147,7 @@ const faqLd = {
           </div>
         </div>
         <div class="flex w-full flex-col" data-faq>
-          <hr class={rule} />
+          <Separator decorative />
           {contact.faq.items.map((item) => (
             <div class="w-full">
               <button type="button" aria-expanded="false" class="group flex w-full cursor-pointer items-center py-8 text-left">
@@ -161,7 +161,7 @@ const faqLd = {
                   <p class={`type-heading-s pb-2 opacity-40 ${text}`}>{item.a}</p>
                 </div>
               </div>
-              <hr class={rule} />
+              <Separator decorative />
             </div>
           ))}
         </div>

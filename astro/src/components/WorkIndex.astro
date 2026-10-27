@@ -4,6 +4,7 @@ import WorkCard from "@/components/WorkCard.astro";
 import { Badge } from "@/lib/components/ui/badge";
 import { Button } from "@/lib/components/ui/button";
 import { getSite } from "@/lib/site";
+import { Separator } from "@/lib/components/ui/separator";
 
 // /work: every project, as a grid of cards (default) or a compact list, with category filters.
 // Layout, sizes and hover states follow the reference's work index.
@@ -34,7 +35,7 @@ const wash = "pointer-events-none absolute z-0 bg-current/5 backdrop-blur-[32px]
       </div>
     </div>
 
-    <hr class="w-full border-0 border-t border-[var(--semantic-transparent-core)]" />
+    <Separator decorative />
 
     <ul class="work-index grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3" data-view="grid" data-work-list>
       {projects.map((p) => (

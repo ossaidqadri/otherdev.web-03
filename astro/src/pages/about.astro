@@ -4,10 +4,10 @@ import TeamCard from "@/components/TeamCard.astro";
 import Words from "@/components/Words.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getPage, getSite } from "@/lib/site";
+import { Separator } from "@/lib/components/ui/separator";
 
 const about = await getPage("about");
 const { closing } = await getSite();
-const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]";
 ---
 
 <Layout title="About | Other Dev" description={about.body}>
@@ -26,7 +26,7 @@ const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]
         <ul>
           {about.principles.map((p) => (
             <li>
-              <hr class={rule} />
+              <Separator decorative />
               {/* A dot grows in on the left on hover, as on the reference's principle rows. */}
               <div class="group flex cursor-default flex-col gap-2 py-8">
                 <div class="flex items-center">
@@ -39,7 +39,7 @@ const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]
               </div>
             </li>
           ))}
-          <li><hr class={rule} /></li>
+          <li><Separator decorative /></li>
         </ul>
       </div>
     </section>

@@ -5,11 +5,11 @@ import { Button } from "@/lib/components/ui/button";
 import { Checkbox } from "@/lib/components/ui/checkbox";
 import { Input } from "@/lib/components/ui/input";
 import { getPage, getSite } from "@/lib/site";
+import { Separator } from "@/lib/components/ui/separator";
 
 const n = await getPage("newsletter");
 const { ui } = await getSite();
 const STEP = 75;
-const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]";
 // The reference's fields: 16px type, soft fill that darkens on hover, example text at 40%.
 const field = "type-body-button-m h-auto w-full rounded-[var(--radius-sm)] bg-[var(--semantic-transparent-weak)] p-4 placeholder:opacity-40 hover:bg-[var(--semantic-transparent-core)] duration-200";
 const label = "type-body-button-m flex items-start justify-between";
@@ -29,7 +29,7 @@ const label = "type-body-button-m flex items-start justify-between";
 
     <section data-navbar-theme="dark">
       <div class="site-container flex flex-col gap-[var(--section-padding-sm)] pb-[var(--section-padding-lg)]">
-        <hr class={rule} />
+        <Separator decorative />
         {/* Disabled until a signup backend is chosen; the form then needs hydrating (Checkbox is a bits-ui button). */}
         <form class="w-full max-w-[40rem]" aria-describedby="newsletter-note">
           <fieldset disabled class="flex min-w-0 flex-col gap-8">
@@ -61,7 +61,7 @@ const label = "type-body-button-m flex items-start justify-between";
           </fieldset>
           <p id="newsletter-note" class="type-body-regular-s mt-4 opacity-60">{n.note}</p>
         </form>
-        <hr class={rule} />
+        <Separator decorative />
       </div>
     </section>
   </main>

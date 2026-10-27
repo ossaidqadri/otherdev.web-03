@@ -8,6 +8,7 @@ import { Badge } from "@/lib/components/ui/badge";
 import { Button } from "@/lib/components/ui/button";
 import Layout from "@/layouts/Layout.astro";
 import { getPage, getSite } from "@/lib/site";
+import { Separator } from "@/lib/components/ui/separator";
 
 export async function getStaticPaths() {
   const all = (await getCollection("projects")).sort((a, b) => b.data.year - a.data.year);
@@ -46,7 +47,6 @@ const jsonLd = {
   dateCreated: String(year),
   ...(href ? { url: href } : {}),
 };
-const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]";
 ---
 
 <Layout title={`${title} | Other Dev`} description={excerpt ?? title} image={cover.src} imageAlt={cover.alt} type="article" jsonLd={jsonLd}>
@@ -72,7 +72,7 @@ const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]
           <div id="case-details" class="details grid min-w-0 md:flex-1">
             <div class="min-h-0 overflow-hidden">
               <div class="flex w-full max-w-[40rem] flex-col gap-14 max-md:pt-[var(--section-padding-sm)]">
-                <hr class={rule} />
+                <Separator decorative />
                 <div class="flex flex-col">
                   <div class="prose-site type-article-body flex flex-col gap-6 pb-12 opacity-80"><Content /></div>
                   <dl class="flex w-full flex-col gap-6">
@@ -82,7 +82,7 @@ const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]
                     </div>
                     {tags.length > 0 && (
                       <>
-                        <hr class={rule} />
+                        <Separator decorative />
                         <div class="flex w-full items-start gap-1">
                           <dt class="type-body-button-s flex-1 py-1.5 opacity-40">{ui.discipline}</dt>
                           <dd class="flex flex-1 flex-wrap gap-1.5">{tags.map((t) => <Badge variant="tag" class="type-body-button-s">{t}</Badge>)}</dd>
@@ -91,7 +91,7 @@ const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]
                     )}
                     {(href || downloadUrl) && (
                       <>
-                        <hr class={rule} />
+                        <Separator decorative />
                         <div class="flex w-full items-start gap-1">
                           <dt class="type-body-button-s flex-1 py-1.5 opacity-40">{ui.website}</dt>
                           <dd class="flex flex-1 flex-wrap gap-1.5">
@@ -140,11 +140,11 @@ const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]
             </span>
           </Button>
         </div>
-        <hr class={rule} />
+        <Separator decorative />
         <ul class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {related.map((p) => <li><WorkCard project={p} /></li>)}
         </ul>
-        <hr class={rule} />
+        <Separator decorative />
       </div>
     </section>
 
