@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import ClientTile from "@/components/ClientTile.astro";
+
+// Client logo grid: `cells` tiles on desktop (12 on home, one row of 6 on /services), clients beyond
+// that wait in <template>s and rotate in (scripts/clients.ts). 4 on phones, 6 at md, as on the reference.
+interface Props {
+  cells?: number;
+}
+const { cells = 12 } = Astro.props;
+const clients = await getCollection("clients");
+---
+
+<ul class="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-6" data-clients>
+  {clients.slice(0, cells).map((c, i) => <li class:list={[i >= 6 ? "hidden lg:block" : i >= 4 && "hidden md:block"]}><ClientTile client={c} /></li>)}
+</ul>
+{clients.slice(cells).map((c) => <template data-client-pool><ClientTile client={c} /></template>)}
+
+<script>
+  import "@/scripts/clients";
+</script>

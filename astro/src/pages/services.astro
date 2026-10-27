@@ -1,40 +1,74 @@
 ---
+import ClientGrid from "@/components/ClientGrid.astro";
 import CtaScene from "@/components/CtaScene.astro";
+import Words from "@/components/Words.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { getPage } from "@/lib/site";
 
 const page = await getPage("services");
+const { clients } = await getPage("home");
 const groups = (await getCollection("services")).sort((a, b) => a.data.order - b.data.order);
+const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]";
+const STEP = 75;
 ---
 
 <Layout title="Services | otherdev" description="Brand, product and technology expertise, all under one roof.">
   <main>
-    <section class="services-hero" data-navbar-theme="dark">
-      <div class="site-container pt-48 pb-[var(--section-padding-lg)]">
-        <h1 class="type-hero max-w-4xl">{page.hero.heading}</h1>
-        <p class="type-hero text-ink-3 mt-2 max-w-4xl">{page.hero.sub}</p>
+    {/* Headline and sub fade up word by word on load, one 75ms stagger through both, as on the reference. */}
+    <section class="services-hero pt-[var(--container-navpadding)]" data-navbar-theme="dark">
+      <div class="site-container py-[var(--section-padding-lg)]">
+        <div class="flex max-w-[64rem] flex-col gap-y-[10px]" data-in>
+          <Words as="h1" text={page.hero.heading} step={STEP} class="gap-x-[0.45em] gap-y-[0.1em]" word="type-mega-button" />
+          <Words text={page.hero.sub} step={STEP} start={page.hero.heading.split(/\s+/).length} class="gap-x-[0.45em] gap-y-[0.1em] opacity-40" word="type-mega-button" />
+        </div>
       </div>
     </section>
-    <div class="site-container pb-[var(--section-padding-lg)]">
-      {groups.map((g) => (
-        <section class="mt-[var(--section-padding-md)]">
-          <h2 class="type-heading-l">{g.data.title}</h2>
-          <p class="type-body-paragraph-l text-ink-3 mt-3 max-w-xl">{g.data.intro}</p>
-          <ul class="mt-8">
-            {g.data.items.map((i) => (
-              <li class="border-border type-body-regular-m border-t py-4 last:border-b">{i}</li>
-            ))}
-          </ul>
-        </section>
-      ))}
-    </div>
+
+    <section data-navbar-theme="dark">
+      <div class="site-container flex flex-col gap-[var(--section-padding-md)] py-[var(--section-padding-lg)]">
+        {groups.map((g) => (
+          <div class="flex flex-col gap-[var(--section-padding-sm)]">
+            <div class="flex max-w-[40rem] flex-col gap-3">
+              <h2 class="type-heading-xl">{g.data.title}</h2>
+              <p class="type-heading-m opacity-40">{g.data.intro}</p>
+            </div>
+            <ul>
+              {g.data.items.map((i) => (
+                <li>
+                  <hr class={rule} />
+                  {/* A dot grows in on the left on hover, as on the reference's service rows. */}
+                  <div class="group flex cursor-default items-center py-8">
+                    <div class="w-0 shrink-0 transition-all duration-200 group-hover:w-6">
+                      <span class="block size-4 origin-center scale-0 rounded-full bg-[var(--semantic-text-primary)] opacity-0 transition duration-200 ease-out group-hover:scale-100 group-hover:opacity-100"></span>
+                    </div>
+                    <p class="type-heading-s">{i}</p>
+                  </div>
+                </li>
+              ))}
+              <li><hr class={rule} /></li>
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="services-clients" data-navbar-theme="dark">
+      <div class="site-container flex flex-col gap-[var(--section-padding-md)] py-[var(--section-padding-lg)]">
+        <h2 class="type-heading-l max-w-[64rem]">{clients.heading}</h2>
+        <ClientGrid cells={6} />
+      </div>
+    </section>
+
     <CtaScene heading={page.closing.heading} body={page.closing.body} button={page.closing.button} />
   </main>
 </Layout>
 
 <style>
   .services-hero {
-    background: linear-gradient(to bottom, var(--global-winter-300) 0%, var(--global-winter-100) 55%, #fff 100%);
+    background: linear-gradient(180deg, var(--global-winter-300) 0%, var(--semantic-bg-page) 100%);
+  }
+  .services-clients {
+    background: linear-gradient(180deg, var(--semantic-bg-page) 0%, var(--global-summer-50) 40%, var(--global-winter-100) 90%);
   }
 </style>

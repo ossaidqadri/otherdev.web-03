@@ -1,28 +1,16 @@
 ---
-import { getCollection } from "astro:content";
-import ClientTile from "@/components/ClientTile.astro";
+import ClientGrid from "@/components/ClientGrid.astro";
 import { getPage } from "@/lib/site";
 
 const { clients: copy } = await getPage("home");
-const clients = await getCollection("clients");
-// Twelve cells on screen; clients beyond that wait in <template>s and rotate in (scripts/clients.ts).
-const CELLS = 12;
 ---
 
 <section id="clients" class="clients" data-navbar-theme="dark" data-section>
   <div class="site-container" style="padding-block: var(--section-padding-sm)">
     <h2 class="type-heading-l max-w-[64rem]">{copy.heading}</h2>
-    <ul class="mt-[calc(4rem*var(--scale))] grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-6" data-clients>
-      {/* 4 cells on phones, 6 at md, 12 at lg, as on the reference; hidden cells still rotate in. */}
-      {clients.slice(0, CELLS).map((c, i) => <li class:list={[i >= 6 ? "hidden lg:block" : i >= 4 && "hidden md:block"]}><ClientTile client={c} /></li>)}
-    </ul>
-    {clients.slice(CELLS).map((c) => <template data-client-pool><ClientTile client={c} /></template>)}
+    <div class="mt-[calc(4rem*var(--scale))]"><ClientGrid /></div>
   </div>
 </section>
-
-<script>
-  import "@/scripts/clients";
-</script>
 
 <style>
   /* Continues the hero's cream and fades to white, as the reference does. */
