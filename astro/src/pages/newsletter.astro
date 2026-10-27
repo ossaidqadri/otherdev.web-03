@@ -51,7 +51,7 @@ const label = "type-body-button-m flex items-start justify-between gap-0 select-
             <fieldset class="flex w-full flex-col gap-2">
               <legend class="type-body-button-m mb-2">{n.interestsLabel}</legend>
               {n.interests.map((i, k) => (
-                <Label for={`interest-${k}`} class="flex w-full cursor-pointer items-start gap-3 select-auto">
+                <Label for={`interest-${k}`} class="flex w-full cursor-pointer items-start gap-3 text-base leading-6 font-normal select-auto">
                   <Checkbox id={`interest-${k}`} name="interests" value={i} class="size-6 rounded-[var(--radius-sm)] border-0 bg-[var(--semantic-transparent-core)] data-checked:bg-[var(--global-contrast)]" />
                   <span class="type-body-regular-m min-h-6 flex-1 py-px">{i}</span>
                 </Label>
