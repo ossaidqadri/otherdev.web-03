@@ -10,6 +10,7 @@
 @source "../components";
 @source "../layouts";
 @source "../scripts";
+@source "../lib/components/ui/accordion";
 @source "../lib/components/ui/badge";
 @source "../lib/components/ui/button";
 @source "../lib/components/ui/card";

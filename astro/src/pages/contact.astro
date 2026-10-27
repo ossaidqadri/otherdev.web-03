@@ -3,11 +3,11 @@ import { Image } from "astro:assets";
 import ClientGrid from "@/components/ClientGrid.astro";
 import CopyButton from "@/components/CopyButton.astro";
 import CtaScene from "@/components/CtaScene.astro";
+import Faq from "@/components/Faq.svelte";
 import Testimonials from "@/components/Testimonials.astro";
 import Words from "@/components/Words.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getPage, getSite } from "@/lib/site";
-import { Button } from "@/lib/components/ui/button";
 import { Separator } from "@/lib/components/ui/separator";
 
 const contact = await getPage("contact");
@@ -147,25 +147,7 @@ const faqLd = {
             <p class={`type-heading-l max-w-[64rem] opacity-40 ${text}`}>{contact.faq.sub}</p>
           </div>
         </div>
-        <div class="flex w-full flex-col" data-faq>
-          <Separator />
-          {contact.faq.items.map((item) => (
-            <div class="w-full">
-              <Button variant="plain" size="bare" aria-expanded="false" class="group flex w-full cursor-pointer justify-start py-8 text-left whitespace-normal">
-                <span aria-hidden="true" class="w-0 shrink-0 transition-all duration-200 group-hover:w-6 group-aria-expanded:w-6">
-                  <span class={`block size-4 origin-center scale-0 rounded-full bg-[var(--semantic-text-primary)] opacity-0 transition duration-200 ease-out group-hover:scale-100 group-hover:opacity-100 group-aria-expanded:scale-100 group-aria-expanded:opacity-100`}></span>
-                </span>
-                <span class={`type-heading-s ${text}`}>{item.q}</span>
-              </Button>
-              <div class="-mt-6 grid grid-rows-[0fr] pb-6 transition-[grid-template-rows] duration-300 ease-out">
-                <div class="overflow-hidden">
-                  <p class={`type-heading-s pb-2 opacity-40 ${text}`}>{item.a}</p>
-                </div>
-              </div>
-              <Separator />
-            </div>
-          ))}
-        </div>
+        <Faq client:visible items={contact.faq.items} />
       </div>
     </section>
 
@@ -183,15 +165,4 @@ const faqLd = {
 <script>
   // The disc beside each office is a gradient whose dusk layer takes a random strength on each load, as on the reference.
   for (const el of document.querySelectorAll<HTMLElement>("[data-sun]")) el.style.opacity = String(Math.random());
-
-  // FAQ: one button per answer; opening flips aria-expanded and the grid row from 0fr to 1fr.
-  for (const btn of document.querySelectorAll<HTMLButtonElement>("[data-faq] button[aria-expanded]")) {
-    const panel = btn.nextElementSibling as HTMLElement;
-    btn.addEventListener("click", () => {
-      const open = btn.getAttribute("aria-expanded") === "true";
-      btn.setAttribute("aria-expanded", String(!open));
-      panel.classList.toggle("grid-rows-[0fr]", open);
-      panel.classList.toggle("grid-rows-[1fr]", !open);
-    });
-  }
 </script>
