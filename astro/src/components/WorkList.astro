@@ -11,7 +11,7 @@ const sorted = await getCollection("projects");
 const projects = work.featured.flatMap((id) => sorted.filter((p) => p.id === id));
 // Hover fades to the first gallery shot that isn't the cover (the reference fades in a video;
 // projects have none yet).
-const hoverImage = (p: (typeof projects)[number]) => p.data.gallery.find((g) => g.src !== p.data.cover.src);
+const hoverImage = (p: (typeof projects)[number]) => p.data.gallery.find((g) => g.src !== p.data.cover.src && (g.width ?? 0) > (g.height ?? 0) * 1.4);
 ---
 
 <section id="work" class="section" data-navbar-theme="dark" data-section>
