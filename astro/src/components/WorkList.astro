@@ -19,7 +19,10 @@ const sorted = (await getCollection("projects")).sort((a, b) => b.data.year - a.
 const projects = all
   ? sorted
   : work.featured.flatMap((id) => sorted.filter((p) => p.id === id));
-const filters = ["Strategy", "Design", "Technology", "Experience"].filter((t) => projects.some((p) => p.data.tags.includes(t as never)));
+// Hover fades to the first gallery shot that isn't the cover (the reference fades in a video;
+// projects have none yet).
+const hoverImage = (p: (typeof projects)[number]) => p.data.gallery.find((g) => g.src !== p.data.cover.src);
+const filters =["Strategy", "Design", "Technology", "Experience"].filter((t) => projects.some((p) => p.data.tags.includes(t as never)));
 ---
 
 <section id="work" class="section" data-navbar-theme="dark" data-section>
@@ -27,7 +30,7 @@ const filters = ["Strategy", "Design", "Technology", "Experience"].filter((t) =>
     <div class="flex items-end justify-between gap-6">
       <h2 class="type-heading-l max-w-4xl">{work.heading}</h2>
       {!all && (
-        <Button href={work.all.href} variant="nav" size="nav" class="type-heading-l -mr-2.5 rounded-lg">
+        <Button href={work.all.href} variant="nav" size="nav" class="type-heading-l -ml-2.5 rounded-lg md:ml-0">
           <span class="inline-flex items-center gap-1 opacity-40">
             <span>{work.all.label}</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-8 translate-y-[0.03em]" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
@@ -55,11 +58,11 @@ const filters = ["Strategy", "Design", "Technology", "Experience"].filter((t) =>
     <ul class:list={["work-list", all ? "mt-12" : "mt-24"]} data-view="list" data-work-list>
       {projects.map((p) => (
         <li class="border-border work-item border-t py-16" data-tags={p.data.tags.join(",")}>
-          <a href={`/work/${p.id}`} class="group flex flex-col gap-6 md:grid md:h-[490px] md:grid-cols-3 md:gap-4">
+          <a href={`/work/${p.id}`} class="group flex w-full flex-col gap-6 transition-opacity duration-200 md:grid md:h-[490px] md:grid-cols-3 md:gap-4">
             <div class="flex flex-col justify-between gap-8 md:pr-16">
               <div>
                 <h3 class="type-heading-l">{p.data.title}</h3>
-                {p.data.excerpt && <p class="type-heading-s text-ink-3 mt-3 line-clamp-3">{p.data.excerpt}</p>}
+                {p.data.excerpt && <p class="type-heading-s mt-3 opacity-40">{p.data.excerpt}</p>}
               </div>
               <span class="flex flex-wrap gap-1">
                 {(p.data.tags.length ? p.data.tags : [String(p.data.year)]).map((t) => (
@@ -76,9 +79,9 @@ const filters = ["Strategy", "Design", "Technology", "Experience"].filter((t) =>
                 loading="lazy"
                 class="size-full object-cover object-top"
               />
-              {p.data.gallery[0] && (
+              {hoverImage(p) && (
                 <img
-                  src={p.data.gallery[0].src}
+                  src={hoverImage(p)?.src}
                   alt=""
                   loading="lazy"
                   class="absolute inset-0 size-full object-cover object-top opacity-0 transition-opacity duration-300 group-hover:opacity-100"

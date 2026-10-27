@@ -12,7 +12,7 @@
 				ghost: "hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50",
 				link: "text-primary underline-offset-4 hover:underline",
 				// Site variants: no border or fixed height, the type-* class sets the text.
-				tag: "h-auto rounded-sm border-0 px-2.5 py-1.5 bg-(--semantic-transparent-weak) duration-300 hover:brightness-[0.97]",
+				tag: "h-auto rounded-sm border-0 px-2.5 py-1.5 bg-(--semantic-transparent-weak) duration-300 hover:brightness-[0.97] hover:text-(--semantic-neutral-strong) focus-visible:text-(--semantic-neutral-strong)",
 				chip: "h-auto rounded-md border-0 px-2.5 py-1.5 bg-card",
 			},
 		},
