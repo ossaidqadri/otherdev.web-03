@@ -133,8 +133,6 @@ const year = String(new Date().getFullYear());
       toast(copyFailed);
     }
   });
-  // The footer is replaced on every ClientRouter navigation, so start again after each swap.
-  document.addEventListener("astro:page-load", run);
-  document.addEventListener("astro:before-swap", stop);
+  run();
   document.addEventListener("visibilitychange", () => (document.hidden ? stop() : run()));
 </script>

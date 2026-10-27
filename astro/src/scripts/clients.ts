@@ -3,7 +3,7 @@
 // <template> pool and from cells hidden at this breakpoint. Pauses off screen and under reduced motion.
 const INTERVAL = 2600;
 
-document.addEventListener("astro:page-load", () => {
+function initClients() {
   const grid = document.querySelector<HTMLElement>("[data-clients]");
   if (!grid || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const pool = [...document.querySelectorAll<HTMLTemplateElement>("template[data-client-pool]")].map((t) => t.content.firstElementChild as HTMLElement);
@@ -42,5 +42,5 @@ document.addEventListener("astro:page-load", () => {
     if (entry?.isIntersecting) timer = window.setInterval(swap, INTERVAL);
   });
   io.observe(grid);
-  document.addEventListener("astro:before-swap", () => { io.disconnect(); clearInterval(timer); }, { once: true });
-});
+}
+initClients();

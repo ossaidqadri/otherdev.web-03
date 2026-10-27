@@ -1,7 +1,7 @@
 // /work controls: category filters and the grid/list toggle. In each group a wash sits behind the
 // pressed button and slides to the next one (WorkIndex.astro sets its transition and insets).
 // Without this script the page stays a full grid.
-document.addEventListener("astro:page-load", () => {
+function initWorkFilter() {
   const list = document.querySelector<HTMLElement>("[data-work-list]");
   const controls = document.querySelector<HTMLElement>("[data-work-controls]");
   if (!list || !controls) return;
@@ -18,9 +18,7 @@ document.addEventListener("astro:page-load", () => {
   };
   const groups = [...controls.querySelectorAll<HTMLElement>("[role=group]")];
   for (const g of groups) place(g);
-  const ro = new ResizeObserver(() => groups.forEach(place));
-  ro.observe(controls);
-  document.addEventListener("astro:before-swap", () => ro.disconnect(), { once: true });
+  new ResizeObserver(() => groups.forEach(place)).observe(controls);
 
   controls.addEventListener("click", (e) => {
     const btn = (e.target as Element).closest<HTMLElement>("button");
@@ -37,4 +35,5 @@ document.addEventListener("astro:page-load", () => {
       list.dataset.view = btn.dataset.setView;
     }
   });
-});
+}
+initWorkFilter();

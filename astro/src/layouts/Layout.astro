@@ -1,6 +1,5 @@
 ---
 import { Font } from "astro:assets";
-import { ClientRouter } from "astro:transitions";
 import CursorLabel from "@/components/CursorLabel.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
@@ -57,7 +56,6 @@ const organization = {
     <meta name="generator" content={Astro.generator} />
     <Font cssVariable="--font-saans" preload={[{ weight: "450", style: "normal" }]} />
     <Font cssVariable="--font-serrif" preload />
-    <ClientRouter />
   </head>
   <body>
     {/* First tab stop: jumps past the header; visible only while focused. Targets <main id="main"> on each page. */}

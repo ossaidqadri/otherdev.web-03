@@ -6,7 +6,7 @@ import { gsap, ScrollTrigger } from "@/scripts/gsap";
 // Smooth scroll plus the scroll-driven bits of the pages: nav theme, pill scroll-spy, scene progress,
 // hero text reveal, the approach scene and the scrubbed scene videos. One Lenis for the tab's life, driven by
 // gsap.ticker (the single clock) and feeding ScrollTrigger. Everything else is built in a gsap.matchMedia
-// context on each page and reverted on astro:before-swap. Loaded by motion.ts once the page is idle.
+// context for the page. Loaded by motion.ts once the page is idle.
 
 const clamp = (n: number, min = 0, max = 1) => Math.min(max, Math.max(min, n));
 
@@ -16,7 +16,7 @@ let page: gsap.MatchMedia | undefined;
 // Scrubbed scene video, as the reference builds it (read from its bundle). A video marked data-scrub-rise
 // (footer) rises from 45% below while its scene enters; once the scene is pinned (top at top), scroll plays
 // it until the bottom reaches the bottom, or over the fraction of that given by data-scrub-end (approach).
-// Tweens are made once the video knows its duration. The context records them, so a page swap reverts them.
+// Tweens are made once the video knows its duration. The context records them, so they are reverted together.
 function scrubVideo(ctx: gsap.Context, video: HTMLVideoElement, scene: HTMLElement): () => void {
   const share = Number(video.dataset.scrubEnd ?? 1);
   const ac = new AbortController();
@@ -168,22 +168,12 @@ function initPage() {
   });
 }
 
-/** Called once, after the page has loaded; later pages are picked up on astro:page-load. */
+/** Called once, after the page has loaded. Every navigation is a full page load, so nothing is torn down. */
 export function start() {
   if (lenis) return;
   // lerp 0.2 is the reference's own setting (read from its bundle); Lenis' default 0.1 trails a wheel flick by about twice as long.
   lenis = new Lenis({ autoRaf: false, lerp: 0.2, syncTouch: false, anchors: true });
   lenis.on("scroll", ScrollTrigger.update);
   gsap.ticker.add((time) => lenis?.raf(time * 1000));
-  document.addEventListener("astro:before-swap", () => {
-    lenis?.stop();
-    page?.revert();
-    page = undefined;
-  });
-  document.addEventListener("astro:page-load", () => {
-    lenis?.scrollTo(0, { immediate: true, force: true });
-    lenis?.start();
-    initPage();
-  });
   initPage();
 }

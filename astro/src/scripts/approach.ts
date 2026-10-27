@@ -5,7 +5,7 @@
 // each partner's media fades in over 3.8% of p, the copy layer over 4.2%, and each name and line
 // fades in over 2% at the start of its slot and out over 3.3% at the end.
 // One ScrollTrigger over the pinned range drives it, on the clock scenes.ts sets up (Lenis on gsap.ticker). Called
-// from scenes.ts inside its gsap.matchMedia context, so a page swap reverts the trigger.
+// from scenes.ts inside its gsap.matchMedia context, so it is reverted with the rest.
 import { ScrollTrigger } from "@/scripts/gsap";
 
 const clamp = (n: number) => Math.min(1, Math.max(0, n));

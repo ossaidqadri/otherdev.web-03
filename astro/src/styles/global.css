@@ -112,6 +112,14 @@
 	}
 }
 
+/* Page-to-page crossfade: the browser's own cross-document view transition. No router, no JS; unsupported
+   browsers just load the next page. */
+@media (prefers-reduced-motion: no-preference) {
+	@view-transition {
+		navigation: auto;
+	}
+}
+
 /* Word-by-word entrance (Words.astro): each word fades up 0.25em over 0.5s, delayed by its --d,
    once the block or an ancestor carries data-in. */
 @keyframes hero-word-in {

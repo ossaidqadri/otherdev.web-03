@@ -5,9 +5,8 @@
 
 // A video's poster (the footer flower, 39 KB) is only fetched once the video is within a viewport of the screen.
 // Runs on every page, reduced motion included, so the static footer still gets its poster.
-document.addEventListener("astro:page-load", () => {
-  const videos = document.querySelectorAll<HTMLVideoElement>("video[data-poster]");
-  if (!videos.length) return;
+const videos = document.querySelectorAll<HTMLVideoElement>("video[data-poster]");
+if (videos.length) {
   const io = new IntersectionObserver(
     (entries) => {
       for (const e of entries) {
@@ -20,7 +19,7 @@ document.addEventListener("astro:page-load", () => {
     { rootMargin: "100% 0px" },
   );
   videos.forEach((v) => io.observe(v));
-});
+}
 
 if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
   const boot = () => void import("@/scripts/scenes").then((m) => m.start());
