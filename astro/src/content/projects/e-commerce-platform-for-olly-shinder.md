@@ -13,22 +13,40 @@
   },
   "gallery": [
     {
-      "src": "https://media.otherdev.com/site/projects/e-commerce-platform-for-olly-shinder/olly-shinder-product-detail.webp",
-      "alt": "olly shinder product detail",
-      "width": 2048,
-      "height": 1280
+      "src": "https://media.otherdev.com/site/projects/e-commerce-platform-for-olly-shinder/shots/01-m-home.webp",
+      "alt": "Olly Shinder home page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/e-commerce-platform-for-olly-shinder/olly-shinder-product-page.webp",
-      "alt": "olly shinder product page",
-      "width": 2048,
-      "height": 1280
+      "src": "https://media.otherdev.com/site/projects/e-commerce-platform-for-olly-shinder/shots/02-m-collections-autumn-winter-2025.webp",
+      "alt": "Olly Shinder collections autumn winter 2025 page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/e-commerce-platform-for-olly-shinder/olly-shinder-products-desktop.webp",
-      "alt": "olly shinder products desktop",
-      "width": 2048,
-      "height": 1280
+      "src": "https://media.otherdev.com/site/projects/e-commerce-platform-for-olly-shinder/shots/03-d-home.webp",
+      "alt": "Olly Shinder home page on desktop",
+      "width": 2880,
+      "height": 1620
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/e-commerce-platform-for-olly-shinder/shots/04-m-products.webp",
+      "alt": "Olly Shinder products page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/e-commerce-platform-for-olly-shinder/shots/05-m-about.webp",
+      "alt": "Olly Shinder about page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/e-commerce-platform-for-olly-shinder/shots/06-d-collections-autumn-winter-2025.webp",
+      "alt": "Olly Shinder collections autumn winter 2025 page on desktop",
+      "width": 2880,
+      "height": 1620
     }
   ]
 }
