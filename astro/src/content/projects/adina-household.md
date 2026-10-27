@@ -6,10 +6,10 @@
   "link": "adinahousehold.com",
   "excerpt": "Od Adina Household is a headless Shopify storefront built using Hydrogen and Oxygen to deliver a faster and more flexible commerce experience than traditional theme...",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/adina-household/adina-household-hero.webp",
-    "alt": "adina household hero",
-    "width": 2047,
-    "height": 1400
+    "src": "https://media.otherdev.com/site/projects/adina-household/adina-household-cover.webp",
+    "alt": "Adina Household, the script wordmark on cream",
+    "width": 2400,
+    "height": 1350
   },
   "gallery": [
     {

@@ -6,10 +6,10 @@
   "link": "finlit.deployments.otherdev.com",
   "excerpt": "Finlit built a full-stack SaaS learning platform with branding and visual identity, helping users confidently navigate personal finance — from trading basics to advanced investment...",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/finlit-desktop-hero.webp",
-    "alt": "finlit desktop hero",
-    "width": 3702,
-    "height": 2198
+    "src": "https://media.otherdev.com/site/projects/branding-saas-platform-development-for-finlit/finlit-cover.webp",
+    "alt": "Finlit, the bracketed wordmark on green",
+    "width": 2400,
+    "height": 1350
   },
   "gallery": [
     {

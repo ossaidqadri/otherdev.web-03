@@ -6,10 +6,10 @@
   "link": "narkinsbuilders.com",
   "excerpt": "Narkin’s Builders is a modern real estate website and lead generation platform developed to showcase projects, publish updates, and convert visitors into qualified sales inquiries....",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/narkins/narkins-home-hero.webp",
-    "alt": "narkins home hero",
-    "width": 2728,
-    "height": 1562
+    "src": "https://media.otherdev.com/site/projects/narkins/narkins-cover.webp",
+    "alt": "Narkin's Builders, the logo over the Narkin's tower",
+    "width": 2400,
+    "height": 1350
   },
   "gallery": [
     {

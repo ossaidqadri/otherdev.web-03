@@ -6,10 +6,10 @@
   "link": "wishapparels.art",
   "excerpt": "Wish Apparels sells minimalist fashion online with a custom Shopify theme — 25+ locales, advanced product zoom, five curated color schemes, and Core Web Vitals-optimized...",
   "cover": {
-    "src": "https://media.otherdev.com/site/projects/wish/wish-home-hero.webp",
-    "alt": "wish home hero",
-    "width": 2772,
-    "height": 1562
+    "src": "https://media.otherdev.com/site/projects/wish/wish-cover.webp",
+    "alt": "Wish, the WISH wordmark over a campaign photograph",
+    "width": 2400,
+    "height": 1350
   },
   "gallery": [
     {
