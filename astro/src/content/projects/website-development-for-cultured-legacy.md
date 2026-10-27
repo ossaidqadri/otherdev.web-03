@@ -13,16 +13,40 @@
   },
   "gallery": [
     {
-      "src": "https://media.otherdev.com/site/projects/website-development-for-cultured-legacy/cultured-legacy-home.webp",
-      "alt": "cultured legacy home",
-      "width": 4980,
-      "height": 2608
+      "src": "https://media.otherdev.com/site/projects/website-development-for-cultured-legacy/shots/01-m-home.webp",
+      "alt": "Cultured Legacy home page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/website-development-for-cultured-legacy/cultured-legacy-mobile.webp",
-      "alt": "cultured legacy mobile",
-      "width": 1080,
-      "height": 1920
+      "src": "https://media.otherdev.com/site/projects/website-development-for-cultured-legacy/shots/02-m-collections-racing-jerseys.webp",
+      "alt": "Cultured Legacy collections racing jerseys page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/website-development-for-cultured-legacy/shots/03-d-home.webp",
+      "alt": "Cultured Legacy home page on desktop",
+      "width": 2880,
+      "height": 1620
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/website-development-for-cultured-legacy/shots/04-m-products-12-pockets-iced-cargo-jeans.webp",
+      "alt": "Cultured Legacy products 12 pockets iced cargo jeans page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/website-development-for-cultured-legacy/shots/05-m-pages-about-cultured.webp",
+      "alt": "Cultured Legacy pages about cultured page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/website-development-for-cultured-legacy/shots/06-d-collections-racing-jerseys.webp",
+      "alt": "Cultured Legacy collections racing jerseys page on desktop",
+      "width": 2880,
+      "height": 1620
     }
   ]
 }
