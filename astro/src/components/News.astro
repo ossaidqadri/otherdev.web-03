@@ -5,23 +5,11 @@ import TeamCard from "@/components/TeamCard.astro";
 const { news, about, newsletter } = (await getEntry("site", "home"))!.data;
 const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
 
-// Three cards: the latest blog post, then the newest projects (the blog has no cover art yet).
-const posts = (await getCollection("blog")).sort((a, b) => +b.data.publishedAt - +a.data.publishedAt);
-const projects = (await getCollection("projects")).sort((a, b) => b.data.year - a.data.year);
-const cards = [
-  ...posts.slice(0, 1).map((p) => ({
-    href: `/blog/${p.id}`,
-    title: p.data.title,
-    label: date.format(p.data.publishedAt),
-    image: undefined as string | undefined,
-  })),
-  ...projects.slice(0, 3).map((p) => ({
-    href: `/work/${p.id}`,
-    title: p.data.title,
-    label: String(p.data.year),
-    image: p.data.cover.src as string | undefined,
-  })),
-].slice(0, 3);
+// The newest blog posts, three at most. Posts have no cover art yet, so a gradient stands in.
+const cards = (await getCollection("blog"))
+  .sort((a, b) => +b.data.publishedAt - +a.data.publishedAt)
+  .slice(0, 3)
+  .map((p) => ({ href: `/blog/${p.id}`, title: p.data.title, label: date.format(p.data.publishedAt) }));
 ---
 
 <section id="news" class="section" data-navbar-theme="dark" data-section>
@@ -35,11 +23,7 @@ const cards = [
       {cards.map((c) => (
         <li>
           <a href={c.href} class="group block">
-            {c.image ? (
-              <img src={c.image} alt="" loading="lazy" class="aspect-[4/5] w-full rounded-lg object-cover object-top" />
-            ) : (
-              <div class="news-art aspect-[4/5] w-full rounded-lg"></div>
-            )}
+            <div class="news-art aspect-[4/5] w-full rounded-lg"></div>
             <p class="type-body-regular-s text-ink-3 mt-4">{c.label}</p>
             <h3 class="type-body-regular-l mt-1 max-w-sm">{c.title}</h3>
           </a>
