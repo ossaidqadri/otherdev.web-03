@@ -13,22 +13,40 @@
   },
   "gallery": [
     {
-      "src": "https://media.otherdev.com/site/projects/branding-website-development-for-boulevard-pakistan/boulevard-home-hero.webp",
-      "alt": "boulevard home hero",
-      "width": 2880,
-      "height": 2018
+      "src": "https://media.otherdev.com/site/projects/branding-website-development-for-boulevard-pakistan/shots/01-m-product.webp",
+      "alt": "Boulevard product page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/branding-website-development-for-boulevard-pakistan/boulevard-product-mobile.webp",
-      "alt": "boulevard product mobile",
-      "width": 1290,
-      "height": 2796
+      "src": "https://media.otherdev.com/site/projects/branding-website-development-for-boulevard-pakistan/shots/02-m-collection.webp",
+      "alt": "Boulevard collection page on mobile",
+      "width": 1200,
+      "height": 1500
     },
     {
-      "src": "https://media.otherdev.com/site/projects/branding-website-development-for-boulevard-pakistan/boulevard-product.webp",
-      "alt": "boulevard product",
+      "src": "https://media.otherdev.com/site/projects/branding-website-development-for-boulevard-pakistan/shots/03-d-home.webp",
+      "alt": "Boulevard home page on desktop",
       "width": 2880,
-      "height": 2018
+      "height": 1620
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/branding-website-development-for-boulevard-pakistan/shots/04-m-details.webp",
+      "alt": "Boulevard details page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/branding-website-development-for-boulevard-pakistan/shots/05-m-jacket.webp",
+      "alt": "Boulevard jacket page on mobile",
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "src": "https://media.otherdev.com/site/projects/branding-website-development-for-boulevard-pakistan/shots/06-d-product.webp",
+      "alt": "Boulevard product page on desktop",
+      "width": 2880,
+      "height": 1620
     }
   ]
 }
