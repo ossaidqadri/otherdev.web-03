@@ -26,15 +26,18 @@ const imageFor = (file: string) => art[`/src/assets/process/${file}`];
           <li class="min-w-0 shrink-0 grow-0 basis-full pl-4 sm:basis-1/2 lg:basis-1/3">
             <Card
               variant="tile"
-              class="aspect-[427/591] cursor-grab justify-between bg-[var(--semantic-transparent-weak)] transition-[background-color,opacity,scale] duration-300 ease-out select-none group-hover/offerings:opacity-40 hover:bg-(--hover-bg) hover:opacity-100! group-active/offerings:scale-95 active:cursor-grabbing"
+              class="h-full cursor-grab bg-[var(--semantic-transparent-weak)] transition-[background-color,opacity,scale] duration-300 ease-out select-none group-hover/offerings:opacity-40 hover:bg-(--hover-bg) hover:opacity-100! group-active/offerings:scale-95 active:cursor-grabbing"
               style={`--hover-bg: var(--semantic-${s.tone}-weak-dark)`}
             >
               {/* Plain h3/p: shadcn's CardTitle renders a div and would drop the heading. */}
-              <div class="p-8">
+              <div class="relative z-[1] flex flex-col gap-1 p-[var(--card-padding)]">
                 <h3 class="type-heading-m transition-colors duration-300 group-hover/card:text-[var(--semantic-text-primary-dark)]">{s.title}</h3>
-                <p class="type-heading-s mt-[3px] opacity-40 transition-colors duration-300 group-hover/card:text-[var(--semantic-text-primary-dark)]">{s.body}</p>
+                <p class="type-heading-s opacity-40 transition-colors duration-300 group-hover/card:text-[var(--semantic-text-primary-dark)]">{s.body}</p>
               </div>
-              {img && <Image src={img} alt="" widths={[400, 800]} sizes="26.5rem" draggable="false" class="pointer-events-none mx-auto w-full" />}
+              {/* Text plus a square art box, as on the reference (591px tall on desktop, 466px on phones). */}
+              <div class="relative mt-auto aspect-square w-full">
+                {img && <Image src={img} alt="" widths={[400, 800]} sizes="26.5rem" draggable="false" class="pointer-events-none absolute inset-0 size-full object-contain object-bottom" />}
+              </div>
             </Card>
           </li>
         );
