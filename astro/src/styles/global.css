@@ -1,4 +1,19 @@
-@import "tailwindcss";
+@import "tailwindcss" source(none);
+/* Only the code the site ships is scanned for classes. The shadcn kit has 63 components and the site uses 8 (field
+   pulls in label and separator); scanning all of them put utilities for the other 55 into every page's stylesheet.
+   Add a folder here when a page starts using another component. */
+@source "../pages";
+@source "../components";
+@source "../layouts";
+@source "../scripts";
+@source "../lib/components/ui/badge";
+@source "../lib/components/ui/button";
+@source "../lib/components/ui/card";
+@source "../lib/components/ui/checkbox";
+@source "../lib/components/ui/field";
+@source "../lib/components/ui/input";
+@source "../lib/components/ui/label";
+@source "../lib/components/ui/separator";
 @import "tw-animate-css";
 @import "shadcn-svelte/tailwind.css";
 @import "./tokens.css";
