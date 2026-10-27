@@ -17,7 +17,8 @@ document.addEventListener("astro:page-load", () => {
     if (i === last) i = (i + 1) % cells.length;
     last = i;
     const cell = cells[i];
-    const outgoing = cell.firstElementChild as HTMLElement;
+    const outgoing = cell?.firstElementChild as HTMLElement | null;
+    if (!cell || !outgoing) return;
     await outgoing.animate({ opacity: [1, 0] }, { duration: 400, easing: "ease-in-out", fill: "forwards" }).finished;
     const incoming = pool.shift() as HTMLElement;
     pool.push(outgoing);
@@ -28,7 +29,7 @@ document.addEventListener("astro:page-load", () => {
 
   const io = new IntersectionObserver(([entry]) => {
     clearInterval(timer);
-    if (entry.isIntersecting) timer = window.setInterval(swap, INTERVAL);
+    if (entry?.isIntersecting) timer = window.setInterval(swap, INTERVAL);
   });
   io.observe(grid);
   document.addEventListener("astro:before-swap", () => { io.disconnect(); clearInterval(timer); }, { once: true });
