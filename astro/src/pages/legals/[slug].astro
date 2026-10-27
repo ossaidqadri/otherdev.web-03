@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
+import Words from "@/components/Words.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getSite } from "@/lib/site";
 
@@ -11,14 +12,38 @@ const { entry } = Astro.props;
 const { ui } = await getSite();
 const { title, updated } = entry.data;
 const { Content } = await render(entry);
-const date = new Intl.DateTimeFormat("en", { dateStyle: "long" }).format(updated);
+const STEP = 75;
+const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]";
+// "October 21st, 2025", the reference's format.
+const ordinal = { one: "st", two: "nd", few: "rd", other: "th" }[new Intl.PluralRules("en", { type: "ordinal" }).select(updated.getUTCDate()) as "one" | "two" | "few" | "other"];
+const date = `${new Intl.DateTimeFormat("en", { month: "long", timeZone: "UTC" }).format(updated)} ${updated.getUTCDate()}${ordinal}, ${updated.getUTCFullYear()}`;
 ---
 
 <Layout title={`${title} | Other Dev`} description={`${title} for otherdev.com`}>
-  <main id="main" class="site-container section pt-48" data-navbar-theme="dark">
-    <p class="type-body-regular-m text-ink-3">{ui.legal}</p>
-    <h1 class="type-display-s mt-4 max-w-4xl">{title}</h1>
-    <p class="type-body-regular-m text-ink-3 mt-6">{ui.lastUpdated} {date}</p>
-    <div class="prose-site type-article-body mt-12"><Content /></div>
+  <main id="main">
+    {/* "Legal" over the policy's title, fading up word by word like the services hero. */}
+    <section class="pt-[var(--container-navpadding)]" data-navbar-theme="dark">
+      <div class="site-container py-[var(--section-padding-lg)]">
+        <div class="flex max-w-[64rem] flex-col" data-in>
+          <Words as="h1" text={ui.legal ?? ""} step={STEP} class="gap-x-[0.45em] gap-y-[0.1em]" word="type-mega-button" />
+          <Words text={title} step={STEP} start={(ui.legal ?? "").split(/\s+/).length} class="gap-x-[0.45em] gap-y-[0.1em] opacity-40" word="type-mega-button" />
+        </div>
+      </div>
+    </section>
+
+    <section data-navbar-theme="dark">
+      <div class="site-container flex flex-col gap-[var(--section-padding-sm)] pt-[var(--section-padding-sm)] pb-[var(--section-padding-lg)]">
+        <hr class={rule} />
+        {/* The date in a 256px column, the policy in the reference's 640px article column beside it. */}
+        <div class="flex flex-col gap-8 lg:grid lg:grid-cols-[16rem_40rem] lg:gap-x-28">
+          <p class="type-body-regular-l self-start pt-1 leading-none opacity-60">
+            {ui.lastUpdated}<br />
+            <time datetime={updated.toISOString().slice(0, 10)}>{date}</time>
+          </p>
+          <div class="prose-site type-article-body article-prose"><Content /></div>
+        </div>
+        <hr class={rule} />
+      </div>
+    </section>
   </main>
 </Layout>

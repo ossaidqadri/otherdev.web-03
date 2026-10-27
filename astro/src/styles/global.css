@@ -160,6 +160,27 @@
 	font-family: ui-monospace, monospace;
 }
 
+/* Long-form article column on the reference's measure (blog posts, legal pages): 640 wide, 24 between blocks,
+   48 above and below a heading, text at 80%. Comes after .prose-site so it wins at equal specificity. */
+.article-prose {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	max-width: 40rem;
+	padding-bottom: 3rem;
+	opacity: 0.8;
+}
+.article-prose > * + * {
+	margin-top: 0;
+}
+.article-prose h2,
+.article-prose h2 + * {
+	margin-top: 1.5rem;
+}
+.article-prose > :first-child {
+	margin-top: 0;
+}
+
 /* Hover wash behind a link label: 7.5% of the text colour, blurred, fading in over 0.3s (as in the reference). */
 .wash {
 	position: absolute;

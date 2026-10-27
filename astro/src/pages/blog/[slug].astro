@@ -58,9 +58,7 @@ const rule = "w-full border-0 border-t border-[var(--semantic-transparent-core)]
     <section data-navbar-theme="dark">
       <div class="site-container flex flex-col gap-[var(--section-padding-sm)] pb-[var(--section-padding-md)]">
         <hr class={rule} />
-        {/* Column and spacing as the reference: 640 wide, 24 between blocks, 48 above and below a heading.
-            The prose rules are unlayered, so overriding them takes `!`. */}
-        <div class="prose-site type-article-body mx-auto flex w-full max-w-[40rem]! flex-col gap-6 pb-12 opacity-80 [&>*+*]:mt-0! [&_h2]:mt-6! [&_h2+*]:mt-6!"><Content /></div>
+        <div class="prose-site type-article-body article-prose mx-auto w-full"><Content /></div>
         <hr class={rule} />
       </div>
     </section>
