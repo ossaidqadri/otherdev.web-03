@@ -20,11 +20,15 @@ function scrubVideo(video: HTMLVideoElement, scene: HTMLElement, signal: AbortSi
   let ready = false;
   const update = () => {
     const r = scene.getBoundingClientRect();
-    // As on the reference: while the scene enters, the video rises from 45% below to its place;
-    // once the scene is pinned (top at top) until it ends (bottom at bottom), scroll plays it.
-    const enter = clamp((innerHeight - r.top) / innerHeight);
-    video.style.transform = `translateY(${(45 * (1 - enter)).toFixed(2)}%)`;
-    target = clamp(-r.top / (r.height - innerHeight)) * (video.duration || 0);
+    // As on the reference: a video marked data-scrub-rise (footer) rises from 45% below while the
+    // scene enters; once the scene is pinned (top at top), scroll plays it until the bottom reaches
+    // the bottom, or over the fraction of that given by data-scrub-end (approach).
+    if (video.hasAttribute("data-scrub-rise")) {
+      const enter = clamp((innerHeight - r.top) / innerHeight);
+      video.style.transform = `translateY(${(45 * (1 - enter)).toFixed(2)}%)`;
+    }
+    const end = Number(video.dataset.scrubEnd ?? 1);
+    target = clamp(-r.top / ((r.height - innerHeight) * end)) * (video.duration || 0);
   };
   const frame = () => {
     if (ready && !video.seeking) {
