@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import svelte from "@astrojs/svelte";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig, fontProviders } from "astro/config";
+import { cn } from "cn/vite";
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -60,6 +61,17 @@ export default defineConfig({
     // Vite would pre-bundle them mid-session (504 "Outdated Optimize Dep").
     optimizeDeps: { entries: ["src/**/*.{astro,svelte}"] },
 
-    plugins: [tailwindcss()],
+    // cn's merge table is cut down to the classes these files use (generated into src/lib/cn-tables.ts on every
+    // dev start and build), which keeps the islands small. Same folders as the @source lines in global.css.
+    plugins: [
+      tailwindcss(),
+      cn({
+        content: [
+          "src/{pages,components,layouts,scripts}/**/*.{astro,svelte,ts}",
+          "src/lib/components/ui/{accordion,badge,button,card,checkbox,collapsible,input,label,separator}/**/*.{svelte,ts}",
+        ],
+        out: "src/lib/cn-tables.ts",
+      }),
+    ],
   },
 });
