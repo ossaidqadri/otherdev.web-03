@@ -9,31 +9,33 @@ export interface LocaleInfo {
   dir: "ltr" | "rtl";
   /** og:locale value. */
   og: string;
+  /** Latin-style tracking and leading are safe. Arabic joining, Indic conjuncts, CJK and Vietnamese stacked marks need neutral tracking and more line height. */
+  latin: boolean;
 }
 
 // The 20 most spoken languages (Ethnologue, total speakers). Next in line, left out for now: Punjabi, Persian,
 // Swahili, Hausa, Thai. Add one by listing it here and adding its content.
 export const locales = {
-  en: { lang: "en", dir: "ltr", og: "en_GB" },
-  zh: { lang: "zh-Hans", dir: "ltr", og: "zh_CN" },
-  hi: { lang: "hi", dir: "ltr", og: "hi_IN" },
-  es: { lang: "es", dir: "ltr", og: "es_ES" },
-  fr: { lang: "fr", dir: "ltr", og: "fr_FR" },
-  ar: { lang: "ar", dir: "rtl", og: "ar_AR" },
-  bn: { lang: "bn", dir: "ltr", og: "bn_BD" },
-  pt: { lang: "pt", dir: "ltr", og: "pt_BR" },
-  ru: { lang: "ru", dir: "ltr", og: "ru_RU" },
-  ur: { lang: "ur", dir: "rtl", og: "ur_PK" },
-  id: { lang: "id", dir: "ltr", og: "id_ID" },
-  de: { lang: "de", dir: "ltr", og: "de_DE" },
-  ja: { lang: "ja", dir: "ltr", og: "ja_JP" },
-  mr: { lang: "mr", dir: "ltr", og: "mr_IN" },
-  te: { lang: "te", dir: "ltr", og: "te_IN" },
-  tr: { lang: "tr", dir: "ltr", og: "tr_TR" },
-  ta: { lang: "ta", dir: "ltr", og: "ta_IN" },
-  vi: { lang: "vi", dir: "ltr", og: "vi_VN" },
-  ko: { lang: "ko", dir: "ltr", og: "ko_KR" },
-  it: { lang: "it", dir: "ltr", og: "it_IT" },
+  en: { lang: "en", dir: "ltr", og: "en_GB", latin: true },
+  zh: { lang: "zh-Hans", dir: "ltr", og: "zh_CN", latin: false },
+  hi: { lang: "hi", dir: "ltr", og: "hi_IN", latin: false },
+  es: { lang: "es", dir: "ltr", og: "es_ES", latin: true },
+  fr: { lang: "fr", dir: "ltr", og: "fr_FR", latin: true },
+  ar: { lang: "ar", dir: "rtl", og: "ar_AR", latin: false },
+  bn: { lang: "bn", dir: "ltr", og: "bn_BD", latin: false },
+  pt: { lang: "pt", dir: "ltr", og: "pt_BR", latin: true },
+  ru: { lang: "ru", dir: "ltr", og: "ru_RU", latin: true },
+  ur: { lang: "ur", dir: "rtl", og: "ur_PK", latin: false },
+  id: { lang: "id", dir: "ltr", og: "id_ID", latin: true },
+  de: { lang: "de", dir: "ltr", og: "de_DE", latin: true },
+  ja: { lang: "ja", dir: "ltr", og: "ja_JP", latin: false },
+  mr: { lang: "mr", dir: "ltr", og: "mr_IN", latin: false },
+  te: { lang: "te", dir: "ltr", og: "te_IN", latin: false },
+  tr: { lang: "tr", dir: "ltr", og: "tr_TR", latin: true },
+  ta: { lang: "ta", dir: "ltr", og: "ta_IN", latin: false },
+  vi: { lang: "vi", dir: "ltr", og: "vi_VN", latin: false },
+  ko: { lang: "ko", dir: "ltr", og: "ko_KR", latin: false },
+  it: { lang: "it", dir: "ltr", og: "it_IT", latin: true },
 } as const satisfies Record<string, LocaleInfo>;
 
 export type Locale = keyof typeof locales;

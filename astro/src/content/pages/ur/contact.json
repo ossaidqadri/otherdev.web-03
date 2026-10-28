@@ -1,0 +1,37 @@
+{
+  "page": "contact",
+  "hero": { "heading": "ہمارے ساتھ کام کریں", "sub": "ہمیں بتائیں کہ آپ کیا بنا رہے ہیں۔" },
+  "body": "ہم تک پہنچنے کا سب سے تیز طریقہ WhatsApp ہے۔ ہم ایک کاروباری دن کے اندر جواب دیتے ہیں۔",
+  "foundersHeading": "بانی",
+  "generalHeading": "عمومی",
+  "general": [
+    { "title": "WhatsApp", "note": "ہم تک پہنچنے کا سب سے تیز طریقہ", "link": { "label": "پیغام بھیجیں", "href": "https://wa.me/923156893331?text=Hi!%20I%20found%20you%20through%20otherdev.com%20and%20would%20love%20to%20discuss%20a%20project." } },
+    { "title": "عمومی استفسارات", "note": "ہم ایک کاروباری دن کے اندر جواب دیتے ہیں", "copy": "hello@otherdev.com" },
+    { "title": "LinkedIn", "link": { "label": "فالو کریں", "href": "https://linkedin.com/company/theotherdev/" } },
+    { "title": "Instagram", "link": { "label": "فالو کریں", "href": "https://instagram.com/other.dev" } },
+    { "title": "GitHub", "link": { "label": "فالو کریں", "href": "https://github.com/theotherdev" } }
+  ],
+  "linkedin": "LinkedIn",
+  "testimonials": [
+    { "quote": "Other Dev نے پہلی ہی گفتگو میں نارکنز کو سمجھ لیا۔ انہوں نے ہماری جو ویب سائٹ اور بلاگ بنایا وہ بالکل ویسا ہے جیسا ہم نظر آنا چاہتے ہیں۔", "name": "Sarim Nara", "role": "Narkin’s Builders", "href": "/work/narkins" },
+    { "quote": "پروجیکٹ کے صفحات سے لے کر انکوائری فارمز تک، سب کچھ ویسے کام کرتا ہے جیسا ہماری سیلز ٹیم کو چاہیے۔", "name": "Wahib", "role": "Bin Yousuf Group", "href": "/work/real-estate-platform-development-for-bin-yousuf-group" },
+    { "quote": "ہر ڈراپ اسٹور پر حقیقی دباؤ ڈالتا ہے۔ Other Dev نے ہمارا اسٹور اسے سہنے کے قابل بنایا۔", "name": "Ammar", "role": "Cultured Legacy", "href": "/work/website-development-for-cultured-legacy" },
+    { "quote": "ایک صاف، تیز اسٹور جو کپڑوں کو خود بولنے دیتا ہے۔", "name": "Ammar", "role": "Groovy", "href": "/work/website-development-for-groovy-pakistan" }
+  ],
+  "faq": {
+    "heading": "کوئی سوال ہے؟",
+    "sub": "ہمارے پاس جواب ہیں۔",
+    "items": [
+      { "q": "ہم کیسے شروع کریں؟", "a": "ہمیں WhatsApp پر پیغام بھیجیں یا hello@otherdev.com پر لکھیں کہ آپ کیا بنا رہے ہیں۔ ہم ایک کاروباری دن کے اندر جواب دیتے ہیں۔" },
+      { "q": "آپ کیا بناتے ہیں؟", "a": "انٹرپرائز سافٹ ویئر، IoT اور کلاؤڈ انفراسٹرکچر، ویب سائٹس اور ڈیجیٹل پلیٹ فارمز، اور ان کے ساتھ چلنے والے برانڈز۔" },
+      { "q": "آپ کا طریقۂ کار کیسے کام کرتا ہے؟", "a": "چار مرحلے: سوچیں، تخلیق کریں، بنائیں اور بڑھائیں۔ ہم سمت تلاش کرتے ہیں، شناخت اور نظام تراشتے ہیں، پروڈکٹ تیار کرتے ہیں، پھر اسے ناپتے اور سنوارتے رہتے ہیں۔ تفصیل ہمارے طریقۂ کار کے صفحے پر ہے۔" },
+      { "q": "کیا آپ لانچ کے بعد بھی پروجیکٹس کو سپورٹ کرتے ہیں؟", "a": "جی ہاں۔ توسیع ہمارے کام کا آخری مرحلہ ہے: جو کچھ ہم لانچ کرتے ہیں اسے ناپتے، سنوارتے اور بڑھاتے رہتے ہیں۔" },
+      { "q": "آپ کہاں قائم ہیں؟", "a": "کراچی، پاکستان۔" }
+    ]
+  },
+  "closing": {
+    "heading": "ہماری کہکشاؤں کی گیلری دیکھیں۔",
+    "body": "ہمارے ماضی کے پروجیکٹس کا جھرمٹ دیکھیں، ڈیزائن، برانڈز اور تجربات جنہوں نے صنعتوں کو شکل دی، نظریات بدلے اور نئے معیار قائم کیے۔",
+    "button": { "label": "ہمارا طریقۂ کار", "href": "/approach" }
+  }
+}

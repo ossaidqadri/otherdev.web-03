@@ -1,0 +1,93 @@
+{
+  "name": "Other Dev",
+  "description": "Other Dev انٹرپرائز سافٹ ویئر ڈیزائن کرتا ہے، IoT اور کلاؤڈ انفراسٹرکچر سنبھالتا ہے، اور ویب سائٹس اور ڈیجیٹل پلیٹ فارمز بناتا ہے۔ کراچی میں قائم ایک مکمل سروس اسٹوڈیو۔",
+  "seo": {
+    "home": "Other Dev انٹرپرائز سافٹ ویئر ڈیزائن کرتا ہے، IoT اور کلاؤڈ انفراسٹرکچر سنبھالتا ہے، اور ویب سائٹس اور ڈیجیٹل پلیٹ فارمز بناتا ہے۔ کراچی میں قائم ایک مکمل سروس اسٹوڈیو۔",
+    "work": "ہمارے پروجیکٹس دیکھیں: انٹرپرائز سافٹ ویئر، IoT اور کلاؤڈ انفراسٹرکچر، ویب ڈیزائن اور ڈیولپمنٹ، ای کامرس اور بہت کچھ۔",
+    "services": "برانڈ، پروڈکٹ اور ٹیکنالوجی کی مہارت، سب ایک چھت تلے۔",
+    "blog": "Other Dev اسٹوڈیو کی طرف سے ویب ڈیولپمنٹ، ڈیزائن اور ڈیجیٹل پلیٹ فارمز پر خیالات، بصیرتیں اور تازہ اطلاعات۔"
+  },
+  "nav": [
+    { "label": "کام", "href": "/work" },
+    { "label": "خدمات", "href": "/services" },
+    { "label": "بلاگ", "href": "/blog" },
+    { "label": "ہمارے بارے میں", "href": "/about" }
+  ],
+  "cta": { "label": "ہمارے ساتھ کام کریں", "href": "/contact" },
+  "pill": [
+    { "label": "کلائنٹس", "target": "clients" },
+    { "label": "کام", "target": "work" },
+    { "label": "خدمات", "target": "process" },
+    { "label": "خبریں", "target": "news" }
+  ],
+  "closing": {
+    "heading": "چھلانگ لگانے کے لیے تیار ہیں؟",
+    "body": "آئیے تجسس کو شراکت میں بدلیں۔ اپنا وژن ہمارے ساتھ بانٹیں، ہم اسے کسی ناقابلِ فراموش چیز کی شکل دینے میں مدد کریں گے۔",
+    "button": { "label": "ہم سے رابطہ کریں", "href": "/contact" }
+  },
+  "footer": {
+    "cta": { "label": "ہمارے ساتھ کام کریں", "href": "/contact" },
+    "offices": [
+      {
+        "city": "کراچی",
+        "timezone": "Asia/Karachi",
+        "email": "hello@otherdev.com",
+        "phone": "+92 315 689 3331",
+        "address": ["کراچی، پاکستان"],
+        "mapUrl": "https://www.google.com/maps/search/?api=1&query=Karachi%2C+Pakistan",
+        "photo": {
+          "src": "https://media.otherdev.com/site/misc/karachi-office-2.webp",
+          "alt": "کراچی میں مزارِ قائد، شام کے صاف آسمان کے سامنے۔ تصویر: کاشف آفریدی، Unsplash",
+          "width": 1600,
+          "height": 1200
+        }
+      }
+    ],
+    "legalLinks": [{ "label": "پرائیویسی", "href": "/legals/privacy" }],
+    "social": [
+      { "label": "LinkedIn", "href": "https://linkedin.com/company/theotherdev/" },
+      { "label": "Instagram", "href": "https://instagram.com/other.dev" },
+      { "label": "GitHub", "href": "https://github.com/theotherdev" },
+      { "label": "WhatsApp", "href": "https://wa.me/923156893331" }
+    ],
+    "legal": "© Other Dev"
+  },
+  "ui": {
+    "menuOpen": "مینو کھولیں",
+    "menuClose": "مینو بند کریں",
+    "mainNav": "مرکزی",
+    "sectionsNav": "حصے",
+    "socialNav": "سوشل",
+    "readOnLinkedin": "LinkedIn پر پڑھیں",
+    "opensInNewTab": "(نئے ٹیب میں کھلتا ہے)",
+    "skipToContent": "مواد پر جائیں",
+    "filterLabel": "زمرے کے مطابق چھانٹیں",
+    "viewLabel": "منظر",
+    "gridView": "گرڈ منظر",
+    "listView": "فہرست منظر",
+    "drag": "گھسیٹیں",
+    "seeWork": "کام دیکھیں",
+    "scroll": "اسکرول کریں",
+    "copied": "کلپ بورڈ پر کاپی ہو گیا",
+    "copyFailed": "کلپ بورڈ پر کاپی نہیں ہو سکا",
+    "all": "سب",
+    "relatedWork": "متعلقہ کام",
+    "seeAll": "سب دیکھیں",
+    "backToWork": "کام",
+    "relatedPosts": "متعلقہ تحریریں",
+    "download": "ڈاؤن لوڈ",
+    "readMore": "مزید پڑھیں",
+    "overview": "جائزہ",
+    "theWork": "کام",
+    "moreWork": "مزید کام",
+    "readLess": "کم پڑھیں",
+    "year": "سال",
+    "discipline": "شعبہ",
+    "website": "ویب سائٹ",
+    "legal": "قانونی",
+    "lastUpdated": "آخری تازہ کاری",
+    "submit": "جمع کرائیں",
+    "signUp": "مجھے شامل کریں",
+    "emailPlaceholder": "ای میل ایڈریس"
+  }
+}

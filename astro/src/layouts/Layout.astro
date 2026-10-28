@@ -21,7 +21,7 @@ interface Props {
 
 const { title, description, image, imageAlt, type, published, noindex, jsonLd } = Astro.props;
 const locale = toLocale(Astro.currentLocale);
-const { lang, dir } = locales[locale];
+const { lang, dir, latin } = locales[locale];
 const site = await getSite(locale);
 // Routes under [...locale] exist once per language.
 const translated = Astro.routePattern.startsWith("/[...locale]");
@@ -39,7 +39,7 @@ const organization = {
 ---
 
 <!doctype html>
-<html lang={lang} dir={dir}>
+<html lang={lang} dir={dir} data-latin={latin ? "" : undefined}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

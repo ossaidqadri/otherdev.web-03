@@ -11,6 +11,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "biome lint",
+    "check:i18n": "bun scripts/check-i18n.ts",
     "typecheck": "astro check && svelte-check --incremental --tsconfig ./tsconfig.json --threshold error",
     "deploy": "astro build && wrangler deploy"
   },

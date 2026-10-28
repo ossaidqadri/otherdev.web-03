@@ -87,7 +87,7 @@ const year = String(new Date().getFullYear());
     let pair = formats.get(timeZone);
     if (!pair) {
       pair = [
-        new Intl.DateTimeFormat("en", { hour: "numeric", minute: "2-digit", timeZone }),
+        new Intl.DateTimeFormat(document.documentElement.lang, { hour: "numeric", minute: "2-digit", timeZone }),
         new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZone }),
       ];
       formats.set(timeZone, pair);
