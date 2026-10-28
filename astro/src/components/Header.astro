@@ -1,16 +1,20 @@
 ---
 import { Button } from "@/lib/components/ui/button";
 import { Separator } from "@/lib/components/ui/separator";
+import { toLocale } from "@/i18n/locales";
+import { localize } from "@/i18n/url";
 import { getSite } from "@/lib/site";
 
-const site = await getSite();
+const locale = toLocale(Astro.currentLocale);
+const site = await getSite(locale);
+const home = localize("/", locale);
 ---
 
 {/* Progressive blur at the top edge: content softens as it scrolls under the header. */}
 <div class="header-blur pointer-events-none fixed inset-x-0 top-0 z-40 h-28 backdrop-blur-md [mask-image:linear-gradient(to_bottom,black_30%,transparent_100%)]" aria-hidden="true"></div>
 
 <header class="header fixed inset-x-0 top-0 z-50 flex items-center justify-between px-[var(--container-padding)] py-6 md:py-8">
-  <a href="/" class="wordmark" aria-label={`${site.name} home`}>{site.name}</a>
+  <a href={home} class="wordmark" aria-label={`${site.name} home`}>{site.name}</a>
   <nav aria-label={site.ui.mainNav} class="type-body-button-m -mr-2.5 flex items-center gap-2">
     {site.nav.map((l) => <Button href={l.href} variant="nav" size="nav" class="hidden md:inline-flex">{l.label}</Button>)}
     <Button href={site.cta.href} variant="nav" size="nav">{site.cta.label}</Button>
@@ -25,7 +29,7 @@ const site = await getSite();
 <div id="menu" popover data-slot="sheet-content" data-side="top" data-lenis-prevent class="menu type-heading-m fixed inset-x-0 top-0 z-50 m-0 h-dvh max-h-none w-full max-w-none flex-col border-0 p-0">
   {/* Same row as the header, so opening the menu only turns the bars into an X. */}
   <div class="absolute inset-x-0 top-0 z-10 flex items-center justify-between px-[var(--container-padding)] py-6">
-    <a href="/" class="wordmark" aria-label={`${site.name} home`}>{site.name}</a>
+    <a href={home} class="wordmark" aria-label={`${site.name} home`}>{site.name}</a>
     <div class="type-body-button-m -mr-2.5 flex items-center gap-2">
       <Button href={site.cta.href} variant="nav" size="nav">{site.cta.label}</Button>
       <Button popovertarget="menu" popovertargetaction="hide" aria-label={site.ui.menuClose} variant="nav" size="icon-nav" class="mr-2.5 size-5">

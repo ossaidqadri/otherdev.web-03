@@ -4,6 +4,7 @@ import CursorLabel from "@/components/CursorLabel.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import Seo from "@/components/Seo.astro";
+import { locales, toLocale } from "@/i18n/locales";
 import { getSite } from "@/lib/site";
 import "@/styles/global.css";
 
@@ -19,7 +20,11 @@ interface Props {
 }
 
 const { title, description, image, imageAlt, type, published, noindex, jsonLd } = Astro.props;
-const site = await getSite();
+const locale = toLocale(Astro.currentLocale);
+const { lang, dir, reviewed } = locales[locale];
+const site = await getSite(locale);
+// Routes under [...locale] exist once per language. A machine draft stays out of search until a native speaker has reviewed it.
+const translated = Astro.routePattern.startsWith("/[...locale]");
 // Home only; profile links come from the footer's social list (WhatsApp is a chat link, not a profile).
 const organization = {
   "@context": "https://schema.org",
@@ -34,7 +39,7 @@ const organization = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang} dir={dir}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -45,8 +50,9 @@ const organization = {
       imageAlt={imageAlt}
       type={type}
       published={published}
-      noindex={noindex}
-      jsonLd={jsonLd ?? (Astro.url.pathname === "/" ? organization : undefined)}
+      noindex={noindex || !reviewed}
+      translated={translated}
+      jsonLd={jsonLd ?? (Astro.routePattern === "/[...locale]" ? organization : undefined)}
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />

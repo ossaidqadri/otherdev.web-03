@@ -21,8 +21,8 @@ export async function getStaticPaths() {
 }
 
 const { entry, related } = Astro.props;
-const { ui, closing } = await getSite();
-const { work } = await getPage("home");
+const { ui, closing } = await getSite(Astro.currentLocale);
+const { work } = await getPage("home", Astro.currentLocale);
 const { title, year, tags, link, downloadUrl, excerpt, cover, gallery } = entry.data;
 const { Content } = await render(entry);
 const href = link && (link.startsWith("http") ? link : `https://${link}`);

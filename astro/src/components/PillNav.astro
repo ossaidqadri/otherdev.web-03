@@ -7,7 +7,7 @@ interface Props {
   items?: { label?: string; target: string }[];
 }
 
-const { pill, ui } = await getSite();
+const { pill, ui } = await getSite(Astro.currentLocale);
 const { items = pill } = Astro.props;
 ---
 

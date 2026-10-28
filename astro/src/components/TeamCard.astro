@@ -15,7 +15,7 @@ interface Props {
 }
 
 const { name, role, photo, linkedin, bio, overlay = false } = Astro.props;
-const { ui } = await getSite();
+const { ui } = await getSite(Astro.currentLocale);
 const Tag = linkedin ? "a" : "div";
 ---
 

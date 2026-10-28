@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 }
 
 const { entry, related } = Astro.props;
-const { ui, closing } = await getSite();
+const { ui, closing } = await getSite(Astro.currentLocale);
 const { title, excerpt, publishedAt } = entry.data;
 const { Content } = await render(entry);
 const monthYear = new Intl.DateTimeFormat("en", { month: "long", year: "numeric" }).format(publishedAt);

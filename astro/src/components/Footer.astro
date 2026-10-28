@@ -3,7 +3,7 @@ import CopyButton from "@/components/CopyButton.astro";
 import { Button } from "@/lib/components/ui/button";
 import { getSite } from "@/lib/site";
 
-const { footer: f, name, ui } = await getSite();
+const { footer: f, name, ui } = await getSite(Astro.currentLocale);
 const poster = "https://media.otherdev.com/site/video/footer-flower-poster.webp";
 // The page is static, so a time rendered here would be the build's. The clocks start empty and the
 // script below fills them (and refreshes the year, which is only right as of the last deploy).

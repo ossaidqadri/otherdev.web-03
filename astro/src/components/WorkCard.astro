@@ -6,7 +6,7 @@ import { getSite } from "@/lib/site";
 // Project card from the reference's work grid (/work and Related Work): 4:5 cover, title, and the
 // lead sentence fading in word by word on hover (shown outright on phones).
 const { project: p } = Astro.props as { project: CollectionEntry<"projects"> };
-const { ui } = await getSite();
+const { ui } = await getSite(Astro.currentLocale);
 // First sentence of the excerpt; the stored excerpts are cut mid-sentence with "...".
 const lead = (s = "") => s.replace(/\.\.\.$/, "").split(/(?<=\.)\s/)[0] ?? "";
 ---

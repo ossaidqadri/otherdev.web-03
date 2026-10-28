@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { ui } = await getSite();
+const { ui } = await getSite(Astro.currentLocale);
 const { title, updated } = entry.data;
 const { Content } = await render(entry);
 const STEP = 75;

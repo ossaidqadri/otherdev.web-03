@@ -3,7 +3,7 @@ import Words from "@/components/Words.astro";
 import { Button } from "@/lib/components/ui/button";
 import { getPage } from "@/lib/site";
 
-const { hero } = await getPage("home");
+const { hero } = await getPage("home", Astro.currentLocale);
 const words = hero.statement.split(" ");
 ---
 

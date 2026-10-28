@@ -2,7 +2,7 @@
 import CtaScene from "@/components/CtaScene.astro";
 import { getPage } from "@/lib/site";
 
-const { constellations: c } = await getPage("home");
+const { constellations: c } = await getPage("home", Astro.currentLocale);
 ---
 
 {/* Home's closing scene: cream through orange to brown. */}

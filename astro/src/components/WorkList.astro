@@ -7,7 +7,7 @@ import { Card } from "@/lib/components/ui/card";
 import { getPage } from "@/lib/site";
 
 // Home "Our work": the hand-picked projects, in the order home.json lists them.
-const { work } = await getPage("home");
+const { work } = await getPage("home", Astro.currentLocale);
 const sorted = await getCollection("projects");
 const projects = work.featured.flatMap((id) => sorted.filter((p) => p.id === id));
 // Hover fades to the first gallery shot that isn't the cover (the reference fades in a video;

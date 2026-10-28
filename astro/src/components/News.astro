@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { langOf } from "@/i18n/locales";
 import { getPage } from "@/lib/site";
 import NewsletterCard from "@/components/NewsletterCard.astro";
 import PostCard from "@/components/PostCard.astro";
@@ -7,9 +8,9 @@ import TeamCard from "@/components/TeamCard.astro";
 import { Button } from "@/lib/components/ui/button";
 import { Separator } from "@/lib/components/ui/separator";
 
-const { news } = await getPage("home");
-const about = await getPage("about");
-const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
+const { news } = await getPage("home", Astro.currentLocale);
+const about = await getPage("about", Astro.currentLocale);
+const date = new Intl.DateTimeFormat(langOf(Astro.currentLocale), { dateStyle: "medium" });
 
 // The newest blog posts, three at most.
 const cards = (await getCollection("blog"))

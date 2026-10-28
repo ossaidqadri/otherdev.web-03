@@ -6,6 +6,7 @@ import svelte from "@astrojs/svelte";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig, fontProviders } from "astro/config";
 import { cn } from "cn/vite";
+import { defaultLocale, localeCodes, locales } from "./src/i18n/locales.ts";
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -25,6 +26,8 @@ export default defineConfig({
   // Fully static: no server, so no adapter. Add @astrojs/cloudflare (v13+) only when
   // the chat endpoint arrives, with `export const prerender = false` on that route.
   output: "static",
+  // The locale list lives in src/i18n/locales.ts. English stays unprefixed; the others go under /<code>/.
+  i18n: { defaultLocale, locales: localeCodes, routing: { prefixDefaultLocale: false } },
   // Project and team images live on R2. <Image> fetches them at build and writes resized, cropped webp files
   // (srcset) next to the site, so a card never downloads a 2400px original.
   image: { remotePatterns: [{ protocol: "https", hostname: "media.otherdev.com" }] },
@@ -51,7 +54,15 @@ export default defineConfig({
   integrations: [
     svelte(),
     // 404 is already left out by default; the filter keeps it that way if the page name changes.
-    sitemap({ filter: (page) => !/\/404\/?$/.test(page) }),
+    // Machine-translated locales stay out until a native speaker has reviewed them (they are noindex too).
+    sitemap({
+      filter: (page) => {
+        const first = new URL(page).pathname.split("/")[1] ?? "";
+        const unreviewed = first in locales && !locales[/** @type {keyof typeof locales} */ (first)].reviewed;
+        return !/\/404\/?$/.test(page) && !unreviewed;
+      },
+      i18n: { defaultLocale, locales: Object.fromEntries(localeCodes.filter((c) => locales[c].reviewed).map((c) => [c, locales[c].lang])) },
+    }),
   ],
   vite: {
     // Setting allow replaces Vite's default, so the project root goes back in.

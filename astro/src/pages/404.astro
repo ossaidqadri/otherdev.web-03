@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import { getPage } from "@/lib/site";
 
-const page = await getPage("notFound");
+const page = await getPage("notFound", Astro.currentLocale);
 ---
 
 <Layout title="Not found | Other Dev" description={page.heading} noindex>

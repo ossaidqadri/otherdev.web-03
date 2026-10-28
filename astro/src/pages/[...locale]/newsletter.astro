@@ -1,4 +1,5 @@
 ---
+export { getStaticPaths } from "@/i18n/paths";
 import Words from "@/components/Words.astro";
 import Layout from "@/layouts/Layout.astro";
 import { Button } from "@/lib/components/ui/button";
@@ -8,8 +9,8 @@ import { Label } from "@/lib/components/ui/label";
 import { getPage, getSite } from "@/lib/site";
 import { Separator } from "@/lib/components/ui/separator";
 
-const n = await getPage("newsletter");
-const { ui } = await getSite();
+const n = await getPage("newsletter", Astro.currentLocale);
+const { ui } = await getSite(Astro.currentLocale);
 const STEP = 75;
 // The reference's fields: 16px type, soft fill that darkens on hover, example text at 40%.
 const field = "type-body-button-m h-auto w-full rounded-[var(--radius-sm)] bg-[var(--semantic-transparent-weak)] p-4 placeholder:opacity-40 hover:bg-[var(--semantic-transparent-core)] duration-200";

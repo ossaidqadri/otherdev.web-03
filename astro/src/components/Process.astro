@@ -4,8 +4,8 @@ import { Image } from "astro:assets";
 import { Card } from "@/lib/components/ui/card";
 import { getPage, getSite } from "@/lib/site";
 
-const { process } = await getPage("home");
-const { ui } = await getSite();
+const { process } = await getPage("home", Astro.currentLocale);
+const { ui } = await getSite(Astro.currentLocale);
 // Card art lives in src/assets/process; the site collection names each file.
 const art = import.meta.glob<ImageMetadata>("@/assets/process/*", { eager: true, import: "default" });
 const imageFor = (file: string) => art[`/src/assets/process/${file}`];

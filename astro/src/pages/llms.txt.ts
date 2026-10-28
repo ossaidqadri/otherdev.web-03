@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
-import { getSite } from "@/lib/site";
+import { getServices, getSite } from "@/lib/site";
 
 // https://llmstxt.org: a Markdown index of the site for language models, built from the same
 // content the pages render so it never drifts. Trailing slashes match the canonical URLs.
@@ -10,7 +10,7 @@ export const GET: APIRoute = async ({ site }) => {
   const md = (path: string) => new URL(`${path}.md`, site).href;
   const projects = (await getCollection("projects")).sort((a, b) => b.data.year - a.data.year);
   const posts = (await getCollection("blog")).sort((a, b) => +b.data.publishedAt - +a.data.publishedAt);
-  const services = (await getCollection("services")).sort((a, b) => a.data.order - b.data.order);
+  const services = await getServices();
   const office = footer.offices[0];
 
   const body = [
@@ -26,7 +26,7 @@ export const GET: APIRoute = async ({ site }) => {
     "",
     "## Services",
     "",
-    ...services.map((s) => `- ${s.data.title}: ${s.data.intro}`),
+    ...services.map((s) => `- ${s.title}: ${s.intro}`),
     "",
     "## Work",
     "",

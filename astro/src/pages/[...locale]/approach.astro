@@ -1,13 +1,14 @@
 ---
+export { getStaticPaths } from "@/i18n/paths";
 import CtaScene from "@/components/CtaScene.astro";
 import Words from "@/components/Words.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { getPage, getSite } from "@/lib/site";
 
-const approach = await getPage("approach");
-const { work } = await getPage("home");
-const { ui } = await getSite();
+const approach = await getPage("approach", Astro.currentLocale);
+const { work } = await getPage("home", Astro.currentLocale);
+const { ui } = await getSite(Astro.currentLocale);
 const projects = await getCollection("projects");
 // Partners are the home page's featured projects. Name: the client from the title ("X — ..." or
 // "... for X"); line: the excerpt's first sentence. Both are otherdev's own copy, nothing invented.

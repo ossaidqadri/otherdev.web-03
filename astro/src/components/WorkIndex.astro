@@ -8,7 +8,7 @@ import { Separator } from "@/lib/components/ui/separator";
 
 // /work: every project, as a grid of cards (default) or a compact list, with category filters.
 // Layout, sizes and hover states follow the reference's work index.
-const { ui } = await getSite();
+const { ui } = await getSite(Astro.currentLocale);
 const projects = (await getCollection("projects")).sort((a, b) => b.data.year - a.data.year);
 const filters = ["Strategy", "Design", "Technology", "Experience"].filter((t) => projects.some((p) => p.data.tags.includes(t as never)));
 // Wash behind the pressed control, slid between them by the script; insets as on the reference.

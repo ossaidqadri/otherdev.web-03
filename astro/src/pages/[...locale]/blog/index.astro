@@ -1,17 +1,19 @@
 ---
+export { getStaticPaths } from "@/i18n/paths";
 import { getCollection } from "astro:content";
 import CtaScene from "@/components/CtaScene.astro";
 import NewsletterCard from "@/components/NewsletterCard.astro";
 import PostCard from "@/components/PostCard.astro";
 import Layout from "@/layouts/Layout.astro";
+import { langOf } from "@/i18n/locales";
 import { getPage, getSite } from "@/lib/site";
 import { Separator } from "@/lib/components/ui/separator";
 
 // /blog: headline, the newest post featured beside its cover, the rest as cards, then the
 // newsletter and the shared closing. Layout, sizes and hovers follow the reference's news page.
-const { hero } = await getPage("blog");
-const { closing, ui, seo } = await getSite();
-const date = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
+const { hero } = await getPage("blog", Astro.currentLocale);
+const { closing, ui, seo } = await getSite(Astro.currentLocale);
+const date = new Intl.DateTimeFormat(langOf(Astro.currentLocale), { dateStyle: "medium" });
 const [featured, ...rest] = (await getCollection("blog")).sort((a, b) => +b.data.publishedAt - +a.data.publishedAt);
 ---
 

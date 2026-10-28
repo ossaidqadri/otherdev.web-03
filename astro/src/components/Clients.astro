@@ -2,7 +2,7 @@
 import ClientGrid from "@/components/ClientGrid.astro";
 import { getPage } from "@/lib/site";
 
-const { clients: copy } = await getPage("home");
+const { clients: copy } = await getPage("home", Astro.currentLocale);
 ---
 
 <section id="clients" class="clients" data-navbar-theme="dark" data-section>

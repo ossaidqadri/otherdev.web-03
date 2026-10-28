@@ -54,9 +54,9 @@ const clients = defineCollection({
 const link = z.object({ label: z.string(), href: z.string() });
 
 // Copy that appears on every page: nav, footer, shared closing block and small UI strings.
-// One entry, `global`.
+// One file per locale, src/content/site/<locale>.json; the id is the locale code. A locale has pages once its file exists.
 const site = defineCollection({
-  loader: file("src/content/site.json"),
+  loader: glob({ base: "./src/content/site", pattern: "*.json" }),
   schema: z.object({
     name: z.string(),
     // Default meta description, also the Organization description and the llms.txt summary.
@@ -79,8 +79,8 @@ const site = defineCollection({
   }),
 });
 
-// Per-page copy, one JSON file per page in src/content/pages/. The `page` field matches the file
-// name; read a page through getPage() in src/lib/site.ts, which narrows to that page's shape.
+// Per-page copy, one JSON file per page and locale in src/content/pages/<locale>/. The `page` field matches the
+// file name; read a page through getPage() in src/lib/site.ts, which narrows to that page's shape.
 const closing = z.object({ heading: z.string(), body: z.string(), button: link });
 const pageSchemas = z.discriminatedUnion("page", [
   z.object({
@@ -159,14 +159,16 @@ const pageSchemas = z.discriminatedUnion("page", [
   z.object({ page: z.literal("notFound"), heading: z.string(), link }),
 ]);
 const pages = defineCollection({
-  // Id from the `page` field: the default id slugifies file names (notFound becomes notfound).
-  loader: glob({ base: "./src/content/pages", pattern: "*.json", generateId: ({ data }) => String(data.page) }),
+  // Id is `<locale>/<page>` from the folder and the `page` field: the default id slugifies file names (notFound becomes notfound).
+  loader: glob({ base: "./src/content/pages", pattern: "*/*.json", generateId: ({ entry, data }) => `${entry.split("/")[0]}/${data.page}` }),
   schema: pageSchemas,
 });
-// Service groups for /services, one entry per group.
+// Service groups for /services, one file per locale (src/content/services/<locale>.json), id is the locale code.
 const services = defineCollection({
-  loader: file("src/content/services.json"),
-  schema: z.object({ order: z.number().int(), title: z.string(), intro: z.string(), items: z.array(z.string()) }),
+  loader: glob({ base: "./src/content/services", pattern: "*.json" }),
+  schema: z.object({
+    groups: z.array(z.object({ id: z.string(), order: z.number().int(), title: z.string(), intro: z.string(), items: z.array(z.string()) })),
+  }),
 });
 
 // Legal pages, one markdown file each.

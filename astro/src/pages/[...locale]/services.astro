@@ -1,16 +1,16 @@
 ---
+export { getStaticPaths } from "@/i18n/paths";
 import ClientGrid from "@/components/ClientGrid.astro";
 import CtaScene from "@/components/CtaScene.astro";
 import Words from "@/components/Words.astro";
 import Layout from "@/layouts/Layout.astro";
-import { getCollection } from "astro:content";
-import { getPage, getSite } from "@/lib/site";
+import { getPage, getServices, getSite } from "@/lib/site";
 import { Separator } from "@/lib/components/ui/separator";
 
-const page = await getPage("services");
-const { seo } = await getSite();
-const { clients } = await getPage("home");
-const groups = (await getCollection("services")).sort((a, b) => a.data.order - b.data.order);
+const page = await getPage("services", Astro.currentLocale);
+const { seo } = await getSite(Astro.currentLocale);
+const { clients } = await getPage("home", Astro.currentLocale);
+const groups = await getServices(Astro.currentLocale);
 const STEP = 75;
 ---
 
@@ -31,11 +31,11 @@ const STEP = 75;
         {groups.map((g) => (
           <div class="flex flex-col gap-[var(--section-padding-sm)]">
             <div class="flex max-w-[40rem] flex-col gap-3">
-              <h2 class="type-heading-xl">{g.data.title}</h2>
-              <p class="type-heading-m opacity-40">{g.data.intro}</p>
+              <h2 class="type-heading-xl">{g.title}</h2>
+              <p class="type-heading-m opacity-40">{g.intro}</p>
             </div>
             <ul>
-              {g.data.items.map((i) => (
+              {g.items.map((i) => (
                 <li>
                   <Separator />
                   {/* A dot grows in on the left on hover, as on the reference's service rows. */}

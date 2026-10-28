@@ -1,4 +1,5 @@
 ---
+export { getStaticPaths } from "@/i18n/paths";
 import CtaScene from "@/components/CtaScene.astro";
 import TeamCard from "@/components/TeamCard.astro";
 import Words from "@/components/Words.astro";
@@ -6,8 +7,8 @@ import Layout from "@/layouts/Layout.astro";
 import { getPage, getSite } from "@/lib/site";
 import { Separator } from "@/lib/components/ui/separator";
 
-const about = await getPage("about");
-const { closing } = await getSite();
+const about = await getPage("about", Astro.currentLocale);
+const { closing } = await getSite(Astro.currentLocale);
 ---
 
 <Layout title="About | Other Dev" description={about.body}>

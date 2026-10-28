@@ -1,4 +1,5 @@
 ---
+export { getStaticPaths } from "@/i18n/paths";
 import { Image } from "astro:assets";
 import ClientGrid from "@/components/ClientGrid.astro";
 import CopyButton from "@/components/CopyButton.astro";
@@ -10,10 +11,10 @@ import Layout from "@/layouts/Layout.astro";
 import { getPage, getSite } from "@/lib/site";
 import { Separator } from "@/lib/components/ui/separator";
 
-const contact = await getPage("contact");
-const { team } = await getPage("about");
-const { clients } = await getPage("home");
-const { footer, ui } = await getSite();
+const contact = await getPage("contact", Astro.currentLocale);
+const { team } = await getPage("about", Astro.currentLocale);
+const { clients } = await getPage("home", Astro.currentLocale);
+const { footer, ui } = await getSite(Astro.currentLocale);
 const STEP = 75;
 // The reference's two panels: a 6% tint, 16px corners, 32px padding, the title 64px above the first row.
 const card = "flex flex-1 flex-col gap-16 rounded-[var(--card-radius)] bg-[var(--semantic-transparent-weak)] p-[var(--card-padding)]";

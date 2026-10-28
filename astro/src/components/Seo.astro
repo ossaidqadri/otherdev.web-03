@@ -1,5 +1,9 @@
 ---
+import { getCollection } from "astro:content";
+import { getAbsoluteLocaleUrl } from "astro:i18n";
 import { SEO } from "astro-seo";
+import { defaultLocale, isLocale, locales, toLocale } from "@/i18n/locales";
+import { stripLocale } from "@/i18n/url";
 
 interface Props {
   title: string;
@@ -13,11 +17,19 @@ interface Props {
   /** The 404 is one file for every URL: no canonical, kept out of search. */
   noindex?: boolean;
   jsonLd?: Record<string, unknown>;
+  /** Page exists once per locale (routes under [...locale]): emit hreflang for the reviewed ones. English-only entries do not. */
+  translated?: boolean;
 }
 
 const SITE_NAME = "Other Dev";
-const { title, description, image, imageAlt = title, type = "website", published, noindex, jsonLd } = Astro.props;
+const { title, description, image, imageAlt = title, type = "website", published, noindex, jsonLd, translated } = Astro.props;
+const locale = toLocale(Astro.currentLocale);
 const canonical = noindex ? null : new URL(Astro.url.pathname, Astro.site);
+// Reviewed locales that have pages; a machine draft is noindex and stays out of hreflang until a native speaker signs it off.
+const alternates = translated && !noindex
+  ? (await getCollection("site")).map((e) => e.id).filter((code) => isLocale(code) && locales[code].reviewed)
+  : [];
+const path = stripLocale(Astro.url.pathname, locale);
 const imageUrl = new URL(image ?? "/og-default.jpg", Astro.site).href;
 // Type and size are only known for the bundled default; a page's own cover is left to the crawler.
 const imageMeta = image ? { alt: imageAlt } : { type: "image/jpeg", width: 1200, height: 630, alt: imageAlt };
@@ -30,7 +42,7 @@ const imageMeta = image ? { alt: imageAlt } : { type: "image/jpeg", width: 1200,
   canonical={canonical}
   openGraph={{
     basic: { title, type, image: imageUrl, url: canonical ?? undefined },
-    optional: { description, siteName: SITE_NAME, locale: "en_GB" },
+    optional: { description, siteName: SITE_NAME, locale: locales[locale].og },
     image: imageMeta,
     article: published ? { publishedTime: published.toISOString() } : undefined,
   }}
@@ -38,5 +50,7 @@ const imageMeta = image ? { alt: imageAlt } : { type: "image/jpeg", width: 1200,
   // Full-size image and text previews in search results, as v2 allowed.
   robotsExtras={noindex ? undefined : "max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
 />
+{alternates.length > 1 && alternates.map((code) => <link rel="alternate" hreflang={locales[code as keyof typeof locales].lang} href={getAbsoluteLocaleUrl(code, path)} />)}
+{alternates.length > 1 && <link rel="alternate" hreflang="x-default" href={getAbsoluteLocaleUrl(defaultLocale, path)} />}
 <link rel="sitemap" href="/sitemap-index.xml" />
 {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>}

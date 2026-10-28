@@ -6,8 +6,8 @@ import { getPage, getSite } from "@/lib/site";
 
 // Full-width signup card shared by the home news section and /blog.
 const { class: className = "" } = Astro.props;
-const newsletter = await getPage("newsletter");
-const { ui } = await getSite();
+const newsletter = await getPage("newsletter", Astro.currentLocale);
+const { ui } = await getSite(Astro.currentLocale);
 ---
 
 <Card variant="tile" class={`newsletter flex-row bg-[var(--semantic-transparent-weak)] ${className}`}>
