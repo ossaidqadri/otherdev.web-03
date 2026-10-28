@@ -14,7 +14,7 @@ const groups = await getServices(Astro.currentLocale);
 const STEP = 75;
 ---
 
-<Layout title="Services | Other Dev" description={seo.services!}>
+<Layout page="services" description={seo.services!}>
   <main id="main">
     {/* Headline and sub fade up word by word on load, one 75ms stagger through both, as on the reference. */}
     <section class="services-hero pt-[var(--container-navpadding)]" data-navbar-theme="dark">

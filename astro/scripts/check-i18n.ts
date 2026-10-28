@@ -58,6 +58,30 @@ function compare(en: unknown, tr: unknown, path: string, key: string, problems: 
   }
 }
 
+// Legal pages are markdown: same number of sections, same date, and every email address, domain and number kept.
+const legalDir = (locale: string) => join(content, "legal", locale);
+const sameness = (text: string) => ({
+  updated: /"updated":\s*"([^"]+)"/.exec(text)?.[1],
+  sections: (text.match(/^## /gm) ?? []).length,
+  tokens: [...new Set(text.match(/[\w.-]+@[\w.-]+\.\w+|\b[\w-]+\.(?:com|org|pk)\b|\b\d+\b/g) ?? [])].sort(),
+});
+
+function checkLegal(locale: string, problems: string[]) {
+  for (const name of existsSync(legalDir(defaultLocale)) ? readdirSync(legalDir(defaultLocale)) : []) {
+    const path = join(legalDir(locale), name);
+    if (!existsSync(path)) {
+      problems.push(`legal/${locale}/${name}: file missing`);
+      continue;
+    }
+    const en = sameness(readFileSync(join(legalDir(defaultLocale), name), "utf8"));
+    const tr = sameness(readFileSync(path, "utf8"));
+    if (en.updated !== tr.updated) problems.push(`legal/${locale}/${name}: updated is ${tr.updated}, English has ${en.updated}`);
+    if (en.sections !== tr.sections) problems.push(`legal/${locale}/${name}: ${tr.sections} sections, English has ${en.sections}`);
+    const lost = en.tokens.filter((t) => !tr.tokens.includes(t));
+    if (lost.length) problems.push(`legal/${locale}/${name}: lost ${lost.join(", ")}`);
+  }
+}
+
 const requested = process.argv.slice(2);
 const targets = (requested.length ? requested : localeCodes).filter((l) => l !== defaultLocale);
 const source = files(defaultLocale);
@@ -76,6 +100,7 @@ for (const locale of targets) {
     if (!trPath) problems.push(`${trName}: file missing`);
     else compare(readJson(enPath), readJson(trPath), trName, "", problems);
   }
+  checkLegal(locale, problems);
   console.log(problems.length ? `${locale}: ${problems.length} problem(s)\n  ${problems.join("\n  ")}` : `${locale}: ok`);
   failed ||= problems.length > 0;
 }

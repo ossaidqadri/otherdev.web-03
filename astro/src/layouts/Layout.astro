@@ -9,7 +9,10 @@ import { getSite } from "@/lib/site";
 import "@/styles/global.css";
 
 interface Props {
-  title: string;
+  /** Explicit <title>, for pages named after their content. Otherwise `page` picks one from the locale's site copy. */
+  title?: string;
+  /** Route name in site.titles (home, about, ...). */
+  page?: string;
   description: string;
   image?: string;
   imageAlt?: string;
@@ -19,10 +22,12 @@ interface Props {
   jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, image, imageAlt, type, published, noindex, jsonLd } = Astro.props;
+const { title: explicitTitle, page, description, image, imageAlt, type, published, noindex, jsonLd } = Astro.props;
 const locale = toLocale(Astro.currentLocale);
 const { lang, dir, latin } = locales[locale];
 const site = await getSite(locale);
+const title = explicitTitle ?? (page ? site.titles[page] : undefined);
+if (!title) throw new Error(`Layout needs a title, or a page key that exists in site.titles (got ${page})`);
 // Routes under [...locale] exist once per language.
 const translated = Astro.routePattern.startsWith("/[...locale]");
 // Home only; profile links come from the footer's social list (WhatsApp is a chat link, not a profile).

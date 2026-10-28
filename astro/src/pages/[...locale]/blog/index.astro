@@ -17,7 +17,7 @@ const date = new Intl.DateTimeFormat(langOf(Astro.currentLocale), { dateStyle: "
 const [featured, ...rest] = (await getCollection("blog")).sort((a, b) => +b.data.publishedAt - +a.data.publishedAt);
 ---
 
-<Layout title="Blog | Other Dev" description={seo.blog!}>
+<Layout page="blog" description={seo.blog!}>
   <main id="main">
     <section class="blog-hero pt-[var(--container-navpadding)]" data-navbar-theme="dark">
       <div class="site-container py-[var(--section-padding-lg)]">

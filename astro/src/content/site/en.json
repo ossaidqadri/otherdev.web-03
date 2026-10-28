@@ -7,6 +7,17 @@
     "services": "Brand, product and technology expertise, all under one roof.",
     "blog": "Thoughts, insights, and updates from the Other Dev studio on web development, design, and digital platforms."
   },
+  "titles": {
+    "home": "Other Dev | Digital Platforms For Pioneering Creatives",
+    "about": "About | Other Dev",
+    "approach": "Approach | Other Dev",
+    "contact": "Contact | Other Dev",
+    "newsletter": "Newsletter | Other Dev",
+    "services": "Services | Other Dev",
+    "work": "Work | Other Dev",
+    "blog": "Blog | Other Dev",
+    "notFound": "Not found | Other Dev"
+  },
   "nav": [
     {
       "label": "Work",

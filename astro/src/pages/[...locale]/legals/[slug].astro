@@ -1,25 +1,40 @@
 ---
 import { getCollection, render } from "astro:content";
 import Words from "@/components/Words.astro";
+import { defaultLocale, isLocale, langOf } from "@/i18n/locales";
 import Layout from "@/layouts/Layout.astro";
 import { getSite } from "@/lib/site";
 import { Separator } from "@/lib/components/ui/separator";
 
+// One page per locale and slug. A locale without its own text shows the English entry under its own URL.
 export async function getStaticPaths() {
-  return (await getCollection("legal")).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+  const entries = await getCollection("legal");
+  const slugs = entries.filter((e) => e.id.startsWith(`${defaultLocale}/`)).map((e) => e.id.slice(defaultLocale.length + 1));
+  const codes = (await getCollection("site")).map((e) => e.id).filter(isLocale);
+  return codes.flatMap((locale) =>
+    slugs.map((slug) => {
+      const entry = entries.find((e) => e.id === `${locale}/${slug}`) ?? entries.find((e) => e.id === `${defaultLocale}/${slug}`);
+      return { params: { locale: locale === defaultLocale ? undefined : locale, slug }, props: { entry } };
+    }),
+  );
 }
 
 const { entry } = Astro.props;
+if (!entry) throw new Error("legal entry missing");
 const { ui } = await getSite(Astro.currentLocale);
-const { title, updated } = entry.data;
+const { title, updated, description } = entry.data;
 const { Content } = await render(entry);
 const STEP = 75;
-// "October 21st, 2025", the reference's format.
+const lang = langOf(Astro.currentLocale);
+// English keeps the reference's "October 21st, 2025"; other languages use their own long date.
 const ordinal = { one: "st", two: "nd", few: "rd", other: "th" }[new Intl.PluralRules("en", { type: "ordinal" }).select(updated.getUTCDate()) as "one" | "two" | "few" | "other"];
-const date = `${new Intl.DateTimeFormat("en", { month: "long", timeZone: "UTC" }).format(updated)} ${updated.getUTCDate()}${ordinal}, ${updated.getUTCFullYear()}`;
+const date =
+  lang === "en"
+    ? `${new Intl.DateTimeFormat("en", { month: "long", timeZone: "UTC" }).format(updated)} ${updated.getUTCDate()}${ordinal}, ${updated.getUTCFullYear()}`
+    : new Intl.DateTimeFormat(lang, { dateStyle: "long", timeZone: "UTC" }).format(updated);
 ---
 
-<Layout title={`${title} | Other Dev`} description={`${title} for otherdev.com`}>
+<Layout title={`${title} | Other Dev`} description={description ?? `${title} for otherdev.com`}>
   <main id="main">
     {/* "Legal" over the policy's title, fading up word by word like the services hero. */}
     <section class="pt-[var(--container-navpadding)]" data-navbar-theme="dark">

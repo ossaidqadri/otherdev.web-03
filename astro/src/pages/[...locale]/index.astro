@@ -13,7 +13,7 @@ import { getSite } from "@/lib/site";
 const { seo } = await getSite(Astro.currentLocale);
 ---
 
-<Layout title="Other Dev | Digital Platforms For Pioneering Creatives" description={seo.home!}>
+<Layout page="home" description={seo.home!}>
   <main id="main">
     <Hero />
     <Clients />

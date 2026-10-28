@@ -7,6 +7,17 @@
     "services": "خبرة في العلامات التجارية والمنتجات والتقنية، كل ذلك تحت سقف واحد.",
     "blog": "أفكار ورؤى وأخبار من استوديو Other Dev حول تطوير المواقع والتصميم والمنصات الرقمية."
   },
+  "titles": {
+    "home": "Other Dev | منصات رقمية لصنّاع الإبداع الرواد",
+    "about": "من نحن | Other Dev",
+    "approach": "منهجنا | Other Dev",
+    "contact": "تواصل معنا | Other Dev",
+    "newsletter": "النشرة البريدية | Other Dev",
+    "services": "الخدمات | Other Dev",
+    "work": "الأعمال | Other Dev",
+    "blog": "المدونة | Other Dev",
+    "notFound": "الصفحة غير موجودة | Other Dev"
+  },
   "nav": [
     { "label": "الأعمال", "href": "/work" },
     { "label": "الخدمات", "href": "/services" },

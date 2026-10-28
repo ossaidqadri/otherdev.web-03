@@ -7,6 +7,17 @@
     "services": "品牌、产品与技术专长，一站式解决。",
     "blog": "Other Dev 工作室关于网页开发、设计与数字平台的思考、洞察与最新动态。"
   },
+  "titles": {
+    "home": "Other Dev | 为开创性创意人打造数字平台",
+    "about": "关于我们 | Other Dev",
+    "approach": "我们的方法 | Other Dev",
+    "contact": "联系我们 | Other Dev",
+    "newsletter": "订阅通讯 | Other Dev",
+    "services": "服务 | Other Dev",
+    "work": "作品 | Other Dev",
+    "blog": "博客 | Other Dev",
+    "notFound": "页面未找到 | Other Dev"
+  },
   "nav": [
     { "label": "作品", "href": "/work" },
     { "label": "服务", "href": "/services" },

@@ -1,9 +1,9 @@
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { type Locale, defaultLocale } from "@/i18n/locales";
 
-// Case studies, posts and legal pages exist in English only, so their links never take a locale prefix.
-// Once an entry has a translation this becomes a lookup in the content instead of a list.
-const untranslatedRoutes = /^\/(work|blog|legals)\/./;
+// Case studies and posts exist in English only, so their links never take a locale prefix. Legal pages are translated
+// (and fall back to English text under the locale's URL). Once an entry has a translation this becomes a lookup in the content.
+const untranslatedRoutes = /^\/(work|blog)\/./;
 
 /** Prefixes a site-relative path with the locale; external links, anchors and English-only entries pass through. */
 export function localize(href: string, locale: Locale): string {

@@ -7,6 +7,17 @@
     "services": "Experiencia en marca, producto y tecnología, todo bajo un mismo techo.",
     "blog": "Ideas, perspectivas y novedades del estudio Other Dev sobre desarrollo web, diseño y plataformas digitales."
   },
+  "titles": {
+    "home": "Other Dev | Plataformas digitales para creativos pioneros",
+    "about": "Nosotros | Other Dev",
+    "approach": "Nuestro enfoque | Other Dev",
+    "contact": "Contacto | Other Dev",
+    "newsletter": "Boletín | Other Dev",
+    "services": "Servicios | Other Dev",
+    "work": "Trabajos | Other Dev",
+    "blog": "Blog | Other Dev",
+    "notFound": "Página no encontrada | Other Dev"
+  },
   "nav": [
     { "label": "Trabajos", "href": "/work" },
     { "label": "Servicios", "href": "/services" },

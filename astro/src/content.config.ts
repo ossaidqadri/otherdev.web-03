@@ -63,6 +63,8 @@ const site = defineCollection({
     description: z.string(),
     // Meta description per page, keyed by route name (home, work, services, blog).
     seo: z.record(z.string(), z.string()),
+    // <title> per page, keyed by route name (home, about, approach, contact, newsletter, services, work, blog, notFound).
+    titles: z.record(z.string(), z.string()),
     nav: z.array(link),
     cta: link,
     pill: z.array(z.object({ label: z.string(), target: z.string() })),
@@ -171,10 +173,10 @@ const services = defineCollection({
   }),
 });
 
-// Legal pages, one markdown file each.
+// Legal pages, one markdown file per page and locale in src/content/legal/<locale>/. The id is `<locale>/<slug>`.
 const legal = defineCollection({
-  loader: glob({ base: "./src/content/legal", pattern: "*.md" }),
-  schema: z.object({ title: z.string(), updated: z.coerce.date() }),
+  loader: glob({ base: "./src/content/legal", pattern: "*/*.md", generateId: ({ entry }) => entry.replace(/\.md$/, "") }),
+  schema: z.object({ title: z.string(), updated: z.coerce.date(), description: z.string().optional() }),
 });
 
 export const collections = { projects, blog, clients, site, pages, services, legal };

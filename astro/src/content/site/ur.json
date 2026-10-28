@@ -7,6 +7,17 @@
     "services": "برانڈ، پروڈکٹ اور ٹیکنالوجی کی مہارت، سب ایک چھت تلے۔",
     "blog": "Other Dev اسٹوڈیو کی طرف سے ویب ڈیولپمنٹ، ڈیزائن اور ڈیجیٹل پلیٹ فارمز پر خیالات، بصیرتیں اور تازہ اطلاعات۔"
   },
+  "titles": {
+    "home": "Other Dev | جدت پسند تخلیق کاروں کے لیے ڈیجیٹل پلیٹ فارمز",
+    "about": "ہمارے بارے میں | Other Dev",
+    "approach": "ہمارا طریقۂ کار | Other Dev",
+    "contact": "رابطہ | Other Dev",
+    "newsletter": "نیوز لیٹر | Other Dev",
+    "services": "خدمات | Other Dev",
+    "work": "کام | Other Dev",
+    "blog": "بلاگ | Other Dev",
+    "notFound": "صفحہ نہیں ملا | Other Dev"
+  },
   "nav": [
     { "label": "کام", "href": "/work" },
     { "label": "خدمات", "href": "/services" },
