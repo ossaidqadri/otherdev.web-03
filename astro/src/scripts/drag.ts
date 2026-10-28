@@ -1,4 +1,4 @@
-// Process cards: Embla with its defaults (snap to the nearest card, trimmed ends, no loop, 1:1 drag),
+// Process cards: Embla with its defaults (snap to the nearest card, trimmed ends, no loop, 1:1 drag; direction follows the page's dir),
 // which is what the reference's carousel does when dragged and released. Embla measures every slide when
 // it starts, which forces a layout, so it is fetched and started when the carousel is a viewport away
 // rather than during page load.
@@ -8,7 +8,7 @@ if (viewport) {
     ([entry]) => {
       if (!entry?.isIntersecting) return;
       io.disconnect();
-      void import("embla-carousel").then(({ default: EmblaCarousel }) => EmblaCarousel(viewport));
+      void import("embla-carousel").then(({ default: EmblaCarousel }) => EmblaCarousel(viewport, { direction: getComputedStyle(viewport).direction === "rtl" ? "rtl" : "ltr" }));
     },
     { rootMargin: "100% 0px" },
   );

@@ -2,9 +2,10 @@
 // Exits 1 on any problem. English is the source of truth; a translator may change wording, never structure.
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { defaultLocale, localeCodes } from "../src/i18n/locales";
 
-const content = join(import.meta.dir, "../src/content");
+const content = fileURLToPath(new URL("../src/content", import.meta.url));
 
 // Keys whose value is data, not wording: links, ids, enums, numbers, contacts, people and brand names.
 const KEEP = new Set(["page", "tone", "href", "src", "url", "mapUrl", "timezone", "phone", "copy", "id", "order", "width", "height", "featured", "target", "name", "image"]);
@@ -27,14 +28,23 @@ function files(locale: string): Record<string, string> {
 
 function compare(en: unknown, tr: unknown, path: string, key: string, problems: string[]) {
   if (Array.isArray(en)) {
-    if (!Array.isArray(tr)) return problems.push(`${path}: expected an array`);
+    if (!Array.isArray(tr)) {
+      problems.push(`${path}: expected an array`);
+      return;
+    }
     if (en.length !== tr.length) problems.push(`${path}: ${tr.length} items, English has ${en.length}`);
-    en.forEach((v, i) => i < tr.length && compare(v, tr[i], `${path}[${i}]`, key, problems));
+    for (let i = 0; i < Math.min(en.length, tr.length); i++) compare(en[i], tr[i], `${path}[${i}]`, key, problems);
   } else if (en !== null && typeof en === "object") {
-    if (tr === null || typeof tr !== "object" || Array.isArray(tr)) return problems.push(`${path}: expected an object`);
+    if (tr === null || typeof tr !== "object" || Array.isArray(tr)) {
+      problems.push(`${path}: expected an object`);
+      return;
+    }
     const e = en as Record<string, unknown>;
     const t = tr as Record<string, unknown>;
-    for (const k of Object.keys(e)) k in t ? compare(e[k], t[k], `${path}.${k}`, k, problems) : problems.push(`${path}.${k}: missing`);
+    for (const k of Object.keys(e)) {
+      if (k in t) compare(e[k], t[k], `${path}.${k}`, k, problems);
+      else problems.push(`${path}.${k}: missing`);
+    }
     for (const k of Object.keys(t)) if (!(k in e)) problems.push(`${path}.${k}: not in English`);
   } else if (typeof en !== typeof tr) {
     problems.push(`${path}: expected ${typeof en}, got ${typeof tr}`);

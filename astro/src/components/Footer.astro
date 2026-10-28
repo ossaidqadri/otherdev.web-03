@@ -1,5 +1,6 @@
 ---
 import CopyButton from "@/components/CopyButton.astro";
+import LanguageSwitcher from "@/components/LanguageSwitcher.astro";
 import { Button } from "@/lib/components/ui/button";
 import { getSite } from "@/lib/site";
 
@@ -16,7 +17,7 @@ const year = String(new Date().getFullYear());
     <div class="site-container section" style="padding-block: var(--section-padding-md)">
       <a href={f.cta.href} class="group type-heading-l inline-flex items-center gap-1">
         {f.cta.label}
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-[0.8em] transition-transform duration-300 group-hover:translate-x-1 group-focus-visible:translate-x-1" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-[0.8em] transition-transform duration-300 group-hover:translate-x-1 group-focus-visible:translate-x-1 rtl:-scale-x-100 rtl:group-hover:-translate-x-1 rtl:group-focus-visible:-translate-x-1" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
       </a>
       <ul class="mt-[calc(4rem*var(--scale))] grid grid-cols-2 md:grid-cols-4">
         {f.offices.map((o) => (
@@ -30,6 +31,7 @@ const year = String(new Date().getFullYear());
           </li>
         ))}
       </ul>
+      <div class="mt-[calc(4rem*var(--scale))]"><LanguageSwitcher /></div>
     </div>
   </section>
 
@@ -53,7 +55,7 @@ const year = String(new Date().getFullYear());
         {/* The mark stands in for the wordmark, as New Genre's flower does; same path as favicon.svg. */}
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label={name} class="size-8 shrink-0 fill-current"><path fill-rule="evenodd" d="M34 4a30 30 0 1 0 0 60 30 30 0 0 0 0-60Zm0 16a14 14 0 1 1 0 28 14 14 0 0 1 0-28ZM64 64h30a30 30 0 0 1 0 60H64Zm16 16v28h14a14 14 0 0 0 0-28Z" /></svg>
         {/* Chips as on the reference: a 29px tap target with the nav wash on hover; -mr keeps the text on the margin. */}
-        <ul class="-mr-2.5 flex gap-2">
+        <ul class="-me-2.5 flex gap-2">
           {f.social.map((s) => (
             <li>
               <Button href={s.href} rel="noopener noreferrer" target="_blank" variant="nav" size="nav">
@@ -63,8 +65,8 @@ const year = String(new Date().getFullYear());
           ))}
         </ul>
       </nav>
-      <p class="type-body-button-s absolute bottom-28 left-[calc(var(--container-padding)+10px)] z-10 md:bottom-10">{f.legal} <time datetime={year} data-year>{year}</time></p>
-      <ul class="type-body-button-s absolute right-[var(--container-padding)] bottom-[calc(7rem-6px)] z-10 flex gap-2 md:bottom-[calc(2.5rem-6px)]">
+      <p class="type-body-button-s absolute bottom-28 start-[calc(var(--container-padding)+10px)] z-10 md:bottom-10">{f.legal} <time datetime={year} data-year>{year}</time></p>
+      <ul class="type-body-button-s absolute end-[var(--container-padding)] bottom-[calc(7rem-6px)] z-10 flex gap-2 md:bottom-[calc(2.5rem-6px)]">
         {f.legalLinks.map((l) => <li><Button href={l.href} variant="nav" size="nav">{l.label}</Button></li>)}
       </ul>
     </div>

@@ -20,10 +20,10 @@ const hoverImage = (p: (typeof projects)[number]) => p.data.gallery.find((g) => 
   <div class="site-container">
     <div class="flex w-full flex-col items-start gap-2 md:flex-row md:items-end md:gap-8">
       <div class="flex-1"><h2 class="type-heading-l max-w-[64rem]">{work.heading}</h2></div>
-      <Button href={work.all.href} variant="nav" size="nav" class="type-heading-l -ml-2.5 rounded-lg md:ml-0">
+      <Button href={work.all.href} variant="nav" size="nav" class="type-heading-l -ms-2.5 rounded-lg md:ms-0">
         <span class="inline-flex items-center gap-1 opacity-60">
           <span>{work.all.label}</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-8 translate-y-[0.03em]" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-8 translate-y-[0.03em] rtl:-scale-x-100" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
         </span>
       </Button>
     </div>
@@ -33,7 +33,7 @@ const hoverImage = (p: (typeof projects)[number]) => p.data.gallery.find((g) => 
       {projects.map((p) => (
         <li class="border-border border-t py-12 last:border-b md:py-16">
           <a href={`/work/${p.id}`} class="group flex w-full flex-col gap-6 transition-opacity duration-200 md:grid md:h-[490px] md:grid-cols-3 md:gap-4">
-            <div class="flex flex-col justify-between gap-6 md:gap-8 md:pr-16">
+            <div class="flex flex-col justify-between gap-6 md:gap-8 md:pe-16">
               <div>
                 <h3 class="type-heading-l">{p.data.title}</h3>
                 {p.data.excerpt && <p class="type-heading-s mt-3 opacity-60">{p.data.excerpt}</p>}

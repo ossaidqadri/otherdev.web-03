@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { isLocale, localeCodes, locales, toLocale } from "@/i18n/locales";
+import { stripLocale } from "@/i18n/url";
+import { getSite } from "@/lib/site";
+
+// One link per language that has copy, each named in its own language. Pages under [...locale] link to the same
+// page in the other language; English-only pages (case studies, posts, legal) link to each language's home.
+const locale = toLocale(Astro.currentLocale);
+const { ui } = await getSite(locale);
+const path = Astro.routePattern.startsWith("/[...locale]") ? stripLocale(Astro.url.pathname, locale) : "/";
+const items = (await getCollection("site"))
+  .map((entry) => entry.id)
+  .filter(isLocale)
+  .sort((a, b) => localeCodes.indexOf(a) - localeCodes.indexOf(b))
+  .map((code) => {
+    const { lang } = locales[code];
+    return { code, lang, name: new Intl.DisplayNames([lang], { type: "language" }).of(lang) ?? code, href: getRelativeLocaleUrl(code, path) };
+  });
+---
+
+<nav aria-label={ui.language}>
+  <ul class="type-body-button-s flex flex-wrap gap-x-5 gap-y-2">
+    {items.map((i) => (
+      <li>
+        <a href={i.href} lang={i.lang} hreflang={i.lang} aria-current={i.code === locale ? "page" : undefined} class="text-white/50 transition-colors duration-200 hover:text-white aria-[current=page]:text-white">{i.name}</a>
+      </li>
+    ))}
+  </ul>
+</nav>

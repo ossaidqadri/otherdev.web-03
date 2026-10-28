@@ -77,7 +77,7 @@ const videoShare = 5 / units;
               {approach.projectsHeading}{" "}
               <span class="relative inline-block align-top">
                 {partners.map((p, i) => (
-                  <span class:list={["inline-block opacity-0", i > 0 && "absolute top-0 left-0"]} data-name>
+                  <span class:list={["inline-block opacity-0", i > 0 && "absolute top-0 start-0"]} data-name>
                     <Words as="span" text={p.name} step={40} class="inline-flex gap-x-[0.25em]" word="inline-block" />
                   </span>
                 ))}
@@ -85,7 +85,7 @@ const videoShare = 5 / units;
             </h2>
             <div class="relative">
               {partners.map((p, i) => (
-                <div class:list={["max-w-none opacity-0 md:ml-[var(--body-indent)] md:max-w-[32rem]", i > 0 && "absolute top-0 left-0"]} data-line>
+                <div class:list={["max-w-none opacity-0 md:ms-[var(--body-indent)] md:max-w-[32rem]", i > 0 && "absolute top-0 start-0"]} data-line>
                   <Words text={p.line} step={40} class="type-heading-m gap-x-[0.25em]" word="inline-block" />
                 </div>
               ))}

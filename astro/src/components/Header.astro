@@ -15,11 +15,11 @@ const home = localize("/", locale);
 
 <header class="header fixed inset-x-0 top-0 z-50 flex items-center justify-between px-[var(--container-padding)] py-6 md:py-8">
   <a href={home} class="wordmark" aria-label={`${site.name} home`}>{site.name}</a>
-  <nav aria-label={site.ui.mainNav} class="type-body-button-m -mr-2.5 flex items-center gap-2">
+  <nav aria-label={site.ui.mainNav} class="type-body-button-m -me-2.5 flex items-center gap-2">
     {site.nav.map((l) => <Button href={l.href} variant="nav" size="nav" class="hidden md:inline-flex">{l.label}</Button>)}
     <Button href={site.cta.href} variant="nav" size="nav">{site.cta.label}</Button>
     {/* Three 1px bars, 20px wide, 5.5px apart, as on the reference. */}
-    <Button popovertarget="menu" aria-label={site.ui.menuOpen} variant="nav" size="icon-nav" class="mr-2.5 size-5 flex-col gap-[5.5px] md:hidden">
+    <Button popovertarget="menu" aria-label={site.ui.menuOpen} variant="nav" size="icon-nav" class="me-2.5 size-5 flex-col gap-[5.5px] md:hidden">
       {[0, 1, 2].map(() => <span class="h-px w-5 bg-current" aria-hidden="true"></span>)}
     </Button>
   </nav>
@@ -30,9 +30,9 @@ const home = localize("/", locale);
   {/* Same row as the header, so opening the menu only turns the bars into an X. */}
   <div class="absolute inset-x-0 top-0 z-10 flex items-center justify-between px-[var(--container-padding)] py-6">
     <a href={home} class="wordmark" aria-label={`${site.name} home`}>{site.name}</a>
-    <div class="type-body-button-m -mr-2.5 flex items-center gap-2">
+    <div class="type-body-button-m -me-2.5 flex items-center gap-2">
       <Button href={site.cta.href} variant="nav" size="nav">{site.cta.label}</Button>
-      <Button popovertarget="menu" popovertargetaction="hide" aria-label={site.ui.menuClose} variant="nav" size="icon-nav" class="mr-2.5 size-5">
+      <Button popovertarget="menu" popovertargetaction="hide" aria-label={site.ui.menuClose} variant="nav" size="icon-nav" class="me-2.5 size-5">
         <svg width="20" height="20" class="size-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M2.93 2.93l14.14 14.14M17.07 2.93L2.93 17.07" /></svg>
       </Button>
     </div>

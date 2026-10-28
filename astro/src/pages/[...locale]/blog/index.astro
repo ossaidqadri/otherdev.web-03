@@ -32,7 +32,7 @@ const [featured, ...rest] = (await getCollection("blog")).sort((a, b) => +b.data
           <Separator />
           {/* Hover: the date shows and the excerpt slides up from below the title. */}
           <a href={`/blog/${featured.id}`} data-cursor-label={ui.readMore} class="group hidden w-full gap-4 md:flex md:flex-row md:items-stretch">
-            <div class="flex flex-1 flex-col justify-between gap-[var(--section-padding-sm)] pr-16">
+            <div class="flex flex-1 flex-col justify-between gap-[var(--section-padding-sm)] pe-16">
               <h2 class="type-heading-xl max-w-[40rem]">{featured.data.title}</h2>
               <div class="flex max-w-[40rem] flex-col items-start">
                 <p class="type-body-paragraph-xs text-[var(--semantic-text-secondary)] opacity-0 transition-opacity duration-250 ease-out group-hover:opacity-100 group-focus-visible:opacity-100">{date.format(featured.data.publishedAt)}</p>

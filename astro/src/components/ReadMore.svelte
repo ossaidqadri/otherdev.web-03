@@ -12,7 +12,7 @@
 </script>
 
 <Collapsible.Root bind:open class="flex w-full flex-col md:flex-row">
-	<div class="flex flex-1 flex-col items-start gap-8 md:sticky md:top-[var(--container-navpadding)] md:self-start md:pr-[var(--card-padding)]">
+	<div class="flex flex-1 flex-col items-start gap-8 md:sticky md:top-[var(--container-navpadding)] md:self-start md:pe-[var(--card-padding)]">
 		{#if tags}
 			<div class="flex flex-wrap items-center gap-1">
 				{@render tags()}

@@ -221,7 +221,7 @@
 /* The type scale is tuned for Latin: -0.02em tracking and 1.05 leading. Scripts that are not Latin (data-latin is set
    from src/i18n/locales.ts) get neutral tracking, which Arabic joining and Indic conjuncts need, and room for their marks.
    Missing glyphs in the brand faces fall through to the system font for the page's lang. */
-html:not([data-latin]) :is([class*="type-"], .wordmark) {
+html:not([data-latin]) [class*="type-"] {
 	letter-spacing: 0;
 	line-height: 1.4;
 }

@@ -16,7 +16,7 @@ const lead = (s = "") => s.replace(/\.\.\.$/, "").split(/(?<=\.)\s/)[0] ?? "";
     {/* Cropped to the card's 4:5 at build, so a landscape original is not downloaded to show a portrait slice. */}
     <Image src={p.data.cover.src} alt={p.data.cover.alt} width={960} height={1200} widths={[480, 720, 960]} sizes="(min-width: 1024px) 427px, (min-width: 768px) 50vw, 100vw" fit="cover" position="top" loading="lazy" class="absolute inset-0 size-full object-cover object-top" />
   </div>
-  <div class="flex flex-col pt-4 pr-[var(--card-padding)] pb-[var(--card-padding)]">
+  <div class="flex flex-col pt-4 pe-[var(--card-padding)] pb-[var(--card-padding)]">
     <h3 class="type-heading-m">{p.data.title}</h3>
     <p class="type-heading-m opacity-40">
       {lead(p.data.excerpt).split(" ").map((w, i) => (

@@ -22,7 +22,7 @@ const { ui } = await getSite(Astro.currentLocale);
         <Input variant="soft" type="email" placeholder={ui.emailPlaceholder} aria-label={newsletter.fields.email} class="type-body-button-m h-auto flex-1 rounded-[var(--radius-sm)] bg-[var(--semantic-transparent-weak)] p-4 placeholder:opacity-40 sm:min-w-[256px]" />
         <Button type="submit" variant="glass" size="pill" class="type-body-button-m gap-1 [--pill-bg:var(--semantic-transparent-weak)] [--pill-fg:var(--semantic-text-primary)] disabled:opacity-50">
           {ui.signUp}
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 rtl:-scale-x-100" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
         </Button>
       </fieldset>
       <p class="type-body-paragraph-xs max-w-[415px] opacity-60">{newsletter.note}</p>

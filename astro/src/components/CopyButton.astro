@@ -13,6 +13,6 @@ const { value, dim = false, class: className } = Astro.props;
 ---
 
 <Button variant="plain" size="bare" data-copy={value} class:list={["group relative inline-block cursor-pointer text-left whitespace-normal", dim && "opacity-40 transition-opacity hover:opacity-100 focus-visible:opacity-100", className]}>
-  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true" class="pointer-events-none absolute top-1/2 right-full mr-[0.375em] size-[0.875em] -translate-y-1/2 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"><path d="M7 6V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-3v3c0 .55-.45 1-1 1H4a1 1 0 0 1-1-1l.003-14c0-.552.45-1 1.006-1H7Zm-1.998 2L5 20h10V8H5.002ZM9 6h8v10h2V4H9v2Z" /></svg>
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true" class="pointer-events-none absolute top-1/2 end-full me-[0.375em] size-[0.875em] -translate-y-1/2 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"><path d="M7 6V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-3v3c0 .55-.45 1-1 1H4a1 1 0 0 1-1-1l.003-14c0-.552.45-1 1.006-1H7Zm-1.998 2L5 20h10V8H5.002ZM9 6h8v10h2V4H9v2Z" /></svg>
   {value}
 </Button>
