@@ -54,14 +54,9 @@ export default defineConfig({
   integrations: [
     svelte(),
     // 404 is already left out by default; the filter keeps it that way if the page name changes.
-    // Machine-translated locales stay out until a native speaker has reviewed them (they are noindex too).
     sitemap({
-      filter: (page) => {
-        const first = new URL(page).pathname.split("/")[1] ?? "";
-        const unreviewed = first in locales && !locales[/** @type {keyof typeof locales} */ (first)].reviewed;
-        return !/\/404\/?$/.test(page) && !unreviewed;
-      },
-      i18n: { defaultLocale, locales: Object.fromEntries(localeCodes.filter((c) => locales[c].reviewed).map((c) => [c, locales[c].lang])) },
+      filter: (page) => !/\/404\/?$/.test(page),
+      i18n: { defaultLocale, locales: Object.fromEntries(localeCodes.map((c) => [c, locales[c].lang])) },
     }),
   ],
   vite: {

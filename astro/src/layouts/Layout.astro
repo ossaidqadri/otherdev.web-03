@@ -21,9 +21,9 @@ interface Props {
 
 const { title, description, image, imageAlt, type, published, noindex, jsonLd } = Astro.props;
 const locale = toLocale(Astro.currentLocale);
-const { lang, dir, reviewed } = locales[locale];
+const { lang, dir } = locales[locale];
 const site = await getSite(locale);
-// Routes under [...locale] exist once per language. A machine draft stays out of search until a native speaker has reviewed it.
+// Routes under [...locale] exist once per language.
 const translated = Astro.routePattern.startsWith("/[...locale]");
 // Home only; profile links come from the footer's social list (WhatsApp is a chat link, not a profile).
 const organization = {
@@ -50,7 +50,7 @@ const organization = {
       imageAlt={imageAlt}
       type={type}
       published={published}
-      noindex={noindex || !reviewed}
+      noindex={noindex}
       translated={translated}
       jsonLd={jsonLd ?? (Astro.routePattern === "/[...locale]" ? organization : undefined)}
     />
