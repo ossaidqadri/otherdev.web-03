@@ -1,0 +1,32 @@
+{
+  "groups": [
+    {
+      "id": "strategy",
+      "order": 1,
+      "title": "Estrategia",
+      "intro": "Lideramos en estrategia, investigación y posicionamiento para descubrir oportunidades, definir direcciones claras y alinearnos en torno a una visión.",
+      "items": ["Naming", "Arquitectura de marca", "Voz de marca", "Sprints de ideación", "Consultoría de marca"]
+    },
+    {
+      "id": "design",
+      "order": 2,
+      "title": "Diseño",
+      "intro": "Creamos identidades de marca, sistemas de diseño y contenido que convierten una estrategia sin brillo en un trabajo que define el mercado.",
+      "items": ["Identidad de marca", "Sistemas de diseño", "Diseño digital", "Sitio web", "UI/UX", "Dirección de arte", "Ilustración", "Diseño 3D", "Motion", "Diseño impreso", "Diseño de iconos"]
+    },
+    {
+      "id": "development",
+      "order": 3,
+      "title": "Desarrollo",
+      "intro": "Desarrollamos productos, sitios y experiencias robustos y escalables que dan vida a las ideas y están listos para generar un impacto real.",
+      "items": ["Front-end", "Back-end", "React", "Webflow", "NextJS", "Framer", "Svelte", "CMS", "Comercio electrónico", "Integraciones", "Pruebas y auditorías", "Interacciones a medida"]
+    },
+    {
+      "id": "experience",
+      "order": 4,
+      "title": "Experiencia",
+      "intro": "Optimizamos, hacemos crecer e innovamos para evolucionar con nuevas oportunidades y ofrecer valor a largo plazo.",
+      "items": ["Activaciones de marca", "Marketing", "Campañas", "Eventos", "Publicidad exterior", "Packaging", "Merchandising", "Gestión de marca"]
+    }
+  ]
+}

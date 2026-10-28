@@ -1,0 +1,5 @@
+{
+  "page": "notFound",
+  "heading": "Esta página no está aquí.",
+  "link": { "label": "Volver al inicio", "href": "/" }
+}

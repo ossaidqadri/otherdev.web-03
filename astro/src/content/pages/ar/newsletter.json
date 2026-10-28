@@ -1,0 +1,12 @@
+{
+  "page": "newsletter",
+  "heading": "لنبقَ على تواصل.",
+  "body": "اختر ما تريد أن تسمع عنه، وسنرسل لك ما يستحق فقط.",
+  "interestsLabel": "أريد أن أسمع عن...",
+  "interests": ["أخبار الاستوديو", "وظائف شاغرة", "فرص عمل"],
+  "consent": "لن نشارك بياناتك أبداً. بالاشتراك، توافق على تلقي رسائل من Other Dev. اطّلع على",
+  "note": "التسجيل يفتح قريباً.",
+  "privacy": { "label": "سياسة الخصوصية", "href": "/legals/privacy" },
+  "fields": { "firstName": "الاسم الأول", "lastName": "اسم العائلة", "email": "البريد الإلكتروني" },
+  "examples": { "firstName": "أحمد", "lastName": "علي", "email": "jane@company.com" }
+}

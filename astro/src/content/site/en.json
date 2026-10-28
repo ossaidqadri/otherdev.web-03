@@ -105,6 +105,7 @@
     "legal": "© Other Dev"
   },
   "ui": {
+    "language": "Language",
     "menuOpen": "Open menu",
     "menuClose": "Close menu",
     "mainNav": "Main",

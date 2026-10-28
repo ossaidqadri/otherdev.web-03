@@ -1,0 +1,18 @@
+{
+  "page": "about",
+  "heading": "Other Dev es un catalizador de ideas disruptivas a través de la innovación creativa. Un estudio de optimistas radicales que crea nuevas identidades, sistemas, experiencias y géneros.",
+  "body": "Con sede en Karachi, somos un estudio digital de servicio completo que diseña y desarrolla desde cero software empresarial, infraestructura de IoT y en la nube, plataformas web, experiencias en Shopify, productos con AI y soluciones digitales a medida, con el foco puesto en dar vida a las ideas mediante un diseño cuidadoso.",
+  "principlesHeading": "Nos guían principios en los que creemos y que vivimos día a día.",
+  "principles": [
+    { "title": "Crear sin miedo", "body": "Buscar la excelencia en la ejecución y la atención al detalle." },
+    { "title": "Defensores de la apertura", "body": "Trabajar abiertamente con otros para lograr mejores resultados." },
+    { "title": "Curiosidad permanente", "body": "Hacer aportes significativos que impulsen el progreso." },
+    { "title": "Pensar en nuevo", "body": "Guiar, influir y aportar claridad al camino que tenemos por delante." },
+    { "title": "El futuro primero", "body": "Mantenernos abiertos, adaptables y siempre dispuestos a aprender." }
+  ],
+  "teamHeading": "Somos un equipo multidisciplinario de diseñadores, desarrolladores y estrategas curiosos.",
+  "team": [
+    { "name": "Kabeer Jaffri", "role": "Cofundador", "photo": { "src": "https://media.otherdev.com/site/team/kabeer.webp", "alt": "Kabeer Jaffri", "width": 900, "height": 1126 }, "linkedin": "https://www.linkedin.com/in/kabeerjaffri/", "email": "kabeer@otherdev.com", "bio": "Kabeer dirige la ingeniería en Other Dev e investiga machine learning interpretable. Lleva los proyectos desde la arquitectura hasta el despliegue, tanto para startups como para empresas consolidadas." },
+    { "name": "Ossaid Qadri", "role": "Cofundador", "photo": { "src": "https://media.otherdev.com/site/team/ossaid.webp", "alt": "Ossaid Qadri", "width": 720, "height": 900 }, "linkedin": "https://www.linkedin.com/in/ossaidqadri/", "email": "ossaid@otherdev.com", "bio": "Ossaid desarrolla software para retail y empresas, y es Chief Innovation Officer en PolicySimAI, una spin-off de UCL. Sus correcciones se han integrado en Astro y en Payload CMS." }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "page": "services",
+  "hero": {
+    "heading": "Tenemos la habilidad de dar forma a lo que viene.",
+    "sub": "Experiencia en marca, producto y tecnología, todo bajo un mismo techo."
+  },
+  "closing": {
+    "heading": "Explora una galería de nuestras galaxias.",
+    "body": "Recorre nuestra constelación de proyectos pasados: diseños, marcas y experiencias que marcaron industrias, cambiaron percepciones y fijaron nuevos estándares.",
+    "button": { "label": "Nuestro enfoque", "href": "/approach" }
+  }
+}

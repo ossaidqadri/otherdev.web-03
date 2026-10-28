@@ -1,0 +1,94 @@
+{
+  "name": "Other Dev",
+  "description": "Other Dev diseña software empresarial, gestiona infraestructura de IoT y en la nube, y crea sitios web y plataformas digitales. Un estudio de servicio completo con sede en Karachi.",
+  "seo": {
+    "home": "Other Dev diseña software empresarial, gestiona infraestructura de IoT y en la nube, y crea sitios web y plataformas digitales. Un estudio de servicio completo con sede en Karachi.",
+    "work": "Explora nuestros proyectos: software empresarial, infraestructura de IoT y en la nube, diseño y desarrollo web, comercio electrónico y mucho más.",
+    "services": "Experiencia en marca, producto y tecnología, todo bajo un mismo techo.",
+    "blog": "Ideas, perspectivas y novedades del estudio Other Dev sobre desarrollo web, diseño y plataformas digitales."
+  },
+  "nav": [
+    { "label": "Trabajos", "href": "/work" },
+    { "label": "Servicios", "href": "/services" },
+    { "label": "Blog", "href": "/blog" },
+    { "label": "Nosotros", "href": "/about" }
+  ],
+  "cta": { "label": "Trabaja con nosotros", "href": "/contact" },
+  "pill": [
+    { "label": "Clientes", "target": "clients" },
+    { "label": "Trabajos", "target": "work" },
+    { "label": "Servicios", "target": "process" },
+    { "label": "Noticias", "target": "news" }
+  ],
+  "closing": {
+    "heading": "¿Listo para dar el salto?",
+    "body": "Convirtamos la curiosidad en colaboración. Comparte tu visión y te ayudaremos a darle forma a algo inolvidable.",
+    "button": { "label": "Contáctanos", "href": "/contact" }
+  },
+  "footer": {
+    "cta": { "label": "Trabaja con nosotros", "href": "/contact" },
+    "offices": [
+      {
+        "city": "Karachi",
+        "timezone": "Asia/Karachi",
+        "email": "hello@otherdev.com",
+        "phone": "+92 315 689 3331",
+        "address": ["Karachi, Pakistán"],
+        "mapUrl": "https://www.google.com/maps/search/?api=1&query=Karachi%2C+Pakistan",
+        "photo": {
+          "src": "https://media.otherdev.com/site/misc/karachi-office-2.webp",
+          "alt": "El Mausoleo de Quaid-e-Azam en Karachi frente a un cielo despejado del atardecer, fotografiado por Kashif Afridi en Unsplash",
+          "width": 1600,
+          "height": 1200
+        }
+      }
+    ],
+    "legalLinks": [{ "label": "Privacidad", "href": "/legals/privacy" }],
+    "social": [
+      { "label": "LinkedIn", "href": "https://linkedin.com/company/theotherdev/" },
+      { "label": "Instagram", "href": "https://instagram.com/other.dev" },
+      { "label": "GitHub", "href": "https://github.com/theotherdev" },
+      { "label": "WhatsApp", "href": "https://wa.me/923156893331" }
+    ],
+    "legal": "© Other Dev"
+  },
+  "ui": {
+    "language": "Idioma",
+    "menuOpen": "Abrir menú",
+    "menuClose": "Cerrar menú",
+    "mainNav": "Principal",
+    "sectionsNav": "Secciones",
+    "socialNav": "Redes",
+    "readOnLinkedin": "Leer en LinkedIn",
+    "opensInNewTab": "(se abre en una pestaña nueva)",
+    "skipToContent": "Ir al contenido",
+    "filterLabel": "Filtrar por categoría",
+    "viewLabel": "Vista",
+    "gridView": "Vista de cuadrícula",
+    "listView": "Vista de lista",
+    "drag": "Arrastrar",
+    "seeWork": "Ver trabajos",
+    "scroll": "Desplazar",
+    "copied": "Copiado al portapapeles",
+    "copyFailed": "No se pudo copiar al portapapeles",
+    "all": "Todos",
+    "relatedWork": "Trabajos relacionados",
+    "seeAll": "Ver todo",
+    "backToWork": "Trabajos",
+    "relatedPosts": "Artículos relacionados",
+    "download": "Descargar",
+    "readMore": "Leer más",
+    "overview": "Resumen",
+    "theWork": "El proyecto",
+    "moreWork": "Más trabajos",
+    "readLess": "Leer menos",
+    "year": "Año",
+    "discipline": "Disciplina",
+    "website": "Sitio web",
+    "legal": "Legal",
+    "lastUpdated": "Última actualización",
+    "submit": "Enviar",
+    "signUp": "Suscribirme",
+    "emailPlaceholder": "Correo electrónico"
+  }
+}

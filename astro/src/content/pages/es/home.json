@@ -1,0 +1,29 @@
+{
+  "page": "home",
+  "hero": {
+    "headline": "Other Dev crea plataformas digitales para creativos pioneros.",
+    "button": { "label": "Nuestro trabajo", "href": "#work" },
+    "statement": "Diseñamos software empresarial, gestionamos infraestructura de IoT y en la nube, y creamos sitios web y marcas, desde el primer boceto hasta el lanzamiento."
+  },
+  "clients": { "heading": "Nuestros socios de confianza, desde startups audaces hasta referentes globales." },
+  "work": {
+    "heading": "Nuestro trabajo, de la semilla al planeta.",
+    "all": { "label": "Ver todo", "href": "/work" },
+    "featured": ["wish", "narkins", "car-wala", "adina-household"]
+  },
+  "process": {
+    "heading": "Nuestro proceso, forjado en décadas de experiencia.",
+    "steps": [
+      { "title": "Pensar", "tone": "spring", "image": "think.png", "body": "Leemos la tierra para descubrir dónde echan raíz las ideas, revelando oportunidades, direcciones y misiones." },
+      { "title": "Crear", "tone": "summer", "image": "create.webp", "body": "Hacemos que lo invisible se vuelva inevitable, creando identidades y sistemas que impulsan tu crecimiento." },
+      { "title": "Construir", "tone": "autumn", "image": "build.webp", "body": "Desarrollamos productos y experiencias digitales escalables, listos para generar un impacto en el mundo real." },
+      { "title": "Escalar", "tone": "winter", "image": "scale.webp", "body": "Cuidamos lo que plantamos: lo medimos, lo refinamos y lo hacemos crecer mucho después del lanzamiento." }
+    ]
+  },
+  "news": { "heading": "Ideas desde nuestro mundo, hasta el tuyo.", "all": { "label": "Leer todo", "href": "/blog" } },
+  "constellations": {
+    "heading": "Todas nuestras constelaciones, bajo un mismo cielo.",
+    "body": "Descubre cómo trazamos el camino de la idea al ícono, a través de la estrategia, la creación, la construcción y el escalamiento, convirtiendo lo invisible en innegable.",
+    "button": { "label": "Nuestro enfoque", "href": "/approach" }
+  }
+}

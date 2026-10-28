@@ -1,0 +1,94 @@
+{
+  "name": "Other Dev",
+  "description": "تصمم Other Dev برمجيات المؤسسات، وتدير البنية التحتية لإنترنت الأشياء والسحابة، وتبني المواقع والمنصات الرقمية. استوديو متكامل الخدمات مقره كراتشي.",
+  "seo": {
+    "home": "تصمم Other Dev برمجيات المؤسسات، وتدير البنية التحتية لإنترنت الأشياء والسحابة، وتبني المواقع والمنصات الرقمية. استوديو متكامل الخدمات مقره كراتشي.",
+    "work": "استعرض مشاريعنا: برمجيات المؤسسات، والبنية التحتية لإنترنت الأشياء والسحابة، وتصميم المواقع وتطويرها، والتجارة الإلكترونية وغير ذلك.",
+    "services": "خبرة في العلامات التجارية والمنتجات والتقنية، كل ذلك تحت سقف واحد.",
+    "blog": "أفكار ورؤى وأخبار من استوديو Other Dev حول تطوير المواقع والتصميم والمنصات الرقمية."
+  },
+  "nav": [
+    { "label": "الأعمال", "href": "/work" },
+    { "label": "الخدمات", "href": "/services" },
+    { "label": "المدونة", "href": "/blog" },
+    { "label": "من نحن", "href": "/about" }
+  ],
+  "cta": { "label": "اعمل معنا", "href": "/contact" },
+  "pill": [
+    { "label": "العملاء", "target": "clients" },
+    { "label": "الأعمال", "target": "work" },
+    { "label": "الخدمات", "target": "process" },
+    { "label": "الأخبار", "target": "news" }
+  ],
+  "closing": {
+    "heading": "هل أنت مستعد للقفزة؟",
+    "body": "لنحوّل الفضول إلى تعاون. شاركنا رؤيتك، وسنساعدك في تحويلها إلى شيء لا يُنسى.",
+    "button": { "label": "تواصل معنا", "href": "/contact" }
+  },
+  "footer": {
+    "cta": { "label": "اعمل معنا", "href": "/contact" },
+    "offices": [
+      {
+        "city": "كراتشي",
+        "timezone": "Asia/Karachi",
+        "email": "hello@otherdev.com",
+        "phone": "+92 315 689 3331",
+        "address": ["كراتشي، باكستان"],
+        "mapUrl": "https://www.google.com/maps/search/?api=1&query=Karachi%2C+Pakistan",
+        "photo": {
+          "src": "https://media.otherdev.com/site/misc/karachi-office-2.webp",
+          "alt": "ضريح قائد الأمة في كراتشي أمام سماء المساء الصافية، من تصوير Kashif Afridi على Unsplash",
+          "width": 1600,
+          "height": 1200
+        }
+      }
+    ],
+    "legalLinks": [{ "label": "الخصوصية", "href": "/legals/privacy" }],
+    "social": [
+      { "label": "LinkedIn", "href": "https://linkedin.com/company/theotherdev/" },
+      { "label": "Instagram", "href": "https://instagram.com/other.dev" },
+      { "label": "GitHub", "href": "https://github.com/theotherdev" },
+      { "label": "WhatsApp", "href": "https://wa.me/923156893331" }
+    ],
+    "legal": "© Other Dev"
+  },
+  "ui": {
+    "language": "اللغة",
+    "menuOpen": "فتح القائمة",
+    "menuClose": "إغلاق القائمة",
+    "mainNav": "الرئيسية",
+    "sectionsNav": "الأقسام",
+    "socialNav": "التواصل الاجتماعي",
+    "readOnLinkedin": "اقرأ على LinkedIn",
+    "opensInNewTab": "(يُفتح في علامة تبويب جديدة)",
+    "skipToContent": "تخطَّ إلى المحتوى",
+    "filterLabel": "تصفية حسب الفئة",
+    "viewLabel": "العرض",
+    "gridView": "عرض شبكي",
+    "listView": "عرض قائمة",
+    "drag": "اسحب",
+    "seeWork": "عرض الأعمال",
+    "scroll": "مرّر",
+    "copied": "تم النسخ إلى الحافظة",
+    "copyFailed": "تعذّر النسخ إلى الحافظة",
+    "all": "الكل",
+    "relatedWork": "أعمال ذات صلة",
+    "seeAll": "عرض الكل",
+    "backToWork": "الأعمال",
+    "relatedPosts": "مقالات ذات صلة",
+    "download": "تنزيل",
+    "readMore": "اقرأ المزيد",
+    "overview": "نظرة عامة",
+    "theWork": "العمل",
+    "moreWork": "أعمال أخرى",
+    "readLess": "اقرأ أقل",
+    "year": "السنة",
+    "discipline": "المجال",
+    "website": "الموقع الإلكتروني",
+    "legal": "قانوني",
+    "lastUpdated": "آخر تحديث",
+    "submit": "إرسال",
+    "signUp": "اشتركني",
+    "emailPlaceholder": "البريد الإلكتروني"
+  }
+}

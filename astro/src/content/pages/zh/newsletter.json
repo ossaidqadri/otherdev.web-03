@@ -1,0 +1,12 @@
+{
+  "page": "newsletter",
+  "heading": "保持联系。",
+  "body": "选择你感兴趣的内容，我们只发送真正有价值的消息。",
+  "interestsLabel": "我想了解……",
+  "interests": ["工作室动态", "开放职位", "商业机会"],
+  "consent": "我们绝不会泄露你的信息。注册即表示你同意接收来自 Other Dev 的消息。请阅读我们的",
+  "note": "订阅即将开放。",
+  "privacy": { "label": "隐私政策", "href": "/legals/privacy" },
+  "fields": { "firstName": "名字", "lastName": "姓氏", "email": "电子邮箱" },
+  "examples": { "firstName": "小明", "lastName": "李", "email": "jane@company.com" }
+}

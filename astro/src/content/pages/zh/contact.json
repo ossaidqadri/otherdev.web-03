@@ -1,0 +1,37 @@
+{
+  "page": "contact",
+  "hero": { "heading": "与我们合作", "sub": "告诉我们你正在打造什么。" },
+  "body": "联系我们最快的方式是 WhatsApp。我们会在一个工作日内回复。",
+  "foundersHeading": "创始人",
+  "generalHeading": "综合",
+  "general": [
+    { "title": "WhatsApp", "note": "联系我们最快的方式", "link": { "label": "发消息", "href": "https://wa.me/923156893331?text=Hi!%20I%20found%20you%20through%20otherdev.com%20and%20would%20love%20to%20discuss%20a%20project." } },
+    { "title": "综合咨询", "note": "我们会在一个工作日内回复", "copy": "hello@otherdev.com" },
+    { "title": "LinkedIn", "link": { "label": "关注", "href": "https://linkedin.com/company/theotherdev/" } },
+    { "title": "Instagram", "link": { "label": "关注", "href": "https://instagram.com/other.dev" } },
+    { "title": "GitHub", "link": { "label": "关注", "href": "https://github.com/theotherdev" } }
+  ],
+  "linkedin": "LinkedIn",
+  "testimonials": [
+    { "quote": "Other Dev 从第一次交谈起就理解了 Narkin’s。他们为我们打造的网站和博客，正是我们希望被看到的样子。", "name": "Sarim Nara", "role": "Narkin’s Builders", "href": "/work/narkins" },
+    { "quote": "从项目页面到咨询表单，一切都按照我们销售团队所需的方式运作。", "name": "Wahib", "role": "Bin Yousuf Group", "href": "/work/real-estate-platform-development-for-bin-yousuf-group" },
+    { "quote": "每一次新品发布都会给店铺带来真实的压力。Other Dev 把我们的店铺打造成能够承受这份压力的样子。", "name": "Ammar", "role": "Cultured Legacy", "href": "/work/website-development-for-cultured-legacy" },
+    { "quote": "一家干净、快速的店铺，让衣服自己说话。", "name": "Ammar", "role": "Groovy", "href": "/work/website-development-for-groovy-pakistan" }
+  ],
+  "faq": {
+    "heading": "有疑问吗？",
+    "sub": "我们有答案。",
+    "items": [
+      { "q": "我们如何开始？", "a": "通过 WhatsApp 给我们发消息，或写信至 hello@otherdev.com，告诉我们你正在打造什么。我们会在一个工作日内回复。" },
+      { "q": "你们做什么？", "a": "企业级软件、IoT 与云基础设施、网站和数字平台，以及与之相配的品牌。" },
+      { "q": "你们的流程如何运作？", "a": "分为四步：思考、创造、构建与拓展。我们确定方向，塑造品牌形象与系统，再打造产品，之后持续衡量并不断优化。详情请见我们的方法页面。" },
+      { "q": "项目上线后你们还提供支持吗？", "a": "提供。拓展是我们工作方式的最后一步：我们会持续衡量、优化并发展我们上线的项目。" },
+      { "q": "你们在哪里？", "a": "巴基斯坦卡拉奇。" }
+    ]
+  },
+  "closing": {
+    "heading": "探索我们的星系画廊。",
+    "body": "浏览我们过往项目的星座图，这些设计、品牌与体验曾影响行业、改变认知，并树立新的标准。",
+    "button": { "label": "我们的方法", "href": "/approach" }
+  }
+}

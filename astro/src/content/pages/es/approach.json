@@ -1,0 +1,12 @@
+{
+  "page": "approach",
+  "heading": "Desde la primera chispa hasta un legado duradero, te acompañamos en cada etapa de creación, transformación y regeneración.",
+  "steps": [
+    { "title": "Pensar", "body": "Lideramos en estrategia, investigación y posicionamiento para descubrir oportunidades, definir direcciones claras y alinearnos en torno a una visión." },
+    { "title": "Crear", "body": "Creamos identidades de marca, sistemas de diseño y contenido que convierten una estrategia sin brillo en un trabajo que define el mercado." },
+    { "title": "Construir", "body": "Desarrollamos productos, sitios y experiencias robustos y escalables que dan vida a las ideas y están listos para generar un impacto real." },
+    { "title": "Escalar", "body": "Optimizamos, hacemos crecer e innovamos para evolucionar con nuevas oportunidades y ofrecer valor a largo plazo." }
+  ],
+  "projectsHeading": "Hemos colaborado con",
+  "closing": { "heading": "Tu próximo capítulo empieza aquí.", "body": "Hablemos de cómo podemos ayudarte a darle forma.", "button": { "label": "Contáctanos", "href": "/contact" } }
+}

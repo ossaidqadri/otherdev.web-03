@@ -1,0 +1,37 @@
+{
+  "page": "contact",
+  "hero": { "heading": "اعمل معنا", "sub": "أخبرنا بما تبنيه." },
+  "body": "أسرع طريقة للتواصل معنا هي WhatsApp. نرد خلال يوم عمل.",
+  "foundersHeading": "المؤسسون",
+  "generalHeading": "عام",
+  "general": [
+    { "title": "WhatsApp", "note": "أسرع طريقة للتواصل معنا", "link": { "label": "راسلنا", "href": "https://wa.me/923156893331?text=Hi!%20I%20found%20you%20through%20otherdev.com%20and%20would%20love%20to%20discuss%20a%20project." } },
+    { "title": "استفسارات عامة", "note": "نرد خلال يوم عمل", "copy": "hello@otherdev.com" },
+    { "title": "LinkedIn", "link": { "label": "تابعنا", "href": "https://linkedin.com/company/theotherdev/" } },
+    { "title": "Instagram", "link": { "label": "تابعنا", "href": "https://instagram.com/other.dev" } },
+    { "title": "GitHub", "link": { "label": "تابعنا", "href": "https://github.com/theotherdev" } }
+  ],
+  "linkedin": "LinkedIn",
+  "testimonials": [
+    { "quote": "فهم Other Dev شركة Narkin’s منذ المحادثة الأولى. الموقع الإلكتروني والمدونة اللذان بنوهما يعكسان تماماً الصورة التي نريد أن نُرى بها.", "name": "Sarim Nara", "role": "Narkin’s Builders", "href": "/work/narkins" },
+    { "quote": "من صفحات المشاريع إلى نماذج الاستفسار، كل شيء يعمل بالطريقة التي يحتاجها فريق المبيعات لدينا.", "name": "Wahib", "role": "Bin Yousuf Group", "href": "/work/real-estate-platform-development-for-bin-yousuf-group" },
+    { "quote": "كل إطلاق يضغط فعلياً على المتجر. بنت Other Dev متجرنا ليتحمل هذا الضغط.", "name": "Ammar", "role": "Cultured Legacy", "href": "/work/website-development-for-cultured-legacy" },
+    { "quote": "متجر نظيف وسريع يترك الملابس تتحدث عن نفسها.", "name": "Ammar", "role": "Groovy", "href": "/work/website-development-for-groovy-pakistan" }
+  ],
+  "faq": {
+    "heading": "هل لديك أسئلة؟",
+    "sub": "لدينا الإجابات.",
+    "items": [
+      { "q": "كيف نبدأ؟", "a": "راسلنا عبر WhatsApp أو اكتب إلى hello@otherdev.com وأخبرنا بما تبنيه. نرد خلال يوم عمل." },
+      { "q": "ماذا تبنون؟", "a": "برمجيات المؤسسات، والبنية التحتية لإنترنت الأشياء والسحابة، والمواقع والمنصات الرقمية، والعلامات التجارية المرتبطة بها." },
+      { "q": "كيف تعمل عمليتكم؟", "a": "أربع مراحل: فكّر، وابتكر، وابنِ، ونمِّ. نحدد الاتجاه، ونصوغ الهوية والأنظمة، ونطوّر المنتج، ثم نواصل قياسه وتحسينه. صفحة المنهج لدينا تتضمن التفاصيل." },
+      { "q": "هل تدعمون المشاريع بعد الإطلاق؟", "a": "نعم. التنمية هي المرحلة الأخيرة من طريقة عملنا: نواصل قياس ما نطلقه وتحسينه وتنميته." },
+      { "q": "أين مقركم؟", "a": "كراتشي، باكستان." }
+    ]
+  },
+  "closing": {
+    "heading": "استكشف معرضاً لمجرّاتنا.",
+    "body": "تصفّح كوكبة مشاريعنا السابقة: تصاميم وعلامات وتجارب شكّلت صناعات، وغيّرت تصورات، ووضعت معايير جديدة.",
+    "button": { "label": "منهجنا", "href": "/approach" }
+  }
+}

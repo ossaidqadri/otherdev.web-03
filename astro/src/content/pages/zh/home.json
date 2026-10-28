@@ -1,0 +1,29 @@
+{
+  "page": "home",
+  "hero": {
+    "headline": "Other Dev 为开创性的创意人打造数字平台。",
+    "button": { "label": "我们的作品", "href": "#work" },
+    "statement": "从第一份草图到上线，我们设计企业级软件、管理 IoT 与云基础设施，并打造网站与品牌。"
+  },
+  "clients": { "heading": "我们值得信赖的合作伙伴，从勇敢的初创企业到全球标杆品牌。" },
+  "work": {
+    "heading": "我们的作品，从花瓣到星球。",
+    "all": { "label": "查看全部", "href": "/work" },
+    "featured": ["wish", "narkins", "car-wala", "adina-household"]
+  },
+  "process": {
+    "heading": "我们的流程，凝聚数十年的经验。",
+    "steps": [
+      { "title": "思考", "tone": "spring", "image": "think.png", "body": "我们读懂土壤，找到创意扎根的地方，发掘机会、方向与使命。" },
+      { "title": "创造", "tone": "summer", "image": "create.webp", "body": "我们让无形化为必然，打造身份与系统，支撑你的成长。" },
+      { "title": "构建", "tone": "autumn", "image": "build.webp", "body": "我们构建可扩展的数字产品与体验，为真实世界的影响做好准备。" },
+      { "title": "拓展", "tone": "winter", "image": "scale.webp", "body": "我们悉心照料所种下的一切，在上线很久之后依然持续衡量、优化与发展。" }
+    ]
+  },
+  "news": { "heading": "来自我们世界的思考，送到你的世界。", "all": { "label": "阅读全部", "href": "/blog" } },
+  "constellations": {
+    "heading": "所有星座，尽在同一片天空之下。",
+    "body": "了解我们如何通过战略、创造、构建与拓展，描绘从创意到标志的路径，让不可见的变得不容否认。",
+    "button": { "label": "我们的方法", "href": "/approach" }
+  }
+}

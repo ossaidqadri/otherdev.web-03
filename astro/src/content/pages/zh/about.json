@@ -1,0 +1,18 @@
+{
+  "page": "about",
+  "heading": "Other Dev 以创意革新催化颠覆性的想法。这是一家充满激进乐观主义的工作室，致力于打造新的身份、系统、体验与风格。",
+  "body": "我们立足卡拉奇，是一家全方位服务的数字工作室，从零开始设计并构建企业级软件、IoT 与云基础设施、网络平台、Shopify 体验、AI 驱动的产品以及定制数字解决方案，并以深思熟虑的设计让想法落地。",
+  "principlesHeading": "我们遵循自己坚信并身体力行的原则。",
+  "principles": [
+    { "title": "大胆创造", "body": "追求执行的卓越与对细节的关注。" },
+    { "title": "倡导开放", "body": "与他人坦诚协作，成就更好的结果。" },
+    { "title": "永葆好奇", "body": "做出有意义的贡献，推动进步。" },
+    { "title": "创新思维", "body": "为前路指明方向，带来清晰与影响。" },
+    { "title": "未来优先", "body": "保持开放、灵活，并始终乐于学习。" }
+  ],
+  "teamHeading": "我们是一支跨学科团队，由充满好奇心的设计师、开发者和策略师组成。",
+  "team": [
+    { "name": "Kabeer Jaffri", "role": "联合创始人", "photo": { "src": "https://media.otherdev.com/site/team/kabeer.webp", "alt": "Kabeer Jaffri", "width": 900, "height": 1126 }, "linkedin": "https://www.linkedin.com/in/kabeerjaffri/", "email": "kabeer@otherdev.com", "bio": "Kabeer 负责 Other Dev 的工程工作，同时研究可解释机器学习。他带领初创企业与成熟企业的项目，从架构设计一路推进到部署上线。" },
+    { "name": "Ossaid Qadri", "role": "联合创始人", "photo": { "src": "https://media.otherdev.com/site/team/ossaid.webp", "alt": "Ossaid Qadri", "width": 720, "height": 900 }, "linkedin": "https://www.linkedin.com/in/ossaidqadri/", "email": "ossaid@otherdev.com", "bio": "Ossaid 开发零售与企业级软件，同时担任 UCL 衍生公司 PolicySimAI 的首席创新官。他的修复已合并进 Astro 与 Payload CMS。" }
+  ]
+}

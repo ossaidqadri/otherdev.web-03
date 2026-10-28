@@ -1,0 +1,37 @@
+{
+  "page": "contact",
+  "hero": { "heading": "Trabaja con nosotros", "sub": "Cuéntanos qué estás construyendo." },
+  "body": "La forma más rápida de contactarnos es WhatsApp. Respondemos en un día laborable.",
+  "foundersHeading": "Fundadores",
+  "generalHeading": "General",
+  "general": [
+    { "title": "WhatsApp", "note": "La forma más rápida de contactarnos", "link": { "label": "Escríbenos", "href": "https://wa.me/923156893331?text=Hi!%20I%20found%20you%20through%20otherdev.com%20and%20would%20love%20to%20discuss%20a%20project." } },
+    { "title": "Consultas generales", "note": "Respondemos en un día laborable", "copy": "hello@otherdev.com" },
+    { "title": "LinkedIn", "link": { "label": "Seguir", "href": "https://linkedin.com/company/theotherdev/" } },
+    { "title": "Instagram", "link": { "label": "Seguir", "href": "https://instagram.com/other.dev" } },
+    { "title": "GitHub", "link": { "label": "Seguir", "href": "https://github.com/theotherdev" } }
+  ],
+  "linkedin": "LinkedIn",
+  "testimonials": [
+    { "quote": "Other Dev entendió Narkin’s desde la primera conversación. El sitio web y el blog que crearon son exactamente como queremos que nos vean.", "name": "Sarim Nara", "role": "Narkin’s Builders", "href": "/work/narkins" },
+    { "quote": "Desde las páginas de proyectos hasta los formularios de consulta, todo funciona como lo necesita nuestro equipo de ventas.", "name": "Wahib", "role": "Bin Yousuf Group", "href": "/work/real-estate-platform-development-for-bin-yousuf-group" },
+    { "quote": "Cada lanzamiento ejerce una presión real sobre una tienda. Other Dev construyó la nuestra para soportarla.", "name": "Ammar", "role": "Cultured Legacy", "href": "/work/website-development-for-cultured-legacy" },
+    { "quote": "Una tienda limpia y rápida que deja que la ropa hable por sí misma.", "name": "Ammar", "role": "Groovy", "href": "/work/website-development-for-groovy-pakistan" }
+  ],
+  "faq": {
+    "heading": "¿Tienes preguntas?",
+    "sub": "Tenemos respuestas.",
+    "items": [
+      { "q": "¿Cómo empezamos?", "a": "Escríbenos por WhatsApp o a hello@otherdev.com con lo que estás construyendo. Respondemos en un día laborable." },
+      { "q": "¿Qué construyen?", "a": "Software empresarial, infraestructura de IoT y en la nube, sitios web y plataformas digitales, y las marcas que los acompañan." },
+      { "q": "¿Cómo funciona su proceso?", "a": "Cuatro pasos: Pensar, Crear, Construir y Escalar. Encontramos la dirección, damos forma a la identidad y a los sistemas, desarrollamos el producto y luego seguimos midiéndolo y refinándolo. Nuestra página de enfoque tiene los detalles." },
+      { "q": "¿Dan soporte a los proyectos después del lanzamiento?", "a": "Sí. Escalar es el último paso de nuestra forma de trabajar: seguimos midiendo, refinando y haciendo crecer lo que lanzamos." },
+      { "q": "¿Dónde están?", "a": "Karachi, Pakistán." }
+    ]
+  },
+  "closing": {
+    "heading": "Explora una galería de nuestras galaxias.",
+    "body": "Recorre nuestra constelación de proyectos pasados: diseños, marcas y experiencias que marcaron industrias, cambiaron percepciones y fijaron nuevos estándares.",
+    "button": { "label": "Nuestro enfoque", "href": "/approach" }
+  }
+}

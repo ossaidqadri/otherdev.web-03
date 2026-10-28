@@ -1,0 +1,12 @@
+{
+  "page": "newsletter",
+  "heading": "Mantengámonos en contacto.",
+  "body": "Elige sobre qué quieres saber y solo enviaremos lo que realmente vale la pena.",
+  "interestsLabel": "Quiero recibir información sobre...",
+  "interests": ["Novedades del estudio", "Puestos abiertos", "Oportunidades de negocio"],
+  "consent": "Nunca compartiremos tus datos. Al registrarte, aceptas recibir comunicaciones de Other Dev. Lee nuestra",
+  "note": "Los registros abren pronto.",
+  "privacy": { "label": "Política de privacidad", "href": "/legals/privacy" },
+  "fields": { "firstName": "Nombre", "lastName": "Apellido", "email": "Correo electrónico" },
+  "examples": { "firstName": "María", "lastName": "García", "email": "jane@company.com" }
+}

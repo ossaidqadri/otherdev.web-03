@@ -1,0 +1,94 @@
+{
+  "name": "Other Dev",
+  "description": "Other Dev 设计企业级软件，管理 IoT 与云基础设施，并打造网站和数字平台。总部位于卡拉奇的全方位服务工作室。",
+  "seo": {
+    "home": "Other Dev 设计企业级软件，管理 IoT 与云基础设施，并打造网站和数字平台。总部位于卡拉奇的全方位服务工作室。",
+    "work": "浏览我们的项目：企业级软件、IoT 与云基础设施、网页设计与开发、电子商务等。",
+    "services": "品牌、产品与技术专长，一站式解决。",
+    "blog": "Other Dev 工作室关于网页开发、设计与数字平台的思考、洞察与最新动态。"
+  },
+  "nav": [
+    { "label": "作品", "href": "/work" },
+    { "label": "服务", "href": "/services" },
+    { "label": "博客", "href": "/blog" },
+    { "label": "关于我们", "href": "/about" }
+  ],
+  "cta": { "label": "与我们合作", "href": "/contact" },
+  "pill": [
+    { "label": "客户", "target": "clients" },
+    { "label": "作品", "target": "work" },
+    { "label": "服务", "target": "process" },
+    { "label": "动态", "target": "news" }
+  ],
+  "closing": {
+    "heading": "准备好迈出这一步了吗？",
+    "body": "让好奇心变成合作。分享你的构想，我们将帮你把它打造成难以忘怀的作品。",
+    "button": { "label": "联系我们", "href": "/contact" }
+  },
+  "footer": {
+    "cta": { "label": "与我们合作", "href": "/contact" },
+    "offices": [
+      {
+        "city": "卡拉奇",
+        "timezone": "Asia/Karachi",
+        "email": "hello@otherdev.com",
+        "phone": "+92 315 689 3331",
+        "address": ["巴基斯坦卡拉奇"],
+        "mapUrl": "https://www.google.com/maps/search/?api=1&query=Karachi%2C+Pakistan",
+        "photo": {
+          "src": "https://media.otherdev.com/site/misc/karachi-office-2.webp",
+          "alt": "卡拉奇真纳陵墓，背衬晴朗的傍晚天空。摄影：Kashif Afridi，Unsplash",
+          "width": 1600,
+          "height": 1200
+        }
+      }
+    ],
+    "legalLinks": [{ "label": "隐私政策", "href": "/legals/privacy" }],
+    "social": [
+      { "label": "LinkedIn", "href": "https://linkedin.com/company/theotherdev/" },
+      { "label": "Instagram", "href": "https://instagram.com/other.dev" },
+      { "label": "GitHub", "href": "https://github.com/theotherdev" },
+      { "label": "WhatsApp", "href": "https://wa.me/923156893331" }
+    ],
+    "legal": "© Other Dev"
+  },
+  "ui": {
+    "language": "语言",
+    "menuOpen": "打开菜单",
+    "menuClose": "关闭菜单",
+    "mainNav": "主导航",
+    "sectionsNav": "页面板块",
+    "socialNav": "社交媒体",
+    "readOnLinkedin": "在 LinkedIn 上阅读",
+    "opensInNewTab": "（在新标签页打开）",
+    "skipToContent": "跳至内容",
+    "filterLabel": "按类别筛选",
+    "viewLabel": "视图",
+    "gridView": "网格视图",
+    "listView": "列表视图",
+    "drag": "拖动",
+    "seeWork": "查看作品",
+    "scroll": "滚动",
+    "copied": "已复制到剪贴板",
+    "copyFailed": "无法复制到剪贴板",
+    "all": "全部",
+    "relatedWork": "相关作品",
+    "seeAll": "查看全部",
+    "backToWork": "作品",
+    "relatedPosts": "相关文章",
+    "download": "下载",
+    "readMore": "阅读更多",
+    "overview": "概览",
+    "theWork": "作品",
+    "moreWork": "更多作品",
+    "readLess": "收起",
+    "year": "年份",
+    "discipline": "领域",
+    "website": "网站",
+    "legal": "法律",
+    "lastUpdated": "最后更新",
+    "submit": "提交",
+    "signUp": "订阅",
+    "emailPlaceholder": "电子邮箱地址"
+  }
+}
